@@ -8,6 +8,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Home from './Screens/Home';
 import Detail from './Screens/Detail';
+import Restaurant from './Screens/Restaurant';
 import Order from './Screens/Order';
 import Settings from './Screens/Settings';
 
@@ -19,6 +20,13 @@ const HomeStack = createStackNavigator({
   Detail: {
     screen: Detail,
     navigationOptions: { title: 'Detail' },
+  },
+});
+
+const RestaurantStack = createStackNavigator({
+  Restaurant: {
+    screen: Restaurant,
+    navigationOptions: { title: 'Restaurant' },
   },
 });
 
@@ -39,6 +47,7 @@ const SettingsStack = createStackNavigator({
 const AppNavigator = createBottomTabNavigator(
   {
     Home: HomeStack,
+    Restaurant: RestaurantStack,
     Order: OrderStack,
     Settings: SettingsStack,
   },
@@ -53,6 +62,9 @@ const AppNavigator = createBottomTabNavigator(
         if (routeName === 'Home') {
           //iconName = `ios-home`;
           iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-home`;
+        } else if (routeName === 'Restaurant') {
+          //iconName = `ios-order`;
+          iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-restaurant`;
         } else if (routeName === 'Order') {
           //iconName = `ios-order`;
           iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-cart`;
