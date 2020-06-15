@@ -22,15 +22,16 @@ color: blue;
 const Thumbnail = styled(Image)`
 border-radius: 5px;
 margin-right: 4%;
-height: 200px;
-width: 200px;
+height: 100px;
+width: 100px;
 `
 const ListingItem = ({ item, navigation }) => (
     <ListingItemWrapper onPress={() => navigation.navigate('Detail', {
         item
     })}>
         <Thumbnail
-            source={item.img}
+            source={require('../../media/CaesarSalad.jpg')}
+            /*source={{ uri: item.img.src }}*/
             /*source={{ uri: item.thumbnail }}*/
         />
         <View>
