@@ -1,10 +1,12 @@
 {
   "expo": {
-    "name": "House Listing",
-    "slug": "HouseListing",
-    "privacy": "public",
-    "sdkVersion": "33.0.0",
-    "platforms": ["ios", "android", "web"],
+    "name": "Foodie-MobileAppVersion",
+    "slug": "Foodie-MobileAppVersion",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -16,7 +18,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     }
