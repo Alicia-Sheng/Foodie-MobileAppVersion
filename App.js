@@ -55,7 +55,7 @@ const AppNavigator = createBottomTabNavigator(
           iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-home`;
         } else if (routeName === 'Order') {
           //iconName = `ios-order`;
-          iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-basket`;
+          iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-cart`;
         } else if (routeName === 'Settings') {
           //iconName = `ios-settings`;
           iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-settings`;
