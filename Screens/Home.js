@@ -2,13 +2,14 @@ import React from 'react';
 import { FlatList, View } from 'react-native';
 import styled from 'styled-components/native';
 import ListingItem from '../Components/Listing/ListingItem'
+import data from '../assets/data.js';
 
 const Home = ({ navigation }) => {
-    const [loading, setLoading] = React.useState(true);
+    /*const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState('');
     const [data, setData] = React.useState([]);
 
-    const fetchAPI = async () => {
+    /*const fetchAPI = async () => {
         try {
             const data = await
                 fetch('https://my-json-server.typicode.com/PacktPublishing/React-Projects/listings');
@@ -24,11 +25,11 @@ const Home = ({ navigation }) => {
     };
     React.useEffect(() => {
         fetchAPI();
-    }, []);
+    }, []);*/
 
     return (
         <ListingsWrapper>
-            {!loading && !error && <Listings
+            {/*!loading && !error && */<Listings
                 data={data}
                 keyExtractor={item => String(item.id)}
                 renderItem={({ item }) => <ListingItem item={item} />}

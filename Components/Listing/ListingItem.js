@@ -30,11 +30,12 @@ const ListingItem = ({ item, navigation }) => (
         item
     })}>
         <Thumbnail
-            source={{ uri: item.thumbnail }}
+            source={item.img}
+            /*source={{ uri: item.thumbnail }}*/
         />
         <View>
-            <Title>{item.title}</Title>
-            <Price>{item.price}</Price>
+            <Title>{item.name}</Title>
+            <Price>${item.price}</Price>
         </View>
     </ListingItemWrapper>
 );
