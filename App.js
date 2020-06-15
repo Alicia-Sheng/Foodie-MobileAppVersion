@@ -8,6 +8,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Home from './Screens/Home';
 import Detail from './Screens/Detail';
+import Order from './Screens/Order';
 import Settings from './Screens/Settings';
 
 const HomeStack = createStackNavigator({
@@ -21,6 +22,13 @@ const HomeStack = createStackNavigator({
   },
 });
 
+const OrderStack = createStackNavigator({
+  Order: {
+    screen: Order,
+    navigationOptions: { title: 'Order' },
+  },
+});
+
 const SettingsStack = createStackNavigator({
   Settings: {
     screen: Settings,
@@ -31,6 +39,7 @@ const SettingsStack = createStackNavigator({
 const AppNavigator = createBottomTabNavigator(
   {
     Home: HomeStack,
+    Order: OrderStack,
     Settings: SettingsStack,
   },
   {
@@ -44,6 +53,9 @@ const AppNavigator = createBottomTabNavigator(
         if (routeName === 'Home') {
           //iconName = `ios-home`;
           iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-home`;
+        } else if (routeName === 'Order') {
+          //iconName = `ios-order`;
+          iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-basket`;
         } else if (routeName === 'Settings') {
           //iconName = `ios-settings`;
           iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-settings`;
