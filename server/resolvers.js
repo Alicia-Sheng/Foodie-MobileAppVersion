@@ -38,7 +38,7 @@ const mockProduct = (id = false) => ({
   category: mockCategory(),
 });
 
-let cart = {
+let order = {
   total: 0,
   products: [],
   complete: false,
@@ -51,51 +51,53 @@ const resolvers = {
       Array.from(Array(limit), () => mockProduct()),
     categories: (_, { limit = 10 }) =>
       Array.from(Array(limit), () => mockCategory()),
-    cart: () => cart,
+    order: () => order,
   },
   Mutation: {
-    addToCart: (_, { id }) => {
-      cart = {
-        ...cart,
-        total: cart.total + 1,
-        products: [...cart.products, mockProduct(id)],
+    addToOrder: (_, {
+        id
+      }) => {
+      order = {
+        ...order,
+        total: order.total + 1,
+        products: [...order.products, mockProduct(id)],
       };
 
-      return cart;
+      return order;
     },
-    completeCart: (_, { }, { token }) => {
+    completeOrder: (_, { }, { token }) => {
       const isValid = token ? isTokenValid(token) : false;
 
       if (isValid) {
-        cart = {
-          ...cart,
+        order = {
+          ...order,
           complete: true,
         };
 
-        return cart;
+        return order;
       }
       throw new AuthenticationError(
         'Please provide (valid) authentication details',
       );
     },
-    loginUser: async (_, { userName, password }) => {
+    loginUser: async (_, { username, password }) => {
       let isValid;
       const user = {
-        userName: 'test',
+        username: 'test',
         password:
           '$2b$10$5dwsS5snIRlKu8ka5r7z0eoRyQVAsOtAZHkPJuSx.agOWjchXhSum',
       };
 
-      if (userName === user.userName) {
+      if (username === user.username) {
         isValid = await Bcrypt.compareSync(password, user.password);
       }
 
       if (isValid) {
-        const token = JsonWebToken.sign({ user: user.userName }, jwtSecret, {
+        const token = JsonWebToken.sign({ user: user.username }, jwtSecret, {
           expiresIn: 3600,
         });
         return {
-          userName,
+          username,
           token,
         };
       }
