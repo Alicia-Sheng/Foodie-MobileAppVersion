@@ -4,11 +4,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import Home from './screens/Home';
-import Detail from './screens/Detail';
-import Restaurant from './screens/Restaurant';
-import Order from './screens/Order';
-import Settings from './screens/Settings';
+import Home from './Screens/Home';
+import Detail from './Screens/Detail';
+import Restaurant from './Screens/Restaurant';
+import Order from './Screens/Order';
+import Settings from './Screens/Settings';
 
 import ApolloClient from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
@@ -67,74 +67,74 @@ const client = () => new ApolloClient({
 });
 
 const HomeStack = createStackNavigator({
-    Home: {
-        screen: Home,
-        navigationOptions: { title: 'Home' },
-    },
-    Detail: {
-        screen: Detail,
-        navigationOptions: { title: 'Detail' },
-    },
+  Home: {
+    screen: Home,
+    navigationOptions: { title: 'Home' },
+  },
+  Detail: {
+    screen: Detail,
+    navigationOptions: { title: 'Detail' },
+  },
 });
 
 const RestaurantStack = createStackNavigator({
-    Restaurant: {
-        screen: Restaurant,
-        navigationOptions: { title: 'Restaurant' },
-    },
+  Restaurant: {
+    screen: Restaurant,
+    navigationOptions: { title: 'Restaurant' },
+  },
 });
 
 const OrderStack = createStackNavigator({
-    Order: {
-        screen: Order,
-        navigationOptions: { title: 'Order' },
-    },
+  Order: {
+    screen: Order,
+    navigationOptions: { title: 'Order' },
+  },
 });
 
 const SettingsStack = createStackNavigator({
-    Settings: {
-        screen: Settings,
-        navigationOptions: { title: 'Settings' },
-    },
+  Settings: {
+    screen: Settings,
+    navigationOptions: { title: 'Settings' },
+  },
 });
 
 const AppNavigator = createBottomTabNavigator({
-    Home: HomeStack,
-    Restaurant: RestaurantStack,
-    Order: OrderStack,
-    Settings: SettingsStack,
+  Home: HomeStack,
+  Restaurant: RestaurantStack,
+  Order: OrderStack,
+  Settings: SettingsStack,
 }, {
-    initialRouteName: 'Home',
-    defaultNavigationOptions: ({ navigation }) => ({
-        // tabBarIcon: () => {
-        tabBarIcon: ({ tintColor }) => {
-            const { routeName } = navigation.state;
+  initialRouteName: 'Home',
+  defaultNavigationOptions: ({ navigation }) => ({
+    // tabBarIcon: () => {
+    tabBarIcon: ({ tintColor }) => {
+      const { routeName } = navigation.state;
 
-            let iconName;
-            if (routeName === 'Home') {
-                //iconName = `ios-home`;
-                iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-home`;
-            } else if (routeName === 'Restaurant') {
-                //iconName = `ios-order`;
-                iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-restaurant`;
-            } else if (routeName === 'Order') {
-                //iconName = `ios-order`;
-                iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-cart`;
-            } else if (routeName === 'Settings') {
-                //iconName = `ios-settings`;
-                iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-settings`;
-            }
+      let iconName;
+      if (routeName === 'Home') {
+        //iconName = `ios-home`;
+        iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-home`;
+      } else if (routeName === 'Restaurant') {
+        //iconName = `ios-order`;
+        iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-restaurant`;
+      } else if (routeName === 'Order') {
+        //iconName = `ios-order`;
+        iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-cart`;
+      } else if (routeName === 'Settings') {
+        //iconName = `ios-settings`;
+        iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-settings`;
+      }
 
-            return <Ionicons name = { iconName }
-            size = { 20 }
-            color = { tintColor }
-            />;
-        },
-        tabBarOptions: {
-            activeTintColor: '#de1d0f',
-            inactiveTintColor: '#556',
-        },
-    }),
-}, );
+      return <Ionicons name={iconName}
+        size={20}
+        color={tintColor}
+      />;
+    },
+    tabBarOptions: {
+      activeTintColor: '#de1d0f',
+      inactiveTintColor: '#556',
+    },
+  }),
+});
 
 export default createAppContainer(AppNavigator);
