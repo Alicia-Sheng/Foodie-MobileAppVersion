@@ -8,7 +8,7 @@ import Home from './Screens/Home';
 import Detail from './Screens/Detail';
 import Restaurant from './Screens/Restaurant';
 import Order from './Screens/Order';
-import Settings from './Screens/Settings';
+import Account from './Screens/Account';
 import Profile from './Screens/Profile';
 
 // const AuthContext = React.createContext();
@@ -81,10 +81,10 @@ const OrderStack = createStackNavigator({
   },
 });
 
-const SettingsStack = createStackNavigator({
-  Settings: {
-    screen: Settings,
-    navigationOptions: { title: 'Settings' },
+const AccountStack = createStackNavigator({
+  Account: {
+    screen: Account,
+    navigationOptions: { title: 'Account' },
   },
   Profile: {
     screen: Profile,
@@ -97,7 +97,7 @@ const AppNavigator = createBottomTabNavigator(
     Home: HomeStack,
     Restaurant: RestaurantStack,
     Order: OrderStack,
-    Settings: SettingsStack,
+    Account: AccountStack,
   },
   {
     initialRouteName: 'Home',
@@ -111,14 +111,14 @@ const AppNavigator = createBottomTabNavigator(
           //iconName = `ios-home`;
           iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-home`;
         } else if (routeName === 'Restaurant') {
-          //iconName = `ios-order`;
+          //iconName = `ios-restaurant`;
           iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-restaurant`;
         } else if (routeName === 'Order') {
-          //iconName = `ios-order`;
+          //iconName = `ios-cart`;
           iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-cart`;
-        } else if (routeName === 'Settings') {
-          //iconName = `ios-settings`;
-          iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-settings`;
+        } else if (routeName === 'Account') {
+          //iconName = `ios-person`;
+          iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-person`;
         }
 
         return <Ionicons name={iconName}

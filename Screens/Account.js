@@ -7,13 +7,23 @@ const Settings = ({ navigation }) => {
     <View style={styles.container}>
 
       {/* Link to Profile */}
-      <TouchableOpacity onPress={() => { navigation.navigate('Profile'); }} style={styles.button}>
+      <TouchableOpacity onPress={() => { navigation.navigate('Profile') }} style={styles.button}>
         <Text style={styles.buttonText}> Profile </Text>
       </TouchableOpacity>
 
       {/* Link to Orders */}
       <TouchableOpacity onPress={() => Alert.alert('Not implemented yet')} style={styles.button}>
-        <Text style={styles.buttonText}>My Orders</Text>
+        <Text style={styles.buttonText}> Orders </Text>
+      </TouchableOpacity>
+
+      {/* Link to Reviews */}
+      <TouchableOpacity onPress={() => Alert.alert('Not implemented yet')} style={styles.button}>
+        <Text style={styles.buttonText}> Reviews </Text>
+      </TouchableOpacity>
+
+      {/* Link to Settings */}
+      <TouchableOpacity onPress={() => Alert.alert('Not implemented yet')} style={styles.button}>
+        <Text style={styles.buttonText}> Settings </Text>
       </TouchableOpacity>
     </View>
   )
@@ -23,7 +33,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingHorizontal: 10
   },
   button: {
     alignItems: "center",
