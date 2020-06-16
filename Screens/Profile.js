@@ -1,16 +1,14 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View, Image, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import user from '../assets/userInfo'
 
-const Account = ({ user }) => (
+const Profile = ({ navigation }) => (
   <View style={styles.container}>
     <View style={styles.profile}>
       <Image source={user.img} style={styles.img} />
       <Text>Username: {user.username}</Text>
       <Text>Email: {user.email}</Text>
       <Text>Phone#: {user.phone}</Text>
-      <TouchableOpacity onPress={() => Alert.alert('Not implemented yet')} style={styles.button}>
-        <Text style={styles.buttonText}>View Orders</Text>
-      </TouchableOpacity>
     </View>
   </View >
 );
@@ -40,4 +38,4 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
 });
-export default Account;
+export default Profile;
