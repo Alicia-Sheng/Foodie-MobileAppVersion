@@ -1,140 +1,62 @@
 import React from 'react';
-import { Platform } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
-import Home from './Screens/Home';
-import Detail from './Screens/Detail';
-import Restaurant from './Screens/Restaurant';
-import Order from './Screens/Order';
-import Settings from './Screens/Settings';
-
-import ApolloClient from 'apollo-client';
+import { AsyncStorage } from 'react-native';
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { ApolloProvider } from 'react-apollo';
+import { setContext } from 'apollo-link-context';
+import AppContainer from './AppContainer';
 
-// const AuthContext = React.createContext();
-
-// function SplashScreen() {
-//   return (
-//     <View>
-//       <Text>Loading...</Text>
-//     </View>
-//   );
-// }
-
-// function HomeScreen() {
-//   const { signOut } = React.useContext(AuthContext);
-
-//   return (
-//     <View>
-//       <Text>Signed in!</Text>
-//       <Button title="Sign out" onPress={signOut} />
-//     </View>
-//   );
-// }
-
-// function SignInScreen() {
-//   const [username, setUsername] = React.useState('');
-//   const [password, setPassword] = React.useState('');
-
-//   const { signIn } = React.useContext(AuthContext);
-
-//   return (
-//     <View>
-//       <TextInput
-//         placeholder="Username"
-//         value={username}
-//         onChangeText={setUsername}
-//       />
-//       <TextInput
-//         placeholder="Password"
-//         value={password}
-//         onChangeText={setPassword}
-//         secureTextEntry
-//       />
-//       <Button title="Sign in" onPress={() => signIn({ username, password })} />
-//     </View>
-//   );
-// }
-
-// Create the client
-const client = () => new ApolloClient({
-  link: new HttpLink({
-    uri: 'http://localhost:6000',
-  }),
+const httpLink = new HttpLink({
+  uri: 'http://localhost:4000/graphql',
 });
 
-const HomeStack = createStackNavigator({
-  Home: {
-    screen: Home,
-    navigationOptions: { title: 'Home' },
-  },
-  Detail: {
-    screen: Detail,
-    navigationOptions: { title: 'Detail' },
-  },
-});
+const authLink = setContext(async (_, { headers }) => {
+  const token = await AsyncStorage.getItem('token');
 
-const RestaurantStack = createStackNavigator({
-  Restaurant: {
-    screen: Restaurant,
-    navigationOptions: { title: 'Restaurant' },
-  },
-});
-
-const OrderStack = createStackNavigator({
-  Order: {
-    screen: Order,
-    navigationOptions: { title: 'Order' },
-  },
-});
-
-const SettingsStack = createStackNavigator({
-  Settings: {
-    screen: Settings,
-    navigationOptions: { title: 'Settings' },
-  },
-});
-
-const AppNavigator = createBottomTabNavigator({
-  Home: HomeStack,
-  Restaurant: RestaurantStack,
-  Order: OrderStack,
-  Settings: SettingsStack,
-}, {
-  initialRouteName: 'Home',
-  defaultNavigationOptions: ({ navigation }) => ({
-    // tabBarIcon: () => {
-    tabBarIcon: ({ tintColor }) => {
-      const { routeName } = navigation.state;
-
-      let iconName;
-      if (routeName === 'Home') {
-        //iconName = `ios-home`;
-        iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-home`;
-      } else if (routeName === 'Restaurant') {
-        //iconName = `ios-order`;
-        iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-restaurant`;
-      } else if (routeName === 'Order') {
-        //iconName = `ios-order`;
-        iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-cart`;
-      } else if (routeName === 'Settings') {
-        //iconName = `ios-settings`;
-        iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-settings`;
-      }
-
-      return <Ionicons name={iconName}
-        size={20}
-        color={tintColor}
-      />;
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
     },
-    tabBarOptions: {
-      activeTintColor: '#de1d0f',
-      inactiveTintColor: '#556',
-    },
-  }),
+  };
 });
 
-export default createAppContainer(AppNavigator);
+const cache = new InMemoryCache();
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache,
+  resolvers: {
+    Mutation: {
+      setLimit: (_, { limit }) => {
+        cache.writeData({
+          data: {
+            limit,
+          },
+        });
+
+        return limit;
+      },
+    },
+  },
+  typeDefs: `
+    extend type Query {
+        limit: Int!
+    }
+  `,
+});
+
+cache.writeData({
+  data: {
+    limit: 5,
+  },
+});
+
+const App = () => (
+  <ApolloProvider client={client}>
+    <AppContainer />
+  </ApolloProvider>
+);
+
+export default App;
