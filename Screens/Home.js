@@ -34,6 +34,14 @@ const Home = ({ navigation }) => {
         keyExtractor={item => String(item.id)}
         renderItem={({ item }) => <ListingItem item={item} />}
       />}
+     {/*
+          <Button
+           title = "Add to Carts"
+           onPress = {() =>{
+            navigation.navigate('Order');
+           }}
+          />
+    */}
     </ListingsWrapper>
   )
 };
