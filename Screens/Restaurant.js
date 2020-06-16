@@ -6,6 +6,7 @@ const Restaurant = ({ navigation }) => (
         <Text>Restaurant page</Text>
     </View>
 );
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
