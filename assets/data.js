@@ -198,7 +198,7 @@ const data = [{
         "name": "Coolatta",
         "location": "Dunkin Donuts",
         "img": {
-            "src": require("../media/CaesarSalad.jpg"),
+            "src": require("../media/Coolatta.jpg"),
             "alt": "Coolatta"
         },
         "desc": "Fun, refreshing flavors that are sure to make you smile",
@@ -211,7 +211,7 @@ const data = [{
         "name": "Frozen Coffee",
         "location": "Dunkin Donuts",
         "img": {
-            "src": require("../media/CaesarSalad.jpg"),
+            "src": require("../media/FrozenCoffee.jpg"),
             "alt": "Frozen Coffee"
         },
         "desc": "Our NEW energizing Frozen Coffee is smooth, creamy and full of real Dunkin’® flavor—making it the perfect way to cool off",
