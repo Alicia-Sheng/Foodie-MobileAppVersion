@@ -1,13 +1,9 @@
-const { AuthenticationError, PubSub } = require('apollo-server');
+const { AuthenticationError } = require('apollo-server');
+const faker = require('faker');
 const JsonWebToken = require('jsonwebtoken');
 const Bcrypt = require('bcryptjs');
-const faker = require('faker');
-
-const MESSAGE_ADDED = 'MESSAGE_ADDED';
 
 const jwtSecret = '34%%##@#FGFKFL';
-
-const pubsub = new PubSub();
 
 const isTokenValid = token => {
   const bearerToken = token.split(' ');
@@ -25,48 +21,58 @@ const isTokenValid = token => {
   return false;
 };
 
-const mockMessage = (userName = false) => ({
+const mockCategory = () => ({
   id: faker.random.number,
-  userName: Math.round(userName ? userName : Math.random())
-    ? 'me'
-    : faker.name.firstName,
-  text: faker.hacker.phrase,
+  title: faker.random.arrayElement(['food', 'drink']),
 });
 
-const mockConversation = (userName = false) => ({
-  id: faker.random.number,
-  userName: userName || faker.name.firstName,
-  messages: Array.from(Array(!userName ? 1 : 3), () => mockMessage(userName)),
+const mockProduct = (id = false) => ({
+  id: id || faker.random.number,
+  title: faker.commerce.productName,
+  thumbnail: faker.image.imageUrl(
+    400,
+    400,
+    faker.random.arrayElement(['fashion', 'transport', 'technics', 'food']),
+  ),
+  price: faker.commerce.price(),
+  category: mockCategory(),
 });
+
+let cart = {
+  total: 0,
+  products: [],
+  complete: false,
+};
 
 const resolvers = {
   Query: {
-    conversation: (_, { userName }) => mockConversation(userName),
-    conversations: (_, { limit = 10 }) =>
-      Array.from(Array(limit), () => mockConversation()),
+    product: () => mockProduct(),
+    products: (_, { limit = 10 }) =>
+      Array.from(Array(limit), () => mockProduct()),
+    categories: (_, { limit = 10 }) =>
+      Array.from(Array(limit), () => mockCategory()),
+    cart: () => cart,
   },
   Mutation: {
-    sendMessage: (_, { to, text }, { token }) => {
+    addToCart: (_, { id }) => {
+      cart = {
+        ...cart,
+        total: cart.total + 1,
+        products: [...cart.products, mockProduct(id)],
+      };
+
+      return cart;
+    },
+    completeCart: (_, { }, { token }) => {
       const isValid = token ? isTokenValid(token) : false;
 
       if (isValid) {
-        let conversation = mockConversation(to);
-        const messageAdded = {
-          id: faker.random.number,
-          userName: 'me',
-          text,
+        cart = {
+          ...cart,
+          complete: true,
         };
 
-        conversation = {
-          ...conversation,
-          messages: [...conversation.messages, messageAdded],
-        };
-
-        pubsub.publish(MESSAGE_ADDED, {
-          messageAdded,
-        });
-
-        return conversation;
+        return cart;
       }
       throw new AuthenticationError(
         'Please provide (valid) authentication details',
@@ -96,19 +102,6 @@ const resolvers = {
       throw new AuthenticationError(
         'Please provide (valid) authentication details',
       );
-    },
-  },
-  Subscription: {
-    messageAdded: {
-      subscribe: (_, { userName }) => {
-        setInterval(() => {
-          pubsub.publish(MESSAGE_ADDED, {
-            messageAdded: mockMessage(userName),
-          });
-        }, 9000);
-
-        return pubsub.asyncIterator(MESSAGE_ADDED, { userName });
-      },
     },
   },
 };
