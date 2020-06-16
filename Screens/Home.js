@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList, View } from 'react-native';
 import styled from 'styled-components/native';
-import ListingItem from '../Components/Listing/ListingItem'
+import ListingItem from '../components/listing/ListingItem'
 import data from '../assets/data.js';
 
 const Home = ({ navigation }) => {

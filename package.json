@@ -8,8 +8,11 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.5",
     "@react-native-community/masked-view": "^0.1.6",
+    "apollo-client": "^2.6.10",
     "expo": "~37.0.3",
+    "graphql": "^15.1.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
@@ -21,7 +24,6 @@
     "react-navigation": "^4.3.9",
     "react-navigation-stack": "^2.7.0",
     "react-navigation-tabs": "^2.8.13",
-    "realm": "^6.0.2",
     "styled-components": "^5.1.1"
   },
   "devDependencies": {
