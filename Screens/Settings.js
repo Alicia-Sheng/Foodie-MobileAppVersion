@@ -5,15 +5,15 @@ import Profile from './Profile'
 const Settings = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Button
-        title={"Profile"}
-        onPress={() => {
-          /* 1. Navigate to the Details route with params */
-          navigation.navigate('Profile');
-        }}
-      />
+
+      {/* Link to Profile */}
+      <TouchableOpacity onPress={() => { navigation.navigate('Profile'); }} style={styles.button}>
+        <Text style={styles.buttonText}> Profile </Text>
+      </TouchableOpacity>
+
+      {/* Link to Orders */}
       <TouchableOpacity onPress={() => Alert.alert('Not implemented yet')} style={styles.button}>
-        <Text style={styles.buttonText}>View Orders</Text>
+        <Text style={styles.buttonText}>My Orders</Text>
       </TouchableOpacity>
     </View>
   )
@@ -23,8 +23,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    // justifyContent: 'center',
+    paddingHorizontal: 10
+  },
+  button: {
+    alignItems: "center",
+    backgroundColor: "#DDDDDD",
+    padding: 10,
+    borderWidth: 1,
+    borderColor: "black"
+  },
+  buttonText: {
+    alignItems: "center",
+    padding: 10,
   },
 });
 
