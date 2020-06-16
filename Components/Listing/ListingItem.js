@@ -25,13 +25,13 @@ margin-right: 4%;
 height: 100px;
 width: 100px;
 `
+
 const ListingItem = ({ item, navigation }) => (
     <ListingItemWrapper onPress={() => navigation.navigate('Detail', {
         item
     })}>
         <Thumbnail
-            source={require('../../media/CaesarSalad.jpg')}
-            /*source={{ uri: item.img.src }}*/
+            source={item.img.src}
             /*source={{ uri: item.thumbnail }}*/
         />
         <View>

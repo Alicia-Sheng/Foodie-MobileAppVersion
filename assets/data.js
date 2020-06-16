@@ -3,7 +3,7 @@ const data = [{
         "name": "Caesar Salad",
         "location": "The Stein",
         "img": {
-            "src": "media/CaesarSalad.jpg",
+            "src": require("../media/CaesarSalad.jpg"),
             "alt": "Caesar Salad"
         },
         "desc": "Crisp Romaine lettuce and Garlic Croutons tossed in Creamy Caesar",
@@ -16,7 +16,7 @@ const data = [{
         "name": "Sausage, Egg & Cheese on Croissant",
         "location": "Dunkin Donuts",
         "img": {
-            "src": "media/SausageEggCheese.jpg",
+            "src": require("../media/SausageEggCheese.jpg"),
             "alt": "Sausage, Egg & Cheese on Croissant"
         },
         "desc": "A tasty sandwich stacked with egg, American cheese and irresistible sausage",
@@ -29,7 +29,7 @@ const data = [{
         "name": "Cheese Quesadilla",
         "location": "Sherman Dining Hall",
         "img": {
-            "src": "media/CheeseQuesadilla.jpg",
+            "src": require("../media/CheeseQuesadilla.jpg"),
             "alt": "Cheese Quesadilla"
         },
         "desc": "A Mexican dish and type of taco, consisting of a tortilla that is filled primarily with cheese",
@@ -42,7 +42,7 @@ const data = [{
         "name": "Beef Spring Rolls",
         "location": "Sherman Dining Hall",
         "img": {
-            "src": "media/BeefSpringRolls.jpg",
+            "src": require("../media/BeefSpringRolls.jpg"),
             "alt": "Beef Spring Rolls"
         },
         "desc": "Carrots and cilantro add a crisp, refreshing taste to stir-fried Omaha Steaks Top Sirloin Steaks",
@@ -55,7 +55,7 @@ const data = [{
         "name": "General Tso's Chicken",
         "location": "Sherman Dining Hall",
         "img": {
-            "src": "media/GeneralTsosChicken.jpg",
+            "src": require("../media/GeneralTsosChicken.jpg"),
             "alt": "General Tso's Chicken"
         },
         "desc": "A popular Chinese entree made with fried chicken pieces coated in a sweet and slightly spicy sauce",
@@ -68,7 +68,7 @@ const data = [{
         "name": "Basket of Fries",
         "location": "The Stein",
         "img": {
-            "src": "media/Fries.jpg",
+            "src": require("../media/Fries.jpg"),
             "alt": "Basket of Fries"
         },
         "desc": "Traditional Fries or Fried Zucchini Sticks with Chipotle Aioli",
@@ -81,7 +81,7 @@ const data = [{
         "name": "Loaded Nachos",
         "location": "The Stein",
         "img": {
-            "src": "media/LoadedNachos.jpg",
+            "src": require("../media/LoadedNachos.jpg"),
             "alt": "Loaded Nachos"
         },
         "desc": "Tortilla Chips Covered in Melted Chihuahua Cheese, Olives, Tomatoes, and Fresh Cilantro with sour cream and salsa",
@@ -94,7 +94,7 @@ const data = [{
         "name": "Chicken Tenders",
         "location": "The Stein",
         "img": {
-            "src": "media/ChickenTenders.jpg",
+            "src": require("../media/ChickenTenders.jpg"),
             "alt": "Chicken Tenders"
         },
         "desc": "Plain, BBQ or Buffalo Served with Carrot Sticks",
@@ -107,7 +107,7 @@ const data = [{
         "name": "Wings",
         "location": "The Stein",
         "img": {
-            "src": "media/Wings.jpg",
+            "src": require("../media/Wings.jpg"),
             "alt": "Wings"
         },
         "desc": "Your choice of BBQ, Buffalo or Garlic Parmesan Sauce served with Carrot sticks",
@@ -120,7 +120,7 @@ const data = [{
         "name": "Harvest Salad",
         "location": "The Stein",
         "img": {
-            "src": "media/HarvestSalad.jpg",
+            "src": require("../media/HarvestSalad.jpg"),
             "alt": "Harvest Salad"
         },
         "desc": "Crisp Romaine Lettuce. Chopped Applem Dried Cranberries and Red Onion",
@@ -133,7 +133,7 @@ const data = [{
         "name": "Asian Quinoa Salad",
         "location": "The Stein",
         "img": {
-            "src": "media/AsianQuinoaSalad.jpg",
+            "src": require("../media/AsianQuinoaSalad.jpg"),
             "alt": "Asian Quinoa Salad"
         },
         "desc": "Quinoa and Baby Kale Tossed with Shredded Red Cabbage, Carrots, Green Onions and Sesame Seeds, Served with House-Made Asian Hney Vinaigrette",
@@ -146,7 +146,7 @@ const data = [{
         "name": "Cheese Pizza",
         "location": "The Stein",
         "img": {
-            "src": "media/CheesePizza.jpg",
+            "src": require("../media/CheesePizza.jpg"),
             "alt": "Cheese Pizza"
         },
         "desc": "Slice of Cheese Pizza",
@@ -159,7 +159,7 @@ const data = [{
         "name": "Angus Burger",
         "location": "The Stein",
         "img": {
-            "src": "media/AngusBurger.jpg",
+            "src": require("../media/AngusBurger.jpg"),
             "alt": "Angus Burger"
         },
         "desc": "Served on a toasted brioche bun with lettuce, tomato and Onion",
@@ -172,7 +172,7 @@ const data = [{
         "name": "The Impossible Burger",
         "location": "The Stein",
         "img": {
-            "src": "media/ImpossibleBurger.jpg",
+            "src": require("../media/ImpossibleBurger.jpg"),
             "alt": "The Impossible Burger Burger"
         },
         "desc": "Plant-Based Vegan Burger served on a toasted Brioche Bun with lettuce tomato and onion",
@@ -185,7 +185,7 @@ const data = [{
         "name": "Frozen Chocolate",
         "location": "Dunkin Donuts",
         "img": {
-            "src": "media/FrozenChocolate.jpg",
+            "src": require("../media/FrozenChocolate.jpg"),
             "alt": "Frozen Chocolate"
         },
         "desc": "Our Frozen Chocolate is an indulgent treat, made with your choice of flavor and topped with whipped cream",
@@ -198,7 +198,7 @@ const data = [{
         "name": "Coolatta",
         "location": "Dunkin Donuts",
         "img": {
-            "src": "media/Coolatta.jpg",
+            "src": require("../media/CaesarSalad.jpg"),
             "alt": "Coolatta"
         },
         "desc": "Fun, refreshing flavors that are sure to make you smile",
@@ -211,7 +211,7 @@ const data = [{
         "name": "Frozen Coffee",
         "location": "Dunkin Donuts",
         "img": {
-            "src": "media/FrozenCoffee.jpg",
+            "src": require("../media/CaesarSalad.jpg"),
             "alt": "Frozen Coffee"
         },
         "desc": "Our NEW energizing Frozen Coffee is smooth, creamy and full of real Dunkin’® flavor—making it the perfect way to cool off",
@@ -224,7 +224,7 @@ const data = [{
         "name": "Coke",
         "location": "The Stein",
         "img": {
-            "src": "media/Coke.jpg",
+            "src": require("../media/Coke.jpg"),
             "alt": "Coke"
         },
         "desc": "Classic, sweet coke. Free with a main course.",
@@ -237,7 +237,7 @@ const data = [{
         "name": "Ginger Ale",
         "location": "The Stein",
         "img": {
-            "src": "media/GingerAle.jpg",
+            "src": require("../media/GingerAle.jpg"),
             "alt": "Ginger Ale"
         },
         "desc": " A popular carbonated beverage made by flavoring soft drink with ginger. Free with a main course.",
@@ -250,7 +250,7 @@ const data = [{
         "name": "Lemonade",
         "location": "The Stein",
         "img": {
-            "src": "media/Lemonade.jpg",
+            "src": require("../media/Lemonade.jpg"),
             "alt": "Lemonade"
         },
         "desc": "Water with Lemon inside. Free with a main course.",
@@ -263,7 +263,7 @@ const data = [{
         "name": "French Toast Chicken",
         "location": "Einstein Bros. Bagels",
         "img": {
-            "src": "media/french-toast-chicken.jpg",
+            "src": require("../media/french-toast-chicken.jpg"),
             "alt": "French Toast Chicken"
         },
         "desc": "Cage-Free Eggs, Crispy Chicken, Cheddar Cheese and Honey Almond Shmear on a French Toast Bagel.",
@@ -276,7 +276,7 @@ const data = [{
       "name": "Latte",
       "location": "Starbucks Farber",
       "img": {
-          "src": "media/Latte.jpg",
+          "src": require("../media/Latte.jpg"),
           "alt": "Latte"
       },
       "desc": "Cage-Free Eggs, Crispy Chicken, Cheddar Cheese and Honey Almond Shmear on a French Toast Bagel.",
