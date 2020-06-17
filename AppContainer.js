@@ -8,7 +8,8 @@ import Home from './Screens/Home';
 import Detail from './Screens/Detail';
 import Restaurant from './Screens/Restaurant';
 import Order from './Screens/Order';
-import Settings from './Screens/Settings';
+import Account from './Screens/Account';
+import Profile from './Screens/Profile';
 
 // const AuthContext = React.createContext();
 
@@ -80,50 +81,56 @@ const OrderStack = createStackNavigator({
   },
 });
 
-const SettingsStack = createStackNavigator({
-  Settings: {
-    screen: Settings,
-    navigationOptions: { title: 'Settings' },
+const AccountStack = createStackNavigator({
+  Account: {
+    screen: Account,
+    navigationOptions: { title: 'Account' },
+  },
+  Profile: {
+    screen: Profile,
+    navigationOptions: { title: 'Profile' },
   },
 });
 
-const AppNavigator = createBottomTabNavigator({
-  Home: HomeStack,
-  Restaurant: RestaurantStack,
-  Order: OrderStack,
-  Settings: SettingsStack,
-}, {
-  initialRouteName: 'Home',
-  defaultNavigationOptions: ({ navigation }) => ({
-    // tabBarIcon: () => {
-    tabBarIcon: ({ tintColor }) => {
-      const { routeName } = navigation.state;
+const AppNavigator = createBottomTabNavigator(
+  {
+    Home: HomeStack,
+    Restaurant: RestaurantStack,
+    Order: OrderStack,
+    Account: AccountStack,
+  },
+  {
+    initialRouteName: 'Home',
+    defaultNavigationOptions: ({ navigation }) => ({
+      // tabBarIcon: () => {
+      tabBarIcon: ({ tintColor }) => {
+        const { routeName } = navigation.state;
 
-      let iconName;
-      if (routeName === 'Home') {
-        //iconName = `ios-home`;
-        iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-home`;
-      } else if (routeName === 'Restaurant') {
-        //iconName = `ios-order`;
-        iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-restaurant`;
-      } else if (routeName === 'Order') {
-        //iconName = `ios-order`;
-        iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-cart`;
-      } else if (routeName === 'Settings') {
-        //iconName = `ios-settings`;
-        iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-settings`;
-      }
+        let iconName;
+        if (routeName === 'Home') {
+          //iconName = `ios-home`;
+          iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-home`;
+        } else if (routeName === 'Restaurant') {
+          //iconName = `ios-restaurant`;
+          iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-restaurant`;
+        } else if (routeName === 'Order') {
+          //iconName = `ios-cart`;
+          iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-cart`;
+        } else if (routeName === 'Account') {
+          //iconName = `ios-person`;
+          iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-person`;
+        }
 
-      return <Ionicons name={iconName}
-        size={20}
-        color={tintColor}
-      />;
-    },
-    tabBarOptions: {
-      activeTintColor: '#de1d0f',
-      inactiveTintColor: '#556',
-    },
-  }),
-});
+        return <Ionicons name={iconName}
+          size={20}
+          color={tintColor}
+        />;
+      },
+      tabBarOptions: {
+        activeTintColor: '#de1d0f',
+        inactiveTintColor: '#556',
+      },
+    }),
+  });
 
 export default createAppContainer(AppNavigator);
