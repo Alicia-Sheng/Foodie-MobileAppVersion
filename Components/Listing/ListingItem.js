@@ -2,23 +2,6 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
 
-
-const ListingItem = ({ item, navigation }) => (
-  <ListingItemWrapper onPress={() => navigation.navigate('Detail', {
-    item
-  })}>
-    <Thumbnail
-      source={item.img.src}
-    /*source={{ uri: item.thumbnail }}*/
-    />
-    <View style={styles.text}>
-      <Title>{item.name}</Title>
-      <Price>${item.price}</Price>
-    </View>
-  </ListingItemWrapper>
-);
-
-
 const ListingItemWrapper = styled(TouchableOpacity)`
 display: flex;
 flex-direction: row;
@@ -53,12 +36,13 @@ const ListingItem = ({ item, navigation }) => (
             source={{ uri: item.thumbnail }}
         /> */}
         <Thumbnail source={item.thumbnail} width={200} />
-        <View>
+    <View style={styles.text}>
             <Title>{item.name}</Title>
             <Price>${item.price}</Price>
         </View>
     </ListingItemWrapper>
 );
+
 const styles = StyleSheet.create({
   text: {
     flex: 1,
