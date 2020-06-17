@@ -18,7 +18,7 @@
     "apollo-link-context": "^1.0.20",
     "apollo-link-http": "^1.5.17",
     "expo": "~37.0.3",
-    "firebase": "^7.15.1",
+    "firebase": "7.9.0",
     "graphql": "^15.1.0",
     "graphql-tag": "^2.10.3",
     "react": "~16.9.0",
