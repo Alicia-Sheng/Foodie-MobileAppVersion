@@ -6,17 +6,17 @@ const Filters = ({ limit }) => (
 	<ApolloConsumer>
 		{client => (
 			<>
-				<Text>Number of Items:</Text>
+				{/* <Text>Number of Items:</Text>
 				<Picker
 					id='limit'
-					value={limit}
+					selectedValue={limit}
 					onChange={e => {
 						client.writeData({ data: { limit: e.target.value } });
 					}}
 				>
-					<Picker.Item label="5" value={5}/>
-					<Picker.Item label="10" value={10} />
-				</Picker>
+					<Picker.Item label="5" value="5"/>
+					<Picker.Item label="10" value="10" />
+				</Picker> */}
 			</>
 		)}
 	</ApolloConsumer>
