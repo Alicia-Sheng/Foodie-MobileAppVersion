@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
 
+import AddToOrderButton from '../Order/AddToOrderButton';
+
 const ListingItemWrapper = styled(TouchableOpacity)`
 display: flex;
 flex-direction: row;
@@ -39,6 +41,7 @@ const ListingItem = ({ item, navigation }) => (
         <View style={styles.text}>
             <Title>{item.name}</Title>
             <Price>${item.price}</Price>
+            <AddToOrderButton productId={item.id} />
         </View>
     </ListingItemWrapper>
 );

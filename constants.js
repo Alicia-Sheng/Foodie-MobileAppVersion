@@ -22,7 +22,7 @@ export const GET_ORDER = gql `
       total
       products {
         id
-        title
+        name
         thumbnail
       }
     }
