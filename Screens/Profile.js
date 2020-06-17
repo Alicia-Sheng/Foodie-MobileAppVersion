@@ -1,14 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { Button, StyleSheet, Text, View, Image } from 'react-native';
 import user from '../assets/userInfo'
 
 const Profile = ({ navigation }) => (
   <View style={styles.container}>
+    <Image source={user.img} style={styles.img} />
     <View style={styles.profile}>
-      <Image source={user.img} style={styles.img} />
       <Text>Username: {user.username}</Text>
       <Text>Email: {user.email}</Text>
       <Text>Phone#: {user.phone}</Text>
+      <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>
   </View >
 );
@@ -27,15 +28,6 @@ const styles = StyleSheet.create({
   },
   profile: {
     alignItems: 'center',
-  },
-  button: {
-    backgroundColor: "blue",
-    padding: 20,
-    borderRadius: 5,
-  },
-  buttonText: {
-    fontSize: 20,
-    color: '#fff',
   },
 });
 export default Profile;
