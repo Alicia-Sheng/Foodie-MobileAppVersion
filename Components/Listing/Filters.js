@@ -6,7 +6,7 @@ const Filters = ({ limit }) => (
 	<ApolloConsumer>
 		{client => (
 			<>
-				{/* <Text>Number of Items:</Text>
+				<Text>Number of Items:</Text>
 				<Picker
 					id='limit'
 					selectedValue={limit}
@@ -16,7 +16,7 @@ const Filters = ({ limit }) => (
 				>
 					<Picker.Item label="5" value="5"/>
 					<Picker.Item label="10" value="10" />
-				</Picker> */}
+				</Picker>
 			</>
 		)}
 	</ApolloConsumer>

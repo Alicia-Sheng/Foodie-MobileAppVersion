@@ -7,7 +7,8 @@ const Detail = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Image source={item.img.src} style={{ flex: 1, width: 300, height: 300, resizeMode: 'contain' }} />
+      {/* <Image source={item.img.src} style={{ flex: 1, width: 300, height: 300, resizeMode: 'contain' }} /> */}
+      <Image source={{uri: item.thumbnail}} style={{ flex: 1, width: 300, height: 300, resizeMode: 'contain' }} />
       <Text>{item.name}</Text>
       <Text>{item.price}</Text>
       <Button title="Go back" onPress={() => navigation.goBack()} />

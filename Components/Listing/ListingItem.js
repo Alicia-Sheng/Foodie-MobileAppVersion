@@ -36,7 +36,7 @@ const ListingItem = ({ item, navigation }) => (
             source={{ uri: item.thumbnail }}
         /> */}
         <Thumbnail source={{uri: item.thumbnail}} width={200} />
-    <View style={styles.text}>
+        <View style={styles.text}>
             <Title>{item.name}</Title>
             <Price>${item.price}</Price>
         </View>

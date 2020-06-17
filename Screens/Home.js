@@ -32,7 +32,7 @@ const Home = ({ navigation }) => (
                 {<Listings
                   data={data.products}
                   keyExtractor={item => String(item.id)}
-                  renderItem={({ item }) => <ListingItem item={item} />}
+                  renderItem={({ item }) => <ListingItem item={item} navigation={navigation}/>}
                 />}
               </ListingsWrapper>
             );
