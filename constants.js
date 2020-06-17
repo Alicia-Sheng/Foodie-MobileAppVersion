@@ -39,8 +39,9 @@ export const GET_PRODUCTS = gql `
   query getProducts($limit: Int) {
     products(limit: $limit) {
       id
-      title
+      name
       thumbnail
+      price
     }
   }
 `;

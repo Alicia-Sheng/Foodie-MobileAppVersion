@@ -8,7 +8,8 @@ import { setContext } from 'apollo-link-context';
 import AppContainer from './AppContainer';
 
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4000/graphql',
+  // uri: 'http://localhost:4000/graphql',
+  uri: 'https://foodie-server-153.herokuapp.com/graphql',
 });
 
 const authLink = setContext(async (_, { headers }) => {

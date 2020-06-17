@@ -30,10 +30,11 @@ const ListingItem = ({ item, navigation }) => (
     <ListingItemWrapper onPress={() => navigation.navigate('Detail', {
         item
     })}>
-        <Thumbnail
+        {/* <Thumbnail
             source={item.img.src}
-            /*source={{ uri: item.thumbnail }}*/
-        />
+            source={{ uri: item.thumbnail }}
+        /> */}
+        <Thumbnail source={item.thumbnail} width={200} />
         <View>
             <Title>{item.name}</Title>
             <Price>${item.price}</Price>

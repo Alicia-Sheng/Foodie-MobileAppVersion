@@ -35,7 +35,7 @@ const ListingDetail = ({ item }) => (
   <ListingDetailWrapper>
     <Thumbnail source={{ uri: item.thumbnail }} />
     <Details>
-      <Title>{item.title}</Title>
+      <Title>{item.name}</Title>
       <Price>{item.price}</Price>
     </Details>
   </ListingDetailWrapper>
