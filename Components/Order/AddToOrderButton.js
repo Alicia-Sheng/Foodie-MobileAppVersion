@@ -10,7 +10,7 @@ const AddToOrderButton = ({ productId }) => (
   >
     {addToOrder => (
       <Button
-        onClick={() => addToOrder({ variables: { productId } })}
+        onPress={() => addToOrder({ variables: { productId } })}
       >{`+`}</Button>
     )}
   </Mutation>

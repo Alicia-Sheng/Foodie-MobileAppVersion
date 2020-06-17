@@ -34,12 +34,18 @@ const Order = ({ navigation }) => (
 				}
 				return (
 					<OrderWrapper>
-						<OrderItemsWrapper>
+						{/* <OrderItemsWrapper>
 							{data.order &&
 								data.order.products.map(product => (
 									<ListingItem key={product.id} data={product} />
 								))}
-						</OrderItemsWrapper>
+							
+						</OrderItemsWrapper> */}
+						{<OrderItemsWrapper
+							data={data.order.products}
+							keyExtractor={item => Number(item.id)}
+							renderItem={({ item }) => <ListingItem item={item}/>}
+						/>}
 						<Totals count={data.order.total} />
 						{data.order && data.order.products.length > 0 && (
 							<Link to='/checkout'>

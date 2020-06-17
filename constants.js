@@ -10,7 +10,7 @@ export const GET_ORDER_TOTAL = gql `
 
 export const ADD_TO_ORDER = gql `
   mutation addToOrder($productId: Int!) {
-    addToOr(input: { productId: $productId }) {
+    addToOrder(input: { productId: $productId }) {
       total
     }
   }
@@ -24,6 +24,7 @@ export const GET_ORDER = gql `
         id
         name
         thumbnail
+        price
       }
     }
   }

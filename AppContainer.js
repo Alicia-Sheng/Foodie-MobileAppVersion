@@ -97,7 +97,7 @@ const AppNavigator = createBottomTabNavigator(
     Home: HomeStack,
     Restaurant: RestaurantStack,
     Order: OrderStack,
-    Account: AccountStack,
+    Account: AccountStack
   },
   {
     initialRouteName: 'Home',
