@@ -12,7 +12,7 @@ const Settings = ({ navigation }) => {
       </TouchableOpacity>
 
       {/* Link to Orders */}
-      <TouchableOpacity onPress={() => Alert.alert('Not implemented yet')} style={styles.button}>
+      <TouchableOpacity onPress={() => { navigation.navigate('Order') }} style={styles.button}>
         <Text style={styles.buttonText}> Orders </Text>
       </TouchableOpacity>
 
@@ -33,17 +33,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    alignItems:"center",
+    height:1000,
   },
   button: {
+    width: 300,
+    height: 50,
+    marginVertical: 8,
     alignItems: "center",
     backgroundColor: "#DDDDDD",
     padding: 10,
     borderWidth: 1,
-    borderColor: "black"
+    borderColor: "#00CCFF",
   },
   buttonText: {
     alignItems: "center",
     padding: 10,
+
   },
 });
 
