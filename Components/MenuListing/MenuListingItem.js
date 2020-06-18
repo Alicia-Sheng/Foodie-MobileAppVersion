@@ -14,7 +14,7 @@ margin-bottom: 5%;
 `;
 export const Title = styled(Text)`
 flex-wrap: wrap;
-width: 90%;
+width: 99%;
 font-size: 20px;
 `
 export const Price = styled(Text)`
@@ -31,17 +31,19 @@ width: 100px;
 
 function MenuListingItem({ item, navigation, location }) {
     if (location === item.location) {
-      return (<ListingItemWrapper onPress={() => navigation.navigate('Detail', {
-          item
-      })}>
-          <Thumbnail source={{uri: item.thumbnail}} width={200} />
-          <View style={styles.text}>
-              <Title>{item.name}</Title>
-              <Price>${item.price}</Price>
-              <AddToOrderButton productId={item.id} />
-          </View>
-      </ListingItemWrapper>
-      )
+        return (
+            <ListingItemWrapper>
+                <Thumbnail
+                    source={item.img.src}
+                />
+                <View>
+                    <Title>{item.name}</Title>
+                    <Price>${item.price}</Price>
+                </View>
+            </ListingItemWrapper>
+        )
+    } else {
+        return (<Text></Text>)
     }
 };
 

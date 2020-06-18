@@ -7,21 +7,24 @@ import Filters from '../Components/Listing/Filters';
 import { GET_PRODUCTS, GET_LIMIT } from '../constants';
 import data from '../assets/data.js';
 
-const Sherman = ({ navigation }) => (
-
-  <ListingsWrapper>
+function Sherman({ navigation }) {
+  return (
+      <ListingsWrapper>
+          {<Listings
+              data={data}
+              keyExtractor={item => String(item.id)}
+              renderItem={({ item }) => <MenuListingItem item={item} navigation={navigation} location={'Sherman Dining Hall'} />}
+          />}
+      </ListingsWrapper>
+  )
+};
+  /*<ListingsWrapper>
     {<Listings
       data={data.products}
       keyExtractor={item => String(item.id)}
       renderItem={({ item }) => <MenuListingItem item={item} navigation={navigation} location='Sherman Dining Hall'/>}
     />}
-  </ListingsWrapper>
-);
-
-const Alert = styled(Text)`
-  width: 100%;
-  text-align: center;
-`;
+  </ListingsWrapper>*/
 
 const ListingsWrapper = styled(View)`
 flex: 1;
