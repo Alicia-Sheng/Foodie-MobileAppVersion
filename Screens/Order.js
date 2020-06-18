@@ -50,7 +50,7 @@ const Order = ({ navigation }) => (
 							<Button
 								title="Checkout"
 								onPress={() => navigate('Checkout')}
-								width='80%'
+								width='50%'
 								radius='20px' />
 						)
 					}
