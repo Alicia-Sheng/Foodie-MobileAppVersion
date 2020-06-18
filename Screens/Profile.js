@@ -1,33 +1,112 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View, Image } from 'react-native';
+import { ScrollView, StyleSheet, View, Image } from 'react-native';
+import { Icon, ListItem } from 'react-native-elements'
 import user from '../assets/userInfo'
 
 const Profile = ({ navigation }) => (
-  <View style={styles.container}>
-    <Image source={user.img} style={styles.img} />
-    <View style={styles.profile}>
-      <Text>Username: {user.username}</Text>
-      <Text>Email: {user.email}</Text>
-      <Text>Phone#: {user.phone}</Text>
-      <Button title="Go back" onPress={() => navigation.goBack()} />
+
+  <ScrollView style={styles.scroll}>
+    <View style={styles.headerContainer}>
+
+      {/* Profile pic */}
+      <ListItem
+        title="Picture"
+        // onPress={() => { () => Alert.alert('Not implemented yet') }}
+        containerStyle={styles.listItemContainer}
+        rightAvatar={<Image source={user.img} style={{ width: 50, height: 50 }} />}
+        rightIcon={<Icon
+          name="chevron-right"
+          type="entypo"
+          color="gray"
+          containerStyle={{ marginLeft: -15, width: 20 }}
+        />}
+      />
+
+      {/* Background pic */}
+      <ListItem
+        title="Background"
+        // onPress={() => { () => Alert.alert('Not implemented yet') }}
+        containerStyle={styles.listItemContainer}
+        rightAvatar={<Image source={user.bcg} style={{ width: 50, height: 50 }} />}
+        rightIcon={<Icon
+          name="chevron-right"
+          type="entypo"
+          color="gray"
+          containerStyle={{ marginLeft: -15, width: 20 }}
+        />}
+      />
+
+      {/* Username */}
+      <ListItem
+        title="Username"
+        rightSubtitle={user.username}
+        rightSubtitleStyle={{ width: 180, textAlign: "right" }}
+        // onPress={() => { () => Alert.alert('Not implemented yet') }}
+        containerStyle={styles.listItemContainer}
+        rightIcon={<Icon
+          name="chevron-right"
+          type="entypo"
+          color="gray"
+          containerStyle={{ marginLeft: -15, width: 20 }}
+        />}
+      />
+
+      {/* Password */}
+      <ListItem
+        title="Password"
+        // onPress={() => { () => Alert.alert('Not implemented yet') }}
+        containerStyle={styles.listItemContainer}
+        rightIcon={<Icon
+          name="chevron-right"
+          type="entypo"
+          color="gray"
+          containerStyle={{ marginLeft: -15, width: 20 }}
+        />}
+      />
+
+      {/* Email */}
+      <ListItem
+        title="Email"
+        rightSubtitle={user.email}
+        rightSubtitleStyle={{ width: 180, textAlign: "right" }}
+        // onPress={() => { () => Alert.alert('Not implemented yet') }}
+        containerStyle={styles.listItemContainer}
+        rightIcon={<Icon
+          name="chevron-right"
+          type="entypo"
+          color="gray"
+          containerStyle={{ marginLeft: -15, width: 20 }}
+        />}
+      />
+
+      {/* Phone number */}
+      <ListItem
+        title="Phone#"
+        rightSubtitle={user.phone}
+        rightSubtitleStyle={{ width: 180, textAlign: "right" }}
+        // onPress={() => { () => Alert.alert('Not implemented yet') }}
+        containerStyle={styles.listItemContainer}
+        rightIcon={<Icon
+          name="chevron-right"
+          type="entypo"
+          color="gray"
+          containerStyle={{ marginLeft: -15, width: 20 }}
+        />}
+      />
     </View>
-  </View >
+  </ScrollView>
 );
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    // justifyContent: 'center',
+  scroll: {
+    backgroundColor: "#FFF",
   },
-  img: {
-    width: 100,
-    height: 100,
-    alignItems: 'center',
-  },
-  profile: {
-    alignItems: 'center',
+  listItemContainer: {
+    height: 55,
+    borderWidth: 0.5,
+    borderColor: '#ECECEC',
   },
 });
+
+
 export default Profile;
