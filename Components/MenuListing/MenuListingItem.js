@@ -32,7 +32,7 @@ width: 100px;
 function MenuListingItem({ item, navigation, location }) {
     if (location === item.location) {
         return (
-            <ListingItemWrapper onPress={() => navigation.navigate('Detail', {item})}>
+            <ListingItemWrapper>
                 <Thumbnail
                     source={item.img.src}
                     width={200}
