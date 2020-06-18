@@ -10,7 +10,8 @@ import Restaurant from './Screens/Restaurant';
 import Order from './Screens/Order';
 import Account from './Screens/Account';
 import Profile from './Screens/Profile';
-import Sherman from './Screens/Sherman';
+import Sherman from './Screens/Menu/Sherman';
+import Stein from './Screens/Menu/Stein';
 
 // const AuthContext = React.createContext();
 
@@ -75,7 +76,11 @@ const RestaurantStack = createStackNavigator({
   },
   Sherman: {
     screen: Sherman,
-    navigationOptions: { title: 'Sherman Dining Hall'},
+    navigationOptions: { title: 'Sherman Dining Hall' },
+  },
+  Stein: {
+    screen: Stein,
+    navigationOptions: { title: "The Stein" },
   },
 });
 

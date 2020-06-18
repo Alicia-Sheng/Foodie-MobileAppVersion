@@ -6,6 +6,9 @@ const Restaurant = ({ navigation }) => (
         <TouchableOpacity onPress={() => navigation.navigate('Sherman')}>
           <Text>Sherman Dining Hall</Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Stein')}>
+          <Text>The Stein</Text>
+        </TouchableOpacity>
     </View>
 );
 
