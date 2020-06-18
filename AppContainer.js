@@ -14,6 +14,8 @@ import MyOrders from './Screens/MyOrders';
 import Sherman from './Screens/Menu/Sherman';
 import Stein from './Screens/Menu/Stein';
 import Dunkin from './Screens/Menu/Dunkin';
+import Einstein from './Screens/Menu/Einstein';
+import Starbucks from './Screens/Menu/Starbucks';
 
 // const AuthContext = React.createContext();
 
@@ -87,6 +89,14 @@ const RestaurantStack = createStackNavigator({
   Dunkin: {
     screen: Dunkin,
     navigationOptions: { title: "Dunkin Donuts" },
+  },
+  Einstein: {
+    screen: Einstein,
+    navigationOptions: { title: "Einstein Bros. Bagels" },
+  },
+  Starbucks: {
+    screen: Starbucks,
+    navigationOptions: { title: "Starbucks Farber" },
   },
 });
 

@@ -45,7 +45,7 @@ function MenuListingItem({ item, navigation, location }) {
             </ListingItemWrapper>
         )
     } else {
-        return (<Text></Text>)
+        return (null)
     }
 };
 

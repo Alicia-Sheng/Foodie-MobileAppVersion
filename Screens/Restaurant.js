@@ -12,6 +12,12 @@ const Restaurant = ({ navigation }) => (
         <TouchableOpacity style={styles.touch} onPress={() => navigation.navigate('Dunkin')}>
             <Text>Dunkin Donuts</Text>
         </TouchableOpacity>
+        <TouchableOpacity style={styles.touch} onPress={() => navigation.navigate('Einstein')}>
+            <Text>Einstein Bros. Bagels</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.touch} onPress={() => navigation.navigate('Starbucks')}>
+            <Text>Starbucks Farber</Text>
+        </TouchableOpacity>
     </View>
 );
 
