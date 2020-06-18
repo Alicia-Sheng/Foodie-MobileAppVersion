@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Image } from 'react-native';
+import { ScrollView, StyleSheet, View, Image, Alert } from 'react-native';
 import { Icon, ListItem } from 'react-native-elements'
 import user from '../../assets/userInfo'
 
@@ -11,7 +11,7 @@ const Profile = ({ navigation }) => {
         {/* Profile pic */}
         <ListItem
           title="Picture"
-          // onPress={() => { () => Alert.alert('Not implemented yet') }}
+          onPress={() => Alert.alert('Not implemented yet')}
           containerStyle={styles.listItemContainer}
           rightAvatar={<Image source={user.img} style={{ width: 50, height: 50 }} />}
           rightIcon={<Icon
@@ -25,7 +25,7 @@ const Profile = ({ navigation }) => {
         {/* Background pic */}
         <ListItem
           title="Background"
-          // onPress={() => { () => Alert.alert('Not implemented yet') }}
+          onPress={() => Alert.alert('Not implemented yet')}
           containerStyle={styles.listItemContainer}
           rightAvatar={<Image source={user.bcg} style={{ width: 50, height: 50 }} />}
           rightIcon={<Icon
@@ -41,7 +41,7 @@ const Profile = ({ navigation }) => {
           title="Username"
           rightSubtitle={user.username}
           rightSubtitleStyle={{ width: 180, textAlign: "right" }}
-          // onPress={() => { () => Alert.alert('Not implemented yet') }}
+          onPress={() => Alert.alert('Not implemented yet')}
           containerStyle={styles.listItemContainer}
           rightIcon={<Icon
             name="chevron-right"
@@ -54,7 +54,7 @@ const Profile = ({ navigation }) => {
         {/* Password */}
         <ListItem
           title="Password"
-          // onPress={() => { () => Alert.alert('Not implemented yet') }}
+          onPress={() => Alert.alert('Not implemented yet')}
           containerStyle={styles.listItemContainer}
           rightIcon={<Icon
             name="chevron-right"
@@ -69,7 +69,7 @@ const Profile = ({ navigation }) => {
           title="Email"
           rightSubtitle={user.email}
           rightSubtitleStyle={{ width: 180, textAlign: "right" }}
-          // onPress={() => { () => Alert.alert('Not implemented yet') }}
+          onPress={() => Alert.alert('Not implemented yet')}
           containerStyle={styles.listItemContainer}
           rightIcon={<Icon
             name="chevron-right"
@@ -84,7 +84,7 @@ const Profile = ({ navigation }) => {
           title="Phone#"
           rightSubtitle={user.phone}
           rightSubtitleStyle={{ width: 180, textAlign: "right" }}
-          // onPress={() => { () => Alert.alert('Not implemented yet') }}
+          onPress={() => Alert.alert('Not implemented yet')}
           containerStyle={styles.listItemContainer}
           rightIcon={<Icon
             name="chevron-right"

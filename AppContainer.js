@@ -11,6 +11,7 @@ import Order from './Screens/Order';
 import Account from './Screens/Account/Account';
 import Profile from './Screens/Account/Profile';
 import MyOrders from './Screens/Account/MyOrders';
+import MyReviews from './Screens/Account/MyReviews';
 import Sherman from './Screens/Menu/Sherman';
 import Stein from './Screens/Menu/Stein';
 import Dunkin from './Screens/Menu/Dunkin';
@@ -123,6 +124,10 @@ const AccountStack = createStackNavigator({
   MyOrders: {
     screen: MyOrders,
     navigationOptions: { title: 'My Orders' },
+  },
+  MyReviews: {
+    screen: MyReviews,
+    navigationOptions: { title: 'My Reviews' },
   },
 });
 

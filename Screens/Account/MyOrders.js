@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Image, Button } from 'react-native';
+import { ScrollView, StyleSheet, View, Alert } from 'react-native';
 import { Icon, ListItem } from 'react-native-elements'
 import user from '../../assets/userInfo'
 
@@ -18,7 +18,7 @@ const Orders = () => {
           color="gray"
           containerStyle={{ marginLeft: -15, width: 20 }}
         />}
-        onPress={() => { () => Alert.alert('Not implemented yet') }}
+        onPress={() => Alert.alert('Not implemented yet')}
       />
     )
   })

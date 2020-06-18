@@ -55,7 +55,7 @@ const Settings = ({ navigation }) => {
           {/* Link to Reviews */}
           <ListItem
             title="Reviews"
-            onPress={() => { () => Alert.alert('Not implemented yet') }}
+            onPress={() => { navigation.navigate('MyReviews') }}
             containerStyle={styles.listItemContainer}
             leftIcon={<Icon
               name="rate-review"
@@ -71,7 +71,7 @@ const Settings = ({ navigation }) => {
           {/* Link to Settings */}
           <ListItem
             title="Settings"
-            onPress={() => { () => Alert.alert('Not implemented yet') }}
+            onPress={() => Alert.alert('Not implemented yet')}
             containerStyle={styles.listItemContainer}
             leftIcon={<Icon
               name="settings"
