@@ -2,10 +2,10 @@ import React from 'react';
 import { FlatList, View, Text } from 'react-native';
 import styled from 'styled-components/native';
 import { Query } from 'react-apollo';
-import MenuListingItem from '../Components/MenuListing/MenuListingItem'
-import Filters from '../Components/Listing/Filters';
-import { GET_PRODUCTS, GET_LIMIT } from '../constants';
-import data from '../assets/data.js';
+import MenuListingItem from '../../Components/MenuListing/MenuListingItem'
+import Filters from '../../Components/Listing/Filters';
+import { GET_PRODUCTS, GET_LIMIT } from '../../constants';
+import data from '../../assets/data.js';
 
 function Sherman({ navigation }) {
   return (
@@ -18,13 +18,6 @@ function Sherman({ navigation }) {
       </ListingsWrapper>
   )
 };
-  /*<ListingsWrapper>
-    {<Listings
-      data={data.products}
-      keyExtractor={item => String(item.id)}
-      renderItem={({ item }) => <MenuListingItem item={item} navigation={navigation} location='Sherman Dining Hall'/>}
-    />}
-  </ListingsWrapper>*/
 
 const ListingsWrapper = styled(View)`
 flex: 1;
