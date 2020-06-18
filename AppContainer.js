@@ -10,6 +10,7 @@ import Restaurant from './Screens/Restaurant';
 import Order from './Screens/Order';
 import Account from './Screens/Account';
 import Profile from './Screens/Profile';
+import MyOrders from './Screens/MyOrders';
 import Sherman from './Screens/Menu/Sherman';
 import Stein from './Screens/Menu/Stein';
 import Dunkin from './Screens/Menu/Dunkin';
@@ -108,6 +109,10 @@ const AccountStack = createStackNavigator({
   Profile: {
     screen: Profile,
     navigationOptions: { title: 'Profile' },
+  },
+  MyOrders: {
+    screen: MyOrders,
+    navigationOptions: { title: 'My Orders' },
   },
 });
 

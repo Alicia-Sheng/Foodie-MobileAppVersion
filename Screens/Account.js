@@ -39,7 +39,7 @@ const Settings = ({ navigation }) => {
           {/* Link to Orders */}
           <ListItem
             title="Orders"
-            onPress={() => { navigation.navigate('Order') }}
+            onPress={() => { navigation.navigate('MyOrders') }}
             containerStyle={styles.listItemContainer}
             leftIcon={<Icon
               name="shopping-cart"
