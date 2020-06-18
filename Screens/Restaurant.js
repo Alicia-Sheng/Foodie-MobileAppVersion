@@ -3,20 +3,14 @@ import { Button, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 const Restaurant = ({ navigation }) => (
     <View style={styles.container}>
-        <TouchableOpacity onPress={() => navigation.navigate('Sherman')}>
-          <View style={styles.touch} >
+        <TouchableOpacity style={styles.touch} onPress={() => navigation.navigate('Sherman')}>
             <Text>Sherman Dining Hall</Text>
-          </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Stein')}>
-          <View style={styles.touch} >
+        <TouchableOpacity style={styles.touch} onPress={() => navigation.navigate('Stein')}>
             <Text>The Stein</Text>
-          </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Dunkin')}>
-          <View style={styles.touch} >
+        <TouchableOpacity style={styles.touch} onPress={() => navigation.navigate('Dunkin')}>
             <Text>Dunkin Donuts</Text>
-          </View>
         </TouchableOpacity>
     </View>
 );
@@ -29,8 +23,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     touch: {
+        flex: 1,
         margin: 10,
         alignItems: 'center',
+        justifyContent: 'center',
         width: 300,
         padding: 10,
         backgroundColor: '#ccc',
