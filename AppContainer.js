@@ -87,6 +87,10 @@ const RestaurantStack = createStackNavigator({
     screen: Dunkin,
     navigationOptions: { title: "Dunkin Donuts" },
   },
+  Detail: {
+    screen: Detail,
+    navigationOptions: { title: 'Detail' },
+  },
 });
 
 const OrderStack = createStackNavigator({

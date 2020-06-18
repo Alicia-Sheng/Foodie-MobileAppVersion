@@ -32,13 +32,15 @@ width: 100px;
 function MenuListingItem({ item, navigation, location }) {
     if (location === item.location) {
         return (
-            <ListingItemWrapper>
+            <ListingItemWrapper onPress={() => navigation.navigate('Detail', {item})}>
                 <Thumbnail
                     source={item.img.src}
+                    width={200}
                 />
                 <View>
                     <Title>{item.name}</Title>
                     <Price>${item.price}</Price>
+                    <AddToOrderButton productId={item.id} />
                 </View>
             </ListingItemWrapper>
         )
