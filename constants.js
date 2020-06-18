@@ -23,8 +23,14 @@ export const GET_ORDER = gql `
       products {
         id
         name
+        location
         thumbnail
+        desc
         price
+        rating
+        category {
+          title
+        }
       }
     }
   }
@@ -41,8 +47,14 @@ export const GET_PRODUCTS = gql `
     products(limit: $limit) {
       id
       name
+      location
       thumbnail
+      desc
       price
+      rating
+      category {
+        title
+      }
     }
   }
 `;
