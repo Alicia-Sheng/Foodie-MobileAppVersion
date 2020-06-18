@@ -1,9 +1,11 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 const Restaurant = ({ navigation }) => (
     <View style={styles.container}>
-        <Text>Restaurant page</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Sherman')}>
+          <Text>Sherman Dining Hall</Text>
+        </TouchableOpacity>
     </View>
 );
 
