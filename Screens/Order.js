@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import ListingItem from '../Components/Listing/ListingItem'
 import Button from '../Components/Button/Button';
@@ -41,17 +41,19 @@ const Order = ({ navigation }) => (
 								))}
 							
 						</OrderItemsWrapper> */}
-						{<OrderItemsWrapper
+						{/* {<OrderItemsWrapper
 							data={data.order.products}
 							keyExtractor={item => Number(item.id)}
 							renderItem={({ item }) => <ListingItem item={item}/>}
-						/>}
+						/>} */}
 						<Totals count={data.order.total} />
 						{data.order && data.order.products.length > 0 && (
-							<Link to='/checkout'>
-								<Button color='royalBlue'>Checkout</Button>
-							</Link>
+							<Button 
+							title="Checkout" 
+							onPress={() => navigate('Checkout')}
+							style={{ width: '90%', radius: '50%' }}/>
 						)}
+
 					</OrderWrapper>
 				);
 			}}

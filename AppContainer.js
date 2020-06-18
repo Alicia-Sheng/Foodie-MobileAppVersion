@@ -84,6 +84,10 @@ const OrderStack = createStackNavigator({
     screen: Order,
     navigationOptions: { title: 'Order' },
   },
+  // Checkout: {
+  //   screen: Checkout,
+  //   navigationOptions: { title: 'Checkout' },
+  // },
 });
 
 const AccountStack = createStackNavigator({
@@ -132,7 +136,7 @@ const AppNavigator = createBottomTabNavigator(
         />;
       },
       tabBarOptions: {
-        activeTintColor: '#de1d0f',
+        activeTintColor: '#cf3838',
         inactiveTintColor: '#556',
       },
     }),

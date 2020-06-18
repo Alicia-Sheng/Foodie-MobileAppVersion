@@ -14,7 +14,7 @@ const LoginWrapper = styled(View)`
 `;
 
 const Login = ({ navigation }) => {
-    const [userName, setUserName] = React.useState('');
+    const [username, setUserName] = React.useState('');
     const [password, setPassword] = React.useState('');
 
     return (
