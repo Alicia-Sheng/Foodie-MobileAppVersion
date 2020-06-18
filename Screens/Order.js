@@ -39,7 +39,7 @@ const Order = ({ navigation }) => (
 								data.order.products.map(product => (
 									<ListingItem key={product.id} data={product} />
 								))}
-							
+
 						</OrderItemsWrapper> */}
 						{/* {<OrderItemsWrapper
 							data={data.order.products}
@@ -48,10 +48,10 @@ const Order = ({ navigation }) => (
 						/>} */}
 						<Totals count={data.order.total} />
 						{data.order && data.order.products.length > 0 && (
-							<Button 
-							title="Checkout" 
+							<Button
+							title="Checkout"
 							onPress={() => navigate('Checkout')}
-							style={{ width: '90%', radius: '50%' }}/>
+							style={{ width: '100%', radius: '50%' }}/>
 						)}
 
 					</OrderWrapper>

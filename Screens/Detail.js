@@ -22,9 +22,8 @@ const Detail = ({ navigation }) => {
           borderWidth:1,
         }}
       />
-      <View style = {styles.fixToText}>
+      <View style = {styles.sub}>
         <Button title="Submit" onPress={()=>Alert.alert('Are you sure you want to submit?')}/>
-        <Button title="Go back" onPress={() => navigation.goBack()} />
       </View>
     </View>
   );
@@ -44,7 +43,6 @@ const styles = StyleSheet.create({
     height: 50,
     marginVertical: 8,
     textAlign:'center',
-    //backgroundColor: "#DDDDDD",
     padding: 10,
     borderWidth: 1,
     color: "black",
@@ -61,9 +59,11 @@ const styles = StyleSheet.create({
   note:{
     textAlign:'center',
   },
-  fixToText:{
+  sub:{
     flexDirection: 'row',
     justifyContent: 'space-between',
+    borderRadius: 15,
+    margin:10,
   }
 })
 

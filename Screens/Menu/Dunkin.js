@@ -24,7 +24,7 @@ flex: 1;
 background-color: #fff;
 align-items: center;
 justify-content: center;
-`
+`;
 
 const Listings = styled(FlatList)`
 width: 100%;
