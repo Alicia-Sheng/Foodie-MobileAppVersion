@@ -1,7 +1,7 @@
 import React from 'react';
 import { ImageBackground, ScrollView, StyleSheet, Text, View, Alert, Image } from 'react-native';
 import { Icon, ListItem } from 'react-native-elements'
-import user from '../assets/userInfo'
+import user from '../../assets/userInfo'
 
 const Settings = ({ navigation }) => {
   return (

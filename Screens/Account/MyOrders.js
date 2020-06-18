@@ -1,9 +1,10 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View, Image } from 'react-native';
 import { Icon, ListItem } from 'react-native-elements'
-import user from '../assets/userInfo'
+import user from '../../assets/userInfo'
 
 const MyOrders = ({ navigation }) => (
+
 
   <ScrollView style={styles.scroll}>
     <View style={styles.headerContainer}>
