@@ -1,5 +1,6 @@
 const userInfo = {
   "img": require("../media/user/default.png"),
+  "bcg": require("../media/user/user_background.jpg"),
   "username": "admin",
   "password": "111111",
   "email": "admin@brandeis.edu",

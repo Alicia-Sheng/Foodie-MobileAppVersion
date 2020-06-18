@@ -1,61 +1,128 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View, TouchableOpacity, Alert, Image } from 'react-native';
-import Profile from './Profile'
+import { ImageBackground, ScrollView, StyleSheet, Text, View, Alert, Image } from 'react-native';
+import { Icon, ListItem } from 'react-native-elements'
+import user from '../assets/userInfo'
 
 const Settings = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <Image style = {styles.logo} source = {require('../media/logo/foodie.png')} />
+    <ScrollView style={styles.scroll}>
+      <View style={styles.headerContainer}>
+        <ImageBackground
+          style={styles.headerBackgroundImage}
+          blurRadius={10}
+          source={user.bcg}
+        >
+          <View style={styles.headerColumn}>
+            <Image
+              style={styles.userImage}
+              source={user.img}
+            />
+            <Text style={styles.userNameText}>{user.username}</Text>
+          </View>
 
-      {/* Link to Profile */}
-      <TouchableOpacity onPress={() => { navigation.navigate('Profile') }} style={styles.button}>
-        <Text style={styles.buttonText}> Profile </Text>
-      </TouchableOpacity>
+          {/* Link to Profile */}
+          <ListItem
+            title="Profile"
+            onPress={() => { navigation.navigate('Profile') }}
+            containerStyle={styles.listItemContainer}
+            leftIcon={<Icon
+              name="account-circle"
+            />}
+            rightIcon={<Icon
+              name="chevron-right"
+              type="entypo"
+              color="gray"
+              containerStyle={{ marginLeft: -15, width: 20 }}
+            />}
+          />
 
-      {/* Link to Orders */}
-      <TouchableOpacity onPress={() => { navigation.navigate('Order') }} style={styles.button}>
-        <Text style={styles.buttonText}> Orders </Text>
-      </TouchableOpacity>
+          {/* Link to Orders */}
+          <ListItem
+            title="Orders"
+            onPress={() => { () => Alert.alert('Not implemented yet') }}
+            containerStyle={styles.listItemContainer}
+            leftIcon={<Icon
+              name="shopping-cart"
+            />}
+            rightIcon={<Icon
+              name="chevron-right"
+              type="entypo"
+              color="gray"
+              containerStyle={{ marginLeft: -15, width: 20 }}
+            />}
+          />
 
-      {/* Link to Reviews */}
-      <TouchableOpacity onPress={() => Alert.alert('Not implemented yet')} style={styles.button}>
-        <Text style={styles.buttonText}> Reviews </Text>
-      </TouchableOpacity>
+          {/* Link to Reviews */}
+          <ListItem
+            title="Reviews"
+            onPress={() => { () => Alert.alert('Not implemented yet') }}
+            containerStyle={styles.listItemContainer}
+            leftIcon={<Icon
+              name="rate-review"
+            />}
+            rightIcon={<Icon
+              name="chevron-right"
+              type="entypo"
+              color="gray"
+              containerStyle={{ marginLeft: -15, width: 20 }}
+            />}
+          />
 
-      {/* Link to Settings */}
-      <TouchableOpacity onPress={() => Alert.alert('Not implemented yet')} style={styles.button}>
-        <Text style={styles.buttonText}> Settings </Text>
-      </TouchableOpacity>
-    </View>
+          {/* Link to Settings */}
+          <ListItem
+            title="Settings"
+            onPress={() => { () => Alert.alert('Not implemented yet') }}
+            containerStyle={styles.listItemContainer}
+            leftIcon={<Icon
+              name="settings"
+            />}
+            rightIcon={<Icon
+              name="chevron-right"
+              type="entypo"
+              color="gray"
+              containerStyle={{ marginLeft: -15, width: 20 }}
+            />}
+          />
+        </ImageBackground>
+      </View>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems:"center",
-    height:1000,
-    justifyContent: "center",
-
+  scroll: {
+    backgroundColor: "#FFF",
   },
-  button: {
-    width: 300,
-    height: 50,
-    marginVertical: 8,
-    alignItems: "center",
-    backgroundColor: "#DDDDDD",
-    padding: 10,
-    borderWidth: 1,
-    borderColor: "#FFFFFF",
+  headContainer: {
   },
-  buttonText: {
-    alignItems: "center",
-    padding: 10,
+  headerBackgroundImage: {
+    resizeMode: "cover",
   },
-  logo: {
+  headerColumn: {
+    backgroundColor: 'transparent',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  userImage: {
+    borderColor: '#FFF',
+    borderRadius: 85,
+    borderWidth: 3,
     height: 100,
+    marginTop: 15,
+    marginBottom: 15,
     width: 100,
+  },
+  userNameText: {
+    color: '#FFF',
+    fontSize: 22,
+    fontWeight: 'bold',
+    paddingBottom: 15,
+    textAlign: 'center',
+  },
+  listItemContainer: {
+    height: 55,
+    borderWidth: 0.5,
+    borderColor: '#ECECEC',
   },
 });
 
