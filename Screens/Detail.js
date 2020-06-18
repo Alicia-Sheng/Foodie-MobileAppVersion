@@ -22,7 +22,14 @@ const Detail = ({ navigation }) => {
           borderColor:'gray',
           borderWidth: 1,
           borderRadius: 15,
+          color: "grey",
         }}
+        defaultValue = "Please add your comment"
+        multiline = {true}
+        numberOfLines = {3}
+        maxLength = {140}
+        spellCheck = {false}
+        selectionColor = "black"
       />
       <View style = {styles.sub}>
         <Button title="Submit" onPress={()=>Alert.alert('Are you sure you want to submit?')}/>
