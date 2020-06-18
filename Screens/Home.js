@@ -23,12 +23,6 @@ const Home = ({ navigation }) => (
             }
             return (
               <ListingsWrapper>
-                {/* <Listings>
-                {data.products &&
-                  data.products.map(product => (
-                    <ListingItem key={product.id} data={product} />
-                  ))}
-                </Listings> */}
                 {<Listings
                   data={data.products}
                   keyExtractor={item => String(item.id)}

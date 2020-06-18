@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
 
-import AddToOrderButton from '../Order/AddToOrderButton';
+import AddToOrderButton from './AddToOrderButton';
 
 const ListingItemWrapper = styled(TouchableOpacity)`
 display: flex;
@@ -29,24 +29,22 @@ height: 100px;
 width: 100px;
 `
 
-const ListingItem = ({ item, navigation }) => (
-    <ListingItemWrapper onPress={() => navigation.navigate('Detail', {
-        item
-    })}>
-        <Thumbnail source={{uri: item.thumbnail}} width={200} />
+const OrderItem = ({ item }) => (
+    <ListingItemWrapper>
+        <Thumbnail source={{ uri: item.thumbnail }} width={200} />
         <View style={styles.text}>
             <Title>{item.name}</Title>
             <Price>${item.price}</Price>
-            <AddToOrderButton productId={item.id} />
+            {/* <AddToOrderButton productId={item.id} /> */}
         </View>
     </ListingItemWrapper>
 );
 
 const styles = StyleSheet.create({
-  text: {
-    flex: 1,
-    flexWrap: 'wrap',
-  },
+    text: {
+        flex: 1,
+        flexWrap: 'wrap',
+    },
 });
 
-export default ListingItem;
+export default OrderItem;
