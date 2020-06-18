@@ -1,31 +1,34 @@
 import React from 'react';
-import { Button, Image, StyleSheet, Text, View, TextInput, Alert } from 'react-native';
+import { Button, Image, StyleSheet, Text, View, TextInput, Alert} from 'react-native';
 import ListingDetail from '../Components/Listing/ListingDetail';
 
 const Detail = ({ navigation }) => {
   const item = navigation.getParam('item', {});
 
   return (
+
     <View style={styles.container}>
       {/* <Image source={item.img.src} style={{ flex: 1, width: 300, height: 300, resizeMode: 'contain' }} /> */}
       <Image source={{uri: item.thumbnail}} style={{ flex: 1, width: 300, height: 300, resizeMode: 'contain' }} />
-      <Text style = {styles.foodName}>{item.name}</Text>
-      <Text style = {styles.price}>$ {item.price}</Text>
-
-      <Text style = {styles.note}> Please comment </Text>
+      <Text style = {styles.foodName}>
+        {item.name}
+        <Text style = {styles.price}>  $ {item.price}</Text>
+      </Text>
 
       <TextInput
         style = {{
-          height:40,
+          height:100,
           width: 300,
           borderColor:'gray',
-          borderWidth:1,
+          borderWidth: 1,
+          borderRadius: 15,
         }}
       />
       <View style = {styles.sub}>
         <Button title="Submit" onPress={()=>Alert.alert('Are you sure you want to submit?')}/>
       </View>
     </View>
+
   );
   // return <ListingDetail item={item} />;
 };
@@ -38,7 +41,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   foodName: {
-    //fontFamily: "Cochin",
     width: 300,
     height: 50,
     marginVertical: 8,
@@ -49,21 +51,17 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     borderColor: "#FFFFFF",
     fontSize: 16,
-
+    flexDirection: 'row',
   },
   price:{
     color:"#0000FF",
     textAlign:'center',
-    //fontFamily:"vincHand",
-  },
-  note:{
-    textAlign:'center',
+    flexDirection: 'row',
   },
   sub:{
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    width:100,
     borderRadius: 15,
-    margin:10,
+    margin:20,
   }
 })
 
