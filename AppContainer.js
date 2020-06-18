@@ -12,6 +12,7 @@ import Account from './Screens/Account';
 import Profile from './Screens/Profile';
 import Sherman from './Screens/Menu/Sherman';
 import Stein from './Screens/Menu/Stein';
+import Dunkin from './Screens/Menu/Dunkin';
 
 // const AuthContext = React.createContext();
 
@@ -81,6 +82,10 @@ const RestaurantStack = createStackNavigator({
   Stein: {
     screen: Stein,
     navigationOptions: { title: "The Stein" },
+  },
+  Dunkin: {
+    screen: Dunkin,
+    navigationOptions: { title: "Dunkin Donuts" },
   },
 });
 
