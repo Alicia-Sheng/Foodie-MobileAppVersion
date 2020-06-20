@@ -1,7 +1,7 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { createAppContainer } from 'react-navigation';
+import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Home from './Screens/Home';
@@ -17,51 +17,8 @@ import Stein from './Screens/Menu/Stein';
 import Dunkin from './Screens/Menu/Dunkin';
 import Einstein from './Screens/Menu/Einstein';
 import Starbucks from './Screens/Menu/Starbucks';
-
-// const AuthContext = React.createContext();
-
-// function SplashScreen() {
-//   return (
-//     <View>
-//       <Text>Loading...</Text>
-//     </View>
-//   );
-// }
-
-// function HomeScreen() {
-//   const { signOut } = React.useContext(AuthContext);
-
-//   return (
-//     <View>
-//       <Text>Signed in!</Text>
-//       <Button title="Sign out" onPress={signOut} />
-//     </View>
-//   );
-// }
-
-// function SignInScreen() {
-//   const [username, setUsername] = React.useState('');
-//   const [password, setPassword] = React.useState('');
-
-//   const { signIn } = React.useContext(AuthContext);
-
-//   return (
-//     <View>
-//       <TextInput
-//         placeholder="Username"
-//         value={username}
-//         onChangeText={setUsername}
-//       />
-//       <TextInput
-//         placeholder="Password"
-//         value={password}
-//         onChangeText={setPassword}
-//         secureTextEntry
-//       />
-//       <Button title="Sign in" onPress={() => signIn({ username, password })} />
-//     </View>
-//   );
-// }
+import Login from './Screens/Login';
+import AuthLoading from './Screens/AuthLoading';
 
 const HomeStack = createStackNavigator({
   Home: {
@@ -172,4 +129,15 @@ const AppNavigator = createBottomTabNavigator(
     }),
   });
 
-export default createAppContainer(AppNavigator);
+const SwitchNavigator = createSwitchNavigator(
+  {
+    Main: AppNavigator,
+    Login,
+    AuthLoading,
+  },
+  {
+    initialRouteName: 'AuthLoading',
+  },
+);
+
+export default createAppContainer(SwitchNavigator);

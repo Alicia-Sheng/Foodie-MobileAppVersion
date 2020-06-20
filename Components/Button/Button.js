@@ -8,6 +8,7 @@ const ButtonWrapper = styled(TouchableOpacity)`
   justify-content: space-around;
   border-radius: ${({ radius }) => (radius ? radius : '30px')};
   width: ${({ width }) => (width ? width : '20%')};
+  height: ${({ height }) => (height ? height : '')};
   background-color: ${({ color }) => (color ? color : '#cf3838')};
 `;
 

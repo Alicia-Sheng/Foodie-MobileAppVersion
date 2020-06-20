@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, ScrollView, StyleSheet, Text, View, Alert, Image } from 'react-native';
+import { ImageBackground, ScrollView, StyleSheet, Text, View, Image, AsyncStorage } from 'react-native';
 import { Icon, ListItem } from 'react-native-elements'
 import user from '../../assets/userInfo'
 
@@ -70,8 +70,14 @@ const Settings = ({ navigation }) => {
 
           {/* Link to Settings */}
           <ListItem
-            title="Settings"
-            onPress={() => Alert.alert('Not implemented yet')}
+            title="Logout"
+            onPress={
+              () => {
+                AsyncStorage.removeItem('token').then(() =>
+                  navigation.navigate('AuthLoading'),
+                );
+              }
+            }
             containerStyle={styles.listItemContainer}
             leftIcon={<Icon
               name="settings"
