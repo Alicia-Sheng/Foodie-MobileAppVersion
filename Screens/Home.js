@@ -12,10 +12,10 @@ const Home = ({ navigation }) => (
   <Query query={GET_LIMIT}>
     {({ data }) => (
       <>
-        <Filters limit={parseInt(data.limit)} />
+        {/* <Filters limit={parseInt(data.limit)} /> */}
         <Query
           query={GET_PRODUCTS}
-          variables={{ limit: parseInt(data.limit) }}
+          // variables={{ limit: parseInt(data.limit) }}
         >
           {({ loading, error, data }) => {
             if (loading || error) {

@@ -43,8 +43,8 @@ export const GET_LIMIT = gql `
 `;
 
 export const GET_PRODUCTS = gql `
-  query getProducts($limit: Int) {
-    products(limit: $limit) {
+  query getProducts {
+    products {
       id
       name
       location
@@ -52,9 +52,6 @@ export const GET_PRODUCTS = gql `
       desc
       price
       rating
-      category {
-        title
-      }
     }
   }
 `;
