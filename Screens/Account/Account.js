@@ -70,7 +70,7 @@ const Settings = ({ navigation }) => {
 
           {/* Link to Settings */}
           <ListItem
-            title="Logout"
+            title="Log Out"
             onPress={
               () => {
                 AsyncStorage.removeItem('token').then(() =>
