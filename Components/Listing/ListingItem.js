@@ -17,11 +17,19 @@ flex-wrap: wrap;
 width: 90%;
 font-size: 20px;
 `
+
+export const Location = styled(Text)`
+flex-wrap: wrap;
+width: 90%;
+font-size: 15px;
+`
+
 export const Price = styled(Text)`
 font-weight: bold;
 font-size: 20px;
-color: blue;
+color: black;
 `
+
 const Thumbnail = styled(Image)`
 border-radius: 5px;
 margin-right: 4%;
@@ -30,16 +38,17 @@ width: 100px;
 `
 
 const ListingItem = ({ item, navigation }) => (
-    <ListingItemWrapper onPress={() => navigation.navigate('Detail', {
-        item
-    })}>
-        <Thumbnail source={{uri: item.thumbnail}} width={200} />
-        <View style={styles.text}>
-            <Title>{item.name}</Title>
-            <Price>${item.price}</Price>
-            <AddToOrderButton productId={item.id} />
-        </View>
-    </ListingItemWrapper>
+  <ListingItemWrapper onPress={() => navigation.navigate('Detail', {
+    item
+  })}>
+    <Thumbnail source={{ uri: item.thumbnail }} width={200} />
+    <View style={styles.text}>
+      <Title>{item.name}</Title>
+      <Location>{item.location}</Location>
+      <Price>${item.price}</Price>
+      <AddToOrderButton productId={item.id} />
+    </View>
+  </ListingItemWrapper>
 );
 
 const styles = StyleSheet.create({
