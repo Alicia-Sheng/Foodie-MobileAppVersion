@@ -18,7 +18,6 @@ import Dunkin from './Screens/Menu/Dunkin';
 import Einstein from './Screens/Menu/Einstein';
 import Starbucks from './Screens/Menu/Starbucks';
 import Login from './Screens/Login';
-import AuthLoading from './Screens/AuthLoading';
 
 const HomeStack = createStackNavigator({
   Home: {
@@ -125,7 +124,7 @@ const AppNavigator = createBottomTabNavigator(
             size={20}
             color={tintColor}
           />
-            {badgeCount > 0 && (
+            {/* {badgeCount > 0 && (
               <View
                 style={{
                   position: 'absolute',
@@ -143,7 +142,7 @@ const AppNavigator = createBottomTabNavigator(
                   {badgeCount}
                 </Text>
               </View>
-            )}
+            )} */}
           </>
         )
           ;
@@ -158,12 +157,8 @@ const AppNavigator = createBottomTabNavigator(
 const SwitchNavigator = createSwitchNavigator(
   {
     Main: AppNavigator,
-    Login,
-    AuthLoading,
-  },
-  {
-    initialRouteName: 'AuthLoading',
-  },
+    Login
+  }
 );
 
 export default createAppContainer(SwitchNavigator);
