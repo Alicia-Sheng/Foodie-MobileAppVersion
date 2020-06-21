@@ -12,7 +12,7 @@ const CheckoutWrapper = styled(View)`
   margin: 2% 5%;
 `;
 
-const Checkout = () => {
+const Checkout = ({ navigation }) => {
     const [completeOrder, { data }] = useMutation(COMPLETE_ORDER);
 
     return (
