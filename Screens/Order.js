@@ -38,22 +38,30 @@ const Order = ({ navigation }) => (
 			}
 			return (
 				<OrderWrapper>
-					{<OrderListings
-						data={data.order.products}
-						keyExtractor={item => String(item.id)}
-						renderItem={({ item }) => <OrderItem item={item} />}
-					/>}
-					<Totals count={data.order.total} />
 					{
-						data.order && data.order.products.length > 0 && (
-							<Button
-								title="Checkout"
-								onPress={() => navigation.navigate('Checkout')}
-								width='50%'
-								radius='20px'
-								height='40px'
-								 />
-						)
+						data.order && data.order.products.length > 0 ? (
+							<>
+
+								<OrderListings
+									data={data.order.products}
+									keyExtractor={item => String(item.id)}
+									renderItem={({ item }) => <OrderItem item={item} />}
+								/>
+
+								<Totals count={data.order.total} />
+								<Button
+									title="Checkout"
+									onPress={() => navigation.navigate('Checkout')}
+									width='50%'
+									radius='20px'
+									height='40px'
+								/>
+							</>
+						) : (
+								<Alert>
+									Your bag is empty...
+								</Alert>
+							)
 					}
 				</OrderWrapper>
 			);
