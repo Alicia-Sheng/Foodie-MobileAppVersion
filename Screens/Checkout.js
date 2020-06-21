@@ -19,7 +19,7 @@ const Checkout = ({ navigation }) => {
     return (
         <CheckoutWrapper>
             {data && data.completeOrder.complete ? (
-                <Text>Completed checkout!</Text>
+                <Text>Thank you for your order!</Text>
             ) : (
                     <>
                         <Text>Press the button below to complete checkout</Text>

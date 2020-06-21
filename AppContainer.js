@@ -19,6 +19,7 @@ import Dunkin from './Screens/Menu/Dunkin';
 import Einstein from './Screens/Menu/Einstein';
 import Starbucks from './Screens/Menu/Starbucks';
 import Login from './Screens/Login';
+import AuthLoading from './Screens/Login';
 
 const HomeStack = createStackNavigator({
     Home: {
@@ -117,10 +118,8 @@ const AppNavigator = createBottomTabNavigator({
                     iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-person`;
                 }
 
-                return ( <
-                        >
-                        <
-                        Ionicons name = { iconName }
+                return ( <>
+                        <Ionicons name = { iconName }
                         size = { 20 }
                         color = { tintColor }
                         /> {
@@ -143,8 +142,7 @@ const AppNavigator = createBottomTabNavigator({
                                         </Text>
                                       </View>
                                     )} */
-                    } <
-                    />
+                    } </>
             );
         },
         tabBarOptions: {
@@ -156,7 +154,8 @@ const AppNavigator = createBottomTabNavigator({
 
 const SwitchNavigator = createSwitchNavigator({
     Main: AppNavigator,
-    Login
+    Login,
+    AuthLoading
 });
 
 export default createAppContainer(SwitchNavigator);

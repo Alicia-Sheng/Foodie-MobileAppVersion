@@ -50,7 +50,9 @@ const Order = ({ navigation }) => (
 								title="Checkout"
 								onPress={() => navigation.navigate('Checkout')}
 								width='50%'
-								radius='20px' />
+								radius='20px'
+								height='40px'
+								 />
 						)
 					}
 				</OrderWrapper>
