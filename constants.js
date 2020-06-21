@@ -28,9 +28,6 @@ export const GET_ORDER = gql `
         desc
         price
         rating
-        category {
-          title
-        }
       }
     }
   }
