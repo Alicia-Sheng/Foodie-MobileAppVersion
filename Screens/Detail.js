@@ -14,7 +14,7 @@ const Detail = ({ navigation }) => {
         {item.name}
         <Text style = {styles.price}>  $ {item.price}</Text>
       </Text>
-      <Text> {item.desc} </Text>
+      <Text style = {{marginLeft: 15}}> {item.desc} </Text>
 
       <TextInput
         style = {{
@@ -34,7 +34,7 @@ const Detail = ({ navigation }) => {
         selectionColor = "black"
       />
       <View style = {styles.sub}>
-        <Button title="Submit" onPress={()=>Alert.alert('Are you sure you want to submit?')}/>
+        <Button title="Submit" onPress={()=>Alert.alert('Do you want to submit?')}/>
       </View>
     </View>
 
