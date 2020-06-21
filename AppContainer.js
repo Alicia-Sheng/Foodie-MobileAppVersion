@@ -18,6 +18,7 @@ import Stein from './Screens/Menu/Stein';
 import Dunkin from './Screens/Menu/Dunkin';
 import Einstein from './Screens/Menu/Einstein';
 import Starbucks from './Screens/Menu/Starbucks';
+import AllRestaurant from './Screens/Menu/AllRestaurants';
 import Login from './Screens/Login';
 import AuthLoading from './Screens/Login';
 
@@ -56,6 +57,10 @@ const RestaurantStack = createStackNavigator({
     Starbucks: {
         screen: Starbucks,
         navigationOptions: { title: "Starbucks Farber" },
+    },
+    AllRestaurant: {
+        screen: AllRestaurant,
+        navigationOptions: { title: "All Restaurants"},
     },
 });
 

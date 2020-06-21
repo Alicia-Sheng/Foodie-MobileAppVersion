@@ -19,6 +19,9 @@ const Restaurant = ({ navigation }) => (
         <TouchableOpacity onPress={() => navigation.navigate('Starbucks')}>
             <Image source = {require('../media/logo/starbucks.jpg')} style = {styles.logo} />
         </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('AllRestaurant')}>
+            <Image source = {require('../media/logo/all-restaurants.jpg')} style = {styles.logo} />
+        </TouchableOpacity>
       </View>
     </ScrollView>
 );
@@ -52,7 +55,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#ccc',
         borderColor: 'white',
         borderWidth: 1,
-        borderRadius:15,
+        borderRadius:150,
     }
 });
 export default Restaurant;
