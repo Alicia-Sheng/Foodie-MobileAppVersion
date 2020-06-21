@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import { Text, View } from 'react-native';
 import { useMutation } from 'react-apollo';
 import Button from '../Components/Button/Button';
-import { COMPLETE_ORDER } from '../constants';
+import { COMPLETE_ORDER, GET_ORDER, GET_ORDER_TOTAL } from '../constants';
 
 const CheckoutWrapper = styled(View)`
   display: flex;
@@ -14,7 +14,11 @@ const CheckoutWrapper = styled(View)`
 `;
 
 const Checkout = ({ navigation }) => {
-    const [completeOrder, { data }] = useMutation(COMPLETE_ORDER);
+    const [completeOrder, { data }] = useMutation(COMPLETE_ORDER, 
+        {refetchQueries: [{ query: GET_ORDER }, { query: GET_ORDER_TOTAL }],
+        awaitRefetchQueries: false,
+        }
+        );
 
     return (
         <CheckoutWrapper>
