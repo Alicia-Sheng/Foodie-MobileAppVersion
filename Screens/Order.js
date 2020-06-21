@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import styled from 'styled-components/native';
-import ListingItem from '../Components/Listing/ListingItem'
 import OrderItem from '../Components/Order/OrderItem'
 import Button from '../Components/Button/Button';
 import Totals from '../Components/Order/Totals';
@@ -49,7 +48,7 @@ const Order = ({ navigation }) => (
 						data.order && data.order.products.length > 0 && (
 							<Button
 								title="Checkout"
-								onPress={() => navigate('Checkout')}
+								onPress={() => navigation.navigate('Checkout')}
 								width='50%'
 								radius='20px' />
 						)
