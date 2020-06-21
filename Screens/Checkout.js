@@ -13,8 +13,13 @@ const CheckoutWrapper = styled(View)`
   align-items: center;
 `;
 
-const Checkout = ({ navigation }) => {
-    const [completeOrder, { data }] = useMutation(COMPLETE_ORDER, 
+const Alert = styled(Text)`
+  width: 100%;
+  text-align: center;
+`;
+
+const Checkout = () => {
+    const [completeOrder, { data, loading, error }] = useMutation(COMPLETE_ORDER, 
         {refetchQueries: [{ query: GET_ORDER }, { query: GET_ORDER_TOTAL }],
         awaitRefetchQueries: false,
         }
@@ -22,6 +27,9 @@ const Checkout = ({ navigation }) => {
 
     return (
         <CheckoutWrapper>
+            {(loading || error) && (
+                <Alert>{loading ? 'Loading...' : error.message}</Alert>
+            )}
             {data && data.completeOrder.complete ? (
                 <Text>Thank you for your order!</Text>
             ) : (
