@@ -14,6 +14,7 @@ const Detail = ({ navigation }) => {
         {item.name}
         <Text style = {styles.price}>  $ {item.price}</Text>
       </Text>
+      <Text> {item.desc} </Text>
 
       <TextInput
         style = {{
@@ -23,6 +24,7 @@ const Detail = ({ navigation }) => {
           borderWidth: 1,
           borderRadius: 15,
           color: "grey",
+          margin: 20,
         }}
         defaultValue = "Please add your comment"
         multiline = {true}
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
   sub:{
     width:100,
     borderRadius: 15,
-    margin:20,
+    margin:15,
   }
 })
 
