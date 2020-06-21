@@ -1,24 +1,26 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Button, StyleSheet, Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
 
 const Restaurant = ({ navigation }) => (
-    <View style={styles.container}>
-        <TouchableOpacity style={styles.touch} onPress={() => navigation.navigate('Sherman')}>
-            <Text>Sherman Dining Hall</Text>
+    <ScrollView>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={() => navigation.navigate('Sherman')}>
+            <Image source = {require('../media/logo/Sherman.png')} style = {styles.logo} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.touch} onPress={() => navigation.navigate('Stein')}>
-            <Text>The Stein</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Stein')}>
+            <Image source = {require('../media/logo/the-stein.png')} style = {styles.logo} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.touch} onPress={() => navigation.navigate('Dunkin')}>
-            <Text>Dunkin Donuts</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Dunkin')}>
+            <Image source = {require('../media/logo/dunkin-donuts.png')} style = {styles.logo} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.touch} onPress={() => navigation.navigate('Einstein')}>
-            <Text>Einstein Bros. Bagels</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Einstein')}>
+            <Image source = {require('../media/logo/einstein-bagels.png')} style = {styles.logo} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.touch} onPress={() => navigation.navigate('Starbucks')}>
-            <Text>Starbucks Farber</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Starbucks')}>
+            <Image source = {require('../media/logo/starbucks.jpg')} style = {styles.logo} />
         </TouchableOpacity>
-    </View>
+      </View>
+    </ScrollView>
 );
 
 const styles = StyleSheet.create({
@@ -29,7 +31,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     touch: {
-        flex: 1,
+        //flex: 1,
         margin: 10,
         alignItems: 'center',
         justifyContent: 'center',
@@ -40,5 +42,17 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius:15,
     },
+    logo: {
+        margin: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 300,
+        height:300,
+        padding: 10,
+        backgroundColor: '#ccc',
+        borderColor: 'white',
+        borderWidth: 1,
+        borderRadius:15,
+    }
 });
 export default Restaurant;
