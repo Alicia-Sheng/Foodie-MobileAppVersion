@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, View, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -103,6 +103,7 @@ const AppNavigator = createBottomTabNavigator(
         const { routeName } = navigation.state;
 
         let iconName;
+        let badgeCount;
         if (routeName === 'Home') {
           //iconName = `ios-home`;
           iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-home`;
@@ -112,15 +113,40 @@ const AppNavigator = createBottomTabNavigator(
         } else if (routeName === 'Order') {
           //iconName = `ios-cart`;
           iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-cart`;
+          badgeCount = 0;
         } else if (routeName === 'Account') {
           //iconName = `ios-person`;
           iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-person`;
         }
 
-        return <Ionicons name={iconName}
-          size={20}
-          color={tintColor}
-        />;
+        return (
+          <>
+          <Ionicons name={iconName}
+            size={20}
+            color={tintColor}
+          />
+            {badgeCount > 0 && (
+              <View
+                style={{
+                  position: 'absolute',
+                  right: 25,
+                  top: -1,
+                  backgroundColor: '#cf3838',
+                  borderRadius: 6,
+                  width: 12,
+                  height: 12,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <Text style={{ color: 'white', fontSize: 10, fontWeight: 'bold' }}>
+                  {badgeCount}
+                </Text>
+              </View>
+            )}
+          </>
+        )
+          ;
       },
       tabBarOptions: {
         activeTintColor: '#cf3838',
