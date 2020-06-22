@@ -4,11 +4,13 @@ import { Ionicons } from '@expo/vector-icons';
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 import Home from './Screens/Home';
 import Detail from './Screens/Detail';
 import Restaurant from './Screens/Restaurant';
 import Order from './Screens/Order';
 import Checkout from './Screens/Checkout';
+import Search from './Screens/Search';
 import Account from './Screens/Account/Account';
 import Profile from './Screens/Account/Profile';
 import MyOrders from './Screens/Account/MyOrders';
@@ -21,6 +23,7 @@ import Starbucks from './Screens/Menu/Starbucks';
 import AllRestaurant from './Screens/Menu/AllRestaurants';
 import Login from './Screens/Login';
 import AuthLoading from './Screens/Login';
+import TabBar from './Components/TabBar/TabBar';
 
 const HomeStack = createStackNavigator({
     Home: {
@@ -60,7 +63,7 @@ const RestaurantStack = createStackNavigator({
     },
     AllRestaurant: {
         screen: AllRestaurant,
-        navigationOptions: { title: "All Restaurants"},
+        navigationOptions: { title: "All Restaurants" },
     },
 });
 
@@ -73,6 +76,13 @@ const OrderStack = createStackNavigator({
         screen: Checkout,
         navigationOptions: { title: 'Checkout' },
     },
+});
+
+const SearchStack = createStackNavigator({
+    Search: {
+        screen: Search,
+        navigationOptions: { title: 'Search' },
+    }
 });
 
 const AccountStack = createStackNavigator({
@@ -94,73 +104,97 @@ const AccountStack = createStackNavigator({
     },
 });
 
-const AppNavigator = createBottomTabNavigator({
+const Tabs = createBottomTabNavigator({
     Home: HomeStack,
     Restaurant: RestaurantStack,
     Order: OrderStack,
+    Search: SearchStack,
     Account: AccountStack
 }, {
     initialRouteName: 'Home',
     defaultNavigationOptions: ({ navigation }) => ({
-            // tabBarIcon: () => {
-            tabBarIcon: ({ tintColor }) => {
-                const { routeName } = navigation.state;
 
-                let iconName;
-                let badgeCount;
-                if (routeName === 'Home') {
-                    //iconName = `ios-home`;
-                    iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-home`;
-                } else if (routeName === 'Restaurant') {
-                    //iconName = `ios-restaurant`;
-                    iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-restaurant`;
-                } else if (routeName === 'Order') {
-                    //iconName = `ios-cart`;
-                    iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-cart`;
-                    badgeCount = 0;
-                } else if (routeName === 'Account') {
-                    //iconName = `ios-person`;
-                    iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-person`;
-                }
+        tabBarIcon: ({ horizontal,tintColor }) => {
+            const { routeName } = navigation.state;
 
-                return ( <>
-                        <Ionicons name = { iconName }
-                        size = { 20 }
-                        color = { tintColor }
-                        /> {
-                        /* {badgeCount > 0 && (
-                                      <View
-                                        style={{
-                                          position: 'absolute',
-                                          right: 25,
-                                          top: -1,
-                                          backgroundColor: '#cf3838',
-                                          borderRadius: 6,
-                                          width: 12,
-                                          height: 12,
-                                          justifyContent: 'center',
-                                          alignItems: 'center',
-                                        }}
-                                      >
-                                        <Text style={{ color: 'white', fontSize: 10, fontWeight: 'bold' }}>
-                                          {badgeCount}
-                                        </Text>
-                                      </View>
-                                    )} */
-                    } </>
+            let iconName;
+            let badgeCount;
+            if (routeName === 'Home') {
+                //iconName = `ios-home`;
+                iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-home`;
+            } else if (routeName === 'Restaurant') {
+                //iconName = `ios-restaurant`;
+                iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-restaurant`;
+            } else if (routeName === 'Order') {
+                //iconName = `ios-cart`;
+                iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-cart`;
+                badgeCount = 0;
+            } else if (routeName === 'Search') {
+                //iconName = `ios-search`;
+                iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-search`;
+            }else if (routeName === 'Account') {
+                //iconName = `ios-person`;
+                iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-person`;
+            }
+
+            return (<>
+                <Ionicons name={iconName}
+                    size={horizontal ? 20 : 25}
+                    color={tintColor}
+                /> {
+                    /* {badgeCount > 0 && (
+                                  <View
+                                    style={{
+                                      position: 'absolute',
+                                      right: 25,
+                                      top: -1,
+                                      backgroundColor: '#cf3838',
+                                      borderRadius: 6,
+                                      width: 12,
+                                      height: 12,
+                                      justifyContent: 'center',
+                                      alignItems: 'center',
+                                    }}
+                                  >
+                                    <Text style={{ color: 'white', fontSize: 10, fontWeight: 'bold' }}>
+                                      {badgeCount}
+                                    </Text>
+                                  </View>
+                                )} */
+                } </>
             );
         },
+        tabBarComponent: (props) => <TabBar {...props} />,
         tabBarOptions: {
-            activeTintColor: '#cf3838',
-            inactiveTintColor: '#556',
+            tabFeatured: 'Order',
+            backgroundFeaturedIcon: '#Cf3838',
+            activeFeaturedTintColor: 'skyblue',
+            inactiveFeatureTintColor: 'white',
+            showLabel: false,
+            activeTintColor: '#Cf3838',
+            inactiveTintColor: '#E1E3DB',
+            style: {
+                height: 50,
+                backgroundColor: '#FFFFFF',
+                borderTopWidth: 1,
+                borderTopColor: '#F2F3EF'
+            },
         },
     }),
 });
 
 const SwitchNavigator = createSwitchNavigator({
-    Main: AppNavigator,
+    Main: Tabs,
     Login,
     AuthLoading
 });
 
-export default createAppContainer(SwitchNavigator);
+// export default createAppContainer(SwitchNavigator);
+export default createAppContainer(createDrawerNavigator(
+    {
+        Tabs: {
+            screen: SwitchNavigator
+        }
+    }
+
+));
