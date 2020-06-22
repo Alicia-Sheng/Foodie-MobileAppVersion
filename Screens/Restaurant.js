@@ -4,22 +4,22 @@ import { Button, StyleSheet, Text, View, TouchableOpacity, Image, ScrollView } f
 const Restaurant = ({ navigation }) => (
     <ScrollView>
       <View style={styles.container}>
-        <TouchableOpacity onPress={() => navigation.navigate('Sherman')}>
+        <TouchableOpacity style = {styles.touch} onPress={() => navigation.navigate('Sherman')}>
             <Image source = {require('../media/logo/Sherman.png')} style = {styles.logo} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Stein')}>
+        <TouchableOpacity style = {styles.touch} onPress={() => navigation.navigate('Stein')}>
             <Image source = {require('../media/logo/the-stein.png')} style = {styles.logo} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Dunkin')}>
+        <TouchableOpacity style = {styles.touch} onPress={() => navigation.navigate('Dunkin')}>
             <Image source = {require('../media/logo/dunkin-donuts.png')} style = {styles.logo} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Einstein')}>
+        <TouchableOpacity style = {styles.touch} onPress={() => navigation.navigate('Einstein')}>
             <Image source = {require('../media/logo/einstein-bagels.png')} style = {styles.logo} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Starbucks')}>
+        <TouchableOpacity style = {styles.touch} onPress={() => navigation.navigate('Starbucks')}>
             <Image source = {require('../media/logo/starbucks.jpg')} style = {styles.logo} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('AllRestaurant')}>
+        <TouchableOpacity style = {styles.touch} onPress={() => navigation.navigate('AllRestaurant')}>
             <Image source = {require('../media/logo/all-restaurants.jpg')} style = {styles.logo} />
         </TouchableOpacity>
       </View>
@@ -34,28 +34,38 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     touch: {
-        //flex: 1,
         margin: 10,
         alignItems: 'center',
         justifyContent: 'center',
         width: 300,
+        height: 300,
         padding: 10,
-        backgroundColor: '#ccc',
+        backgroundColor: '#FFFFFF',
         borderColor: 'white',
         borderWidth: 1,
-        borderRadius:15,
+        borderRadius:150,
+
+        shadowColor: '#999',
+        shadowOffset:{width:0,height:0},
+        shadowOpacity: 1,
+        shadowRadius: 2.5,
     },
     logo: {
         margin: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        width: 300,
-        height:300,
+        width: 200,
+        height:200,
         padding: 10,
-        backgroundColor: '#ccc',
+        backgroundColor: '#FFFFFF',
         borderColor: 'white',
         borderWidth: 1,
         borderRadius:150,
+
+        shadowColor: '#grey',
+        shadowOffset:{width:0,height:0},
+        shadowOpacity: 1,
+        shadowRadius: 2,
     }
 });
 export default Restaurant;
