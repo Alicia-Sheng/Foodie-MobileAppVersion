@@ -1,41 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FlatList, View, Text } from 'react-native';
 import styled from 'styled-components/native';
 import { Query } from 'react-apollo';
+import SearchBar from '../Components/Search/SearchBar';
 import ListingItem from '../Components/Listing/ListingItem'
 import Filters from '../Components/Listing/Filters';
 import { GET_PRODUCTS, GET_LIMIT } from '../constants';
 import data from '../assets/data.js';
 
-const Home = ({ navigation }) => (
+const Home = ({ navigation }) => {
 
-  <Query query={GET_LIMIT}>
-    {({ data }) => (
-      <>
-        {/* <Filters limit={parseInt(data.limit)} /> */}
-        <Query
-          query={GET_PRODUCTS}
+  const [term, setTerm] = useState('');  // search bar
+  
+  return (
+    <Query query={GET_LIMIT}>
+      {({ data }) => (
+        <>
+          {/* <Filters limit={parseInt(data.limit)} /> */}
+          <Query
+            query={GET_PRODUCTS}
           // variables={{ limit: parseInt(data.limit) }}
-        >
-          {({ loading, error, data }) => {
-            if (loading || error) {
-              return <Alert>{loading ? 'Loading...' : error.message}</Alert>;
-            }
-            return (
-              <ListingsWrapper>
-                {<Listings
-                  data={data.products}
-                  keyExtractor={item => String(item.id)}
-                  renderItem={({ item }) => <ListingItem item={item} navigation={navigation}/>}
-                />}
-              </ListingsWrapper>
-            );
-          }}
-        </Query>
-      </>
-    )}
-  </Query>
-);
+          >
+            {({ loading, error, data }) => {
+              if (loading || error) {
+                return <Alert>{loading ? 'Loading...' : error.message}</Alert>;
+              }
+              return (
+                <>
+                  <SearchBar
+                    term={term}
+                    onTermChange={newTerm => setTerm(newTerm)}
+                    onTermSubmit={() => searchApi(term)}
+                  />
+                  <ListingsWrapper>
+                    {<Listings
+                      data={data.products}
+                      keyExtractor={item => String(item.id)}
+                      renderItem={({ item }) => <ListingItem item={item} navigation={navigation} />}
+                    />}
+                  </ListingsWrapper>
+                </>
+              );
+            }}
+          </Query>
+        </>
+      )}
+    </Query>
+  )
+};
 
 const Alert = styled(Text)`
   width: 100%;
