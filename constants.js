@@ -10,7 +10,7 @@ export const GET_ORDER_TOTAL = gql `
 
 export const ADD_TO_ORDER = gql `
   mutation addToOrder($productId: ID!) {
-    addToOrder(input: { productId: $productId }) {
+    addToOrder(productId: $productId) {
       total
     }
   }
