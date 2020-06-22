@@ -31,7 +31,16 @@ const HomeStack = createStackNavigator({
         screen: Detail,
         navigationOptions: { title: 'Detail' },
     },
-});
+},{
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: 'white',
+                borderBottomColor: '#f7f7f7'
+            },
+            headerTintColor: 'black',
+        }
+}
+    );
 
 const RestaurantStack = createStackNavigator({
     Restaurant: {
@@ -103,7 +112,7 @@ const Tabs = createBottomTabNavigator({
     initialRouteName: 'Home',
     defaultNavigationOptions: ({ navigation }) => ({
 
-        tabBarIcon: ({ horizontal,tintColor }) => {
+        tabBarIcon: ({ horizontal, tintColor }) => {
             const { routeName } = navigation.state;
 
             let iconName;
@@ -121,14 +130,14 @@ const Tabs = createBottomTabNavigator({
             } else if (routeName === 'Search') {
                 //iconName = `ios-search`;
                 iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-search`;
-            }else if (routeName === 'Account') {
+            } else if (routeName === 'Account') {
                 //iconName = `ios-person`;
                 iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-person`;
             }
 
             return (<>
                 <Ionicons name={iconName}
-                    size={horizontal ? 20 : 25}
+                    size={horizontal ? 30 : 30}
                     color={tintColor}
                 /> {
                     /* {badgeCount > 0 && (
@@ -162,7 +171,7 @@ const Tabs = createBottomTabNavigator({
             activeTintColor: '#Cf3838',
             inactiveTintColor: '#E1E3DB',
             style: {
-                height: 50,
+                height: 60,
                 backgroundColor: '#FFFFFF',
                 borderTopWidth: 1,
                 borderTopColor: '#F2F3EF'
