@@ -31,16 +31,16 @@ const HomeStack = createStackNavigator({
         screen: Detail,
         navigationOptions: { title: 'Detail' },
     },
-},{
-        defaultNavigationOptions: {
-            headerStyle: {
-                backgroundColor: 'white',
-                borderBottomColor: '#f7f7f7'
-            },
-            headerTintColor: 'black',
-        }
+}, {
+    defaultNavigationOptions: {
+        headerStyle: {
+            backgroundColor: 'white',
+            borderBottomColor: '#f7f7f7'
+        },
+        headerTintColor: 'black',
+    }
 }
-    );
+);
 
 const RestaurantStack = createStackNavigator({
     Restaurant: {
@@ -127,46 +127,42 @@ const Tabs = createBottomTabNavigator({
                 //iconName = `ios-cart`;
                 iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-cart`;
                 badgeCount = 0;
-            } else if (routeName === 'Search') {
-                //iconName = `ios-search`;
-                iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-search`;
             } else if (routeName === 'Account') {
                 //iconName = `ios-person`;
                 iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-person`;
             }
 
-            return (<>
-                <Ionicons name={iconName}
-                    size={horizontal ? 30 : 30}
-                    color={tintColor}
-                /> {
-                    /* {badgeCount > 0 && (
-                                  <View
-                                    style={{
-                                      position: 'absolute',
-                                      right: 25,
-                                      top: -1,
-                                      backgroundColor: '#cf3838',
-                                      borderRadius: 6,
-                                      width: 12,
-                                      height: 12,
-                                      justifyContent: 'center',
-                                      alignItems: 'center',
-                                    }}
-                                  >
-                                    <Text style={{ color: 'white', fontSize: 10, fontWeight: 'bold' }}>
-                                      {badgeCount}
-                                    </Text>
-                                  </View>
-                                )} */
-                } </>
+            return (
+                <>
+                    <Ionicons name={iconName}
+                        size={horizontal ? 30 : 30}
+                        color={tintColor}
+                    />
+                    {badgeCount > 0 && (
+                        <View
+                            style={{
+                                position: 'absolute',
+                                right: 25,
+                                top: -1,
+                                backgroundColor: '#cf3838',
+                                borderRadius: 6,
+                                width: 12,
+                                height: 12,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                            }}
+                        >
+                            <Text style={{ color: 'white', fontSize: 10, fontWeight: 'bold' }}>
+                                {badgeCount}
+                            </Text>
+                        </View>
+                    )}
+                </>
             );
         },
         tabBarOptions: {
             tabFeatured: 'Order',
             backgroundFeaturedIcon: '#Cf3838',
-            activeFeaturedTintColor: 'skyblue',
-            inactiveFeatureTintColor: 'white',
             showLabel: false,
             activeTintColor: '#Cf3838',
             inactiveTintColor: '#E1E3DB',
