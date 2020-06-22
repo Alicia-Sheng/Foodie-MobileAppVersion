@@ -8,7 +8,7 @@ const ListingItemWrapper = styled(TouchableOpacity)`
 display: flex;
 flex-direction: row;
 padding: 2%;
-background-color: #eee;
+background-color: #fcfbfa;
 border-radius: 5px;
 margin-bottom: 5%;
 `;
@@ -33,15 +33,15 @@ color: black;
 const Thumbnail = styled(Image)`
 border-radius: 5px;
 margin-right: 4%;
-height: 100px;
-width: 100px;
+height: 150px;
+width: 150px;
 `
 
 const ListingItem = ({ item, navigation }) => (
   <ListingItemWrapper onPress={() => navigation.navigate('Detail', {
     item
   })}>
-    <Thumbnail source={{ uri: item.thumbnail }} width={200} />
+    <Thumbnail source={{ uri: item.thumbnail }} />
     <View style={styles.text}>
       <Title>{item.name}</Title>
       <Location>{item.location}</Location>

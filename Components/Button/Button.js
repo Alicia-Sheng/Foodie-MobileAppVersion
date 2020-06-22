@@ -7,7 +7,7 @@ const ButtonWrapper = styled(TouchableOpacity)`
   align-items: center;
   justify-content: space-around;
   border-radius: ${({ radius }) => (radius ? radius : '30px')};
-  width: ${({ width }) => (width ? width : '20%')};
+  width: ${({ width }) => (width ? width : '25%')};
   height: ${({ height }) => (height ? height : '')};
   background-color: ${({ color }) => (color ? color : '#cf3838')};
 `;
@@ -15,7 +15,7 @@ const ButtonWrapper = styled(TouchableOpacity)`
 const ButtonText = styled(Text)`
   color: white;
   font-size: 18px;
-  line-height: 35px
+  line-height: 30px
 `;
 
 const Button = ({ title, color, onPress, ...props}) => (
