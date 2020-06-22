@@ -4,13 +4,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { createDrawerNavigator } from 'react-navigation-drawer';
 import Home from './Screens/Home';
 import Detail from './Screens/Detail';
 import Restaurant from './Screens/Restaurant';
 import Order from './Screens/Order';
 import Checkout from './Screens/Checkout';
-import Search from './Screens/Search';
 import Account from './Screens/Account/Account';
 import Profile from './Screens/Account/Profile';
 import MyOrders from './Screens/Account/MyOrders';
@@ -23,7 +21,6 @@ import Starbucks from './Screens/Menu/Starbucks';
 import AllRestaurant from './Screens/Menu/AllRestaurants';
 import Login from './Screens/Login';
 import AuthLoading from './Screens/Login';
-import TabBar from './Components/TabBar/TabBar';
 
 const HomeStack = createStackNavigator({
     Home: {
@@ -78,13 +75,6 @@ const OrderStack = createStackNavigator({
     },
 });
 
-const SearchStack = createStackNavigator({
-    Search: {
-        screen: Search,
-        navigationOptions: { title: 'Search' },
-    }
-});
-
 const AccountStack = createStackNavigator({
     Account: {
         screen: Account,
@@ -108,7 +98,6 @@ const Tabs = createBottomTabNavigator({
     Home: HomeStack,
     Restaurant: RestaurantStack,
     Order: OrderStack,
-    Search: SearchStack,
     Account: AccountStack
 }, {
     initialRouteName: 'Home',
@@ -164,7 +153,6 @@ const Tabs = createBottomTabNavigator({
                 } </>
             );
         },
-        tabBarComponent: (props) => <TabBar {...props} />,
         tabBarOptions: {
             tabFeatured: 'Order',
             backgroundFeaturedIcon: '#Cf3838',
@@ -189,12 +177,4 @@ const SwitchNavigator = createSwitchNavigator({
     AuthLoading
 });
 
-// export default createAppContainer(SwitchNavigator);
-export default createAppContainer(createDrawerNavigator(
-    {
-        Tabs: {
-            screen: SwitchNavigator
-        }
-    }
-
-));
+export default createAppContainer(SwitchNavigator);
