@@ -26,9 +26,10 @@ const Detail = ({ navigation }) => {
         rating={3}
         disabled={false}
         starSize={15}
-        onStarChange={(value) => this.onStarRatingPress(value)}
+        onStarChange={(value) => onStarRatingPress(value)}
+        style = {{marginTop: 10}}
       />
-      
+
       <TextInput
         style = {{
           height:100,
@@ -56,6 +57,10 @@ const Detail = ({ navigation }) => {
   );
     {/* return <ListingDetail item={item} />;*/}
 };
+
+const onStarRatingPress = ({value}) =>{
+  console.log('Rated' + value + 'stars!');
+}
 
 const styles = StyleSheet.create({
   container: {

@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 
 export default class StarRating extends Component {
-  /*
+/*
   static propTypes = {
     maxStars: React.PropTypes.number,
     rating: React.PropTypes.number,
@@ -14,6 +14,7 @@ export default class StarRating extends Component {
     starSize: React.PropTypes.number,
   };
   */
+
 
   static defaultProps = {
     disabled: true,
@@ -33,9 +34,7 @@ export default class StarRating extends Component {
   pressStarButton (rating) {
     if (!this.props.disabled) {
       if (rating != this.state.rating) {
-        if (this.props.onStarChange) {
-          this.props.onStarChange(rating);
-        }
+
         this.setState({
           rating: rating,
         });
@@ -67,13 +66,14 @@ export default class StarRating extends Component {
   }
 }
 
+
 const styles = StyleSheet.create({
   starRatingContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   selectedColor: {
-    color:'#FF4946'
+    color:'orange'
   },
   unSelectedColor:{
     color:'#999999'
