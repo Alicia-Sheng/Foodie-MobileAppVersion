@@ -1,105 +1,111 @@
 import React, { Component } from 'react';
-import { ImageBackground, StyleSheet, Text, View, Image, AsyncStorage } from 'react-native';
+import { ImageBackground, StyleSheet, Text, View, Image, AsyncStorage, SafeAreaView, ScrollView } from 'react-native';
 import { Icon, ListItem } from 'react-native-elements'
 import user from '../../assets/userInfo'
 
 class Account extends Component {
   render() {
     return (
-      <View style={styles.headerContainer}>
-        <ImageBackground
-          style={styles.headerBackgroundImage}
-          blurRadius={10}
-          source={user.bcg}
+      <ScrollView>
+        <SafeAreaView
+          forceInset={{ top: 'always', horizontal: 'never' }}
         >
-          <View style={styles.headerColumn}>
-            <Image
-              style={styles.userImage}
-              source={user.img}
-            />
-            <Text style={styles.userNameText}>{user.username}</Text>
+          <View style={styles.headerContainer}>
+            <ImageBackground
+              style={styles.headerBackgroundImage}
+              blurRadius={10}
+              source={user.bcg}
+            >
+              <View style={styles.headerColumn}>
+                <Image
+                  style={styles.userImage}
+                  source={user.img}
+                />
+                <Text style={styles.userNameText}>{user.username}</Text>
+              </View>
+
+              {/* Link to Profile */}
+              <ListItem
+                title="Profile"
+                onPress={() => {
+                  this.props.navigation.navigate('Profile');
+                  this.props.navigation.closeDrawer();
+                }}
+                containerStyle={styles.listItemContainer}
+                leftIcon={<Icon
+                  name="account-circle"
+                />}
+              // rightIcon={<Icon
+              //   name="chevron-right"
+              //   type="entypo"
+              //   color="gray"
+              //   containerStyle={{ marginLeft: -15, width: 20 }}
+              // />}
+              />
+
+              {/* Link to Orders */}
+              <ListItem
+                title="Orders"
+                onPress={() => {
+                  this.props.navigation.navigate('MyOrders');
+                  this.props.navigation.closeDrawer();
+                }}
+                containerStyle={styles.listItemContainer}
+                leftIcon={<Icon
+                  name="shopping-cart"
+                />}
+              // rightIcon={<Icon
+              //   name="chevron-right"
+              //   type="entypo"
+              //   color="gray"
+              //   containerStyle={{ marginLeft: -15, width: 20 }}
+              // />}
+              />
+
+              {/* Link to Reviews */}
+              <ListItem
+                title="Reviews"
+                onPress={() => {
+                  this.props.navigation.navigate('MyReviews');
+                  this.props.navigation.closeDrawer();
+                }}
+                containerStyle={styles.listItemContainer}
+                leftIcon={<Icon
+                  name="rate-review"
+                />}
+              // rightIcon={<Icon
+              //   name="chevron-right"
+              //   type="entypo"
+              //   color="gray"
+              //   containerStyle={{ marginLeft: -15, width: 20 }}
+              // />}
+              />
+
+              {/* Log out */}
+              <ListItem
+                title="Log Out"
+                onPress={
+                  () => {
+                    AsyncStorage.removeItem('token').then(() =>
+                      this.props.navigation.navigate('AuthLoading'),
+                    );
+                  }
+                }
+                containerStyle={styles.listItemContainer}
+                leftIcon={<Icon
+                  name="settings"
+                />}
+              // rightIcon={<Icon
+              //   name="chevron-right"
+              //   type="entypo"
+              //   color="gray"
+              //   containerStyle={{ marginLeft: -15, width: 20 }}
+              // />}
+              />
+            </ImageBackground>
           </View>
-
-          {/* Link to Profile */}
-          <ListItem
-            title="Profile"
-            onPress={() => {
-              this.props.navigation.navigate('Profile');
-              this.props.navigation.closeDrawer();
-            }}
-            containerStyle={styles.listItemContainer}
-            leftIcon={<Icon
-              name="account-circle"
-            />}
-          // rightIcon={<Icon
-          //   name="chevron-right"
-          //   type="entypo"
-          //   color="gray"
-          //   containerStyle={{ marginLeft: -15, width: 20 }}
-          // />}
-          />
-
-          {/* Link to Orders */}
-          <ListItem
-            title="Orders"
-            onPress={() => {
-              this.props.navigation.navigate('MyOrders');
-              this.props.navigation.closeDrawer();
-            }}
-            containerStyle={styles.listItemContainer}
-            leftIcon={<Icon
-              name="shopping-cart"
-            />}
-          // rightIcon={<Icon
-          //   name="chevron-right"
-          //   type="entypo"
-          //   color="gray"
-          //   containerStyle={{ marginLeft: -15, width: 20 }}
-          // />}
-          />
-
-          {/* Link to Reviews */}
-          <ListItem
-            title="Reviews"
-            onPress={() => {
-              this.props.navigation.navigate('MyReviews');
-              this.props.navigation.closeDrawer();
-            }}
-            containerStyle={styles.listItemContainer}
-            leftIcon={<Icon
-              name="rate-review"
-            />}
-          // rightIcon={<Icon
-          //   name="chevron-right"
-          //   type="entypo"
-          //   color="gray"
-          //   containerStyle={{ marginLeft: -15, width: 20 }}
-          // />}
-          />
-
-          {/* Log out */}
-          <ListItem
-            title="Log Out"
-            onPress={
-              () => {
-                AsyncStorage.removeItem('token').then(() =>
-                  this.props.navigation.navigate('AuthLoading'),
-                );
-              }
-            }
-            containerStyle={styles.listItemContainer}
-            leftIcon={<Icon
-              name="settings"
-            />}
-          // rightIcon={<Icon
-          //   name="chevron-right"
-          //   type="entypo"
-          //   color="gray"
-          //   containerStyle={{ marginLeft: -15, width: 20 }}
-          // />}
-          />
-        </ImageBackground>
-      </View>
+        </SafeAreaView>
+      </ScrollView>
     )
   }
 }

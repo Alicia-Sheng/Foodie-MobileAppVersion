@@ -1,9 +1,8 @@
 import React from 'react';
-import { Platform, View, Text, ImageBackground, StyleSheet, Image, AsyncStorage, Settings } from 'react-native';
+import { Platform, View, Text } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
-import { Icon, ListItem } from 'react-native-elements'
-import { createSwitchNavigator, createAppContainer, SafeAreaView } from 'react-navigation';
+import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
@@ -202,17 +201,7 @@ const SideMenu = createDrawerNavigator(
   {
     initialRouteName: 'Tabs',
     drawerPosition: 'right',
-    contentComponent: props => {
-      return (
-        <ScrollView>
-          <SafeAreaView
-            forceInset={{ top: 'always', horizontal: 'never' }}
-          >
-            <Account {...props} />
-          </SafeAreaView>
-        </ScrollView>
-      )
-    }
+    contentComponent: props => <Account {...props} />
   }
 );
 
