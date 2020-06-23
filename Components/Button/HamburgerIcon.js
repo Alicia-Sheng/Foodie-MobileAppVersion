@@ -10,9 +10,10 @@ class HamburgerIcon extends Component {
     return (
       <TouchableOpacity
         style={{
-          width: 44,
-          height: 44,
-          marginLeft: 20
+          width: 60,
+          height: 60,
+          marginleft: 10,
+          marginTop: 20
         }}
         onPress={() => {
           this.props.navigation.dispatch(DrawerActions.openDrawer())
