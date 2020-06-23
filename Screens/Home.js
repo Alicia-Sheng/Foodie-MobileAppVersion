@@ -34,10 +34,6 @@ const Home = ({ navigation }) => {
                   />
                   <ListingsWrapper>
                     {<Listings
-                      horizontal
-                      pagingEnabled
-                      showsHorizontalScrollIndicator={false}
-                      legacyImplementation={false}
                       data={data.products}
                       keyExtractor={item => String(item.id)}
                       renderItem={({ item }) => <ListingItem item={item} navigation={navigation} />}

@@ -11,9 +11,6 @@ const AddToOrderButton = ({ productId }) => (
     {addToOrder => (
       <Button title="+"
         onPress={() => addToOrder({ variables: { productId: productId } })}
-        position='absolute'
-        top='200px'
-        right='20px'
       />
     )}
   </Mutation>

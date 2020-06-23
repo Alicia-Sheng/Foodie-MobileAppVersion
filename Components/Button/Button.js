@@ -10,15 +10,12 @@ const ButtonWrapper = styled(TouchableOpacity)`
   width: ${({ width }) => (width ? width : '40px')};
   height: ${({ height }) => (height ? height : '')};
   background-color: ${({ color }) => (color ? color : '#cf3838')};
-  position: ${({ position }) => (position ? position : 'relative')};
-  top: ${({ top }) => (top ? top : '')};
-  right: ${({ right }) => (right ? right : '')};
 `;
 
 const ButtonText = styled(Text)`
   color: white;
-  font-size: 20px;
-  line-height: 40px
+  font-size: 18px;
+  line-height: 35px
 `;
 
 const Button = ({ title, color, onPress, ...props}) => (
