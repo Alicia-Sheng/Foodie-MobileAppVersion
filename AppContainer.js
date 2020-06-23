@@ -47,7 +47,7 @@ const HomeStack = createStackNavigator(
       headerTintColor: 'black',
       headerShown: true,
       cardStyle: { backgroundColor: 'white' },
-      headerLeft: () => <HamburgerIcon />
+      headerRight: () => <HamburgerIcon />
     },
   }
 );
@@ -92,7 +92,7 @@ const RestaurantStack = createStackNavigator(
       headerTintColor: 'black',
       headerShown: true,
       cardStyle: { backgroundColor: 'white' },
-      headerLeft: () => <HamburgerIcon />
+      headerRight: () => <HamburgerIcon />
     },
   });
 
@@ -116,7 +116,7 @@ const OrderStack = createStackNavigator(
       headerTintColor: 'black',
       headerShown: true,
       cardStyle: { backgroundColor: 'white' },
-      headerLeft: () => <HamburgerIcon />
+      headerRight: () => <HamburgerIcon />
     },
   }
 );
@@ -200,6 +200,7 @@ const HamburgerNavigation = createDrawerNavigator(
   },
   {
     initialRouteName: 'Tabs',
+    drawerPosition: 'right',
     contentComponent: props => {
       return (
         <ScrollView>
@@ -231,12 +232,12 @@ const HamburgerNavigation = createDrawerNavigator(
                   leftIcon={<Icon
                     name="account-circle"
                   />}
-                  rightIcon={<Icon
-                    name="chevron-right"
-                    type="entypo"
-                    color="gray"
-                    containerStyle={{ marginLeft: -15, width: 20 }}
-                  />}
+                // rightIcon={<Icon
+                //   name="chevron-right"
+                //   type="entypo"
+                //   color="gray"
+                //   containerStyle={{ marginLeft: -15, width: 20 }}
+                // />}
                 />
 
                 {/* Link to Orders */}
@@ -250,12 +251,12 @@ const HamburgerNavigation = createDrawerNavigator(
                   leftIcon={<Icon
                     name="shopping-cart"
                   />}
-                  rightIcon={<Icon
-                    name="chevron-right"
-                    type="entypo"
-                    color="gray"
-                    containerStyle={{ marginLeft: -15, width: 20 }}
-                  />}
+                // rightIcon={<Icon
+                //   name="chevron-right"
+                //   type="entypo"
+                //   color="gray"
+                //   containerStyle={{ marginLeft: -15, width: 20 }}
+                // />}
                 />
 
                 {/* Link to Reviews */}
@@ -269,12 +270,12 @@ const HamburgerNavigation = createDrawerNavigator(
                   leftIcon={<Icon
                     name="rate-review"
                   />}
-                  rightIcon={<Icon
-                    name="chevron-right"
-                    type="entypo"
-                    color="gray"
-                    containerStyle={{ marginLeft: -15, width: 20 }}
-                  />}
+                // rightIcon={<Icon
+                //   name="chevron-right"
+                //   type="entypo"
+                //   color="gray"
+                //   containerStyle={{ marginLeft: -15, width: 20 }}
+                // />}
                 />
 
                 {/* Log out */}
@@ -291,12 +292,12 @@ const HamburgerNavigation = createDrawerNavigator(
                   leftIcon={<Icon
                     name="settings"
                   />}
-                  rightIcon={<Icon
-                    name="chevron-right"
-                    type="entypo"
-                    color="gray"
-                    containerStyle={{ marginLeft: -15, width: 20 }}
-                  />}
+                // rightIcon={<Icon
+                //   name="chevron-right"
+                //   type="entypo"
+                //   color="gray"
+                //   containerStyle={{ marginLeft: -15, width: 20 }}
+                // />}
                 />
               </ImageBackground>
             </View>
