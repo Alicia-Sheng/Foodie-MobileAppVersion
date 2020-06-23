@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, Text, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 import { Query } from 'react-apollo';
 import SearchBar from '../Components/Search/SearchBar';
 import ListingItem from '../Components/Listing/ListingItem'
 import Filters from '../Components/Listing/Filters';
 import { GET_PRODUCTS, GET_LIMIT } from '../constants';
+import Carousel from 'react-native-snap-carousel';
 import data from '../assets/data.js';
 
 const Home = ({ navigation }) => {
 
   const [term, setTerm] = useState('');  // search bar
+  const { width: screenWidth } = Dimensions.get('window')
   
   return (
     <Query query={GET_LIMIT}>
@@ -33,12 +35,17 @@ const Home = ({ navigation }) => {
                     onTermSubmit={() => searchApi(term)}
                   />
                   <ListingsWrapper>
-                    {<Listings
+                    <Carousel
+                      sliderWidth={screenWidth}
+                      itemWidth={screenWidth * 0.7}
+                      inactiveSlideShift={0}
+                      useScrollView={true}
                       data={data.products}
                       keyExtractor={item => String(item.id)}
                       renderItem={({ item }) => <ListingItem item={item} navigation={navigation} />}
-                    />}
+                    />
                   </ListingsWrapper>
+                  
                 </>
               );
             }}

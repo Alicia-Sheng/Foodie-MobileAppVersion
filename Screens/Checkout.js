@@ -27,9 +27,9 @@ const Checkout = () => {
 
     return (
         <CheckoutWrapper>
-            {(loading || error) && (
+            {(loading || error) ? (
                 <Alert>{loading ? 'Loading...' : error.message}</Alert>
-            )}
+            ):null}
             {data && data.completeOrder.complete ? (
                 <Text>Thank you for your order!</Text>
             ) : (
