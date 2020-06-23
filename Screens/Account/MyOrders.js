@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { ScrollView, StyleSheet, View, Alert } from 'react-native';
 import { Icon, ListItem } from 'react-native-elements'
 import user from '../../assets/userInfo'
+import BackButton from '../../Components/Button/BackButton'
 
 const Orders = () => {
   return user.orders.map((order) => {
@@ -24,14 +25,24 @@ const Orders = () => {
   })
 }
 
-const MyOrders = ({ navigation }) => {
-  return (
-    <ScrollView style={styles.scroll}>
-      <View style={styles.headerContainer}>
-        <Orders />
-      </View>
-    </ScrollView>
-  )
+// const MyOrders = ({ navigation }) => {
+class MyOrders extends Component {
+
+  static navigationOptions = () => {
+    return {
+      headerLeft: () => <BackButton />
+    };
+  };
+
+  render() {
+    return (
+      <ScrollView style={styles.scroll}>
+        <View style={styles.headerContainer}>
+          <Orders />
+        </View>
+      </ScrollView>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
@@ -44,6 +55,5 @@ const styles = StyleSheet.create({
     borderColor: '#ECECEC',
   },
 });
-
 
 export default MyOrders;

@@ -3,7 +3,10 @@ import { ImageBackground, ScrollView, StyleSheet, Text, View, Image, AsyncStorag
 import { Icon, ListItem } from 'react-native-elements'
 import user from '../../assets/userInfo'
 
-const Settings = ({ navigation }) => {
+// const Account = ({ navigation }) => {
+const Account = props => {
+  const { navigate } = props.navigation;
+
   return (
     <ScrollView style={styles.scroll}>
       <View style={styles.headerContainer}>
@@ -23,7 +26,7 @@ const Settings = ({ navigation }) => {
           {/* Link to Profile */}
           <ListItem
             title="Profile"
-            onPress={() => { navigation.navigate('Profile') }}
+            onPress={() => { navigate('Profile') }}
             containerStyle={styles.listItemContainer}
             leftIcon={<Icon
               name="account-circle"
@@ -39,7 +42,7 @@ const Settings = ({ navigation }) => {
           {/* Link to Orders */}
           <ListItem
             title="Orders"
-            onPress={() => { navigation.navigate('MyOrders') }}
+            onPress={() => { navigate('MyOrders') }}
             containerStyle={styles.listItemContainer}
             leftIcon={<Icon
               name="shopping-cart"
@@ -55,7 +58,7 @@ const Settings = ({ navigation }) => {
           {/* Link to Reviews */}
           <ListItem
             title="Reviews"
-            onPress={() => { navigation.navigate('MyReviews') }}
+            onPress={() => { navigate('MyReviews') }}
             containerStyle={styles.listItemContainer}
             leftIcon={<Icon
               name="rate-review"
@@ -74,13 +77,13 @@ const Settings = ({ navigation }) => {
             onPress={
               () => {
                 AsyncStorage.removeItem('token').then(() =>
-                  navigation.navigate('AuthLoading'),
+                  navigate('AuthLoading'),
                 );
               }
             }
             containerStyle={styles.listItemContainer}
             leftIcon={<Icon
-              name="settings"
+              name="logout"
             />}
             rightIcon={<Icon
               name="chevron-right"
@@ -132,4 +135,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Settings;
+export default Account;
