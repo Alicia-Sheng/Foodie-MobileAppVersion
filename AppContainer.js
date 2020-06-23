@@ -27,141 +27,172 @@ import HamburgerIcon from './Components/Button/HamburgerIcon';
 import user from './assets/userInfo';
 
 
-const HomeStack = createStackNavigator({
-  Home: {
-    screen: Home,
-    navigationOptions: { title: 'Home' },
-  },
-  Detail: {
-    screen: Detail,
-    navigationOptions: { title: 'Detail' },
-  },
-}, {
-  defaultNavigationOptions: {
-    headerStyle: {
-      backgroundColor: 'white',
-      borderBottomColor: '#f7f7f7'
+const HomeStack = createStackNavigator(
+  {
+    Home: {
+      screen: Home,
+      navigationOptions: { title: 'Home' },
     },
-    headerTintColor: 'black',
-    headerShown: true,
-    cardStyle: { backgroundColor: 'white' },
-    headerLeft: () => <HamburgerIcon />
+    Detail: {
+      screen: Detail,
+      navigationOptions: { title: 'Detail' },
+    },
   },
-}
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: 'white',
+        borderBottomColor: '#f7f7f7'
+      },
+      headerTintColor: 'black',
+      headerShown: true,
+      cardStyle: { backgroundColor: 'white' },
+      headerLeft: () => <HamburgerIcon />
+    },
+  }
 );
 
-const RestaurantStack = createStackNavigator({
-  Restaurant: {
-    screen: Restaurant,
-    navigationOptions: { title: 'Restaurant' },
-  },
-  Sherman: {
-    screen: Sherman,
-    navigationOptions: { title: 'Sherman Dining Hall' },
-  },
-  Stein: {
-    screen: Stein,
-    navigationOptions: { title: "The Stein" },
-  },
-  Dunkin: {
-    screen: Dunkin,
-    navigationOptions: { title: "Dunkin Donuts" },
-  },
-  Einstein: {
-    screen: Einstein,
-    navigationOptions: { title: "Einstein Bros. Bagels" },
-  },
-  Starbucks: {
-    screen: Starbucks,
-    navigationOptions: { title: "Starbucks Farber" },
-  },
-  AllRestaurant: {
-    screen: AllRestaurant,
-    navigationOptions: { title: "All Restaurants" },
-  },
-});
-
-const OrderStack = createStackNavigator({
-  Order: {
-    screen: Order,
-    navigationOptions: { title: 'Order' },
-  },
-  Checkout: {
-    screen: Checkout,
-    navigationOptions: { title: 'Checkout' },
-  },
-});
-
-const Tabs = createBottomTabNavigator({
-  Home: HomeStack,
-  Restaurant: RestaurantStack,
-  Order: OrderStack
-}, {
-  initialRouteName: 'Home',
-  defaultNavigationOptions: ({ navigation }) => ({
-
-    tabBarIcon: ({ horizontal, tintColor }) => {
-      const { routeName } = navigation.state;
-
-      let iconName;
-      let badgeCount;
-      if (routeName === 'Home') {
-        //iconName = `ios-home`;
-        iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-home`;
-      } else if (routeName === 'Restaurant') {
-        //iconName = `ios-restaurant`;
-        iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-restaurant`;
-      } else if (routeName === 'Order') {
-        //iconName = `ios-cart`;
-        iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-cart`;
-        badgeCount = 0;
-      }
-
-      return (
-        <>
-          <Ionicons name={iconName}
-            size={horizontal ? 30 : 30}
-            color={tintColor}
-          />
-          {badgeCount > 0 && (
-            <View
-              style={{
-                position: 'absolute',
-                right: 25,
-                top: -1,
-                backgroundColor: '#cf3838',
-                borderRadius: 6,
-                width: 12,
-                height: 12,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <Text style={{ color: 'white', fontSize: 10, fontWeight: 'bold' }}>
-                {badgeCount}
-              </Text>
-            </View>
-          )}
-        </>
-      );
+const RestaurantStack = createStackNavigator(
+  {
+    Restaurant: {
+      screen: Restaurant,
+      navigationOptions: { title: 'Restaurant' },
     },
-    tabBarOptions: {
-      tabFeatured: 'Order',
-      backgroundFeaturedIcon: '#Cf3838',
-      showLabel: false,
-      activeTintColor: '#Cf3838',
-      inactiveTintColor: '#E1E3DB',
-      style: {
-        paddingTop: 10,
-        paddingBottom: 10,
-        height: 45,
-        backgroundColor: '#FFFFFF',
-        borderTopWidth: 1,
-        borderTopColor: '#F2F3EF'
+    Sherman: {
+      screen: Sherman,
+      navigationOptions: { title: 'Sherman Dining Hall' },
+    },
+    Stein: {
+      screen: Stein,
+      navigationOptions: { title: "The Stein" },
+    },
+    Dunkin: {
+      screen: Dunkin,
+      navigationOptions: { title: "Dunkin Donuts" },
+    },
+    Einstein: {
+      screen: Einstein,
+      navigationOptions: { title: "Einstein Bros. Bagels" },
+    },
+    Starbucks: {
+      screen: Starbucks,
+      navigationOptions: { title: "Starbucks Farber" },
+    },
+    AllRestaurant: {
+      screen: AllRestaurant,
+      navigationOptions: { title: "All Restaurants" },
+    },
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: 'white',
+        borderBottomColor: '#f7f7f7'
       },
+      headerTintColor: 'black',
+      headerShown: true,
+      cardStyle: { backgroundColor: 'white' },
+      headerLeft: () => <HamburgerIcon />
     },
-  }),
-});
+  });
+
+const OrderStack = createStackNavigator(
+  {
+    Order: {
+      screen: Order,
+      navigationOptions: { title: 'Order' },
+    },
+    Checkout: {
+      screen: Checkout,
+      navigationOptions: { title: 'Checkout' },
+    },
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: 'white',
+        borderBottomColor: '#f7f7f7'
+      },
+      headerTintColor: 'black',
+      headerShown: true,
+      cardStyle: { backgroundColor: 'white' },
+      headerLeft: () => <HamburgerIcon />
+    },
+  }
+);
+
+const Tabs = createBottomTabNavigator(
+  {
+    Home: HomeStack,
+    Restaurant: RestaurantStack,
+    Order: OrderStack
+  },
+  {
+    initialRouteName: 'Home',
+    defaultNavigationOptions: ({ navigation }) => ({
+
+      tabBarIcon: ({ horizontal, tintColor }) => {
+        const { routeName } = navigation.state;
+
+        let iconName;
+        let badgeCount;
+        if (routeName === 'Home') {
+          //iconName = `ios-home`;
+          iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-home`;
+        } else if (routeName === 'Restaurant') {
+          //iconName = `ios-restaurant`;
+          iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-restaurant`;
+        } else if (routeName === 'Order') {
+          //iconName = `ios-cart`;
+          iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-cart`;
+          badgeCount = 0;
+        }
+
+        return (
+          <>
+            <Ionicons name={iconName}
+              size={horizontal ? 30 : 30}
+              color={tintColor}
+            />
+            {badgeCount > 0 && (
+              <View
+                style={{
+                  position: 'absolute',
+                  right: 25,
+                  top: -1,
+                  backgroundColor: '#cf3838',
+                  borderRadius: 6,
+                  width: 12,
+                  height: 12,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <Text style={{ color: 'white', fontSize: 10, fontWeight: 'bold' }}>
+                  {badgeCount}
+                </Text>
+              </View>
+            )}
+          </>
+        );
+      },
+      tabBarOptions: {
+        tabFeatured: 'Order',
+        backgroundFeaturedIcon: '#Cf3838',
+        showLabel: false,
+        activeTintColor: '#Cf3838',
+        inactiveTintColor: '#E1E3DB',
+        style: {
+          paddingTop: 10,
+          paddingBottom: 10,
+          height: 45,
+          backgroundColor: '#FFFFFF',
+          borderTopWidth: 1,
+          borderTopColor: '#F2F3EF'
+        },
+      },
+    }),
+  });
 
 const HamburgerNavigation = createDrawerNavigator(
   {
