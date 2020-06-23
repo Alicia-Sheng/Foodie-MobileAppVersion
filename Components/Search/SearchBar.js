@@ -10,7 +10,7 @@ const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
                 style={style.inputStyles}
                 autoCapitalize="none"
                 autoCorrect={false}
-                placeholder="Search"
+                placeholder="Search food or restaurants..."
                 value={term}
                 onChangeText={onTermChange}
                 onEndEditing={onTermSubmit}
@@ -23,8 +23,7 @@ const style = StyleSheet.create({
     backgroundStyle: {
         marginTop: 10,
         marginBottom: 10,
-        // backgroundColor: 'f5f5f5',
-        backgroundColor: '#fcfcfc',
+        backgroundColor: '#fafafa',
         height: 50,
         borderRadius: 20,
         marginHorizontal: 15,
@@ -35,7 +34,7 @@ const style = StyleSheet.create({
         flex: 1
     },
     iconStyle: {
-        fontSize: 30,
+        fontSize: 25,
         alignSelf: 'center',
         marginHorizontal: 10
     }

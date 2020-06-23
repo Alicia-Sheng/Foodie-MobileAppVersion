@@ -38,6 +38,8 @@ const HomeStack = createStackNavigator({
             borderBottomColor: '#f7f7f7'
         },
         headerTintColor: 'black',
+        // headerShown: false,
+        cardStyle: { backgroundColor: 'white' }
     }
 }
 );
@@ -167,8 +169,9 @@ const Tabs = createBottomTabNavigator({
             activeTintColor: '#Cf3838',
             inactiveTintColor: '#E1E3DB',
             style: {
-                padding: 10,
-                height: 40,
+                paddingTop: 10,
+                paddingBottom: 10,
+                height: 45,
                 backgroundColor: '#FFFFFF',
                 borderTopWidth: 1,
                 borderTopColor: '#F2F3EF'
