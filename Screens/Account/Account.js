@@ -1,14 +1,12 @@
-import React from 'react';
-import { ImageBackground, ScrollView, StyleSheet, Text, View, Image, AsyncStorage } from 'react-native';
+import React, { Component } from 'react';
+import { ImageBackground, StyleSheet, Text, View, Image, AsyncStorage } from 'react-native';
 import { Icon, ListItem } from 'react-native-elements'
 import user from '../../assets/userInfo'
 
-// const Account = ({ navigation }) => {
-const Account = props => {
-  const { navigate } = props.navigation;
-
-  return (
-    <ScrollView style={styles.scroll}>
+// const Account = () => {
+class Account extends Component {
+  render() {
+    return (
       <View style={styles.headerContainer}>
         <ImageBackground
           style={styles.headerBackgroundImage}
@@ -26,82 +24,88 @@ const Account = props => {
           {/* Link to Profile */}
           <ListItem
             title="Profile"
-            onPress={() => { navigate('Profile') }}
+            onPress={() => {
+              this.props.navigation.navigate('Profile');
+              this.props.navigation.closeDrawer();
+            }}
             containerStyle={styles.listItemContainer}
             leftIcon={<Icon
               name="account-circle"
             />}
-            rightIcon={<Icon
-              name="chevron-right"
-              type="entypo"
-              color="gray"
-              containerStyle={{ marginLeft: -15, width: 20 }}
-            />}
+          // rightIcon={<Icon
+          //   name="chevron-right"
+          //   type="entypo"
+          //   color="gray"
+          //   containerStyle={{ marginLeft: -15, width: 20 }}
+          // />}
           />
 
           {/* Link to Orders */}
           <ListItem
             title="Orders"
-            onPress={() => { navigate('MyOrders') }}
+            onPress={() => {
+              this.props.navigation.navigate('MyOrders');
+              this.props.navigation.closeDrawer();
+            }}
             containerStyle={styles.listItemContainer}
             leftIcon={<Icon
               name="shopping-cart"
             />}
-            rightIcon={<Icon
-              name="chevron-right"
-              type="entypo"
-              color="gray"
-              containerStyle={{ marginLeft: -15, width: 20 }}
-            />}
+          // rightIcon={<Icon
+          //   name="chevron-right"
+          //   type="entypo"
+          //   color="gray"
+          //   containerStyle={{ marginLeft: -15, width: 20 }}
+          // />}
           />
 
           {/* Link to Reviews */}
           <ListItem
             title="Reviews"
-            onPress={() => { navigate('MyReviews') }}
+            onPress={() => {
+              this.props.navigation.navigate('MyReviews');
+              this.props.navigation.closeDrawer();
+            }}
             containerStyle={styles.listItemContainer}
             leftIcon={<Icon
               name="rate-review"
             />}
-            rightIcon={<Icon
-              name="chevron-right"
-              type="entypo"
-              color="gray"
-              containerStyle={{ marginLeft: -15, width: 20 }}
-            />}
+          // rightIcon={<Icon
+          //   name="chevron-right"
+          //   type="entypo"
+          //   color="gray"
+          //   containerStyle={{ marginLeft: -15, width: 20 }}
+          // />}
           />
 
-          {/* Link to Settings */}
+          {/* Log out */}
           <ListItem
             title="Log Out"
             onPress={
               () => {
                 AsyncStorage.removeItem('token').then(() =>
-                  navigate('AuthLoading'),
+                  this.props.navigation.navigate('AuthLoading'),
                 );
               }
             }
             containerStyle={styles.listItemContainer}
             leftIcon={<Icon
-              name="logout"
+              name="settings"
             />}
-            rightIcon={<Icon
-              name="chevron-right"
-              type="entypo"
-              color="gray"
-              containerStyle={{ marginLeft: -15, width: 20 }}
-            />}
+          // rightIcon={<Icon
+          //   name="chevron-right"
+          //   type="entypo"
+          //   color="gray"
+          //   containerStyle={{ marginLeft: -15, width: 20 }}
+          // />}
           />
         </ImageBackground>
       </View>
-    </ScrollView>
-  )
+    )
+  }
 }
 
 const styles = StyleSheet.create({
-  scroll: {
-    backgroundColor: "#FFF",
-  },
   headContainer: {
   },
   headerBackgroundImage: {
