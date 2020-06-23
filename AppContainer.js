@@ -195,7 +195,7 @@ const Tabs = createBottomTabNavigator(
     }),
   });
 
-const HamburgerNavigation = createDrawerNavigator(
+const SideMenu = createDrawerNavigator(
   {
     Tabs: Tabs,
   },
@@ -219,9 +219,9 @@ const HamburgerNavigation = createDrawerNavigator(
 const AccountStack = createStackNavigator(
   {
     Drawer: {
-      screen: HamburgerNavigation,
+      screen: SideMenu,
       navigationOptions: {
-        header: null,
+        headerShown: false,
       },
     },
     Profile: {

@@ -3,7 +3,6 @@ import { ImageBackground, StyleSheet, Text, View, Image, AsyncStorage } from 're
 import { Icon, ListItem } from 'react-native-elements'
 import user from '../../assets/userInfo'
 
-// const Account = () => {
 class Account extends Component {
   render() {
     return (
