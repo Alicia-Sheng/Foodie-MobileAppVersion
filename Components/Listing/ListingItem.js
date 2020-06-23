@@ -50,7 +50,7 @@ const ListingItem = ({ item, navigation }) => (
   })}>
     <View style={styles.text}>
       <Image style={styles.itemContainer} source={{ uri: item.thumbnail }} />
-      <Title>{item.name}</Title>
+      <Text style={styles.title}>{item.name}</Text>
       {/* <Price>${item.price}</Price> */}
       <AddToOrderButton productId={item.id} />
     </View>
@@ -67,7 +67,18 @@ const styles = StyleSheet.create({
     height: ITEM_HEIGHT,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: '15px'
+    borderRadius: 15
+  },
+  title: {
+    flexWrap: 'wrap',
+    width: '75%',
+    fontSize: 14,
+    color: 'white',
+    backgroundColor: 'rgba(52, 52, 52, 0.2)',
+    position: 'absolute',
+    top: ITEM_HEIGHT - 45,
+    left: 20,
+    fontWeight: 'bold'
   }
 });
 
