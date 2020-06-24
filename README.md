@@ -2,6 +2,8 @@
 
 A React food ordering app, Foodie, designed to provide university students with quick and easy food ordering from restaurants and cafes on campus.
 
+Here is the mobile version of Foodie. Please check the web version here: https://github.com/Alicia-Sheng/Foodie-WebVersion.
+
 ## Table of Contents
 
 - [Foodie](#Foodie)
