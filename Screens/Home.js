@@ -40,17 +40,10 @@ const Home = ({ navigation }) => {
                       itemWidth={screenWidth * 0.7}
                       inactiveSlideShift={0}
                       useScrollView={true}
-                      data={data.products}
+                      // data={data.products}
+                      data={data.products.filter(item => item.category.title === "food")}
                       keyExtractor={item => String(item.id)}
-                      // renderItem={({ item }) => <ListingItem item={item} navigation={navigation} />}
-                      renderItem={({ item }) => {
-                        if (item.category.title === "food") {
-                          return (
-                            <ListingItem item={item} navigation={navigation} />
-                          );
-                        }
-                      }
-                      }
+                      renderItem={({ item }) => <ListingItem item={item} navigation={navigation} />}
                     />
                   </ListingsWrapper>
                   <ListingsWrapper>
@@ -59,17 +52,10 @@ const Home = ({ navigation }) => {
                       itemWidth={screenWidth * 0.7}
                       inactiveSlideShift={0}
                       useScrollView={true}
-                      data={data.products}
+                      // data={data.products}
+                      data={data.products.filter(item => item.category.title === "drink")}
                       keyExtractor={item => String(item.id)}
-                      // renderItem={({ item }) => <ListingItem item={item} navigation={navigation} />}
-                      renderItem={({ item }) => {
-                        if (item.category.title === "drink") {
-                          return (
-                            <ListingItem item={item} navigation={navigation} />
-                          );
-                        }
-                      }
-                    }
+                      renderItem={({ item }) => <ListingItem item={item} navigation={navigation} />}
                     />
                   </ListingsWrapper>
 

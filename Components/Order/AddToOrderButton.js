@@ -19,6 +19,7 @@ const AddToOrderButton = ({ productId }) => (
         position='absolute'
         top={`${ITEM_HEIGHT - 25}px`}
         right='20px'
+        font='30px'
       />
     )}
   </Mutation>

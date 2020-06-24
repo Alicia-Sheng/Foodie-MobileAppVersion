@@ -17,13 +17,13 @@ const ButtonWrapper = styled(TouchableOpacity)`
 
 const ButtonText = styled(Text)`
   color: white;
-  font-size: 28px;
+  font-size: ${({ font }) => (font ? font : '20px')};
   line-height: 46px
 `;
 
 const Button = ({ title, color, onPress, ...props}) => (
   <ButtonWrapper color={color} onPress={onPress} {...props}>
-    <ButtonText>{title}</ButtonText>
+    <ButtonText {...props} >{title}</ButtonText>
   </ButtonWrapper>
 );
 
