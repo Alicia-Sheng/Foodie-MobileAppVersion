@@ -5,7 +5,7 @@ import styled from 'styled-components/native';
 import { Mutation } from 'react-apollo';
 import Button from '../Components/Button/Button';
 import TextInput from '../Components/TextInput/TextInput';
-import { LOGIN_USER } from '../constants';
+import { LOGIN_USER } from '../constants/functions';
 
 const FormWrapper = styled(View)`
   margin: 10%;

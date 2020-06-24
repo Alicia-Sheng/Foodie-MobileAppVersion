@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import OrderItem from '../Components/Order/OrderItem'
 import Button from '../Components/Button/Button';
 import Totals from '../Components/Order/Totals';
-import { GET_ORDER } from '../constants';
+import { GET_ORDER } from '../constants/functions';
 import { Query } from 'react-apollo';
 
 const OrderWrapper = styled(View)`

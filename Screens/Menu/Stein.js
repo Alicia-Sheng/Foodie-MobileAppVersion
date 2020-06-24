@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import { Query } from 'react-apollo';
 import MenuListingItem from '../../Components/MenuListing/MenuListingItem'
 import Filters from '../../Components/Listing/Filters';
-import { GET_PRODUCTS, GET_LIMIT } from '../../constants';
+import { GET_PRODUCTS, GET_LIMIT } from '../../constants/functions';
 import data from '../../assets/data.js';
 
 function Stein({ navigation }) {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Mutation } from 'react-apollo';
 import Button from '../Button/Button';
 import { Dimensions } from 'react-native';
-import { GET_ORDER, ADD_TO_ORDER, GET_ORDER_TOTAL } from '../../constants';
+import { GET_ORDER, ADD_TO_ORDER, GET_ORDER_TOTAL } from '../../constants/functions';
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7);

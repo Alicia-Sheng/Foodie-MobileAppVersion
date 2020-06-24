@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { FlatList, View, Text, Dimensions, ScrollView, TouchableOpacity} from 'react-native';
+import { FlatList, View, Text, Dimensions, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 import { Query } from 'react-apollo';
 import SearchBar from '../Components/Search/SearchBar';
 import ListingItem from '../Components/Listing/ListingItem'
 import Filters from '../Components/Listing/Filters';
 import Section from '../Components/Section/Section';
-import { GET_PRODUCTS, GET_LIMIT } from '../constants';
+import { GET_PRODUCTS, GET_LIMIT } from '../constants/functions';
 import Carousel from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -36,15 +36,10 @@ const Home = ({ navigation }) => {
                     onTermSubmit={() => searchApi(term)}
                   />
                   <ScrollView>
-                  <HeaderWrapper>
-                    <SectionText>Food you might like</SectionText>
-                      <SeeAllButtonWrapper
-                        onPress={() => navigation.navigate('SeeAll')}
-                      >
-                        <SeeAllText>See All</SeeAllText>
-                        <ArrowIcon />
-                      </SeeAllButtonWrapper>
-                  </HeaderWrapper>
+                    <Section
+                      title="Food You Might Like"
+                      nextRoute='SeeAll'
+                    ></Section>
                   <ListingsWrapper>
                     <Carousel
                       sliderWidth={screenWidth}
@@ -113,43 +108,6 @@ margin-bottom: 20px;
 const Listings = styled(FlatList)`
 width: 100%;
 padding: 5%;
-`;
-
-const HeaderWrapper = styled(View)`
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 20px;
-  padding-bottom:20px
-`;
-
-const SectionText = styled(Text)`
-  color: black;
-  font-size: 20px;
-  font-weight: bold;
-`;
-const SeeAllButtonWrapper = styled(TouchableOpacity)`
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`;
-
-const SeeAllText = styled(Text)`
-  color: #Cf3838;
-  font-size: 20px;
-  font-weight: bold;
-`;
-
-const ArrowIcon = styled(Icon).attrs({
-  name: 'chevron-right',
-  size: 25,
-})`
-  color: #Cf3838;
-  margin-left: -5px;
-  width: 25px;
-  height: 25px;
 `;
 
 export default Home;

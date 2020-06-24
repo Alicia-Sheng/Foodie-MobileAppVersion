@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import { Text, View } from 'react-native';
 import { useMutation } from 'react-apollo';
 import Button from '../Components/Button/Button';
-import { COMPLETE_ORDER, GET_ORDER, GET_ORDER_TOTAL } from '../constants';
+import { COMPLETE_ORDER, GET_ORDER, GET_ORDER_TOTAL } from '../constants/functions';
 
 const CheckoutWrapper = styled(View)`
   display: flex;
