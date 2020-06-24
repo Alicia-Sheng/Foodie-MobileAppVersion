@@ -14,8 +14,8 @@ const HeaderWrapper = styled(View)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
   padding-top: 20px;
   padding-bottom:20px
 `;

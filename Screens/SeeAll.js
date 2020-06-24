@@ -1,77 +1,48 @@
 import React, { useState } from 'react';
-import { FlatList, View, Text, Dimensions, ScrollView, TouchableOpacity} from 'react-native';
+import { FlatList, View, Text, Dimensions, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 import { Query } from 'react-apollo';
 import SearchBar from '../Components/Search/SearchBar';
 import ListingItem from '../Components/Listing/ListingItem'
+import MenuItem from '../Components/Menu/MenuItem';
 import { GET_PRODUCTS } from '../constants/functions';
 import Carousel from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { theme, container, borderRadius, floatLeft, backgroundGray, backgroundSecondary, backgroundPrimary } from "../constants/styles";
 
 const SeeAll = ({ navigation }) => {
 
-  const [term, setTerm] = useState('');  // search bar
-  const { width: screenWidth } = Dimensions.get('window')
+    const [term, setTerm] = useState('');  // search bar
+    const { width: screenWidth } = Dimensions.get('window')
 
-  return (
-          <Query
+    return (
+        <Query
             query={GET_PRODUCTS}
-          >
+        >
             {({ loading, error, data }) => {
-              if (loading || error) {
-                return <Alert>{loading ? 'Loading...' : error.message}</Alert>;
-              }
-              return (
-                <>
-                  <SearchBar
-                    term={term}
-                    onTermChange={newTerm => setTerm(newTerm)}
-                    onTermSubmit={() => searchApi(term)}
-                  />
-                  <ScrollView>
-                  <ListingsWrapper>
-                    <Carousel
-                      sliderWidth={screenWidth}
-                      itemWidth={screenWidth * 0.7}
-                      useScrollView={true}
-                      activeSlideAlignment='start'
-                      // data={data.products}
-                      data={data.products.filter(item => item.category.title === "food")}
-                      keyExtractor={item => String(item.id)}
-                      renderItem={({ item }) =>
-                        <ListingItem
-                          item={item}
-                          navigation={navigation}
-                          width={`${Math.round(screenWidth * 0.7)}px`}
-                          height={`${Math.round(screenWidth * 0.7 * 3 / 5)}px`}
-                          y={`${Math.round(screenWidth * 0.7 * 3 / 5) - 45}px`}
-                        />}
-                    />
-                  </ListingsWrapper>
-                  <ListingsWrapper>
-                    <Carousel
-                      sliderWidth={screenWidth}
-                      itemWidth={screenWidth * 0.5}
-                      useScrollView={true}
-                      activeSlideAlignment='start'
-                      data={data.products.filter(item => item.category.title === "drink")}
-                      keyExtractor={item => String(item.id)}
-                      renderItem={({ item }) =>
-                        <ListingItem
-                          item={item}
-                          navigation={navigation}
-                          width={`${Math.round(screenWidth * 0.5)}px`}
-                          height={`${Math.round(screenWidth * 0.7 * 3 / 5)}px`}
-                          y={`${Math.round(screenWidth * 0.7 * 3 / 5) - 45}px`}
-                        />}
-                    />
-                  </ListingsWrapper>
-                  </ScrollView>
-                </>
-              );
+                if (loading || error) {
+                    return <Alert>{loading ? 'Loading...' : error.message}</Alert>;
+                }
+                return (
+                    <>
+                        <SearchBar
+                            term={term}
+                            onTermChange={newTerm => setTerm(newTerm)}
+                            onTermSubmit={() => searchApi(term)}
+                        />
+                        <FlatList
+                            style={[container, styles.flatClear]}
+                            data={data.products}
+                            numColumns={1}
+                            renderItem={({ item }) => (<MenuItem data={item} />)}
+                            keyExtractor={item => item.id.toString()}
+                            ListFooterComponentStyle={{ paddingVertical: 100 }}
+                        />
+                    </>
+                );
             }}
-          </Query>
-  )
+        </Query>
+    )
 };
 
 const Alert = styled(Text)`
@@ -120,13 +91,40 @@ const SeeAllText = styled(Text)`
 `;
 
 const ArrowIcon = styled(Icon).attrs({
-  name: 'chevron-right',
-  size: 25,
+    name: 'chevron-right',
+    size: 25,
 })`
   color: #Cf3838;
   margin-left: -5px;
   width: 25px;
   height: 25px;
 `;
+
+const styles = StyleSheet.create({
+    spaceBetween: {
+        flex: 1, justifyContent: "space-between"
+    },
+    flatClear: {
+        marginHorizontal: -5,
+        paddingTop: 5
+    },
+    row: {
+        marginHorizontal: -6
+    },
+    col: {
+        paddingHorizontal: 3
+    },
+    orderList: {
+        flex: 1.2,
+        paddingVertical: 5,
+        marginHorizontal: -10
+    },
+    orderContainer: {
+        height: 130,
+        borderWidth: 1,
+        paddingVertical: 10,
+        borderColor: '#dedede'
+    }
+})
 
 export default SeeAll;
