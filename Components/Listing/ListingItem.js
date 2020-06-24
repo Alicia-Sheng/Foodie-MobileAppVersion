@@ -1,12 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { StyleSheet, Image, Text, View, TouchableOpacity, Dimensions } from 'react-native';
+import { StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
 
 import AddToOrderButton from '../Order/AddToOrderButton';
-
-const SLIDER_WIDTH = Dimensions.get('window').width;
-const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7);
-const ITEM_HEIGHT = Math.round(ITEM_WIDTH * 3 / 5);
 
 const ListingItemWrapper = styled(TouchableOpacity)`
 display: flex;
@@ -19,12 +15,12 @@ margin-bottom: 5%;
 
 export const Title = styled(Text)`
 flex-wrap: wrap;
-width: 60%;
-font-size: 16px;
+width: 70%;
+font-size: 14px;
 color: white;
 background-color: rgba(52, 52, 52, 0.2);
 position: absolute;
-top: 170px;
+top: ${({ y }) => (y ? y : '170px')};
 left: 20px;
 font-weight: bold;
 `
@@ -36,21 +32,20 @@ color: black;
 `
 
 const Thumbnail = styled(Image)`
-border-radius: 10px;
-margin-right: 4%;
-height: 200px;
-width: 260px;
-marginTop: 5px;
-position: relative;
+border-radius: 15px;
+width: ${({ width }) => (width ? width : '350px')};
+height: ${({ height }) => (height ? height : '210px')};
+alignItems: center;
+justifyContent: center;
 `
 
-const ListingItem = ({ item, navigation }) => (
+const ListingItem = ({ item, navigation, ...props }) => (
   <ListingItemWrapper onPress={() => navigation.navigate('Detail', {
     item
   })}>
     <View style={styles.text}>
-      <Image style={styles.itemContainer} source={{ uri: item.thumbnail }} />
-      <Text style={styles.title}>{item.name}</Text>
+      <Thumbnail source={{ uri: item.thumbnail }} {...props} />
+      <Title {...props}>{item.name}</Title>
       {/* <Price>${item.price}</Price> */}
       <AddToOrderButton productId={item.id} />
     </View>
@@ -61,24 +56,6 @@ const styles = StyleSheet.create({
   text: {
     flex: 1,
     flexWrap: 'wrap',
-  },
-  itemContainer: {
-    width: ITEM_WIDTH,
-    height: ITEM_HEIGHT,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 15
-  },
-  title: {
-    flexWrap: 'wrap',
-    width: '75%',
-    fontSize: 14,
-    color: 'white',
-    backgroundColor: 'rgba(52, 52, 52, 0.2)',
-    position: 'absolute',
-    top: ITEM_HEIGHT - 45,
-    left: 20,
-    fontWeight: 'bold'
   }
 });
 

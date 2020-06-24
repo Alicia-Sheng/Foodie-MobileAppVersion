@@ -40,22 +40,37 @@ const Home = ({ navigation }) => {
                       itemWidth={screenWidth * 0.7}
                       inactiveSlideShift={0}
                       useScrollView={true}
+                      activeSlideAlignment='start'
                       // data={data.products}
                       data={data.products.filter(item => item.category.title === "food")}
                       keyExtractor={item => String(item.id)}
-                      renderItem={({ item }) => <ListingItem item={item} navigation={navigation} />}
+                      renderItem={({ item }) =>
+                        <ListingItem
+                          item={item}
+                          navigation={navigation}
+                          width={`${Math.round(screenWidth * 0.7)}px`}
+                          height={`${Math.round(screenWidth * 0.7 * 3 / 5)}px`}
+                          y={`${Math.round(screenWidth * 0.7 * 3 / 5) - 45}px`}
+                        />}
                     />
                   </ListingsWrapper>
                   <ListingsWrapper>
                     <Carousel
                       sliderWidth={screenWidth}
-                      itemWidth={screenWidth * 0.7}
+                      itemWidth={screenWidth * 0.5}
                       inactiveSlideShift={0}
                       useScrollView={true}
-                      // data={data.products}
+                      activeSlideAlignment='start'
                       data={data.products.filter(item => item.category.title === "drink")}
                       keyExtractor={item => String(item.id)}
-                      renderItem={({ item }) => <ListingItem item={item} navigation={navigation} />}
+                      renderItem={({ item }) =>
+                        <ListingItem
+                          item={item}
+                          navigation={navigation}
+                          width={`${Math.round(screenWidth * 0.5)}px`}
+                          height={`${Math.round(screenWidth * 0.7 * 3 / 5)}px`}
+                          y={`${Math.round(screenWidth * 0.7 * 3 / 5) - 45}px`}
+                        />}
                     />
                   </ListingsWrapper>
 
@@ -79,6 +94,7 @@ flex: 1;
 background-color: #fff;
 align-items: center;
 justify-content: center;
+margin-left: 40px;
 `
 
 const Listings = styled(FlatList)`
