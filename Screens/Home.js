@@ -34,11 +34,13 @@ const Home = ({ navigation }) => {
                     onTermChange={newTerm => setTerm(newTerm)}
                     onTermSubmit={() => searchApi(term)}
                   />
+                  <HeaderWrapper>
+                    <SectionText>Food you might like</SectionText>
+                  </HeaderWrapper>
                   <ListingsWrapper>
                     <Carousel
                       sliderWidth={screenWidth}
                       itemWidth={screenWidth * 0.7}
-                      inactiveSlideShift={0}
                       useScrollView={true}
                       activeSlideAlignment='start'
                       // data={data.products}
@@ -54,11 +56,13 @@ const Home = ({ navigation }) => {
                         />}
                     />
                   </ListingsWrapper>
+                  <HeaderWrapper>
+                    <SectionText>Drinks you might like</SectionText>
+                  </HeaderWrapper>
                   <ListingsWrapper>
                     <Carousel
                       sliderWidth={screenWidth}
                       itemWidth={screenWidth * 0.5}
-                      inactiveSlideShift={0}
                       useScrollView={true}
                       activeSlideAlignment='start'
                       data={data.products.filter(item => item.category.title === "drink")}
@@ -73,7 +77,6 @@ const Home = ({ navigation }) => {
                         />}
                     />
                   </ListingsWrapper>
-
                 </>
               );
             }}
@@ -100,6 +103,23 @@ margin-left: 40px;
 const Listings = styled(FlatList)`
 width: 100%;
 padding: 5%;
+`;
+
+
+const HeaderWrapper = styled(View)`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom:20px
+`;
+
+const SectionText = styled(Text)`
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
 `;
 
 export default Home;

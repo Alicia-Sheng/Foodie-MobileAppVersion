@@ -10,7 +10,6 @@ flex-direction: row;
 padding: 2%;
 background-color: white;
 border-radius: 5px;
-margin-bottom: 5%;
 `;
 
 export const Title = styled(Text)`
