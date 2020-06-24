@@ -10,6 +10,7 @@ import Home from './Screens/Home';
 import Detail from './Screens/Detail';
 import Restaurant from './Screens/Restaurant';
 import Order from './Screens/Order';
+import Provider from './Screens/Provider';
 import Checkout from './Screens/Checkout';
 import Sherman from './Screens/Menu/Sherman';
 import Stein from './Screens/Menu/Stein';
@@ -17,13 +18,13 @@ import Dunkin from './Screens/Menu/Dunkin';
 import Einstein from './Screens/Menu/Einstein';
 import Starbucks from './Screens/Menu/Starbucks';
 import AllRestaurant from './Screens/Menu/AllRestaurants';
+import Account from './Screens/Account/Account';
 import Profile from './Screens/Account/Profile';
 import MyOrders from './Screens/Account/MyOrders';
 import MyReviews from './Screens/Account/MyReviews';
 import Login from './Screens/Login';
 import AuthLoading from './Screens/Login';
 import HamburgerIcon from './Components/Button/HamburgerIcon';
-import Account from './Screens/Account/Account';
 import user from './assets/userInfo';
 
 
@@ -121,11 +122,33 @@ const OrderStack = createStackNavigator(
   }
 );
 
+const ProviderStack = createStackNavigator(
+  {
+    Provider: {
+      screen: Provider,
+      navigationOptions: { title: 'Add Food Item' },
+    },
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: 'white',
+        borderBottomColor: '#f7f7f7'
+      },
+      headerTintColor: 'black',
+      headerShown: true,
+      cardStyle: { backgroundColor: 'white' },
+      headerRight: () => <HamburgerIcon />
+    },
+  }
+);
+
 const Tabs = createBottomTabNavigator(
   {
     Home: HomeStack,
     Restaurant: RestaurantStack,
-    Order: OrderStack
+    Order: OrderStack,
+    Provider: ProviderStack
   },
   {
     initialRouteName: 'Home',
@@ -146,6 +169,9 @@ const Tabs = createBottomTabNavigator(
           //iconName = `ios-cart`;
           iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-cart`;
           badgeCount = 0;
+        } else if (routeName === 'Provider') {
+          //iconName = `ios-cart`;
+          iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-add`;
         }
 
         return (
