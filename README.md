@@ -4,6 +4,8 @@ A React food ordering app, Foodie, designed to provide university students with 
 
 Here is the mobile app version of Foodie. Please check the web version here: https://github.com/Alicia-Sheng/Foodie-WebVersion.
 
+Please check the apollo server we are using here: https://github.com/L-Pang/React-Apollo-Server.
+
 ## Table of Contents
 
 - [Foodie](#Foodie)
