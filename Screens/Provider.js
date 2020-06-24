@@ -1,5 +1,6 @@
 import React from 'react';
-import { AsyncStorage, Alert, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { AsyncStorage, Alert, Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import Select from 'react-native-select-plus';
 import styled from 'styled-components/native';
 import { Mutation } from 'react-apollo';
 import Button from '../Components/Button/Button';
@@ -7,7 +8,7 @@ import TextInput from '../Components/TextInput/TextInput';
 import { LOGIN_USER } from '../constants';
 
 const FormWrapper = styled(View)`
-  flex: 1;
+  margin: 10%;
   background-color: #fff;
   align-items: center;
   justify-content: center;
@@ -26,7 +27,28 @@ class Provider extends React.Component {
       "category": "",
     };
 
+    this.locChoice = [
+      { key: 1, section: true, label: "Location" },
+      { key: 2, label: "Sherman Dining Hall" },
+      { key: 3, label: "The Stein" },
+      { key: 4, label: "Starbucks Farber" },
+      { key: 5, label: "Einstein Bros. Bagels" },
+      { key: 6, label: "Dunkin Donuts" },
+      { key: 7, label: "Other" },
+    ];
+
+    this.catChoice = [
+      { key: 1, section: true, label: "Category" },
+      { key: 2, label: "Food" },
+      { key: 3, label: "Drink" },
+      { key: 4, label: "Other" },
+    ];
+
     this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleDescChange = this.handleDescChange.bind(this);
+    this.handlePriceChange = this.handlePriceChange.bind(this);
+    this.handleLocationChange = this.handleLocationChange.bind(this)
+    this.handleCategoryChange = this.handleCategoryChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -34,28 +56,75 @@ class Provider extends React.Component {
     this.setState({ name });
   }
 
+  handleDescChange(desc) {
+    this.setState({ desc });
+  }
+
+  handlePriceChange(price) {
+    this.setState({ price: parseFloat(price) });
+  }
+
+  handleLocationChange = (key, value) => {
+    this.setState({ location: value });
+  };
+
+  handleCategoryChange = (key, value) => {
+    this.setState({ category: value });
+  };
+
   handleSubmit() {
-    AsyncStorage.setItem("item", JSON.stringify(this.state));
+    AsyncStorage.setItem("item", JSON.stringify(this.state)).then(() =>
+      this.props.navigation.navigate('Home'),
+    );
   }
 
   render() {
     return (
-      <FormWrapper>
-        <TextInput
-          placeholder="Food name"
-          maxLength={40}
-          value={this.state.name}
-          onChangeText={this.handleNameChange}
-        />
-        <View style={styles.inputContainer}>
-          <TouchableOpacity
-            style={styles.saveButton}
-            onPress={this.handleSubmit}
-          >
-            <Text style={styles.saveButtonText}>Submit</Text>
-          </TouchableOpacity>
-        </View>
-      </FormWrapper>
+      <ScrollView>
+        <FormWrapper>
+          <TextInput
+            placeholder="Food name"
+            maxLength={50}
+            value={this.state.name}
+            onChangeText={this.handleNameChange}
+          />
+          <TextInput
+            placeholder="Food description"
+            maxLength={300}
+            value={this.state.desc}
+            onChangeText={this.handleDescChange}
+          />
+          <TextInput
+            placeholder="Food price"
+            maxLength={10}
+            value={this.state.price}
+            onChangeText={this.handlePriceChange}
+            keyboardType={'numeric'}
+          />
+          <Select
+            data={this.locChoice}
+            width={250}
+            placeholder="Select a location ..."
+            onSelect={this.handleLocationChange}
+            search={true}
+          />
+          <Select
+            data={this.catChoice}
+            width={250}
+            placeholder="Select a category ..."
+            onSelect={this.handleCategoryChange}
+            search={true}
+          />
+          <View style={styles.inputContainer}>
+            <TouchableOpacity
+              style={styles.saveButton}
+              onPress={this.handleSubmit}
+            >
+              <Text style={styles.saveButtonText}>Submit</Text>
+            </TouchableOpacity>
+          </View>
+        </FormWrapper>
+      </ScrollView>
     );
   }
 }
