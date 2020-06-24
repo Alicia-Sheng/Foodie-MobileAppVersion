@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FlatList, View, Text, Dimensions } from 'react-native';
+import { FlatList, View, Text, Dimensions, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 import { Query } from 'react-apollo';
 import SearchBar from '../Components/Search/SearchBar';
@@ -34,6 +34,7 @@ const Home = ({ navigation }) => {
                     onTermChange={newTerm => setTerm(newTerm)}
                     onTermSubmit={() => searchApi(term)}
                   />
+                  <ScrollView>
                   <HeaderWrapper>
                     <SectionText>Food you might like</SectionText>
                   </HeaderWrapper>
@@ -77,6 +78,7 @@ const Home = ({ navigation }) => {
                         />}
                     />
                   </ListingsWrapper>
+                  </ScrollView>
                 </>
               );
             }}
@@ -93,11 +95,11 @@ const Alert = styled(Text)`
 `;
 
 const ListingsWrapper = styled(View)`
-flex: 1;
 background-color: #fff;
 align-items: center;
 justify-content: center;
 margin-left: 40px;
+margin-bottom: 20px;
 `
 
 const Listings = styled(FlatList)`
