@@ -8,6 +8,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Home from './Screens/Home';
 import Detail from './Screens/Detail';
+import SeeAll from './Screens/SeeAll';
 import Restaurant from './Screens/Restaurant';
 import Order from './Screens/Order';
 import Provider from './Screens/Provider';
@@ -37,6 +38,10 @@ const HomeStack = createStackNavigator(
     Detail: {
       screen: Detail,
       navigationOptions: { title: 'Detail' },
+    },
+    SeeAll: {
+      screen: SeeAll,
+      navigationOptions: { title: 'SeeAll' },
     },
   },
   {
