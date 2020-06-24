@@ -72,3 +72,27 @@ export const COMPLETE_ORDER = gql `
     }
   }
 `;
+
+export const ADD_TO_CART = gql `
+  mutation addProduct($name: String!, $location: String!, $thumbnail: String!, $desc: String!, $price: Int!, $category: String!) {
+    addProduct(input: {
+        name: $name,
+        location: $location,
+        thumbnail: $thumbnail,
+        desc: $desc,
+        price: $price,
+        category: $category
+      }) {
+      id
+      name
+      location
+      thumbnail
+      desc
+      price
+      rating
+      category {
+        title
+      }
+    }
+  }
+`;

@@ -3,6 +3,7 @@ import { Image, TouchableOpacity, View, StyleSheet, ScrollView, TouchableHighlig
 import { Icon, Button } from "native-base";
 // import { connect } from "react-redux";
 import Modal from "react-native-modal";
+import StarRating from '../Details/StarRating';
 
 // import { addNewOrders, updateOrderQty } from "../_actions/orders";
 // import { convertToRupiah, convertToMoney } from "../constants/functions";
@@ -75,8 +76,16 @@ class MenuItem extends Component {
                         </View>
                         <View style={{ flex: 0.5, backgroundColor: 'white', flexDirection: 'column' }}>
                             <View style={{ flex: 1, backgroundColor: 'white', alignItems: 'flex-end' }}>
-                                <TouchableOpacity>
-                                    <Icon name="md-heart" style={{ color: "#e0e5e5", marginRight: 15, marginTop: 5 }} />
+                                <TouchableOpacity style={{ marginRight: 15, marginTop: 5 }}>
+                                    {/* <Icon name="md-heart" style={{ color: "#e0e5e5", marginRight: 15, marginTop: 5 }} /> */}
+                                    <StarRating
+                                        maxStars={5}
+                                        rating={5}
+                                        disabled={false}
+                                        starSize={13}
+                                        onStarChange={(value) => onStarRatingPress(value)}
+                                        style={{ marginRight: 15, marginTop: 5 }}
+                                    />
                                 </TouchableOpacity>
                             </View>
                             <View style={{ flex: 1, backgroundColor: 'white', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
