@@ -13,7 +13,7 @@ const Home = ({ navigation }) => {
 
   const [term, setTerm] = useState('');  // search bar
   const { width: screenWidth } = Dimensions.get('window')
-  
+
   return (
     <Query query={GET_LIMIT}>
       {({ data }) => (
@@ -42,10 +42,37 @@ const Home = ({ navigation }) => {
                       useScrollView={true}
                       data={data.products}
                       keyExtractor={item => String(item.id)}
-                      renderItem={({ item }) => <ListingItem item={item} navigation={navigation} />}
+                      // renderItem={({ item }) => <ListingItem item={item} navigation={navigation} />}
+                      renderItem={({ item }) => {
+                        if (item.category.title === "food") {
+                          return (
+                            <ListingItem item={item} navigation={navigation} />
+                          );
+                        }
+                      }
+                      }
                     />
                   </ListingsWrapper>
-                  
+                  <ListingsWrapper>
+                    <Carousel
+                      sliderWidth={screenWidth}
+                      itemWidth={screenWidth * 0.7}
+                      inactiveSlideShift={0}
+                      useScrollView={true}
+                      data={data.products}
+                      keyExtractor={item => String(item.id)}
+                      // renderItem={({ item }) => <ListingItem item={item} navigation={navigation} />}
+                      renderItem={({ item }) => {
+                        if (item.category.title === "drink") {
+                          return (
+                            <ListingItem item={item} navigation={navigation} />
+                          );
+                        }
+                      }
+                    }
+                    />
+                  </ListingsWrapper>
+
                 </>
               );
             }}

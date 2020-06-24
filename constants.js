@@ -49,6 +49,9 @@ export const GET_PRODUCTS = gql `
       desc
       price
       rating
+      category {
+        title
+      }
     }
   }
 `;
