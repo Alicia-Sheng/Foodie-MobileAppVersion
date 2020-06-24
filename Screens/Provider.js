@@ -43,32 +43,25 @@ class Provider extends React.Component {
       { key: 3, label: "Drink" },
       { key: 4, label: "Other" },
     ];
-
-    this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleDescChange = this.handleDescChange.bind(this);
-    this.handlePriceChange = this.handlePriceChange.bind(this);
-    this.handleLocationChange = this.handleLocationChange.bind(this)
-    this.handleCategoryChange = this.handleCategoryChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleNameChange(name) {
-    this.setState({ name });
+  handleNameChange(value) {
+    this.setState({ name: value });
   }
 
-  handleDescChange(desc) {
-    this.setState({ desc });
+  handleDescChange(value) {
+    this.setState({ desc: value });
   }
 
-  handlePriceChange(price) {
-    this.setState({ price: parseFloat(price) });
+  handlePriceChange(value) {
+    this.setState({ price: parseFloat(value) });
   }
 
-  handleLocationChange = (key, value) => {
+  handleLocationChange(value) {
     this.setState({ location: value });
   };
 
-  handleCategoryChange = (key, value) => {
+  handleCategoryChange(value) {
     this.setState({ category: value });
   };
 
@@ -86,39 +79,39 @@ class Provider extends React.Component {
             placeholder="Food name"
             maxLength={50}
             value={this.state.name}
-            onChangeText={this.handleNameChange}
+            onChangeText={this.handleNameChange.bind(this)}
           />
           <TextInput
             placeholder="Food description"
             maxLength={300}
             value={this.state.desc}
-            onChangeText={this.handleDescChange}
+            onChangeText={this.handleDescChange.bind(this)}
           />
           <TextInput
             placeholder="Food price"
             maxLength={10}
             value={this.state.price}
-            onChangeText={this.handlePriceChange}
+            onChangeText={this.handlePriceChange.bind(this)}
             keyboardType={'numeric'}
           />
           <Select
             data={this.locChoice}
             width={250}
             placeholder="Select a location ..."
-            onSelect={this.handleLocationChange}
+            onSelect={this.handleLocationChange.bind(this)}
             search={true}
           />
           <Select
             data={this.catChoice}
             width={250}
             placeholder="Select a category ..."
-            onSelect={this.handleCategoryChange}
+            onSelect={this.handleCategoryChange.bind(this)}
             search={true}
           />
           <View style={styles.inputContainer}>
             <TouchableOpacity
               style={styles.saveButton}
-              onPress={this.handleSubmit}
+              onPress={this.handleSubmit.bind(this)}
             >
               <Text style={styles.saveButtonText}>Submit</Text>
             </TouchableOpacity>
