@@ -1,142 +1,302 @@
-import React from 'react';
-import { AsyncStorage, Alert, Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import Select from 'react-native-select-plus';
+import React, { useState } from 'react';
+import { AsyncStorage, Alert, Text, View, StyleSheet, TouchableOpacity, ScrollView, FlatList, Button } from 'react-native';
+import RNPickerSelect from 'react-native-picker-select';
 import styled from 'styled-components/native';
 import { Mutation } from 'react-apollo';
-import Button from '../Components/Button/Button';
+// import Button from '../Components/Button/Button';
 import TextInput from '../Components/TextInput/TextInput';
 import { LOGIN_USER } from '../constants/functions';
 
-const FormWrapper = styled(View)`
-  margin: 10%;
-  background-color: #fff;
-  align-items: center;
-  justify-content: center;
-`;
 
+// this shows how to use a form and a FlatList
+function Provider() {
 
-class Provider extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      "name": "",
-      "location": "",
-      "img": "",
-      "desc": "",
-      "price": 0,
-      "category": "",
-    };
+  const [foodOptions, setFoodOptions] = useState([])
 
-    this.locChoice = [
-      { key: 1, section: true, label: "Location" },
-      { key: 2, label: "Sherman Dining Hall" },
-      { key: 3, label: "The Stein" },
-      { key: 4, label: "Starbucks Farber" },
-      { key: 5, label: "Einstein Bros. Bagels" },
-      { key: 6, label: "Dunkin Donuts" },
-      { key: 7, label: "Other" },
-    ];
-
-    this.catChoice = [
-      { key: 1, section: true, label: "Category" },
-      { key: 2, label: "Food" },
-      { key: 3, label: "Drink" },
-      { key: 4, label: "Other" },
-    ];
+  const addFoodOptions = (item) => {
+    setFoodOptions(foodOptions.concat(item))
   }
 
-  handleNameChange(value) {
-    this.setState({ name: value });
+  return (
+    <View style={{ margin: 20 }}>
+      <ItemForm addItem={addFoodOptions} />
+      <Food items={foodOptions} />
+    </View>
+  );
+}
+
+function ItemForm({ addItem: addItem }) {
+  // state variables corresponding to form fields
+  const [name, setName] = useState("")
+  const [desc, setDesc] = useState("")
+  const [price, setPrice] = useState(0)
+  const [loc, setLoc] = useState("")
+  const [category, setCategory] = useState("")
+
+  const handleForm = () => {
+    const item = { name: name, desc: desc, price: price, loc: loc, category: category }
+    addItem(item)
   }
 
-  handleDescChange(value) {
-    this.setState({ desc: value });
-  }
-
-  handlePriceChange(value) {
-    this.setState({ price: parseFloat(value) });
-  }
-
-  handleLocationChange(value) {
-    this.setState({ location: value });
-  };
-
-  handleCategoryChange(value) {
-    this.setState({ category: value });
-  };
-
-  handleSubmit() {
-    AsyncStorage.setItem("item", JSON.stringify(this.state)).then(() =>
-      this.props.navigation.navigate('Home'),
-    );
-  }
-
-  render() {
-    return (
-      <ScrollView>
-        <FormWrapper>
+  return (
+    <ScrollView>
+      <View>
+        <View>
+          <Text style={{ margin: 5 }}>Food name:</Text>
           <TextInput
             placeholder="Food name"
             maxLength={50}
-            value={this.state.name}
-            onChangeText={this.handleNameChange.bind(this)}
+            onChangeText={text => setName(text)}
           />
+        </View>
+        <View>
+          <Text style={{ margin: 5 }}>Food description:</Text>
           <TextInput
             placeholder="Food description"
-            maxLength={300}
-            value={this.state.desc}
-            onChangeText={this.handleDescChange.bind(this)}
+            maxLength={200}
+            onChangeText={text => setDesc(text)}
           />
+        </View>
+        <View>
+          <Text style={{ margin: 5 }}>Food price:</Text>
           <TextInput
             placeholder="Food price"
             maxLength={10}
-            value={this.state.price}
-            onChangeText={this.handlePriceChange.bind(this)}
             keyboardType={'numeric'}
+            onChangeText={text => setPrice(parseFloat(text))} />
+        </View>
+        <View>
+          <RNPickerSelect
+            selectedValue={loc}
+            onValueChange={(itemValue) => setLoc(itemValue)}
+            style={{
+              ...pickerSelectStyles,
+              placeholder: {
+                color: 'grey',
+                fontSize: 12,
+                fontWeight: 'bold',
+              },
+            }}
+            placeholder={{ label: "Select a location...", value: null }}
+            items={[
+              { label: "Sherman Dining Hall", value: "sherman", key: "sherman" },
+              { label: "The Stein", value: "stein", key: "stein" },
+              { label: "Starbucks Farber", value: "starbucks", key: "starbucks" },
+              { label: "Einstein Bros. Bagels", value: "einstein", key: "einstein" },
+              { label: "Dunkin Donuts", value: "dunkin", key: "dunkin" },
+              { label: "Other", value: "other", key: "other" },
+            ]}
           />
-          <Select
-            data={this.locChoice}
-            width={250}
-            placeholder="Select a location ..."
-            onSelect={this.handleLocationChange.bind(this)}
-            search={true}
+        </View>
+        <View>
+          <RNPickerSelect
+            selectedValue={loc}
+            onValueChange={(itemValue) => setCategory(itemValue)}
+            style={{
+              ...pickerSelectStyles,
+              placeholder: {
+                color: 'grey',
+                fontSize: 12,
+                fontWeight: 'bold',
+              },
+            }}
+            placeholder={{ label: "Select a category...", value: null }}
+            items={[
+              { label: "Food", value: "food", key: "food" },
+              { label: "Drink", value: "drink", key: "drink" },
+              { label: "Other", value: "other", key: "other" },
+            ]}
           />
-          <Select
-            data={this.catChoice}
-            width={250}
-            placeholder="Select a category ..."
-            onSelect={this.handleCategoryChange.bind(this)}
-            search={true}
-          />
-          <View style={styles.inputContainer}>
-            <TouchableOpacity
-              style={styles.saveButton}
-              onPress={this.handleSubmit.bind(this)}
-            >
-              <Text style={styles.saveButtonText}>Submit</Text>
-            </TouchableOpacity>
-          </View>
-        </FormWrapper>
-      </ScrollView>
-    );
-  }
+        </View>
+        <Button title="add Item" onPress={handleForm} />
+      </View>
+    </ScrollView>
+  )
 }
 
 
+function Food({ items: items }) {
+  return (
+    <FlatList style={{ backgroundColor: "#aaf" }}
+      data={items}
+      renderItem={({ item }) => <Item item={item} />}
+      keyExtractor={(item, index) => "Food item " + index}
+    />
+  )
+}
+
+function Item({ item }) {
+  return (
+    <View style={{ margin: 10 }}>
+      <Text> {item.name} </Text>
+      <Text> {item.desc} </Text>
+      <Text> ${item.price} </Text>
+      <Text> {item.loc} </Text>
+      <Text> {item.category} </Text>
+    </View>
+  )
+}
+
 const styles = StyleSheet.create({
-  saveButton: {
-    borderWidth: 1,
-    borderColor: '#007BFF',
-    backgroundColor: '#007BFF',
-    padding: 15,
-    margin: 5
-  },
-  saveButtonText: {
-    color: '#FFFFFF',
-    fontSize: 20,
-    textAlign: 'center'
+  container: {
+    flex: 1,
+    alignItems: "center"
   }
 });
+
+const pickerSelectStyles = StyleSheet.create({
+  inputIOS: {
+    fontSize: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 4,
+    color: 'black',
+    paddingRight: 30, // to ensure the text is never behind the icon
+  },
+  inputAndroid: {
+    fontSize: 16,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    borderWidth: 0.5,
+    borderColor: 'purple',
+    borderRadius: 8,
+    color: 'black',
+    paddingRight: 30, // to ensure the text is never behind the icon
+  },
+});
+
+// const FormWrapper = styled(View)`
+//   margin: 10%;
+//   background-color: #fff;
+//   align-items: center;
+//   justify-content: center;
+// `;
+
+
+// class Provider extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       "name": "",
+//       "location": "",
+//       "img": "",
+//       "desc": "",
+//       "price": 0,
+//       "category": "",
+//     };
+
+//     this.locChoice = [
+//       { key: 1, section: true, label: "Location" },
+//       { key: 2, label: "Sherman Dining Hall" },
+//       { key: 3, label: "The Stein" },
+//       { key: 4, label: "Starbucks Farber" },
+//       { key: 5, label: "Einstein Bros. Bagels" },
+//       { key: 6, label: "Dunkin Donuts" },
+//       { key: 7, label: "Other" },
+//     ];
+
+//     this.catChoice = [
+//       { key: 1, section: true, label: "Category" },
+//       { key: 2, label: "Food" },
+//       { key: 3, label: "Drink" },
+//       { key: 4, label: "Other" },
+//     ];
+//   }
+
+//   handleNameChange(value) {
+//     this.setState({ name: value });
+//   }
+
+//   handleDescChange(value) {
+//     this.setState({ desc: value });
+//   }
+
+//   handlePriceChange(value) {
+//     this.setState({ price: parseFloat(value) });
+//   }
+
+//   handleLocationChange(value) {
+//     this.setState({ location: value });
+//   };
+
+//   handleCategoryChange(value) {
+//     this.setState({ category: value });
+//   };
+
+//   handleSubmit() {
+//     AsyncStorage.setItem("item", JSON.stringify(this.state)).then(() =>
+//       this.props.navigation.navigate('Home'),
+//     );
+//   }
+
+//   render() {
+//     return (
+//       <ScrollView>
+//         <FormWrapper>
+//           <TextInput
+//             placeholder="Food name"
+//             maxLength={50}
+//             value={this.state.name}
+//             onChangeText={this.handleNameChange.bind(this)}
+//           />
+//           <TextInput
+//             placeholder="Food description"
+//             maxLength={300}
+//             value={this.state.desc}
+//             onChangeText={this.handleDescChange.bind(this)}
+//           />
+//           <TextInput
+//             placeholder="Food price"
+//             maxLength={10}
+//             value={this.state.price}
+//             onChangeText={this.handlePriceChange.bind(this)}
+//             keyboardType={'numeric'}
+//           />
+//           <Select
+//             data={this.locChoice}
+//             width={250}
+//             placeholder="Select a location ..."
+//             onSelect={this.handleLocationChange.bind(this)}
+//             search={true}
+//           />
+//           <Select
+//             data={this.catChoice}
+//             width={250}
+//             placeholder="Select a category ..."
+//             onSelect={this.handleCategoryChange.bind(this)}
+//             search={true}
+//           />
+//           <View style={styles.inputContainer}>
+//             <TouchableOpacity
+//               style={styles.saveButton}
+//               onPress={this.handleSubmit.bind(this)}
+//             >
+//               <Text style={styles.saveButtonText}>Submit</Text>
+//             </TouchableOpacity>
+//           </View>
+//         </FormWrapper>
+//       </ScrollView>
+//     );
+//   }
+// }
+
+
+// const styles = StyleSheet.create({
+//   saveButton: {
+//     borderWidth: 1,
+//     borderColor: '#007BFF',
+//     backgroundColor: '#007BFF',
+//     padding: 15,
+//     margin: 5
+//   },
+//   saveButtonText: {
+//     color: '#FFFFFF',
+//     fontSize: 20,
+//     textAlign: 'center'
+//   }
+// });
 
 
 
