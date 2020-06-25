@@ -1,53 +1,71 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
+import IncreQtyButton from './IncreQtyButton';
+import DecreQtyButton from './DecreQtyButton';
 
-const ListingItemWrapper = styled(TouchableOpacity)`
-display: flex;
-flex-direction: row;
-padding: 2%;
-background-color: #fcfcfc;
-border-radius: 5px;
-margin-bottom: 5%;
-`;
+const OrderItem = ({ item }) => {
 
-export const Title = styled(Text)`
-flex-wrap: wrap;
-width: 90%;
-font-size: 20px;
-`
-export const Location = styled(Text)`
-flex-wrap: wrap;
-width: 90%;
-font-size: 20px;
-`
-export const Price = styled(Text)`
-font-weight: bold;
-font-size: 20px;
-`
-const Thumbnail = styled(Image)`
-border-radius: 5px;
-margin-right: 4%;
-height: 100px;
-width: 100px;
-`
+    let amount = item.price * item.qty;
+    
+    return (
+        <>
+            <View style={styles.containerStyle}>
+                <Image source={item.thumbnail} style={styles.imageStyle} />
 
-const OrderItem = ({ item }) => (
-    <ListingItemWrapper>
-        <Thumbnail source={{ uri: item.thumbnail }}/>
-        <View style={styles.text}>
-            <Title>{item.name}</Title>
-            <Location>{item.location}</Location>
-            <Price>${item.price}</Price>
-        </View>
-    </ListingItemWrapper>
-);
+                <View style={styles.textStyle}>
+                    <Text style={{ color: '#2e2f30', fontSize: 18, fontWeight: 'bold' }}>{item.name}</Text>
+                    <Text style={{ color: '#2e2f30', fontSize: 16 }}>{item.location}</Text>
+                    <Text style={{ color: '#2e2f30', fontSize: 16 }}>Quantity: {item.qty}</Text>
+                    <View style={styles.priceStyle}>
+                        <Text style={{ fontSize: 16 }}>${item.price}</Text>
+                    </View>
+                </View>
+
+                <View style={styles.counterStyle}>
+                    <DecreQtyButton productId={item.id} />
+                    <Text>${amount}</Text>
+                    <IncreQtyButton productId={item.id}/>
+                </View>
+            </View>
+        </>
+    );
+};
 
 const styles = StyleSheet.create({
     text: {
         flex: 1,
         flexWrap: 'wrap',
     },
+    containerStyle: {
+        flexDirection: 'row',
+        flex: 1,
+        borderBottomWidth: 1,
+        borderColor: '#e2e2e2',
+        padding: 10,
+        paddingLeft: 15,
+        backgroundColor: '#fff'
+    },
+    imageStyle: {
+        width: 100,
+        height: 100,
+        marginRight: 20
+    },
+    textStyle: {
+        flex: 2,
+        justifyContent: 'center'
+    },
+    priceStyle: {
+        width: 40,
+        alignItems: 'center',
+        marginTop: 3,
+    },
+    counterStyle: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center'
+    }
 });
 
 export default OrderItem;

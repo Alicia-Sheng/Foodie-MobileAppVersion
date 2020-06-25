@@ -26,7 +26,7 @@ export const GET_ORDER = gql `
         location
         thumbnail
         price
-        rating
+        qty
       }
     }
   }
@@ -65,9 +65,33 @@ export const LOGIN_USER = gql `
 `;
 
 export const COMPLETE_ORDER = gql `
-  mutation completeOrdert {
+  mutation completeOrder {
     completeOrder {
       complete
+    }
+  }
+`;
+
+export const REMOVE_FROM_ORDER = gql `
+  mutation removeFromOrder($productId: ID!) {
+    removeFromOrder(productId: $productId) {
+      total
+    }
+  }
+`;
+
+export const INCREMENT_QTY = gql `
+  mutation incrementQty($productId: ID!) {
+    incrementQty(productId: $productId) {
+      total
+    }
+  }
+`;
+
+export const DECREMENT_QTY = gql `
+  mutation decrementQty($productId: ID!) {
+    decrementQty(productId: $productId) {
+      total
     }
   }
 `;

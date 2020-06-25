@@ -4,20 +4,14 @@ import styled from 'styled-components/native';
 import OrderItem from '../Components/Order/OrderItem'
 import Button from '../Components/Button/Button';
 import Totals from '../Components/Order/Totals';
-import { GET_ORDER } from '../constants/functions';
+import { GET_ORDER, GET_ORDER_TOTAL } from '../constants/functions';
 import { Query } from 'react-apollo';
 
 const OrderWrapper = styled(View)`
 flex: 1;
-background-color: #fff;
+background-color: white;
 align-items: center;
 justify-content: center;
-`;
-
-const OrderItemsWrapper = styled(View)`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
 `;
 
 const OrderListings = styled(FlatList)`
@@ -30,12 +24,20 @@ const Alert = styled(Text)`
   text-align: center;
 `;
 
-const Order = ({ navigation }) => {
-/*  const [total, setTotal] = useState(0);
-  const [products, setProducts] = useState([]);
-  const [complete, setComplete] = useState(false);
+const getTotal = ({ data }) => {
+  let TotalAmount = 0;
+  for (var i = 0; i < data.length; i++) {
+    TotalAmount += data[i].qty * data[i].price;
+  };
+  return TotalAmount
+}
 
-  setOrder() {
+const Order = ({ navigation }) => {
+  /*const [total, setTotal] = useState(0);
+  const [products, setProducts] = useState([]);
+  const [complete, setComplete] = useState(false);*/
+
+  /*setOrder() {
     let order = {
         total: 0,
         products: [],
@@ -52,35 +54,9 @@ const Order = ({ navigation }) => {
     catch(error) {
       alert(error);
     }
-  }
+  }*/
 
-  onClickAddCart(data){
-
-   const itemcart = {
-     food: data,
-     quantity:  1,
-     price: data.price
-   }
-
-   AsyncStorage.getItem('cart').then((datacart)=>{
-       if (datacart !== null) {
-         const cart = JSON.parse(datacart)
-         cart.push(itemcart)
-         AsyncStorage.setItem('cart',JSON.stringify(cart));
-       }
-       else{
-         const cart  = []
-         cart.push(itemcart)
-         AsyncStorage.setItem('cart',JSON.stringify(cart));
-       }
-       alert("Add Cart")
-     })
-     .catch((err)=>{
-       alert(err)
-     })
- }
-
-  onAddToOrder = this.onAddToOrder.bind(this);
+  /*onAddToOrder = this.onAddToOrder.bind(this);
 onAddToOrder(p) {
   let newArray = [...this.state.products];
   let add = newArray.find(item => item.id === p.id);
@@ -156,83 +132,47 @@ itemSum() {
           total += v.num;
   });
   return total
-}
+}*/
 
   return (
-    <OrderWrapper>
-      {
-        products.length > 0 ? (
-          <>
+    <Query query={GET_ORDER}>
+      {({ loading, error, data }) => {
+        if (loading || error) {
+          return <Alert>{loading ? 'Loading...' : error.message}</Alert>;
+        }
+        return (
 
-            <OrderListings
-              data={products}
-              keyExtractor={item => String(item.id)}
-              renderItem={({ item }) => <OrderItem item={item} />}
-            />
+          <OrderWrapper>
+            {
+              data.order && data.order.products.length > 0 ? (
+                <>
 
-            <Totals count={total} />
-            <Button
-              title="Checkout"
-              onPress={() => navigation.navigate('Checkout')}
-              width='50%'
-              radius='20px'
-              height='40px'
-            />
-          </>
-        ) : (
-            <Alert>
-              Your bag is empty...
-            </Alert>
-          )
-      }
-    </OrderWrapper>
-  )*/
+                  <OrderListings
+                    data={data.order.products}
+                    keyExtractor={item => String(item.id)}
+                    renderItem={({ item }) => <OrderItem item={item} />}
+                  />
 
-  return (
-  	<Query query={GET_ORDER}>
-  		{({ loading, error, data }) => {
-  			if (loading || error) {
-  				return <Alert>{loading ? 'Loading...' : error.message}</Alert>;
-  			}
-  			return (
-  				<OrderWrapper>
-  					{
-  						data.order && data.order.products.length > 0 ? (
-  							<>
-
-  								<OrderListings
-  									data={data.order.products}
-  									keyExtractor={item => String(item.id)}
-  									renderItem={({ item }) => <OrderItem item={item} />}
-  								/>
-
-  								<Totals count={data.order.total} />
-  								<Button
-  									title="Checkout"
-  									onPress={() => navigation.navigate('Checkout')}
-  									width='50%'
-  									radius='20px'
-  									height='40px'
-  								/>
-  							</>
-  						) : (
-  								<Alert>
-  									Your bag is empty...
-  								</Alert>
-  							)
-  					}
-  				</OrderWrapper>
-  			);
-  		}}
-  	</Query>
+                  <Totals total={data.order.total} />
+                  <Button
+                    title="Go to checkout"
+                    onPress={() => navigation.navigate('Checkout')}
+                    width='50%'
+                    radius='20px'
+                    height='40px'
+                  />
+                </>
+              ) : (
+                  <Alert>
+                    Your bag is empty...
+                  </Alert>
+                )
+            }
+          </OrderWrapper>
+        );
+      }}
+    </Query>
   )
 };
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-});
+
 export default Order;

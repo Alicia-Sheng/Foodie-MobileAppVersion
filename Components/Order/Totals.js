@@ -1,30 +1,30 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-const TotalsWrapper = styled(View)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1%;
-  background: gray;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 2%;
-`;
+const Totals = ({ total }) => (
 
-const Total = styled(Text)`
-  width: 100%;
-  font-size: 18px;
-  color: white;
-  font-weight: bold;
-  text-align: right;
-`;
-
-const Totals = ({ count }) => (
-  <TotalsWrapper>
-    <Total>{`Order Totals: ${count}`}</Total>
-  </TotalsWrapper>
+  <>
+    <View style={styles.containerStyle}>
+      <View style={styles.orderStyle}>
+        <Icon name="ios-cart" size={20} style={{ marginRight: 8 }} />
+        <Text style={{ fontSize: 20 }}>{`Order totals: ${total}`}</Text>
+      </View>
+    </View>
+  </>
 );
 
+const styles = StyleSheet.create({
+  containerStyle: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingTop: 15,
+    marginBottom: '2%',
+  },
+  orderStyle: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  }
+});
 export default Totals;
