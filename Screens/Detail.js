@@ -1,7 +1,6 @@
 import React, {Component, useState} from 'react';
 import { Button, Image, StyleSheet, Text, View, TextInput, Alert, ScrollView} from 'react-native';
 import ListingDetail from '../Components/Listing/ListingDetail';
-//import SegmentTab from '../Components/Details/SegmentTab';
 import StarRating from '../Components/Details/StarRating';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
 
@@ -23,14 +22,63 @@ const Detail = ({ navigation }) => {
       </Text>
 
       <SegmentedControlTab
-        selectedIndex = {0}
+        selectedIndex = {selectedIndex}
         onTabPress = {index => setSelectedIndex(parseInt(index))}
         values = {["Details","Comment"]}
-        tabStyle = {styles.tabStyle}
+        tabStyle = {styles.tab}
+        tabContainerStyle = {styles.tabContainer}
+        activeTabTextStyle = {{color: 'white'}}
       />
 
-      <Text style = {{marginLeft: 15}}> {item.desc} </Text>
 
+      {selectedIndex === 0
+             && <View style = {{alignItems: 'center', justifyContent: 'center'}}>
+                  <Text style = {{marginLeft: 15}}> {item.desc}</Text>
+
+                  <StarRating
+                    maxStars={5}
+                    rating={3}
+                    disabled={false}
+                    starSize={15}
+                    onStarChange={(value) => onStarRatingPress(value)}
+                    style = {{marginTop: 15}}
+                  />
+
+                  <TextInput
+                    style = {{
+                      height:100,
+                      width: 300,
+                      borderColor:'gray',
+                      borderWidth: 1,
+                      borderRadius: 15,
+                      color: "grey",
+                      margin: 20,
+                    }}
+                    placeholder = "Please add your comment"
+                    multiline = {true}
+                    numberOfLines = {3}
+                    maxLength = {140}
+                    spellCheck = {false}
+                    selectionColor = "black"
+                    defaultValue = {text}
+                    onChangeText = {text => setText(text)}
+                  />
+
+                  <View style = {styles.sub}>
+                    <Button title="Submit" onPress={()=>Alert.alert('Do you want to submit?')}/>
+                  </View>
+
+                </View>
+      }
+
+      {selectedIndex === 1
+             && <Text> previous comment test, not implemented yet </Text>
+      }
+
+
+
+    {/*  <Text style = {{marginLeft: 15}}> {item.desc} </Text> */}
+    {/*
       <StarRating
         maxStars={5}
         rating={3}
@@ -59,15 +107,19 @@ const Detail = ({ navigation }) => {
         defaultValue = {text}
         onChangeText = {text => setText(text)}
       />
+    */}
+{/*
       <View style = {styles.sub}>
         <Button title="Submit" onPress={()=>Alert.alert('Do you want to submit?')}/>
       </View>
-
+*/}
     </View>
   </ScrollView>
 
   );
-    {/* return <ListingDetail item={item} />;*/}
+
+  {/* return <ListingDetail item={item} />;*/}
+
 };
 
 const onStarRatingPress = ({value}) =>{
@@ -104,9 +156,14 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     margin:15,
   },
-  tabStyle: {
+  tab: {
     width:100,
     marginBottom: 20,
+    borderColor: 'transparent',
+  },
+  tabContainer: {
+    height: 50,
+    backgroundColor: 'white',
   }
 })
 
