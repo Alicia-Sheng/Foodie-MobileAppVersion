@@ -75,14 +75,14 @@ export const COMPLETE_ORDER = gql `
 
 export const ADD_PRODUCT = gql `
   mutation addProduct($name: String!, $location: String!, $thumbnail: String!, $desc: String!, $price: Float, $category: String!) {
-    addProduct(input: {
+    addProduct(
         name: $name,
         location: $location,
         thumbnail: $thumbnail,
         desc: $desc,
         price: $price,
         category: $category
-      }) {
+      ) {
       id
       name
       location
