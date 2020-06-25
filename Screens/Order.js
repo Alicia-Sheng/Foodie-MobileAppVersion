@@ -9,9 +9,15 @@ import { Query } from 'react-apollo';
 
 const OrderWrapper = styled(View)`
 flex: 1;
-background-color: white;
+background-color: #fff;
 align-items: center;
 justify-content: center;
+`;
+
+const OrderItemsWrapper = styled(View)`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 `;
 
 const OrderListings = styled(FlatList)`
@@ -25,11 +31,11 @@ const Alert = styled(Text)`
 `;
 
 const Order = ({ navigation }) => {
-  /*const [total, setTotal] = useState(0);
+/*  const [total, setTotal] = useState(0);
   const [products, setProducts] = useState([]);
-  const [complete, setComplete] = useState(false);*/
+  const [complete, setComplete] = useState(false);
 
-  /*setOrder() {
+  setOrder() {
     let order = {
         total: 0,
         products: [],
@@ -46,9 +52,35 @@ const Order = ({ navigation }) => {
     catch(error) {
       alert(error);
     }
-  }*/
+  }
 
-  /*onAddToOrder = this.onAddToOrder.bind(this);
+  onClickAddCart(data){
+
+   const itemcart = {
+     food: data,
+     quantity:  1,
+     price: data.price
+   }
+
+   AsyncStorage.getItem('cart').then((datacart)=>{
+       if (datacart !== null) {
+         const cart = JSON.parse(datacart)
+         cart.push(itemcart)
+         AsyncStorage.setItem('cart',JSON.stringify(cart));
+       }
+       else{
+         const cart  = []
+         cart.push(itemcart)
+         AsyncStorage.setItem('cart',JSON.stringify(cart));
+       }
+       alert("Add Cart")
+     })
+     .catch((err)=>{
+       alert(err)
+     })
+ }
+
+  onAddToOrder = this.onAddToOrder.bind(this);
 onAddToOrder(p) {
   let newArray = [...this.state.products];
   let add = newArray.find(item => item.id === p.id);
@@ -124,9 +156,9 @@ itemSum() {
           total += v.num;
   });
   return total
-}*/
+}
 
-  /*return (
+  return (
     <OrderWrapper>
       {
         products.length > 0 ? (
