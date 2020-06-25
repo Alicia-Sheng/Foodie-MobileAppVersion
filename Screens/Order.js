@@ -30,29 +30,29 @@ const Alert = styled(Text)`
   text-align: center;
 `;
 
-/*setOrder() {
-  let order = {
-      total: 0,
-      products: [],
-      complete: true,
-  }
-  AsyncStorage.setItem('order', JSON.stringify(order));
-}
-
-getOrder = asyns () => {
-  try{
-    let order = await AsyncStorage.getItem('order');
-
-  }
-  catch(error) {
-    alert(error);
-  }
-}*/
-
 const Order = ({ navigation }) => {
-  const [total, setTotal] = useState(0);
+  /*const [total, setTotal] = useState(0);
   const [products, setProducts] = useState([]);
-  const [complete, setComplete] = useState(false);
+  const [complete, setComplete] = useState(false);*/
+
+  /*setOrder() {
+    let order = {
+        total: 0,
+        products: [],
+        complete: true,
+    }
+    AsyncStorage.setItem('order', JSON.stringify(order));
+  }
+
+  getOrder = asyns () => {
+    try{
+      let order = await AsyncStorage.getItem('order');
+
+    }
+    catch(error) {
+      alert(error);
+    }
+  }*/
 
   /*onAddToOrder = this.onAddToOrder.bind(this);
 onAddToOrder(p) {
@@ -132,7 +132,7 @@ itemSum() {
   return total
 }*/
 
-  return (
+  /*return (
     <OrderWrapper>
       {
         products.length > 0 ? (
@@ -160,43 +160,46 @@ itemSum() {
           )
       }
     </OrderWrapper>
+  )*/
+
+  return (
+  	<Query query={GET_ORDER}>
+  		{({ loading, error, data }) => {
+  			if (loading || error) {
+  				return <Alert>{loading ? 'Loading...' : error.message}</Alert>;
+  			}
+  			return (
+  				<OrderWrapper>
+  					{
+  						data.order && data.order.products.length > 0 ? (
+  							<>
+
+  								<OrderListings
+  									data={data.order.products}
+  									keyExtractor={item => String(item.id)}
+  									renderItem={({ item }) => <OrderItem item={item} />}
+  								/>
+
+  								<Totals count={data.order.total} />
+  								<Button
+  									title="Checkout"
+  									onPress={() => navigation.navigate('Checkout')}
+  									width='50%'
+  									radius='20px'
+  									height='40px'
+  								/>
+  							</>
+  						) : (
+  								<Alert>
+  									Your bag is empty...
+  								</Alert>
+  							)
+  					}
+  				</OrderWrapper>
+  			);
+  		}}
+  	</Query>
   )
-	/*<Query query={GET_ORDER}>
-		{({ loading, error, data }) => {
-			if (loading || error) {
-				return <Alert>{loading ? 'Loading...' : error.message}</Alert>;
-			}
-			return (
-				<OrderWrapper>
-					{
-						data.order && data.order.products.length > 0 ? (
-							<>
-
-								<OrderListings
-									data={data.order.products}
-									keyExtractor={item => String(item.id)}
-									renderItem={({ item }) => <OrderItem item={item} />}
-								/>
-
-								<Totals count={data.order.total} />
-								<Button
-									title="Checkout"
-									onPress={() => navigation.navigate('Checkout')}
-									width='50%'
-									radius='20px'
-									height='40px'
-								/>
-							</>
-						) : (
-								<Alert>
-									Your bag is empty...
-								</Alert>
-							)
-					}
-				</OrderWrapper>
-			);
-		}}
-	</Query>*/
 };
 const styles = StyleSheet.create({
 	container: {
