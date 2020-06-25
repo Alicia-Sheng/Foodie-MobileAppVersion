@@ -26,7 +26,7 @@ import MyReviews from './Screens/Account/MyReviews';
 import Login from './Screens/Login';
 import AuthLoading from './Screens/Login';
 import HamburgerIcon from './Components/Button/HamburgerIcon';
-import user from './assets/userInfo';
+import BadgeCount from './Components/Badge/BadgeCount';
 
 
 const HomeStack = createStackNavigator(
@@ -173,7 +173,7 @@ const Tabs = createBottomTabNavigator(
         } else if (routeName === 'Order') {
           //iconName = `ios-cart`;
           iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-cart`;
-          badgeCount = 0;
+          badgeCount = 1;
         } else if (routeName === 'Provider') {
           //iconName = `ios-cart`;
           iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-add`;
@@ -185,25 +185,8 @@ const Tabs = createBottomTabNavigator(
               size={horizontal ? 30 : 30}
               color={tintColor}
             />
-            {badgeCount > 0 && (
-              <View
-                style={{
-                  position: 'absolute',
-                  right: 25,
-                  top: -1,
-                  backgroundColor: '#cf3838',
-                  borderRadius: 6,
-                  width: 12,
-                  height: 12,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                <Text style={{ color: 'white', fontSize: 10, fontWeight: 'bold' }}>
-                  {badgeCount}
-                </Text>
-              </View>
-            )}
+            {badgeCount > 0 && 
+            <BadgeCount/>}
           </>
         );
       },
