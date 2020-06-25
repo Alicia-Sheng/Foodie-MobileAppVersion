@@ -9,15 +9,9 @@ import { Query } from 'react-apollo';
 
 const OrderWrapper = styled(View)`
 flex: 1;
-background-color: #fff;
+background-color: white;
 align-items: center;
 justify-content: center;
-`;
-
-const OrderItemsWrapper = styled(View)`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
 `;
 
 const OrderListings = styled(FlatList)`
