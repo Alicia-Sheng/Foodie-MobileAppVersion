@@ -14,8 +14,8 @@ const BadgeCount = () => (
                 <View
                     style={{
                         position: 'absolute',
-                        right: 30,
-                        top: -5,
+                        right: 18,
+                        top: -1,
                         backgroundColor: '#cf3838',
                         borderRadius: 8,
                         width: 16,
