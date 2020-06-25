@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AsyncStorage, Alert, Text, View, StyleSheet, TouchableOpacity, ScrollView, FlatList, Button } from 'react-native';
+import { AsyncStorage, Alert, Text, View, StyleSheet, TouchableOpacity, ScrollView, FlatList, Button, Image } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import styled from 'styled-components/native';
 import { Mutation } from 'react-apollo';
@@ -30,11 +30,12 @@ function ItemForm({ addItem: addItem }) {
   const [name, setName] = useState("")
   const [desc, setDesc] = useState("")
   const [price, setPrice] = useState(0)
+  const [img, setImg] = useState("")
   const [loc, setLoc] = useState("")
   const [category, setCategory] = useState("")
 
   const handleForm = () => {
-    const item = { name: name, desc: desc, price: price, loc: loc, category: category }
+    const item = { name: name, location: loc, thumbnail: img, desc: desc, price: price, category: category }
     addItem(item)
   }
 
@@ -55,6 +56,13 @@ function ItemForm({ addItem: addItem }) {
             placeholder="Food description"
             maxLength={200}
             onChangeText={text => setDesc(text)}
+          />
+        </View>
+        <View>
+          <Text style={{ margin: 5 }}>Food image:</Text>
+          <TextInput
+            placeholder="Food image url"
+            onChangeText={text => setImg(text)}
           />
         </View>
         <View>
@@ -128,10 +136,11 @@ function Food({ items: items }) {
 function Item({ item }) {
   return (
     <View style={{ margin: 10 }}>
+      <Image style={{ width: 150, height: 150 }} source={{ uri: item.thumbnail }} />
       <Text> {item.name} </Text>
       <Text> {item.desc} </Text>
       <Text> ${item.price} </Text>
-      <Text> {item.loc} </Text>
+      <Text> {item.location} </Text>
       <Text> {item.category} </Text>
     </View>
   )
