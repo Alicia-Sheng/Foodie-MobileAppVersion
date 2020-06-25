@@ -74,7 +74,7 @@ export const COMPLETE_ORDER = gql `
 `;
 
 export const ADD_PRODUCT = gql `
-  mutation addProduct($name: String!, $location: String!, $thumbnail: String!, $desc: String!, $price: Int!, $category: String!) {
+  mutation addProduct($name: String!, $location: String!, $thumbnail: String!, $desc: String!, $price: Float, $category: String!) {
     addProduct(input: {
         name: $name,
         location: $location,
