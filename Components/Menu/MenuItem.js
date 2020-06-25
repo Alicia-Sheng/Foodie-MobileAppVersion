@@ -95,10 +95,6 @@ class MenuItem extends Component {
                                         <Button style={{ backgroundColor: '#cf3838', borderRadius: 10, height: 32, width: 75, marginLeft: 0, marginRight: 10, paddingLeft: 30 }}>
                                             <TouchableOpacity onPress={() => addToOrder({ variables: { productId: id } })}>
                                                 <View>
-
-                                                    <Image source={{ uri: thumbnail }} style={{ height: 0, width: 0 }} />
-                                                    <Text style={{ height: 0, width: 0 }}>{name}</Text>
-                                                    <Text style={{ height: 0, width: 0 }} >${price}</Text>
                                                     <Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold' }} uppercase={false} > +</Text>
                                                 </View>
                                             </TouchableOpacity>
@@ -131,12 +127,12 @@ class MenuItem extends Component {
                                 <StatusBar barStyle="light-content" backgroundColor="black" />
                                 <Text style={{ fontSize: 18, marginTop: 5, marginHorizontal: 20, fontWeight: "bold" }}>{name}</Text>
                                 <Text style={{ fontSize: 18, marginTop: 15, marginHorizontal: 20, color: '#646464' }}>{desc}</Text>
-                                
+
                                 <View style={{ bottom: 60, position: 'absolute', width: '90%', marginHorizontal: 20, flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'white', flex: 1, borderTopWidth: 1, borderTopColor: 'black', borderStyle: 'dashed', borderTopColor: '#ececec' }}>
                                     <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Price</Text>
                                     <Text style={{ fontSize: 18, fontWeight: 'bold' }}>${price}</Text>
                                 </View>
-                                <View style={{ flex: 1, backgroundColor: 'white', alignItems: 'flex-start', marginLeft: 20, marginTop: 5}}>   
+                                <View style={{ flex: 1, backgroundColor: 'white', alignItems: 'flex-start', marginLeft: 20, marginTop: 5 }}>
                                     <StarRating
                                         maxStars={5}
                                         rating={5}
@@ -155,13 +151,9 @@ class MenuItem extends Component {
                                             addToOrder({ variables: { productId: id } })
                                             this.toggleModal1()
                                         }}>
-
-                                            <Image source={{ uri: thumbnail }} style={{ height: 0, width: 0 }} />
-                                            <Text style={{ height: 0, width: 0 }}>{name}</Text>
-                                            <Text style={{ height: 0, width: 0 }}>${price}</Text>
                                             <Text style={{ fontSize: 17, marginBottom: 5, color: 'white', fontWeight: 'bold' }} uppercase={false}>
                                                 Add to Order
-                    </Text>
+                                            </Text>
 
                                         </TouchableOpacity>
                                     </Button>
