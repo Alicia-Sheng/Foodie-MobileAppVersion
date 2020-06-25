@@ -1,14 +1,14 @@
 import React, {Component, useState} from 'react';
-import { Button, Image, StyleSheet, Text, View, TextInput, Alert, ScrollView} from 'react-native';
+import { Button, Image, StyleSheet, Text, View, TextInput, Alert, ScrollView, FlatList} from 'react-native';
 import ListingDetail from '../Components/Listing/ListingDetail';
 import StarRating from '../Components/Details/StarRating';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
 
 const Detail = ({ navigation }) => {
   const item = navigation.getParam('item', {});
-  let state = 0;
   const [text, setText] = useState('');  // TextInput
   const [selectedIndex,setSelectedIndex] = useState('0')    //segmentTab
+  const [commentList, setCommentList] = useState ([])    //list of comment
 
   return (
   <ScrollView>
@@ -65,7 +65,7 @@ const Detail = ({ navigation }) => {
                   />
 
                   <View style = {styles.sub}>
-                    <Button title="Submit" onPress={()=>Alert.alert('Do you want to submit?')}/>
+                    <Button title="Submit" onPress={()=>setCommentList(commentList.concat({text}))}/>
                   </View>
 
                 </View>
@@ -73,46 +73,17 @@ const Detail = ({ navigation }) => {
 
       {selectedIndex === 1
              && <Text> previous comment test, not implemented yet </Text>
+/*
+             && <View style = {{flexDirection:"row", margin:"10"}}>
+                   <FlatList
+                       data = {commentList}
+                       renderItem = {({item}) => item}
+                       keyExtractor = {(item,index) => index}
+                   />
+                </View>
+*/
       }
 
-
-
-    {/*  <Text style = {{marginLeft: 15}}> {item.desc} </Text> */}
-    {/*
-      <StarRating
-        maxStars={5}
-        rating={3}
-        disabled={false}
-        starSize={15}
-        onStarChange={(value) => onStarRatingPress(value)}
-        style = {{marginTop: 15}}
-      />
-
-      <TextInput
-        style = {{
-          height:100,
-          width: 300,
-          borderColor:'gray',
-          borderWidth: 1,
-          borderRadius: 15,
-          color: "grey",
-          margin: 20,
-        }}
-        placeholder = "Please add your comment"
-        multiline = {true}
-        numberOfLines = {3}
-        maxLength = {140}
-        spellCheck = {false}
-        selectionColor = "black"
-        defaultValue = {text}
-        onChangeText = {text => setText(text)}
-      />
-    */}
-{/*
-      <View style = {styles.sub}>
-        <Button title="Submit" onPress={()=>Alert.alert('Do you want to submit?')}/>
-      </View>
-*/}
     </View>
   </ScrollView>
 
@@ -121,6 +92,7 @@ const Detail = ({ navigation }) => {
   {/* return <ListingDetail item={item} />;*/}
 
 };
+
 
 const onStarRatingPress = ({value}) =>{
   console.log('Rated' + value + 'stars!');

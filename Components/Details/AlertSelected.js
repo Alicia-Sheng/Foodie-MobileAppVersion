@@ -65,7 +65,7 @@ export default class AlertSelected extends Component {
                             underlayColor={'#f0f0f0'}
                             onPress={this.cancel.bind(this)}
                         >
-                            <Text style={styles.buttonText}>取消</Text>
+                            <Text style={styles.buttonText}>Cancel</Text>
                         </TouchableHighlight>
                     </Animated.View>
                 </View>
@@ -97,8 +97,8 @@ export default class AlertSelected extends Component {
     }
 
     componentWillUnmount() {
-        // 如果存在this.timer，则使用clearTimeout清空。
-        // 如果你使用多个timer，那么用多个变量，或者用个数组来保存引用，然后逐个clear
+        // if his.timer exists，then use clearTimeout to clear it。
+        // if multiple timers are used，then use multiple variable，or use a array to store its refence，then clear one by one
         this.timer && clearTimeout(this.timer);
         this.chooseTimer && clearTimeout(this.chooseTimer);
     }
@@ -147,7 +147,7 @@ export default class AlertSelected extends Component {
         ]).start((finished) => this.setState({hide: true}));
     }
 
-  
+
     cancel(event) {
         if (!this.state.hide) {
             this.out();
@@ -166,7 +166,7 @@ export default class AlertSelected extends Component {
 
   /**
   * pop up component
-  * titile: 标题
+  * title: 标题
   * entityList：选择项数据   数组
   * tipTextColor: 字体颜色
   * callback：回调方法
