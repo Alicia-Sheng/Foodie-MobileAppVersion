@@ -51,7 +51,7 @@ class MenuItem extends Component {
 
     render() {
         const { data } = this.props;
-        const { id, name, price, thumbnail, desc } = data
+        const { id, name, location, price, thumbnail, desc } = data
 
         return (
             <Mutation
@@ -66,11 +66,14 @@ class MenuItem extends Component {
                                     <Image source={{ uri: thumbnail }} style={{ height: 80, width: 80, alignSelf: 'center', borderRadius: 5, marginLeft: 0 }} />
                                 </View>
                                 <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'column' }}>
-                                    <View style={{ flex: .6, backgroundColor: 'white' }}>
+                                    <View style={{ flex: .7, backgroundColor: 'white' }}>
                                         <Text style={{ fontSize: 16, marginTop: 5, fontWeight: "bold" }} numberOfLines={1}>{name}</Text>
                                     </View>
+                                    <View style={{ flex: .6, backgroundColor: 'white' }}>
+                                        <Text style={{ fontSize: 14, marginTop: 5 }} numberOfLines={1}>{location}</Text>
+                                    </View>
                                     <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center' }}>
-                                        <Text numberOfLines={2} style={{ color: '#585858' }}>{desc}</Text>
+                                        <Text numberOfLines={1} style={{ color: '#585858' }}>{desc}</Text>
                                     </View>
                                     <View style={{ flex: .6, backgroundColor: 'white', justifyContent: 'center' }}>
                                         <Text>${price}</Text>
@@ -125,7 +128,8 @@ class MenuItem extends Component {
 
 
                                 <StatusBar barStyle="light-content" backgroundColor="black" />
-                                <Text style={{ fontSize: 18, marginTop: 5, marginHorizontal: 20, fontWeight: "bold" }}>{name}</Text>
+                                <Text style={{ fontSize: 20, marginTop: 5, marginHorizontal: 20, fontWeight: "bold" }}>{name}</Text>
+                                <Text style={{ fontSize: 18, marginTop: 5, marginHorizontal: 20 }}>{location}</Text>
                                 <Text style={{ fontSize: 18, marginTop: 15, marginHorizontal: 20, color: '#646464' }}>{desc}</Text>
 
                                 <View style={{ bottom: 60, position: 'absolute', width: '90%', marginHorizontal: 20, flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'white', flex: 1, borderTopWidth: 1, borderTopColor: 'black', borderStyle: 'dashed', borderTopColor: '#ececec' }}>
