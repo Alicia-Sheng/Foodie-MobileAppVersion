@@ -4,24 +4,30 @@ import { Button, StyleSheet, Text, View, TouchableOpacity, Image, ScrollView } f
 const Restaurant = ({ navigation }) => (
     <ScrollView>
       <View style={styles.container}>
-        <TouchableOpacity style = {styles.touch} onPress={() => navigation.navigate('Sherman')}>
-            <Image source = {require('../media/logo/Sherman.png')} style = {styles.logo} />
-        </TouchableOpacity>
-        <TouchableOpacity style = {styles.touch} onPress={() => navigation.navigate('Stein')}>
-            <Image source = {require('../media/logo/the-stein.png')} style = {styles.logo} />
-        </TouchableOpacity>
-        <TouchableOpacity style = {styles.touch} onPress={() => navigation.navigate('Dunkin')}>
-            <Image source = {require('../media/logo/dunkin-donuts.png')} style = {styles.logo} />
-        </TouchableOpacity>
-        <TouchableOpacity style = {styles.touch} onPress={() => navigation.navigate('Einstein')}>
-            <Image source = {require('../media/logo/einstein-bagels.png')} style = {styles.logo} />
-        </TouchableOpacity>
-        <TouchableOpacity style = {styles.touch} onPress={() => navigation.navigate('Starbucks')}>
-            <Image source = {require('../media/logo/starbucks.jpg')} style = {styles.logo} />
-        </TouchableOpacity>
-        <TouchableOpacity style = {styles.touch} onPress={() => navigation.navigate('AllRestaurant')}>
-            <Image source = {require('../media/logo/all-restaurants.jpg')} style = {styles.logo} />
-        </TouchableOpacity>
+        <View style={{flex: 1, flexDirection: 'row'}}>
+          <TouchableOpacity style = {styles.touch} onPress={() => navigation.navigate('Sherman')}>
+              <Image source = {require('../media/logo/Sherman.png')} style = {styles.logo} />
+          </TouchableOpacity>
+          <TouchableOpacity style = {styles.touch} onPress={() => navigation.navigate('Stein')}>
+              <Image source = {require('../media/logo/the-stein.png')} style = {styles.logo} />
+          </TouchableOpacity>
+        </View>
+        <View style={{flex: 1, flexDirection: 'row'}}>
+          <TouchableOpacity style = {styles.touch} onPress={() => navigation.navigate('Dunkin')}>
+              <Image source = {require('../media/logo/dunkin-donuts.png')} style = {styles.logo} />
+          </TouchableOpacity>
+          <TouchableOpacity style = {styles.touch} onPress={() => navigation.navigate('Einstein')}>
+              <Image source = {require('../media/logo/einstein-bagels.png')} style = {styles.logo} />
+          </TouchableOpacity>
+        </View>
+        <View style={{flex: 1, flexDirection: 'row'}}>
+          <TouchableOpacity style = {styles.touch} onPress={() => navigation.navigate('Starbucks')}>
+              <Image source = {require('../media/logo/starbucks.jpg')} style = {styles.logo} />
+          </TouchableOpacity>
+          <TouchableOpacity style = {styles.touch} onPress={() => navigation.navigate('AllRestaurant')}>
+              <Image source = {require('../media/logo/all-restaurants.jpg')} style = {styles.logo} />
+          </TouchableOpacity>
+        </View>
       </View>
     </ScrollView>
 );
@@ -43,7 +49,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         borderColor: 'white',
         borderWidth: 1,
-        borderRadius: 20,
+        borderRadius: 150,
 
         shadowColor: '#999',
         shadowOffset:{width:0,height:0},
@@ -54,13 +60,13 @@ const styles = StyleSheet.create({
         margin: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        width: 150,
-        height:150,
+        width: 100,
+        height:100,
         padding: 10,
         backgroundColor: '#FFFFFF',
         borderColor: 'white',
         borderWidth: 1,
-        borderRadius: 20,
+        borderRadius: 150,
 
         shadowColor: 'grey',
         shadowOffset:{width:0,height:0},
