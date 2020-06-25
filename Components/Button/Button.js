@@ -7,8 +7,8 @@ const ButtonWrapper = styled(TouchableOpacity)`
   align-items: center;
   justify-content: space-around;
   border-radius: ${({ radius }) => (radius ? radius : '30px')};
-  width: ${({ width }) => (width ? width : '50px')};
-  height: ${({ height }) => (height ? height : '')};
+  width: ${({ width }) => (width ? width : '40px')};
+  height: ${({ height }) => (height ? height : '40px')};
   background-color: ${({ color }) => (color ? color : '#cf3838')};
   position: ${({ position }) => (position ? position : 'relative')};
   top: ${({ top }) => (top ? top : '')};
@@ -18,7 +18,7 @@ const ButtonWrapper = styled(TouchableOpacity)`
 const ButtonText = styled(Text)`
   color: white;
   font-size: ${({ font }) => (font ? font : '20px')};
-  line-height: 46px
+  line-height: 34px
 `;
 
 const Button = ({ title, color, onPress, ...props}) => (
