@@ -3,6 +3,7 @@ import { Button, Image, StyleSheet, Text, View, TextInput, Alert, ScrollView, Fl
 import ListingDetail from '../Components/Listing/ListingDetail';
 import StarRating from '../Components/Details/StarRating';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
+import AddToOrderButton from '../Components/Order/AddToOrderButton';
 
 const Detail = ({ navigation }) => {
   const item = navigation.getParam('item', {});
@@ -14,7 +15,10 @@ const Detail = ({ navigation }) => {
   <ScrollView>
     <View style={styles.container}>
       {/* <Image source={item.img.src} style={{ flex: 1, width: 300, height: 300, resizeMode: 'contain' }} /> */}
-      <Image source={{uri: item.thumbnail}} style={{ flex: 1, width: 300, height: 300, resizeMode: 'contain' }} />
+      <View style={styles.photo}>
+        <Image source={{uri: item.thumbnail}} style={{flex:1, width: 300, height: 300, resizeMode: 'contain', borderRadius: 15}} />
+        <AddToOrderButton productId={item.id} />
+      </View>
 
       <Text style = {styles.foodName}>
         {item.name}
@@ -23,7 +27,7 @@ const Detail = ({ navigation }) => {
 
       <SegmentedControlTab
         selectedIndex = {selectedIndex}
-        onTabPress = {index => setSelectedIndex(parseInt(index))}
+        onTabPress = {index => setSelectedIndex(index)}
         values = {["Details","Comment"]}
         tabStyle = {styles.tab}
         tabContainerStyle = {styles.tabContainer}
@@ -72,7 +76,7 @@ const Detail = ({ navigation }) => {
       }
 
       {selectedIndex === 1
-             && <Text> previous comment test, not implemented yet </Text>
+             && <Text> comment test, not implemented yet </Text>
 /*
              && <View style = {{flexDirection:"row", margin:"10"}}>
                    <FlatList
@@ -104,6 +108,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  photo:{
+    flexWrap: 'wrap',
+    flex: 1,
   },
   foodName: {
     width: 300,
