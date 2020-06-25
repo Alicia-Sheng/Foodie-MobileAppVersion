@@ -14,10 +14,10 @@ const HeaderWrapper = styled(View)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 5%;
+  padding-right: 3%;
   padding-top: 20px;
-  padding-bottom:20px
+  padding-bottom: 10px
 `;
 
 const SectionText = styled(Text)`
@@ -47,13 +47,15 @@ const ArrowIcon = styled(Icon).attrs({
   height: 25px;
 `;
 
-const Section = ({ title, nextRoute, navigation }) => (
+const Section = ({ title, nextRoute, navigation, category }) => (
   <ContentContainer>
     <View>
       <HeaderWrapper>
         <SectionText>{title}</SectionText>
         <SeeAllButtonWrapper
-          onPress={() => navigation.navigate(nextRoute)}
+          onPress={() => navigation.navigate(nextRoute, {
+            category
+          })}
         >
           <SeeAllText>See All</SeeAllText>
           <ArrowIcon />

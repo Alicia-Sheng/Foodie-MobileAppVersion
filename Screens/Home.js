@@ -8,7 +8,6 @@ import Filters from '../Components/Listing/Filters';
 import Section from '../Components/Section/Section';
 import { GET_PRODUCTS, GET_LIMIT } from '../constants/functions';
 import Carousel from 'react-native-snap-carousel';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Home = ({ navigation }) => {
 
@@ -39,6 +38,7 @@ const Home = ({ navigation }) => {
                     <Section
                       title="Food You Might Like"
                       nextRoute='SeeAll'
+                      category='food'
                     ></Section>
                   <ListingsWrapper>
                     <Carousel
@@ -62,6 +62,7 @@ const Home = ({ navigation }) => {
                   <Section
                       title="Drinks You Might Like"
                       nextRoute='SeeAll'
+                      category='drink'
                   ></Section>
                   <ListingsWrapper>
                     <Carousel
@@ -101,8 +102,7 @@ const ListingsWrapper = styled(View)`
 background-color: #fff;
 align-items: center;
 justify-content: center;
-margin-left: 40px;
-margin-bottom: 20px;
+margin-bottom: 15px;
 `
 
 const Listings = styled(FlatList)`

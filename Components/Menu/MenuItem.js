@@ -1,13 +1,8 @@
 import React, { Component } from "react";
 import { Image, TouchableOpacity, View, StyleSheet, ScrollView, TouchableHighlight, StatusBar, Text } from "react-native";
 import { Icon, Button } from "native-base";
-// import { connect } from "react-redux";
 import Modal from "react-native-modal";
 import StarRating from '../Details/StarRating';
-
-// import { addNewOrders, updateOrderQty } from "../_actions/orders";
-// import { convertToRupiah, convertToMoney } from "../constants/functions";
-
 
 class MenuItem extends Component {
 
@@ -65,7 +60,7 @@ class MenuItem extends Component {
                         </View>
                         <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'column' }}>
                             <View style={{ flex: .6, backgroundColor: 'white' }}>
-                                <Text style={{ fontSize: 16, marginTop: 5 }} numberOfLines={1}>{name}</Text>
+                                <Text style={{ fontSize: 16, marginTop: 5, fontWeight: "bold" }} numberOfLines={1}>{name}</Text>
                             </View>
                             <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center' }}>
                                 <Text numberOfLines={2} style={{ color: '#585858' }}>{desc}</Text>
@@ -90,14 +85,14 @@ class MenuItem extends Component {
                             </View>
                             <View style={{ flex: 1, backgroundColor: 'white', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
 
-                                <Button style={{ backgroundColor: '#cf3838', borderRadius: 10, height: 32, width: 75, marginLeft: 0, marginRight: 10 }}>
+                                <Button style={{ backgroundColor: '#cf3838', borderRadius: 10, height: 32, width: 75, marginLeft: 0, marginRight: 10, paddingLeft: 30 }}>
                                     <TouchableOpacity onPress={() => this._handleAddOrders(data)}>
                                         <View>
 
                                             <Image source={{ uri: thumbnail }} style={{ height: 0, width: 0 }} />
                                             <Text style={{ height: 0, width: 0 }}>{name}</Text>
                                             <Text style={{ height: 0, width: 0 }} >${price}</Text>
-                                            <Text style={{ fontSize: 15, marginBottom: 20 }} uppercase={false}>Add +</Text>
+                                            <Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold' }} uppercase={false}> +</Text>
                                         </View>
                                     </TouchableOpacity>
                                 </Button>
@@ -109,7 +104,7 @@ class MenuItem extends Component {
                 <View style={{ backgroundColor: '#ececec', height: 8, width: '100%' }} />
                 <Modal
 
-                    onSwipeComplete={() => this.setState({ isModalVisible1: null })}
+                    onSwipeComplete={() => this.setState({ isModalVisible1: false })}
                     swipeDirection="down"
                     scrollTo={this.handleScrollTo}
                     scrollOffset={this.state.scrollOffset}
@@ -128,11 +123,11 @@ class MenuItem extends Component {
 
 
                         <StatusBar barStyle="light-content" backgroundColor="black" />
-                        <Text style={{ fontSize: 18, marginTop: 5, marginHorizontal: 20 }}>{name}</Text>
+                        <Text style={{ fontSize: 18, marginTop: 5, marginHorizontal: 20, fontWeight: "bold" }}>{name}</Text>
                         <Text style={{ fontSize: 18, marginTop: 15, marginHorizontal: 20, color: '#646464' }}>{desc}</Text>
                         <View style={{ bottom: 60, position: 'absolute', width: '90%', marginHorizontal: 20, flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'white', flex: 1, borderTopWidth: 1, borderTopColor: 'black', borderStyle: 'dashed', borderTopColor: '#ececec' }}>
-                            <Text style={{ fontSize: 18 }}>Price</Text>
-                            <Text style={{ fontSize: 18 }}>${price}</Text>
+                            <Text style={{ fontSize: 18, fontWeight: 'bold'}}>Price</Text>
+                            <Text style={{ fontSize: 18, fontWeight: 'bold'}}>${price}</Text>
                         </View>
                         <View style={{ bottom: 0, position: 'absolute', alignItems: 'center', alignContent: 'center', alignSelf: 'center', marginBottom: 10 }}>
                             <Button onPress={() => {
@@ -148,7 +143,7 @@ class MenuItem extends Component {
                                     <Image source={{ uri: thumbnail }} style={{ height: 0, width: 0 }} />
                                     <Text style={{ height: 0, width: 0 }}>{name}</Text>
                                     <Text style={{ height: 0, width: 0 }}>${price}</Text>
-                                    <Text style={{ fontSize: 17, marginBottom: 20 }} uppercase={false}>
+                                    <Text style={{ fontSize: 17, marginBottom: 5 }} uppercase={false}>
                                         Add to Order
                     </Text>
 

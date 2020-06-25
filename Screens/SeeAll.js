@@ -13,7 +13,8 @@ import { theme, container, borderRadius, floatLeft, backgroundGray, backgroundSe
 const SeeAll = ({ navigation }) => {
 
     const [term, setTerm] = useState('');  // search bar
-    const { width: screenWidth } = Dimensions.get('window')
+    const category = navigation.getParam('category');
+    console.log(category)
 
     return (
         <Query
@@ -32,7 +33,7 @@ const SeeAll = ({ navigation }) => {
                         />
                         <FlatList
                             style={[container, styles.flatClear]}
-                            data={data.products}
+                            data={data.products.filter(item => item.category.title == category)}
                             numColumns={1}
                             renderItem={({ item }) => (<MenuItem data={item} />)}
                             keyExtractor={item => item.id.toString()}

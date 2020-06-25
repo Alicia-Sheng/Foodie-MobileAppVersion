@@ -7,7 +7,7 @@ import AddToOrderButton from '../Order/AddToOrderButton';
 const ListingItemWrapper = styled(TouchableOpacity)`
 display: flex;
 flex-direction: row;
-padding: 2%;
+padding: 6%;
 background-color: white;
 border-radius: 5px;
 padding-bottom: 28px;
