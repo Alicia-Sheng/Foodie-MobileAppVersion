@@ -1,7 +1,32 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { Button, StyleSheet, Text, View, TouchableOpacity, Image, ScrollView, FlatList } from 'react-native';
+import restaurant from '../assets/restaurant.js';
 
-const Restaurant = ({ navigation }) => (
+const restaurantList = ({ item }) => {
+  return (
+    <TouchableOpacity>
+      <Image
+        style={{width:100, height:80}}
+        resizeMode="contain"
+        source={item.img.src}
+      />
+      <Text>
+        {item.name}
+      </Text>
+    </TouchableOpacity>
+  );
+}
+
+const Restaurant = ({ navigation }) => {
+
+  return (
+    <>
+    <FlatList
+      horizontal={true}
+      data={restaurant}
+      renderItem={item => restaurantList(item)}
+      keyExtractor={(item, index) => index.toString()}
+    />
     <ScrollView>
       <View style={styles.container}>
         <View style={{flex: 1, flexDirection: 'row'}}>
@@ -30,7 +55,9 @@ const Restaurant = ({ navigation }) => (
         </View>
       </View>
     </ScrollView>
-);
+    </>
+  )
+};
 
 const styles = StyleSheet.create({
     container: {
