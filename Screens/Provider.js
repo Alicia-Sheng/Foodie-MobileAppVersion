@@ -120,7 +120,7 @@ function ItemForm({ addItem: addItem }) {
             <Button
               title="add Item"
               onPress={() => {
-                addProduct({ variables: { name, loc, img, desc, price, category } })
+                addProduct({ variables: { name: name, location: loc, thumbnail: img, desc: desc, price: price, category: category } })
                   .then(({ data }) => {
                     const { item } = data.addProduct;
 
