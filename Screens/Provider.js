@@ -5,7 +5,7 @@ import styled from 'styled-components/native';
 import { Mutation } from 'react-apollo';
 // import Button from '../Components/Button/Button';
 import TextInput from '../Components/TextInput/TextInput';
-import { ADD_PRODUCT } from '../constants/functions';
+import { ADD_PRODUCT, GET_PRODUCTS } from '../constants/functions';
 
 function Provider() {
 
@@ -38,7 +38,9 @@ function ItemForm({ addItem: addItem }) {
   }
 
   return (
-    <Mutation mutation={ADD_PRODUCT}>
+    <Mutation
+      mutation={ADD_PRODUCT}
+      refetchQueries={() => [{ query: GET_PRODUCTS }]}>
       {(addProduct) => (
         <ScrollView>
           <View>
