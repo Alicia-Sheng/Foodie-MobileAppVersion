@@ -27,6 +27,7 @@ export const GET_ORDER = gql `
         thumbnail
         price
         qty
+        totalPrice
       }
     }
   }
