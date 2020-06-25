@@ -9,8 +9,8 @@ export const GET_ORDER_TOTAL = gql `
 `;
 
 export const ADD_TO_ORDER = gql `
-  mutation addToOrder($productId: ID!) {
-    addToOrder(productId: $productId) {
+  mutation addToOrder($productId: ID!, $name: String!, $location: String!, $thumbnail: String!, $price: Float) {
+    addToOrder(productId: $productId, name: $name, location: $location, thumbnail: $thumbnail, price: $price) {
       total
     }
   }
@@ -25,7 +25,6 @@ export const GET_ORDER = gql `
         name
         location
         thumbnail
-        desc
         price
         rating
       }

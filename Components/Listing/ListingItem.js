@@ -47,7 +47,7 @@ const ListingItem = ({ item, navigation, ...props }) => (
       <Thumbnail source={{ uri: item.thumbnail }} {...props} />
       <Title {...props}>{item.name}</Title>
       {/* <Price>${item.price}</Price> */}
-      <AddToOrderButton productId={item.id} />
+      <AddToOrderButton productId={item.id} name={item.name} location={item.location} thumbnail={item.thumbnail} price={item.price}/>
     </View>
   </ListingItemWrapper>
 );
