@@ -89,8 +89,7 @@ function Provider({ navigation }) {
             />
 
             <RNPickerSelect
-              value={""}
-              selectedValue={loc}
+              selectedValue={category}
               onValueChange={(itemValue) => setCategory(itemValue)}
               style={{
                 ...pickerSelectStyles,
