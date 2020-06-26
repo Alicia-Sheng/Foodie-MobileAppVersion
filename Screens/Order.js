@@ -153,7 +153,7 @@ itemSum() {
                     renderItem={({ item }) => <OrderItem item={item} />}
                   />
 
-                  <Totals total={data.order.total} />
+                  <Totals total={data.order.totalPrice} />
                   <Button
                     title="Go to checkout"
                     onPress={() => navigation.navigate('Checkout')}
