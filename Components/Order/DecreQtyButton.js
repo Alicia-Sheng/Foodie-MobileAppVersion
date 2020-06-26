@@ -14,9 +14,9 @@ const DecreQtyButton = ({ productId }) => {
 
         <Icon.Button name="ios-remove"
             size={25}
-            color='#fff'
-            backgroundColor='#fff'
-            style={{ borderRadius: 15, backgroundColor: '#cf3838', height: 30, width: 30, marginRight: 5 }}
+            color='white'
+            backgroundColor='white'
+            style={{ borderRadius: 5, backgroundColor: '#d9d9d9', height: 30, width: 30, marginRight: 5, marginLeft:5 }}
             iconStyle={{ marginRight: 0 }}
             onPress={() => decrementQty({ variables: { productId: productId } })}
         />

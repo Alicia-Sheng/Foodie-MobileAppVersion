@@ -7,10 +7,26 @@ import BackButton from '../../Components/Button/BackButton'
 const Reviews = () => {
   return user.reviews.map((review) => {
     return (
-      <TouchableOpacity key={review.text} onPress={() => Alert.alert('Not implemented yet')}>
-        <Text>{review.name + " - " + review.location}</Text>
+      <TouchableOpacity
+        key={review.text}
+        onPress={() => Alert.alert('Not implemented yet')}
+        style={styles.listItemContainer}
+      >
+        <View style={styles.title}>
+          <Text style={{ fontWeight: "bold" }}>
+            {review.name}
+          </Text>
+          <Text style={{ marginHorizontal: 5 }}>
+            at
+          </Text>
+          <Text style={{ fontStyle: "italic" }}>
+            {review.location}
+          </Text>
+        </View>
         <View style={styles.text}>
-          <Text>{review.text}</Text>
+          <Text>
+            {review.text}
+          </Text>
         </View>
       </TouchableOpacity>
     )
@@ -38,17 +54,22 @@ class MyReviews extends Component {
 }
 
 const styles = StyleSheet.create({
+  title: {
+    flexDirection: "row",
+  },
   text: {
     flex: 1,
     flexWrap: 'wrap',
+    marginVertical: 10,
   },
   scroll: {
     backgroundColor: "#FFF",
   },
   listItemContainer: {
-    height: 200,
+    height: 100,
     borderWidth: 0.5,
     borderColor: '#ECECEC',
+    padding: 20,
   },
 });
 

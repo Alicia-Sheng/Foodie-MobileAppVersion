@@ -15,7 +15,7 @@ const IncreQtyButton = ({ productId }) => (
                 size={25}
                 color='white'
                 backgroundColor='white'
-                style={{ borderRadius: 15, backgroundColor: '#cf3838', height: 30, width: 30, marginLeft: 5 }}
+                style={{ borderRadius: 5, backgroundColor: '#d9d9d9', height: 30, width: 30, marginLeft: 5, marginRight:5}}
                 iconStyle={{ marginRight: 0 }}
                 onPress={() => incrementQty({ variables: { productId: productId } })}
             />

@@ -7,7 +7,7 @@ import DecreQtyButton from './DecreQtyButton';
 const OrderItem = ({ item }) => {
 
     let amount = item.price * item.qty;
-    
+
     return (
         <>
             <View style={styles.containerStyle}>
@@ -15,7 +15,7 @@ const OrderItem = ({ item }) => {
 
                 <View style={styles.textStyle}>
                     <Text style={{ color: '#2e2f30', fontSize: 18, fontWeight: 'bold' }}>{item.name}</Text>
-                    <Text style={{ color: '#2e2f30', fontSize: 16 }}>{item.location}</Text>
+                    <Text style={{ color: '#2e2f30', fontSize: 16 }}>{item.location} </Text>
                     <Text style={{ color: '#2e2f30', fontSize: 16 }}>Quantity: {item.qty}</Text>
                     <View style={styles.priceStyle}>
                         <Text style={{ fontSize: 16 }}>${item.price}</Text>
