@@ -9,7 +9,7 @@ const Totals = ({ total }) => (
     <View style={styles.containerStyle}>
       <View style={styles.orderStyle}>
         <Icon name="ios-cart" size={20} style={{ marginRight: 8 }} />
-        <Text style={{ fontSize: 20 }}>{`Order totals: ${total}`}</Text>
+        <Text style={{ fontSize: 20 }}>{`Order totals: $${`${parseFloat(total.toFixed(2))}`}`}</Text>
       </View>
     </View>
   </>

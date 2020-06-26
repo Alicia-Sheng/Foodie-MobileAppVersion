@@ -12,6 +12,7 @@ flex: 1;
 background-color: white;
 align-items: center;
 justify-content: center;
+padding-bottom: 20px;
 `;
 
 const OrderListings = styled(FlatList)`
@@ -23,14 +24,6 @@ const Alert = styled(Text)`
   width: 100%;
   text-align: center;
 `;
-
-const getTotal = ({ data }) => {
-  let TotalAmount = 0;
-  for (var i = 0; i < data.length; i++) {
-    TotalAmount += data[i].qty * data[i].price;
-  };
-  return TotalAmount
-}
 
 const Order = ({ navigation }) => {
   /*const [total, setTotal] = useState(0);

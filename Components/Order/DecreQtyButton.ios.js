@@ -17,7 +17,7 @@ const DecreQtyButton = ({ productId }) => (
             size={25}
             color='#fff'
             backgroundColor='#fff'
-            style={{ borderRadius: 15, backgroundColor: '#bbb', height: 30, width: 30 }}
+                style={{ borderRadius: 15, backgroundColor: '#bbb', height: 30, width: 30, paddingTop: 3 }}
             iconStyle={{ marginRight: 0 }}
             onPress={() => decrementQty({ variables: { productId: productId } })}
         />

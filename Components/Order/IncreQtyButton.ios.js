@@ -11,12 +11,12 @@ const IncreQtyButton = ({ productId }) => (
         refetchQueries={() => [{ query: GET_ORDER }, { query: GET_ORDER_TOTAL }]}
     >
         {incrementQty => (
-            <Icon.Button 
+            <Icon.Button
                 name="ios-add"
                 size={25}
                 color='#fff'
                 backgroundColor='#fff'
-                style={{ borderRadius: 25, backgroundColor: '#bbb', height: 30, width: 30 }}
+                style={{ borderRadius: 25, backgroundColor: '#bbb', height: 30, width: 30, paddingTop: 3 }}
                 iconStyle={{ marginRight: 0 }}
                 onPress={() => incrementQty({ variables: { productId: productId } })}
             />

@@ -6,25 +6,24 @@ import DecreQtyButton from './DecreQtyButton';
 
 const OrderItem = ({ item }) => {
 
-    let amount = item.price * item.qty;
+    let amount = parseFloat((item.price * item.qty).toFixed(2));
 
     return (
         <>
             <View style={styles.containerStyle}>
-                <Image source={item.thumbnail} style={styles.imageStyle} />
+                <Image source={{uri: item.thumbnail}} style={styles.imageStyle} />
 
                 <View style={styles.textStyle}>
-                    <Text style={{ color: '#2e2f30', fontSize: 18, fontWeight: 'bold' }}>{item.name}</Text>
-                    <Text style={{ color: '#2e2f30', fontSize: 16 }}>{item.location} </Text>
-                    <Text style={{ color: '#2e2f30', fontSize: 16 }}>Quantity: {item.qty}</Text>
+                    <Text style={{ color: '#2e2f30', fontSize: 14 }}>{item.name}</Text>
+                    <Text style={{ color: '#2e2f30', fontSize: 14 }}>{item.location} </Text>
                     <View style={styles.priceStyle}>
-                        <Text style={{ fontSize: 16 }}>${item.price}</Text>
+                        <Text style={{ color: '#2e2f30', fontSize: 14, fontWeight: 'bold'}}>${amount}</Text>
                     </View>
                 </View>
 
                 <View style={styles.counterStyle}>
                     <DecreQtyButton productId={item.id} />
-                    <Text>${amount}</Text>
+                    <Text style={{marginHorizontal: 10}}>{item.qty}</Text>
                     <IncreQtyButton productId={item.id}/>
                 </View>
             </View>
@@ -47,8 +46,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     },
     imageStyle: {
-        width: 100,
-        height: 100,
+        width: 80,
+        height: 80,
         marginRight: 20
     },
     textStyle: {
@@ -56,12 +55,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     priceStyle: {
-        width: 40,
+        width: 50,
         alignItems: 'center',
         marginTop: 3,
+        borderRadius: 3
     },
     counterStyle: {
-        flex: 1,
+        flex: 1.5,
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center'
