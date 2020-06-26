@@ -33,7 +33,10 @@ const HomeStack = createStackNavigator(
   {
     Home: {
       screen: Home,
-      navigationOptions: { title: 'Home' },
+      navigationOptions: {
+        title: 'Home',
+        // headerTitleStyle: { fontFamily: 'Modesta-Script' }
+      },
     },
     Detail: {
       screen: Detail,
