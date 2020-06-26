@@ -1,14 +1,14 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Mutation } from 'react-apollo';
-import { GET_ORDER, INCREMENT_QTY, GET_ORDER_TOTAL } from '../../constants/functions';
+import { GET_CART, INCREMENT_QTY, GET_CART_TOTAL } from '../../constants/functions';
 
 
 const IncreQtyButton = ({ productId }) => (
 
     <Mutation
         mutation={INCREMENT_QTY}
-        refetchQueries={() => [{ query: GET_ORDER }, { query: GET_ORDER_TOTAL }]}
+        refetchQueries={() => [{ query: GET_CART }, { query: GET_CART_TOTAL }]}
     >
         {incrementQty => (
             <Icon.Button 

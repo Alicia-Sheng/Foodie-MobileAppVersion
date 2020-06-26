@@ -1,24 +1,24 @@
 import gql from 'graphql-tag';
 
-export const GET_ORDER_TOTAL = gql `
-  query getOrderTotal {
-    order {
+export const GET_CART_TOTAL = gql `
+  query getCartTotal {
+    cart {
       total
     }
   }
 `;
 
-export const ADD_TO_ORDER = gql `
-  mutation addToOrder($productId: ID!, $name: String!, $location: String!, $thumbnail: String!, $price: Float) {
-    addToOrder(productId: $productId, name: $name, location: $location, thumbnail: $thumbnail, price: $price) {
+export const ADD_TO_CART = gql `
+  mutation addToCart($productId: ID!, $name: String!, $location: String!, $thumbnail: String!, $price: Float) {
+    addToCart(productId: $productId, name: $name, location: $location, thumbnail: $thumbnail, price: $price) {
       total
     }
   }
 `;
 
-export const GET_ORDER = gql `
-  query getOrder {
-    order {
+export const GET_CART = gql `
+  query getCart {
+    cart {
       total
       products {
         id
@@ -66,17 +66,17 @@ export const LOGIN_USER = gql `
   }
 `;
 
-export const COMPLETE_ORDER = gql `
-  mutation completeOrder {
-    completeOrder {
+export const COMPLETE_CART = gql `
+  mutation completeCart {
+    completeCart {
       complete
     }
   }
 `;
 
-export const REMOVE_FROM_ORDER = gql `
-  mutation removeFromOrder($productId: ID!) {
-    removeFromOrder(productId: $productId) {
+export const REMOVE_FROM_CART = gql `
+  mutation removeFromCart($productId: ID!) {
+    removeFromCart(productId: $productId) {
       total
     }
   }
