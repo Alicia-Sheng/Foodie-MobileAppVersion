@@ -185,8 +185,8 @@ const Tabs = createBottomTabNavigator(
               size={horizontal ? 30 : 30}
               color={tintColor}
             />
-            {badgeCount > 0 && 
-            <BadgeCount/>}
+            {badgeCount > 0 &&
+              <BadgeCount />}
           </>
         );
       },
@@ -228,13 +228,16 @@ const AccountStack = createStackNavigator(
       },
     },
     Profile: {
-      screen: Profile
+      screen: Profile,
+      navigationOptions: { title: 'Profile' },
     },
     MyOrders: {
-      screen: MyOrders
+      screen: MyOrders,
+      navigationOptions: { title: 'My Orders' },
     },
     MyReviews: {
-      screen: MyReviews
+      screen: MyReviews,
+      navigationOptions: { title: 'My Reviews' },
     }
   }
 );
