@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     priceStyle: {
-        width: 50,
+        width: 60,
         alignItems: 'center',
         marginTop: 3,
         borderRadius: 3
