@@ -5,8 +5,12 @@ import styled from 'styled-components/native';
 import { Mutation } from 'react-apollo';
 import { SIGNUP_USER } from '../constants/functions';
 
+const ScrollWrapper = styled(ScrollView)`
+  margin-vertical: 20%;
+`;
+
 const FormWrapper = styled(View)`
-  margin: 5%;
+  margin-horizontal: 10%;
   background-color: #fff;
   align-items: stretch;
   justify-content: center;
@@ -27,7 +31,7 @@ const LinkWrapper = styled(TouchableOpacity)`
 `;
 
 const LabelText = styled(Text)`
-  margin-bottom: 0.8%;
+  margin-bottom: 1%;
 `;
 
 const LinkText = styled(Text)`
@@ -61,7 +65,7 @@ function Register({ navigation }) {
     <Mutation
       mutation={SIGNUP_USER}>
       {(signupUser) => (
-        <ScrollView>
+        <ScrollWrapper>
           <FormWrapper>
             <InputWrapper>
               <LabelText>Username:</LabelText>
@@ -165,10 +169,11 @@ function Register({ navigation }) {
                 }} />
             </InputWrapper>
             <LinkWrapper onPress={() => navigation.navigate('Login')}>
-              <LinkText> Already have an account? Sign in now! </LinkText>
+              <LinkText> Already have an account? </LinkText>
+              <LinkText> Sign in now! </LinkText>
             </LinkWrapper>
           </FormWrapper>
-        </ScrollView>
+        </ScrollWrapper>
       )}
     </Mutation>
   );
