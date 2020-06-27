@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-import { GET_ORDER_TOTAL } from '../../constants/functions';
+import { GET_CART_TOTAL } from '../../constants/functions';
 import { Query } from 'react-apollo';
 
 const BadgeCount = () => (
-    <Query query={GET_ORDER_TOTAL}>
+    <Query query={GET_CART_TOTAL}>
         {({ data, loading, error }) => {
-            if (loading || error || data.order.total == 0) {
+            if (loading || error || data.cart.total == 0) {
                 return null;
             }
             return (
@@ -25,7 +25,7 @@ const BadgeCount = () => (
                     }}
                 >
                     <Text style={{ color: 'white', fontSize: 12 }}>
-                        {data && data.order.total}
+                        {data && data.cart.total}
                     </Text>
                 </View>
             )
