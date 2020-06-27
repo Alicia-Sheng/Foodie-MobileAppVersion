@@ -11,6 +11,8 @@ const Detail = ({ navigation }) => {
   const [text, setText] = useState('');  // TextInput
   const [selectedIndex,setSelectedIndex] = useState('0')    //segmentTab
   const [commentList, setCommentList] = useState ([])    //list of comment
+  const [starList, setStarList] = useState(0)
+  const [star, setStar] = useState(5)
 
   return (
   <ScrollView>
@@ -45,7 +47,8 @@ const Detail = ({ navigation }) => {
                     rating={3}
                     disabled={false}
                     starSize={15}
-                    onStarChange={(value) => onStarRatingPress(value)}
+                    //onStarChange={(value) => onStarRatingPress(value)}
+                    onStarChange={(value) => setStar(value)}
                     style = {{marginTop: 15}}
                   />
 
@@ -70,7 +73,8 @@ const Detail = ({ navigation }) => {
                   />
 
                   <View style = {styles.sub}>
-                    <Button title="Submit" onPress={()=>setCommentList(commentList.concat(text))}/>
+                    <Button title="Submit" onPress={()=> setCommentList(commentList.concat(text)) } />
+                    {/*setStarList(starList).concat(star)}*/}
                   </View>
 
                 </View>
@@ -98,18 +102,23 @@ const Detail = ({ navigation }) => {
 
 };
 
+const handleButton = () => {
+  const Comment = {comment:comment, rating:rating}
+}
+
 const Comment = ({item}) => {
   return(
-    <View>
+    <View style = {styles.listItemContainer}>
        <Text> {item}  </Text>
     </View>
   )
 }
 
-
+/*
 const onStarRatingPress = ({value}) =>{
   console.log('Rated' + value + 'stars!');
 }
+*/
 
 const styles = StyleSheet.create({
   container: {
@@ -153,7 +162,13 @@ const styles = StyleSheet.create({
   tabContainer: {
     height: 50,
     backgroundColor: 'white',
-  }
+  },
+  listItemContainer: {
+    width:350,
+    borderWidth: 0.5,
+    borderColor: '#ECECEC',
+    padding: 20,
+  },
 })
 
 export default Detail;
