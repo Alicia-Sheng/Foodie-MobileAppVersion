@@ -4,7 +4,7 @@ import { Icon, Button } from "native-base";
 import Modal from "react-native-modal";
 import StarRating from '../Details/StarRating';
 import { Mutation } from 'react-apollo';
-import { GET_ORDER, ADD_TO_ORDER, GET_ORDER_TOTAL } from '../../constants/functions';
+import { GET_CART, ADD_TO_CART, GET_CART_TOTAL } from '../../constants/functions';
 
 
 class MenuItem extends Component {
@@ -24,30 +24,6 @@ class MenuItem extends Component {
         this.setState({ isModalVisible1: !this.state.isModalVisible1 });
     };
 
-    // _handleAddOrders = async (data) => {
-    //     let orders = this.props.orders;
-    //     const index = orders.findIndex(item => {
-    //         return item.id == data.id
-    //     });
-
-    //     if (index >= 0) {
-    //         let orderData = orders[index];
-    //         let incQty = orderData.qty + 1;
-    //         let incOrder = {
-    //             ...orderData,
-    //             qty: incQty
-    //         }
-
-    //         orders[index] = incOrder;
-    //         await this.props.dispatch(updateOrderQty(orders));
-    //     } else {
-    //         data = {
-    //             ...data,
-    //             qty: 1
-    //         };
-    //         await this.props.dispatch(addNewOrders(data));
-    //     }
-    // }
 
     render() {
         const { data } = this.props;
@@ -55,10 +31,10 @@ class MenuItem extends Component {
 
         return (
             <Mutation
-                mutation={ADD_TO_ORDER}
-                refetchQueries={() => [{ query: GET_ORDER }, { query: GET_ORDER_TOTAL }]}
+                mutation={ADD_TO_CART}
+                refetchQueries={() => [{ query: GET_CART }, { query: GET_CART_TOTAL }]}
             >
-                {addToOrder => (
+                {addToCart => (
                     <ScrollView>
                         <TouchableHighlight onPress={this.toggleModal1}>
                             <View style={{ flex: 1, backgroundColor: 'white', height: 110, flexDirection: 'row' }}>
@@ -96,7 +72,7 @@ class MenuItem extends Component {
                                     <View style={{ flex: 1, backgroundColor: 'white', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
 
                                         <Button style={{ backgroundColor: '#cf3838', borderRadius: 10, height: 32, width: 75, marginLeft: 0, marginRight: 10, paddingLeft: 30 }}>
-                                            <TouchableOpacity onPress={() => addToOrder({ variables: { productId: id } })}>
+                                            <TouchableOpacity onPress={() => addToCart({ variables: { productId: id } })}>
                                                 <View>
                                                     <Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold' }} uppercase={false} > +</Text>
                                                 </View>
@@ -148,11 +124,11 @@ class MenuItem extends Component {
                                 </View>
                                 <View style={{ bottom: 0, position: 'absolute', alignItems: 'center', alignContent: 'center', alignSelf: 'center', marginBottom: 10 }}>
                                     <Button onPress={() => {
-                                        addToOrder({ variables: { productId: id } })
+                                        addToCart({ variables: { productId: id } })
                                         this.toggleModal1()
                                     }} title="Hide modal" style={{ width: '120%', borderRadius: 10, backgroundColor: '#Cf3838', justifyContent: 'center' }}>
                                         <TouchableOpacity onPress={() => {
-                                            addToOrder({ variables: { productId: id } })
+                                            addToCart({ variables: { productId: id } })
                                             this.toggleModal1()
                                         }}>
                                             <Text style={{ fontSize: 17, marginBottom: 5, color: 'white', fontWeight: 'bold' }} uppercase={false}>
