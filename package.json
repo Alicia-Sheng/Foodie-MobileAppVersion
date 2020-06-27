@@ -43,7 +43,8 @@
     "react-navigation-drawer": "^2.4.13",
     "react-navigation-stack": "^2.7.0",
     "react-navigation-tabs": "^2.8.13",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "expo-font": "~8.1.0"
   },
   "devDependencies": {
     "babel-preset-expo": "~8.1.0",

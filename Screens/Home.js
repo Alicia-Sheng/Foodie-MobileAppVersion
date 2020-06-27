@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FlatList, View, Text, Dimensions, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 import { Query } from 'react-apollo';
+import Header from '../Components/Header/Header';
 import SearchBar from '../Components/Search/SearchBar';
 import ListingItem from '../Components/Listing/ListingItem'
 import Filters from '../Components/Listing/Filters';
@@ -29,6 +30,7 @@ const Home = ({ navigation }) => {
               }
               return (
                 <>
+                  <Header/>
                   <SearchBar
                     term={term}
                     onTermChange={newTerm => setTerm(newTerm)}
