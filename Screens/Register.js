@@ -3,7 +3,7 @@ import { Alert, Text, View, StyleSheet, ScrollView, Button, TextInput, Touchable
 import RNPickerSelect from 'react-native-picker-select';
 import styled from 'styled-components/native';
 import { Mutation } from 'react-apollo';
-import { ADD_PRODUCT, GET_PRODUCTS } from '../constants/functions';
+import { SIGNUP_USER } from '../constants/functions';
 
 const FormWrapper = styled(View)`
   margin: 5%;
@@ -53,15 +53,14 @@ function Register({ navigation }) {
   const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
-  const [img, setImg] = useState("")
-  const [bkg, setBkg] = useState("")
-  const [userType, setType] = useState("")
+  // const [img, setImg] = useState("")
+  // const [bkg, setBkg] = useState("")
+  // const [userType, setType] = useState("")
 
   return (
     <Mutation
-      mutation={ADD_PRODUCT}
-      refetchQueries={() => [{ query: GET_PRODUCTS }]}>
-      {(addProduct) => (
+      mutation={SIGNUP_USER}>
+      {(signupUser) => (
         <ScrollView>
           <FormWrapper>
             <InputWrapper>
@@ -86,7 +85,6 @@ function Register({ navigation }) {
               <LabelText>Email:</LabelText>
               <InputBox
                 placeholder="Email"
-                maxLength={10}
                 onChangeText={text => setEmail(text)} />
             </InputWrapper>
 
@@ -99,7 +97,7 @@ function Register({ navigation }) {
                 onChangeText={text => setPhone(text)} />
             </InputWrapper>
 
-            <InputWrapper>
+            {/* <InputWrapper>
               <LabelText>Profile image:</LabelText>
               <InputBox
                 placeholder="Profile image url"
@@ -134,13 +132,14 @@ function Register({ navigation }) {
                   { label: "Seller", value: "Seller", key: "Seller" },
                 ]}
               />
-            </InputWrapper>
+            </InputWrapper> */}
 
             <InputWrapper>
               <Button
                 title="Sign up"
                 onPress={() => {
-                  addProduct({ variables: { name: name, password: password, email: email, phone: phone, img: img, bkg: bkg, type: userType } })
+                  // signupUser({ variables: { username: name, password: password, email: email, phone: phone, img: img, bkg: bkg, type: userType } })
+                  signupUser({ variables: { username: name, password: password, email: email, phone: phone } })
                     .then(({ data }) => {
                       Alert.alert(
                         'Signed up!',
@@ -167,9 +166,6 @@ function Register({ navigation }) {
             </InputWrapper>
             <LinkWrapper onPress={() => navigation.navigate('Login')}>
               <LinkText> Already have an account? Sign in now! </LinkText>
-            </LinkWrapper>
-            <LinkWrapper onPress={() => navigation.navigate('Main')}>
-              <LinkText> Back to Home Page </LinkText>
             </LinkWrapper>
           </FormWrapper>
         </ScrollView>
