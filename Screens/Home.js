@@ -30,7 +30,7 @@ const Home = ({ navigation }) => {
               }
               return (
                 <>
-                  <Header/>
+                  <Header />
                   <SearchBar
                     term={term}
                     onTermChange={newTerm => setTerm(newTerm)}
@@ -42,48 +42,48 @@ const Home = ({ navigation }) => {
                       nextRoute='SeeAll'
                       category='food'
                     ></Section>
-                  <ListingsWrapper>
-                    <Carousel
-                      sliderWidth={screenWidth}
-                      itemWidth={screenWidth * 0.7}
-                      useScrollView={true}
-                      activeSlideAlignment='start'
-                      // data={data.products}
-                      data={data.products.filter(item => item.category.title === "food")}
-                      keyExtractor={item => String(item.id)}
-                      renderItem={({ item }) =>
-                        <ListingItem
-                          item={item}
-                          navigation={navigation}
-                          width={`${Math.round(screenWidth * 0.7)}px`}
-                          height={`${Math.round(screenWidth * 0.7 * 3 / 5)}px`}
-                          y={`${Math.round(screenWidth * 0.7 * 3 / 5) - 45}px`}
-                        />}
-                    />
-                  </ListingsWrapper>
-                  <Section
+                    <ListingsWrapper>
+                      <Carousel
+                        sliderWidth={screenWidth}
+                        itemWidth={screenWidth * 0.7}
+                        useScrollView={true}
+                        activeSlideAlignment='start'
+                        // data={data.products}
+                        data={data.products.filter(item => item.category.title === "food")}
+                        keyExtractor={item => String(item.id)}
+                        renderItem={({ item }) =>
+                          <ListingItem
+                            item={item}
+                            navigation={navigation}
+                            width={`${Math.round(screenWidth * 0.7)}px`}
+                            height={`${Math.round(screenWidth * 0.7 * 3 / 5)}px`}
+                            y={`${Math.round(screenWidth * 0.7 * 3 / 5) - 45}px`}
+                          />}
+                      />
+                    </ListingsWrapper>
+                    <Section
                       title="Drinks You Might Like"
                       nextRoute='SeeAll'
                       category='drink'
-                  ></Section>
-                  <ListingsWrapper>
-                    <Carousel
-                      sliderWidth={screenWidth}
-                      itemWidth={screenWidth * 0.5}
-                      useScrollView={true}
-                      activeSlideAlignment='start'
-                      data={data.products.filter(item => item.category.title === "drink")}
-                      keyExtractor={item => String(item.id)}
-                      renderItem={({ item }) =>
-                        <ListingItem
-                          item={item}
-                          navigation={navigation}
-                          width={`${Math.round(screenWidth * 0.5)}px`}
-                          height={`${Math.round(screenWidth * 0.7 * 3 / 5)}px`}
-                          y={`${Math.round(screenWidth * 0.7 * 3 / 5) - 45}px`}
-                        />}
-                    />
-                  </ListingsWrapper>
+                    ></Section>
+                    <ListingsWrapper>
+                      <Carousel
+                        sliderWidth={screenWidth}
+                        itemWidth={screenWidth * 0.5}
+                        useScrollView={true}
+                        activeSlideAlignment='start'
+                        data={data.products.filter(item => item.category.title === "drink")}
+                        keyExtractor={item => String(item.id)}
+                        renderItem={({ item }) =>
+                          <ListingItem
+                            item={item}
+                            navigation={navigation}
+                            width={`${Math.round(screenWidth * 0.5)}px`}
+                            height={`${Math.round(screenWidth * 0.7 * 3 / 5)}px`}
+                            y={`${Math.round(screenWidth * 0.7 * 3 / 5) - 45}px`}
+                          />}
+                      />
+                    </ListingsWrapper>
                   </ScrollView>
                 </>
               );
