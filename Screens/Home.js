@@ -30,7 +30,7 @@ const Home = ({ navigation }) => {
               }
               return (
                 <>
-                  <Header />
+                  <Header/>
                   <SearchBar
                     term={term}
                     onTermChange={newTerm => setTerm(newTerm)}
