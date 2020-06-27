@@ -19,7 +19,7 @@ class HamburgerIcon extends Component {
           this.props.navigation.dispatch(DrawerActions.openDrawer())
         }}>
 
-        <Icon name='menu' size={20} color='black' />
+        <Icon name='menu' size={30} color='#bfbebd' />
       </TouchableOpacity>
     )
   };
