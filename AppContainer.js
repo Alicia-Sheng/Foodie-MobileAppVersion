@@ -1,6 +1,5 @@
 import React from 'react';
-import { Platform, View, Text } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
@@ -25,6 +24,7 @@ import MyOrders from './Screens/Account/MyOrders';
 import MyReviews from './Screens/Account/MyReviews';
 import Login from './Screens/Login';
 import AuthLoading from './Screens/Login';
+import Register from './Screens/Register';
 import HamburgerIcon from './Components/Button/HamburgerIcon';
 import BadgeCount from './Components/Badge/BadgeCount';
 
@@ -249,7 +249,8 @@ const SwitchNavigator = createSwitchNavigator({
   Main: Tabs,
   Login,
   AuthLoading,
-  AccountStack
+  AccountStack,
+  Register,
 });
 
 export default createAppContainer(SwitchNavigator);

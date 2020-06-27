@@ -1,5 +1,5 @@
 import React, { useState, setState } from 'react';
-import { Alert, Text, View, StyleSheet, ScrollView, Button, TextInput } from 'react-native';
+import { Alert, Text, View, StyleSheet, ScrollView, Button, TextInput, TouchableOpacity } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import styled from 'styled-components/native';
 import { Mutation } from 'react-apollo';
@@ -19,8 +19,21 @@ const InputWrapper = styled(View)`
   justify-content: center;
 `;
 
+const LinkWrapper = styled(TouchableOpacity)`
+  margin-bottom: 2%;
+  background-color: #fff;
+  align-items: stretch;
+  justify-content: center;
+`;
+
 const LabelText = styled(Text)`
-  margin-bottom: .8%;
+  margin-bottom: 0.8%;
+`;
+
+const LinkText = styled(Text)`
+  fontSize: 18px;
+  textDecorationLine: underline;
+  alignSelf: center;
 `;
 
 const InputBox = styled(TextInput)`
@@ -34,14 +47,15 @@ const InputBox = styled(TextInput)`
   font-size: 15px;
 `;
 
-function Provider({ navigation }) {
+function Register({ navigation }) {
 
   const [name, setName] = useState("")
-  const [desc, setDesc] = useState("")
-  const [price, setPrice] = useState(0)
+  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState("")
   const [img, setImg] = useState("")
-  const [loc, setLoc] = useState("")
-  const [category, setCategory] = useState("")
+  const [bkg, setBkg] = useState("")
+  const [userType, setType] = useState("")
 
   return (
     <Mutation
@@ -51,69 +65,61 @@ function Provider({ navigation }) {
         <ScrollView>
           <FormWrapper>
             <InputWrapper>
-              <LabelText>Food name:</LabelText>
+              <LabelText>Username:</LabelText>
               <InputBox
-                placeholder="Food name"
-                maxLength={50}
+                placeholder="Username"
+                maxLength={20}
                 onChangeText={text => setName(text)}
               />
             </InputWrapper>
 
             <InputWrapper>
-              <LabelText>Food description:</LabelText>
+              <LabelText>Passwod:</LabelText>
               <InputBox
-                placeholder="Food description"
-                maxLength={200}
-                onChangeText={text => setDesc(text)}
+                placeholder="Password"
+                maxLength={20}
+                onChangeText={text => setPassword(text)}
               />
             </InputWrapper>
 
             <InputWrapper>
-              <LabelText>Food image:</LabelText>
+              <LabelText>Email:</LabelText>
               <InputBox
-                placeholder="Food image url"
+                placeholder="Email"
+                maxLength={10}
+                onChangeText={text => setEmail(text)} />
+            </InputWrapper>
+
+            <InputWrapper>
+              <LabelText>Phone number:</LabelText>
+              <InputBox
+                placeholder="Phone number"
+                maxLength={10}
+                keyboardType='numeric'
+                onChangeText={text => setPhone(text)} />
+            </InputWrapper>
+
+            <InputWrapper>
+              <LabelText>Profile image:</LabelText>
+              <InputBox
+                placeholder="Profile image url"
                 onChangeText={text => setImg(text)}
               />
             </InputWrapper>
 
             <InputWrapper>
-              <LabelText>Food price:</LabelText>
+              <LabelText>Profile background image:</LabelText>
               <InputBox
-                placeholder="Food price"
-                maxLength={10}
-                keyboardType={'numeric'}
-                onChangeText={text => setPrice(parseFloat(text))} />
-            </InputWrapper>
-
-            <InputWrapper>
-              <LabelText>Location:</LabelText>
-              <RNPickerSelect
-                selectedValue={loc}
-                onValueChange={(itemValue) => setLoc(itemValue)}
-                style={{
-                  ...pickerSelectStyles,
-                  placeholder: {
-                    color: 'grey',
-                    fontSize: 12,
-                    fontWeight: 'bold',
-                  },
-                }}
-                placeholder={{ label: "Select a location...", value: null }}
-                items={[
-                  { label: "Sherman Dining Hall", value: "Sherman Dining Hall", key: "sherman" },
-                  { label: "The Stein", value: "The Stein", key: "stein" },
-                  { label: "Starbucks Farber", value: "Starbucks Farber", key: "starbucks" },
-                  { label: "Einstein Bros. Bagels", value: "Einstein Bros. Bagels", key: "einstein" },
-                  { label: "Dunkin Donuts", value: "Dunkin Donuts", key: "dunkin" },
-                ]}
+                placeholder="Background image url"
+                onChangeText={text => setBkg(text)}
               />
             </InputWrapper>
 
             <InputWrapper>
-              <LabelText>Category:</LabelText>
+              <LabelText>You are a:</LabelText>
               <RNPickerSelect
-                selectedValue={category}
-                onValueChange={(itemValue) => setCategory(itemValue)}
+                selectedValue={userType}
+                onValueChange={(itemValue) => setType(itemValue)}
                 style={{
                   ...pickerSelectStyles,
                   placeholder: {
@@ -122,31 +128,24 @@ function Provider({ navigation }) {
                     fontWeight: 'bold',
                   },
                 }}
-                placeholder={{ label: "Select a category...", value: null }}
+                placeholder={{ label: "Select user type...", value: null }}
                 items={[
-                  { label: "Food", value: "food", key: "food" },
-                  { label: "Drink", value: "drink", key: "drink" },
+                  { label: "Customer", value: "Customer", key: "Customer" },
+                  { label: "Seller", value: "Seller", key: "Seller" },
                 ]}
               />
             </InputWrapper>
 
             <InputWrapper>
               <Button
-                title="Add Item"
+                title="Sign up"
                 onPress={() => {
-                  addProduct({ variables: { name: name, location: loc, thumbnail: img, desc: desc, price: price, category: category } })
+                  addProduct({ variables: { name: name, password: password, email: email, phone: phone, img: img, bkg: bkg, type: userType } })
                     .then(({ data }) => {
                       Alert.alert(
-                        'Item created!',
-                        'Back to Main Page?',
+                        'Signed up!',
+                        '',
                         [
-                          {
-                            text: "Cancel",
-                            onPress: () => {
-                              navigation.navigate('Provider')
-                            },
-                            style: "cancel"
-                          },
                           {
                             text: "OK",
                             onPress: () => {
@@ -166,6 +165,12 @@ function Provider({ navigation }) {
                     });
                 }} />
             </InputWrapper>
+            <LinkWrapper onPress={() => navigation.navigate('Login')}>
+              <LinkText> Already have an account? Sign in now! </LinkText>
+            </LinkWrapper>
+            <LinkWrapper onPress={() => navigation.navigate('Main')}>
+              <LinkText> Back to Home Page </LinkText>
+            </LinkWrapper>
           </FormWrapper>
         </ScrollView>
       )}
@@ -198,4 +203,4 @@ const pickerSelectStyles = StyleSheet.create({
 });
 
 
-export default Provider;
+export default Register;
