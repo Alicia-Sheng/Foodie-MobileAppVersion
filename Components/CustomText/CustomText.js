@@ -11,7 +11,7 @@ export default class TextCustom extends React.Component {
         }
     }
 
-    async componentWillMount() {
+    async componentDidMount() {
         await Font.loadAsync({
             'Modesta-Script': require('../../assets/fonts/Modesta-Script.ttf')
         })
