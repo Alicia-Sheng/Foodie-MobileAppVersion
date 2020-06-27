@@ -16,13 +16,13 @@ const HeaderWrapper = styled(View)`
   align-items: center;
   padding-left: 5%;
   padding-right: 3%;
-  padding-top: 20px;
+  padding-top: 18px;
   padding-bottom: 10px
 `;
 
 const SectionText = styled(Text)`
   color: black;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
 `;
 const SeeAllButtonWrapper = styled(TouchableOpacity)`
@@ -33,7 +33,7 @@ const SeeAllButtonWrapper = styled(TouchableOpacity)`
 
 const SeeAllText = styled(Text)`
   color: #Cf3838;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
 `;
 
