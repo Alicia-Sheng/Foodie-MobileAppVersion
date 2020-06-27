@@ -66,6 +66,15 @@ export const LOGIN_USER = gql `
   }
 `;
 
+export const SIGNUP_USER = gql `
+  mutation signupUser($username: String!, $password: String!, $email: String!, $phone: Int!) {
+    signupUser(username: $username, password: $password, email: $email, phone: $phone) {
+      username
+      token
+    }
+  }
+`;
+
 export const COMPLETE_CART = gql `
   mutation completeCart {
     completeCart {
