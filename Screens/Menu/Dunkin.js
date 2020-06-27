@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, Text, StyleSheet, ScrollView, TouchableOpacity, Dimensions} from 'react-native';
 import styled from 'styled-components/native';
 import { Query } from 'react-apollo';
 import MenuListingItem from '../../Components/MenuListing/MenuListingItem'

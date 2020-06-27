@@ -4,6 +4,7 @@ import ListingDetail from '../Components/Listing/ListingDetail';
 import StarRating from '../Components/Details/StarRating';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
 import AddToOrderButton from '../Components/Order/AddToOrderButton';
+import UserComments from '../assets/userComments';
 
 const Detail = ({ navigation }) => {
   const item = navigation.getParam('item', {});
@@ -69,23 +70,23 @@ const Detail = ({ navigation }) => {
                   />
 
                   <View style = {styles.sub}>
-                    <Button title="Submit" onPress={()=>setCommentList(commentList.concat({text}))}/>
+                    <Button title="Submit" onPress={()=>setCommentList(commentList.concat(text))}/>
                   </View>
 
                 </View>
       }
 
       {selectedIndex === 1
-             && <Text> comment test, not implemented yet </Text>
-/*
+            // && <Text> {commentList}</Text>
+
              && <View style = {{flexDirection:"row", margin:"10"}}>
                    <FlatList
                        data = {commentList}
-                       renderItem = {({item}) => item}
-                       keyExtractor = {(item,index) => index}
+                       renderItem = {({item}) => <Comment item = {item}/>}
+                       keyExtractor = {(item,index) => "food" + index}
                    />
                 </View>
-*/
+
       }
 
     </View>
@@ -96,6 +97,14 @@ const Detail = ({ navigation }) => {
   {/* return <ListingDetail item={item} />;*/}
 
 };
+
+const Comment = ({item}) => {
+  return(
+    <View>
+       <Text> {item}  </Text>
+    </View>
+  )
+}
 
 
 const onStarRatingPress = ({value}) =>{
