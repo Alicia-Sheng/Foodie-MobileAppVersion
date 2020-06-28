@@ -9,6 +9,15 @@ const restaurant = [{
     },
     {
         "id": 2,
+        "name": "Einstein Bros. Bagels",
+        "link": "Einstein",
+        "img": {
+            "src": require("../media/logo/einstein-bagels.png"),
+            "alt": "einstein-bagels"
+        }
+    },
+    {
+        "id": 3,
         "name": "The Stein",
         "link": "Stein",
         "img": {
@@ -26,7 +35,7 @@ const restaurant = [{
         }
     },
     {
-        "id": 4,
+        "id": 5,
         "name": "Starbucks Farber",
         "link": "Starbucks",
         "img": {
@@ -34,15 +43,6 @@ const restaurant = [{
             "alt": "starbucks"
         }
     },
-    {
-        "id": 5,
-        "name": "Einstein Bros. Bagels",
-        "link": "Einstein",
-        "img": {
-            "src": require("../media/logo/einstein-bagels.png"),
-            "alt": "einstein-bagels"
-        }
-    }
 ]
 
 export default restaurant;
