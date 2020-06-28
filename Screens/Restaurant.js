@@ -21,12 +21,12 @@ const Restaurant = ({ navigation }) => {
 
   return (
     <>
-    <FlatList
+    {/*<FlatList
       horizontal={true}
       data={restaurant}
       renderItem={item => restaurantList(item)}
       keyExtractor={(item, index) => index.toString()}
-    />
+    />*/}
     <ScrollView>
       <View style={styles.container}>
         <View style={{flex: 1, flexDirection: 'row'}}>
