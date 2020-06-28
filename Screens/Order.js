@@ -26,28 +26,6 @@ const Alert = styled(Text)`
 `;
 
 const Order = ({ navigation }) => {
-  /*const [total, setTotal] = useState(0);
-  const [products, setProducts] = useState([]);
-  const [complete, setComplete] = useState(false);*/
-
-  /*setOrder() {
-    let order = {
-        total: 0,
-        products: [],
-        complete: true,
-    }
-    AsyncStorage.setItem('order', JSON.stringify(order));
-  }
-
-  getOrder = asyns () => {
-    try{
-      let order = await AsyncStorage.getItem('order');
-
-    }
-    catch(error) {
-      alert(error);
-    }
-  }*/
 
   return (
     <Query query={GET_CART}>
