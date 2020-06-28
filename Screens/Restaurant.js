@@ -17,32 +17,50 @@ const restaurantList = ({ item }) => {
   );
 }
 
-const renderRestaurant = ({ item }) => {
-  return (
-    <TouchableOpacity style={styles.touch}>
-      <Image style={styles.logo}
-        resizeMode="contain"
-        source={item.img.src}
-      />
-    </TouchableOpacity>
-  )
-}
+class Restaurant extends React.Component {
 
-const Restaurant = ({ navigation }) => {
+  constructor(props) {
+    super(props)
+  }
 
-  return (
+  renderRestaurant = ({ item }) => {
+    let link = item.link;
+    return (
+      <TouchableOpacity style={styles.touch} onPress={() => this.props.navigation.navigate(link)}>
+        <Image style={styles.logo}
+          resizeMode="contain"
+          source={item.img.src}
+        />
+      </TouchableOpacity>
+    );
+  }
+
+  render() {
+    return (
+        <View style={styles.container}>
+          <FlatList
+            data={restaurant}
+            numColumns={2}
+            renderItem={item => this.renderRestaurant(item)}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        </View>
+    )
+  }
+
+  /*return (
     <>
     {/*<FlatList
       horizontal={true}
       data={restaurant}
       renderItem={item => restaurantList(item)}
       keyExtractor={(item, index) => index.toString()}
-    />*/}
+    />
       <View style={styles.container}>
         <FlatList
           data={restaurant}
           numColumns={2}
-          renderItem={item => renderRestaurant(item)}
+          renderItem={item => renderRestaurant(item, navigation)}
           keyExtractor={(item, index) => index.toString()}
         />
       </View>
@@ -73,9 +91,8 @@ const Restaurant = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
-    </ScrollView>*/}
-    </>
-  )
+    </ScrollView>
+    </>*/
 };
 
 const styles = StyleSheet.create({

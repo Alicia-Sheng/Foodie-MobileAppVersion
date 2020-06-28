@@ -1,7 +1,7 @@
 const restaurant = [{
         "id": 1,
         "name": "Dunkin Donuts",
-        "link": "dunkin",
+        "link": "Dunkin",
         "img": {
             "src": require("../media/logo/dunkin-donuts.png"),
             "alt": "dunkin-donuts"
@@ -10,7 +10,7 @@ const restaurant = [{
     {
         "id": 2,
         "name": "The Stein",
-        "link": "stein",
+        "link": "Stein",
         "img": {
             "src": require("../media/logo/the-stein.png"),
             "alt": "the-stein"
@@ -19,7 +19,7 @@ const restaurant = [{
     {
         "id": 4,
         "name": "Sherman",
-        "link": "sherman",
+        "link": "Sherman",
         "img": {
             "src": require("../media/logo/Sherman.png"),
             "alt": "sherman"
@@ -28,7 +28,7 @@ const restaurant = [{
     {
         "id": 4,
         "name": "Starbucks Farber",
-        "link": "starbucks",
+        "link": "Starbucks",
         "img": {
             "src": require("../media/logo/starbucks.jpg"),
             "alt": "starbucks"
@@ -37,7 +37,7 @@ const restaurant = [{
     {
         "id": 5,
         "name": "Einstein Bros. Bagels",
-        "link": "einstein-bagels",
+        "link": "Einstein",
         "img": {
             "src": require("../media/logo/einstein-bagels.png"),
             "alt": "einstein-bagels"
