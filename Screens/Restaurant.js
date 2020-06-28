@@ -32,20 +32,13 @@ class Restaurant extends React.Component {
         <Image
           style={styles.logo}
           resizeMode="contain"
-          source={item.img.src} />
-          <View style={{height:((width/2)-20)-50, backgroundColor:'transparent', width:((width/2)-20)-10}} />
-          <Text style={{fontWeight:'bold',fontSize:22,textAlign:'center'}}>
-            {item.name}
-          </Text>
-        </TouchableOpacity>
-      /*<TouchableOpacity style={styles.touch} onPress={() => this.props.navigation.navigate(link)}>
-        <Image style={styles.logo}
-          resizeMode="contain"
           source={item.img.src}
         />
-        <View style={{height: 40, width: 150}}/>
-        <Text style={{frontWeight: 'bold', frontSize: 22, textAlign: 'center'}}>{item.name}</Text>
-      </TouchableOpacity>*/
+        <View style={{height: width/2 - 75, backgroundColor:'transparent', width: width/2 - 40}} />
+        <Text style={{fontWeight:'bold',fontSize:18,textAlign:'center'}}>
+          {item.name}
+        </Text>
+      </TouchableOpacity>
     );
   }
 
@@ -132,17 +125,16 @@ const styles = StyleSheet.create({
         shadowRadius: 2.5,
     },*/
     touch: {
-      width:(width/2)-20,
-      padding:10,
-      borderRadius:10,
-      marginTop:55,
-      marginBottom:5,
-      marginLeft:10,
-      alignItems:'center',
-      elevation:8,
-      shadowOpacity:0.3,
-      shadowRadius:50,
-      backgroundColor:'white',
+      width: width/2 - 30,
+      padding: 10,
+      borderRadius: 10,
+      marginTop: 50,
+      margin: 15,
+      alignItems: 'center',
+      elevation: 8,
+      shadowOpacity: 0.3,
+      shadowRadius: 50,
+      backgroundColor: 'white',
     },
     /*logo: {
         alignItems: 'center',
@@ -162,9 +154,9 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
     },*/
     logo: {
-      width:((width/2)-20)-10,
-      height:((width/2)-20)-10,
-      borderRadius: ((width/2)-20)-10,
+      width: width/2 - 50,
+      height: width/2 - 50,
+      borderRadius: width/2 - 50,
       backgroundColor:'transparent',
       position:'absolute',
       top:-45
