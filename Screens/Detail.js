@@ -5,6 +5,7 @@ import StarRating from '../Components/Details/StarRating';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
 import AddToOrderButton from '../Components/Order/AddToOrderButton';
 import UserComments from '../assets/userComments';
+import user from '../assets/userInfo'
 
 const Detail = ({ navigation }) => {
   const item = navigation.getParam('item', {});
@@ -122,15 +123,23 @@ function Rating({addComment}){
 const Comment = ({item}) => {
   return(
     <View style = {styles.listItemContainer}>
-       <Text> {item.text}  </Text>
-       <StarRating
-         maxStars={5}
-         rating={item.star}
-         disabled={true}
-         starSize={15}
-         style = {{marginTop: 15}}
+
+       <Image
+         style={{borderColor: '#FFF',borderRadius: 85,borderWidth: 3,height: 30,width: 30,marginLeft: 0}}
+         source={user.img}
        />
-       {/*<Text> {item.star} </Text>*/}
+
+       <Text style = {{fontSize:15}}> {item.text}  </Text>
+       <View style = {{alignItems:'center',justifyContent:'center'}}>
+          <StarRating
+            maxStars={5}
+            rating={item.star}
+            disabled={true}
+            starSize={15}
+            style = {{marginTop: 15, marginRight:0}}
+          />
+       </View>
+
     </View>
   );
 }
@@ -196,9 +205,8 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: '#ECECEC',
     padding: 20,
-    alignItems:'center',
-    justifyContent:'center',
     flexDirection: 'row',
+    alignItems:'center',
   },
 })
 
