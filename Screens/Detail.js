@@ -75,6 +75,9 @@ function Rating({addComment}){
     const comment = {text:text, star:star}
     addComment(comment)
   }
+  const onStarRatingPress = ({value}) =>{
+    setStar(value)
+  }
   return(
     <View style = {{alignItems: 'center', justifyContent: 'center'}}>
       <StarRating
@@ -82,8 +85,8 @@ function Rating({addComment}){
         rating={star}
         disabled={false}
         starSize={15}
-        //onStarChange={(value) => onStarRatingPress(value)}
-        onStarChange={(value) => setStar(value)}
+        onStarChange={(value) => onStarRatingPress(value)}
+        //onStarChange={(value) => setStar(value)}
         style = {{marginTop: 15}}
       />
 
@@ -127,6 +130,7 @@ const Comment = ({item}) => {
          starSize={15}
          style = {{marginTop: 15}}
        />
+       {/*<Text> {item.star} </Text>*/}
     </View>
   );
 }
@@ -143,11 +147,6 @@ const Comments = ({comments}) =>  {
   );
 }
 
-/*
-const onStarRatingPress = ({value}) =>{
-  console.log('Rated' + value + 'stars!');
-}
-*/
 
 const styles = StyleSheet.create({
   container: {
@@ -199,6 +198,7 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems:'center',
     justifyContent:'center',
+    flexDirection: 'row',
   },
 })
 
