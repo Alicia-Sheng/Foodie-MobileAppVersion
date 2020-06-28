@@ -1,6 +1,8 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View, TouchableOpacity, Image, ScrollView, FlatList } from 'react-native';
+import { Button, StyleSheet, Text, View, TouchableOpacity, Image, ScrollView, FlatList, Dimensions } from 'react-native';
 import restaurant from '../assets/restaurant.js';
+
+var {height, width } = Dimensions.get('window');
 
 const restaurantList = ({ item }) => {
   return (
@@ -26,13 +28,25 @@ class Restaurant extends React.Component {
   renderRestaurant = ({ item }) => {
     let link = item.link;
     return (
-      <TouchableOpacity style={styles.touch} onPress={() => this.props.navigation.navigate(link)}>
+      <TouchableOpacity style={styles.divFood}>
+        <Image
+          style={styles.imageFood}
+          resizeMode="contain"
+          source={item.img.src} />
+          <View style={{height:((width/2)-20)-90, backgroundColor:'transparent', width:((width/2)-20)-10}} />
+          <Text style={{fontWeight:'bold',fontSize:22,textAlign:'center'}}>
+            {item.name}
+          </Text>
+          <Text>Descp Food and Details</Text>
+        </TouchableOpacity>
+      /*<TouchableOpacity style={styles.touch} onPress={() => this.props.navigation.navigate(link)}>
         <Image style={styles.logo}
           resizeMode="contain"
           source={item.img.src}
         />
+        <View style={{height: 40, width: 150}}/>
         <Text style={{frontWeight: 'bold', frontSize: 22, textAlign: 'center'}}>{item.name}</Text>
-      </TouchableOpacity>
+      </TouchableOpacity>*/
     );
   }
 
@@ -98,6 +112,7 @@ class Restaurant extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
+        paddingTop: 50,
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
@@ -105,7 +120,6 @@ const styles = StyleSheet.create({
     },
     touch: {
         alignItems: 'center',
-        justifyContent: 'center',
         width: 150,
         height: 150,
         padding: 10,
@@ -120,13 +134,11 @@ const styles = StyleSheet.create({
         shadowRadius: 2.5,
     },
     logo: {
-        margin: 10,
         alignItems: 'center',
         justifyContent: 'center',
         width: 100,
         height:100,
-        padding: 10,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: 'transparent',
         borderColor: 'white',
         borderWidth: 1,
         borderRadius: 150,
@@ -137,6 +149,26 @@ const styles = StyleSheet.create({
         shadowOffset:{width:0,height:0},
         shadowOpacity: 1,
         shadowRadius: 2,
+    },
+    imageFood:{
+      width:((width/2)-20)-10,
+      height:((width/2)-20)-30,
+      backgroundColor:'transparent',
+      position:'absolute',
+      top:-45
+    },
+    divFood:{
+      width:(width/2)-20,
+      padding:10,
+      borderRadius:10,
+      marginTop:55,
+      marginBottom:5,
+      marginLeft:10,
+      alignItems:'center',
+      elevation:8,
+      shadowOpacity:0.3,
+      shadowRadius:50,
+      backgroundColor:'white',
     }
 });
 export default Restaurant;
