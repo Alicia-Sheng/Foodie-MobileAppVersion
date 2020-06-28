@@ -34,7 +34,7 @@ class Restaurant extends React.Component {
           resizeMode="contain"
           source={item.img.src}
         />
-        <View style={{height: width/2 - 75, backgroundColor: 'transparent', width: width/2 - 40}} />
+        <View style={{height: width/2 - 80, backgroundColor: 'transparent', width: width/2 - 40}} />
         <Text style={{fontWeight: 'bold', fontSize: 18, textAlign: 'center'}}>
           {item.name}
         </Text>
