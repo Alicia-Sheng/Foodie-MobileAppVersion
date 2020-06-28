@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.5",
+    "@react-native-community/async-storage": "^1.11.0",
     "@react-native-community/masked-view": "^0.1.6",
     "@react-native-community/segmented-control": "^2.0.1",
     "@react-navigation/native": "^5.5.1",
@@ -20,6 +21,7 @@
     "apollo-link-context": "^1.0.20",
     "apollo-link-http": "^1.5.17",
     "expo": "~37.0.3",
+    "expo-font": "~8.1.0",
     "graphql": "^15.1.0",
     "graphql-tag": "^2.10.3",
     "native-base": "^2.13.12",
@@ -43,8 +45,7 @@
     "react-navigation-drawer": "^2.4.13",
     "react-navigation-stack": "^2.7.0",
     "react-navigation-tabs": "^2.8.13",
-    "styled-components": "^5.1.1",
-    "expo-font": "~8.1.0"
+    "styled-components": "^5.1.1"
   },
   "devDependencies": {
     "babel-preset-expo": "~8.1.0",

@@ -8,11 +8,14 @@ import UserComments from '../assets/userComments';
 
 const Detail = ({ navigation }) => {
   const item = navigation.getParam('item', {});
-  const [text, setText] = useState('');  // TextInput
+  //const [text, setText] = useState('');  // TextInput
   const [selectedIndex,setSelectedIndex] = useState('0')    //segmentTab
-  const [commentList, setCommentList] = useState ([])    //list of comment
-  const [starList, setStarList] = useState(0)
-  const [star, setStar] = useState(5)
+
+  const [comments, setComments] = useState([])   //comment = commentlist + starlist
+
+  const addComment = (comment) => {
+    setComments (comments.concat(comment))
+  }
 
   return (
   <ScrollView>
@@ -40,55 +43,17 @@ const Detail = ({ navigation }) => {
 
       {selectedIndex === 0
              && <View style = {{alignItems: 'center', justifyContent: 'center'}}>
-                  <Text style = {{marginLeft: 15}}> {item.desc}</Text>
 
-                  <StarRating
-                    maxStars={5}
-                    rating={3}
-                    disabled={false}
-                    starSize={15}
-                    //onStarChange={(value) => onStarRatingPress(value)}
-                    onStarChange={(value) => setStar(value)}
-                    style = {{marginTop: 15}}
-                  />
-
-                  <TextInput
-                    style = {{
-                      height:100,
-                      width: 300,
-                      borderColor:'gray',
-                      borderWidth: 1,
-                      borderRadius: 15,
-                      color: "grey",
-                      margin: 20,
-                    }}
-                    placeholder = "Please add your comment"
-                    multiline = {true}
-                    numberOfLines = {3}
-                    maxLength = {140}
-                    spellCheck = {false}
-                    selectionColor = "black"
-                    defaultValue = {text}
-                    onChangeText = {text => setText(text)}
-                  />
-
-                  <View style = {styles.sub}>
-                    <Button title="Submit" onPress={()=> setCommentList(commentList.concat(text)) } />
-                    {/*setStarList(starList).concat(star)}*/}
-                  </View>
+                  <Text style = {{marginLeft: 15, marginBottom:20}}> {item.desc}</Text>
+                  <Rating addComment = {addComment} />
 
                 </View>
       }
 
       {selectedIndex === 1
-            // && <Text> {commentList}</Text>
 
              && <View style = {{flexDirection:"row", margin:"10"}}>
-                   <FlatList
-                       data = {commentList}
-                       renderItem = {({item}) => <Comment item = {item}/>}
-                       keyExtractor = {(item,index) => "food" + index}
-                   />
+                   <Comments comments = {comments}/>
                 </View>
 
       }
@@ -100,18 +65,82 @@ const Detail = ({ navigation }) => {
 
   {/* return <ListingDetail item={item} />;*/}
 
-};
-
-const handleButton = () => {
-  const Comment = {comment:comment, rating:rating}
 }
+
+function Rating({addComment}){
+  const [text, setText] = useState ("")    //comment
+  const [star, setStar] = useState(5)  //starts
+
+  const handleForm = () => {
+    const comment = {text:text, star:star}
+    addComment(comment)
+  }
+  return(
+    <View style = {{alignItems: 'center', justifyContent: 'center'}}>
+      <StarRating
+        maxStars={5}
+        rating={star}
+        disabled={false}
+        starSize={15}
+        //onStarChange={(value) => onStarRatingPress(value)}
+        onStarChange={(value) => setStar(value)}
+        style = {{marginTop: 15}}
+      />
+
+      <TextInput
+        style = {{
+          height:100,
+          width: 300,
+          borderColor:'gray',
+          borderWidth: 1,
+          borderRadius: 15,
+          color: "grey",
+          margin: 20,
+        }}
+        placeholder = "Please add your comment"
+        multiline = {true}
+        numberOfLines = {3}
+        maxLength = {140}
+        spellCheck = {false}
+        selectionColor = "black"
+        defaultValue = {text}
+        onChangeText = {text => setText(text)}
+      />
+
+      <View style = {styles.sub}>
+        <Button title="Submit" onPress={handleForm} />
+      </View>
+
+    </View>
+  );
+}
+
 
 const Comment = ({item}) => {
   return(
     <View style = {styles.listItemContainer}>
-       <Text> {item}  </Text>
+       <Text> {item.text}  </Text>
+       <StarRating
+         maxStars={5}
+         rating={item.star}
+         disabled={true}
+         starSize={15}
+         style = {{marginTop: 15}}
+       />
     </View>
-  )
+  );
+}
+
+const Comments = ({comments}) =>  {
+  return(
+    <View>
+      <FlatList
+          data = {comments}
+          renderItem = {({item}) => <Comment item = {item}/>}
+          keyExtractor = {(item,index) => "comment" + index}
+      />
+    </View>
+  );
 }
 
 /*
@@ -168,6 +197,8 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: '#ECECEC',
     padding: 20,
+    alignItems:'center',
+    justifyContent:'center',
   },
 })
 
