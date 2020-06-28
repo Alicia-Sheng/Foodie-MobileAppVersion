@@ -252,9 +252,9 @@ const SwitchNavigator = createSwitchNavigator({
   AccountStack,
   Register,
 },
-  // {
-  //   initialRouteName: 'AuthLoading',
-  // }
+  {
+    initialRouteName: 'AuthLoading',
+  }
   );
 
 export default createAppContainer(SwitchNavigator);
