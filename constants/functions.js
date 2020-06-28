@@ -61,8 +61,6 @@ export const LOGIN_USER = gql `
   mutation loginUser($username: String!, $password: String!) {
     loginUser(username: $username, password: $password) {
       username
-      email
-      phone
       token
     }
   }
@@ -72,8 +70,6 @@ export const SIGNUP_USER = gql `
   mutation signupUser($username: String!, $password: String!, $email: String!, $phone: String!) {
     signupUser(username: $username, password: $password, email: $email, phone: $phone) {
       username
-      email
-      phone
       token
     }
   }
