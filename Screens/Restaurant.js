@@ -17,6 +17,17 @@ const restaurantList = ({ item }) => {
   );
 }
 
+const renderRestaurant = ({ item }) => {
+  return (
+    <TouchableOpacity style={styles.touch}>
+      <Image style={styles.logo}
+        resizeMode="contain"
+        source={item.img.src}
+      />
+    </TouchableOpacity>
+  )
+}
+
 const Restaurant = ({ navigation }) => {
 
   return (
@@ -27,7 +38,15 @@ const Restaurant = ({ navigation }) => {
       renderItem={item => restaurantList(item)}
       keyExtractor={(item, index) => index.toString()}
     />*/}
-    <ScrollView>
+      <View style={styles.container}>
+        <FlatList
+          data={restaurant}
+          numColumns={2}
+          renderItem={item => renderRestaurant(item)}
+          keyExtractor={(item, index) => index.toString()}
+        />
+      </View>
+    {/*<ScrollView>
       <View style={styles.container}>
         <View style={{flex: 1, flexDirection: 'row'}}>
           <TouchableOpacity style = {styles.touch} onPress={() => navigation.navigate('Sherman')}>
@@ -54,7 +73,7 @@ const Restaurant = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
-    </ScrollView>
+    </ScrollView>*/}
     </>
   )
 };
