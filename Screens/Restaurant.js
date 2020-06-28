@@ -34,8 +34,8 @@ class Restaurant extends React.Component {
           resizeMode="contain"
           source={item.img.src}
         />
-        <View style={{height: width/2 - 75, backgroundColor:'transparent', width: width/2 - 40}} />
-        <Text style={{fontWeight:'bold',fontSize:18,textAlign:'center'}}>
+        <View style={{height: width/2 - 75, backgroundColor: 'transparent', width: width/2 - 40}} />
+        <Text style={{fontWeight: 'bold', fontSize: 18, textAlign: 'center'}}>
           {item.name}
         </Text>
       </TouchableOpacity>
@@ -109,6 +109,26 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    touch: {
+      width: width/2 - 30,
+      padding: 10,
+      borderRadius: 10,
+      marginTop: 50,
+      margin: 15,
+      alignItems: 'center',
+      elevation: 8,
+      shadowOpacity: 0.3,
+      shadowRadius: 50,
+      backgroundColor: 'white',
+    },
+    logo: {
+      width: width/2 - 50,
+      height: width/2 - 50,
+      borderRadius: width/2 - 50,
+      backgroundColor:'transparent',
+      position:'absolute',
+      top:-45
+    },
     /*touch: {
         alignItems: 'center',
         width: 150,
@@ -123,20 +143,8 @@ const styles = StyleSheet.create({
         shadowOffset:{width:0,height:0},
         shadowOpacity: 1,
         shadowRadius: 2.5,
-    },*/
-    touch: {
-      width: width/2 - 30,
-      padding: 10,
-      borderRadius: 10,
-      marginTop: 50,
-      margin: 15,
-      alignItems: 'center',
-      elevation: 8,
-      shadowOpacity: 0.3,
-      shadowRadius: 50,
-      backgroundColor: 'white',
     },
-    /*logo: {
+    logo: {
         alignItems: 'center',
         justifyContent: 'center',
         width: 100,
@@ -153,13 +161,5 @@ const styles = StyleSheet.create({
         shadowOpacity: 1,
         shadowRadius: 2,
     },*/
-    logo: {
-      width: width/2 - 50,
-      height: width/2 - 50,
-      borderRadius: width/2 - 50,
-      backgroundColor:'transparent',
-      position:'absolute',
-      top:-45
-    }
 });
 export default Restaurant;
