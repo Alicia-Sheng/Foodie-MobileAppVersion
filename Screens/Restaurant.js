@@ -31,6 +31,7 @@ class Restaurant extends React.Component {
           resizeMode="contain"
           source={item.img.src}
         />
+        <Text style={{frontWeight: 'bold', frontSize: 22, textAlign: 'center'}}>{item.name}</Text>
       </TouchableOpacity>
     );
   }
@@ -103,7 +104,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     touch: {
-        margin: 10,
         alignItems: 'center',
         justifyContent: 'center',
         width: 150,
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         borderColor: 'white',
         borderWidth: 1,
-        borderRadius: 150,
+        borderRadius: 10,
 
         shadowColor: '#999',
         shadowOffset:{width:0,height:0},
@@ -130,6 +130,8 @@ const styles = StyleSheet.create({
         borderColor: 'white',
         borderWidth: 1,
         borderRadius: 150,
+        position: 'absolute',
+        top: -45,
 
         shadowColor: 'grey',
         shadowOffset:{width:0,height:0},
