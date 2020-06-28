@@ -28,16 +28,15 @@ class Restaurant extends React.Component {
   renderRestaurant = ({ item }) => {
     let link = item.link;
     return (
-      <TouchableOpacity style={styles.divFood}>
+      <TouchableOpacity style={styles.divFood} onPress={() => this.props.navigation.navigate(link)}>
         <Image
           style={styles.imageFood}
           resizeMode="contain"
           source={item.img.src} />
-          <View style={{height:((width/2)-20)-90, backgroundColor:'transparent', width:((width/2)-20)-10}} />
+          <View style={{height:((width/2)-20)-50, backgroundColor:'transparent', width:((width/2)-20)-10}} />
           <Text style={{fontWeight:'bold',fontSize:22,textAlign:'center'}}>
             {item.name}
           </Text>
-          <Text>Descp Food and Details</Text>
         </TouchableOpacity>
       /*<TouchableOpacity style={styles.touch} onPress={() => this.props.navigation.navigate(link)}>
         <Image style={styles.logo}
@@ -112,7 +111,6 @@ class Restaurant extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 50,
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
@@ -152,7 +150,8 @@ const styles = StyleSheet.create({
     },
     imageFood:{
       width:((width/2)-20)-10,
-      height:((width/2)-20)-30,
+      height:((width/2)-20)-10,
+      borderRadius: ((width/2)-20)-10,
       backgroundColor:'transparent',
       position:'absolute',
       top:-45
