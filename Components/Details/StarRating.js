@@ -5,8 +5,10 @@ import React, {Component} from 'react';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 
 export default class StarRating extends Component {
+
 /*
   static propTypes = {
+    diabled: React.PropTypes.bool,
     maxStars: React.PropTypes.number,
     rating: React.PropTypes.number,
     onStarChange: React.PropTypes.func,
@@ -14,7 +16,6 @@ export default class StarRating extends Component {
     starSize: React.PropTypes.number,
   };
   */
-
 
   static defaultProps = {
     disabled: true,

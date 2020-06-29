@@ -16,6 +16,7 @@ const Detail = ({ navigation }) => {
 
   const addComment = (comment) => {
     setComments (comments.concat(comment))
+//    setSelectedIndex(1)
   }
 
   return (
@@ -47,7 +48,6 @@ const Detail = ({ navigation }) => {
 
                   <Text style = {{marginLeft: 15, marginBottom:20}}> {item.desc}</Text>
                   <Rating addComment = {addComment} />
-
                 </View>
       }
 
@@ -69,7 +69,7 @@ const Detail = ({ navigation }) => {
 }
 
 function Rating({addComment}){
-  const [text, setText] = useState ("")    //comment
+  const [text, setText] = useState (" ")    //comment
   const [star, setStar] = useState(5)  //starts
 
   const handleForm = () => {
@@ -85,7 +85,7 @@ function Rating({addComment}){
         maxStars={5}
         rating={star}
         disabled={false}
-        starSize={15}
+        starSize={16}
         onStarChange={(value) => onStarRatingPress(value)}
         //onStarChange={(value) => setStar(value)}
         style = {{marginTop: 15}}
@@ -98,10 +98,14 @@ function Rating({addComment}){
           borderColor:'gray',
           borderWidth: 1,
           borderRadius: 15,
-          color: "grey",
+          color: "black",
           margin: 20,
+          shadowColor: '#DCDCDC',
+          shadowOffset:{width:0,height:0},
+          shadowOpacity: 0.5,
+          shadowRadius: 15,
         }}
-        placeholder = "Please add your comment"
+        placeholder = " Please add your comment"
         multiline = {true}
         numberOfLines = {3}
         maxLength = {140}
