@@ -39,6 +39,9 @@ export default class StarRating extends Component {
         this.setState({
           rating: rating,
         });
+
+        this.props.onStarChange(rating)
+
       }
     }
   }

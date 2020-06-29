@@ -45,18 +45,15 @@ const Detail = ({ navigation }) => {
 
       {selectedIndex === 0
              && <View style = {{alignItems: 'center', justifyContent: 'center'}}>
-
                   <Text style = {{marginLeft: 15, marginBottom:20}}> {item.desc}</Text>
                   <Rating addComment = {addComment} />
                 </View>
       }
 
       {selectedIndex === 1
-
              && <View style = {{flexDirection:"row", margin:"10"}}>
                    <Comments comments = {comments}/>
                 </View>
-
       }
 
     </View>
@@ -74,12 +71,25 @@ function Rating({addComment}){
 
   const handleForm = () => {
     const comment = {text:text, star:star}
-    Alert.alert('Do you want to submit your comment')
+  //  Alert.alert('Do you want to submit your comment?')
+    Alert.alert('Submit',
+        'Do you want to submit your comment?',
+        [
+            {
+                text: 'Cancel',
+                onPress: () => console.log('Cancel submition'),
+                style: 'cancel',
+            },
+            {text: 'OK', onPress: () => console.log('Successfully submited!')},
+        ]
+
+    );
     addComment(comment)
   }
   const onStarRatingPress = ({value}) =>{
     setStar(value)
   }
+
   return(
     <View style = {{alignItems: 'center', justifyContent: 'center'}}>
       <StarRating
@@ -87,8 +97,8 @@ function Rating({addComment}){
         rating={star}
         disabled={false}
         starSize={16}
-        onStarChange={(value) => onStarRatingPress(value)}
-        //onStarChange={(value) => setStar(value)}
+    //    onStarChange={(value) => onStarRatingPress(value)}
+        onStarChange={(value) => setStar(value)}
         style = {{marginTop: 15}}
       />
 
