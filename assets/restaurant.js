@@ -1,23 +1,15 @@
-const restaurant = [{
+const restaurant = [
+    {
         "id": 1,
-        "name": "Dunkin Donuts",
-        "link": "Dunkin",
+        "name": "Sherman Dining Hall",
+        "link": "Sherman",
         "img": {
-            "src": require("../media/logo/dunkin-donuts.png"),
-            "alt": "dunkin-donuts"
+            "src": require("../media/logo/Sherman.png"),
+            "alt": "sherman"
         }
     },
     {
         "id": 2,
-        "name": "Einstein Bros. Bagels",
-        "link": "Einstein",
-        "img": {
-            "src": require("../media/logo/einstein-bagels.png"),
-            "alt": "einstein-bagels"
-        }
-    },
-    {
-        "id": 3,
         "name": "The Stein",
         "link": "Stein",
         "img": {
@@ -26,12 +18,21 @@ const restaurant = [{
         }
     },
     {
-        "id": 4,
-        "name": "Sherman",
-        "link": "Sherman",
+        "id": 3,
+        "name": "Dunkin Donuts",
+        "link": "Dunkin",
         "img": {
-            "src": require("../media/logo/Sherman.png"),
-            "alt": "sherman"
+            "src": require("../media/logo/dunkin-donuts.png"),
+            "alt": "dunkin-donuts"
+        }
+    },
+    {
+        "id": 4,
+        "name": "Einstein Bros. Bagels",
+        "link": "Einstein",
+        "img": {
+            "src": require("../media/logo/einstein-bagels.png"),
+            "alt": "einstein-bagels"
         }
     },
     {
