@@ -40,8 +40,6 @@ const Login = ({ navigation }) => {
                 .then(({ data }) => {
                   const { token } = data.loginUser;
 
-                  console.log(token, "line 43")
-
                   AsyncStorage.setItem('token', token).then(value => {
                     navigation.navigate('Main');
                   });
