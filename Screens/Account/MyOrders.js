@@ -6,14 +6,16 @@ import user from '../../assets/userInfo'
 import BackButton from '../../Components/Button/BackButton'
 import { GET_ORDER } from '../../constants/functions';
 
-const Orders = ({ id, status }) => {
+const Orders = ({ orders }) => {
   //return user.orders.map((order) => {
+  return orders.map((order) => {
     return (
+      <>
       <ListItem
-        key={id}
-        title={"Order# " + id}
-        rightSubtitle={status}
-        rightSubtitleStyle={{ width: 180, textAlign: "right" }}
+        key={order.id}
+        title={"Order"}
+        rightSubtitle={order.status.toString()}
+        rightSubtitleStyle={{ width: 180, marginRight: 20, textAlign: "right" }}
         style={styles.listItemContainer}
         rightIcon={<Icon
           name="chevron-right"
@@ -23,8 +25,9 @@ const Orders = ({ id, status }) => {
         />}
         onPress={() => Alert.alert('Not implemented yet')}
       />
+      </>
     )
-  //})
+  })
 }
 
 // const MyOrders = ({ navigation }) => {
@@ -42,8 +45,7 @@ class MyOrders extends Component {
         {({ data }) => (
           <ScrollView style={styles.scroll}>
             <View style={styles.headerContainer}>
-              {console.log(data)}
-              {/*<Orders id={data.order.id} status={data.order.status} />*/}
+              <Orders orders={data.order} />
             </View>
           </ScrollView>
         )}
