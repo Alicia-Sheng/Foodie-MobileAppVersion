@@ -70,14 +70,16 @@ class MenuItem extends Component {
                                         </TouchableOpacity>
                                     </View>
                                     <View style={{ flex: 1, backgroundColor: 'white', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-
-                                        <Button style={{ backgroundColor: '#cf3838', borderRadius: 10, height: 32, width: 75, marginLeft: 0, marginRight: 10, paddingLeft: 30 }}>
-                                            <TouchableOpacity onPress={() => addToCart({ variables: { productId: id } })}>
-                                                <View>
-                                                    <Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold' }} uppercase={false} > +</Text>
-                                                </View>
-                                            </TouchableOpacity>
-                                        </Button>
+                                      <Button
+                                          style={{ backgroundColor: '#cf3838', borderRadius: 10, height: 32, width: 75, marginLeft: 0, marginRight: 10, paddingLeft: 30 }}
+                                          onPress={() => addToCart({ variables: { productId: id, name: name, location: location, thumbnail: thumbnail, price: price } })}
+                                      >
+                                          <TouchableOpacity onPress={() => addToCart({ variables: { productId: id, name: name, location: location, thumbnail: thumbnail, price: price } })}>
+                                              <View>
+                                                  <Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold' }} uppercase={false} > +</Text>
+                                              </View>
+                                          </TouchableOpacity>
+                                      </Button>
                                     </View>
                                 </View>
                             </View>
@@ -123,14 +125,18 @@ class MenuItem extends Component {
                                     />
                                 </View>
                                 <View style={{ bottom: 0, position: 'absolute', alignItems: 'center', alignContent: 'center', alignSelf: 'center', marginBottom: 10 }}>
-                                    <Button onPress={() => {
+                                    <Button /*onPress={() => {
                                         addToCart({ variables: { productId: id } })
                                         this.toggleModal1()
-                                    }} title="Hide modal" style={{ width: '120%', borderRadius: 10, backgroundColor: '#Cf3838', justifyContent: 'center' }}>
-                                        <TouchableOpacity onPress={() => {
+                                    }}*/
+                                        onPress={() => addToCart({ variables: { productId: id, name: name, location: location, thumbnail: thumbnail, price: price } })}
+                                        title="Hide modal" style={{ width: '120%', borderRadius: 10, backgroundColor: '#Cf3838', justifyContent: 'center' }}>
+                                        <TouchableOpacity /*onPress={() => {
                                             addToCart({ variables: { productId: id } })
                                             this.toggleModal1()
-                                        }}>
+                                        }}*/
+                                            onPress={() => addToCart({ variables: { productId: id, name: name, location: location, thumbnail: thumbnail, price: price } })}
+                                        >
                                             <Text style={{ fontSize: 17, marginBottom: 5, color: 'white', fontWeight: 'bold' }} uppercase={false}>
                                                 Add to Order
                                             </Text>

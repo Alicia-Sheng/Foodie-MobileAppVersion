@@ -3,6 +3,7 @@ import { FlatList, Text, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 import { Query } from 'react-apollo';
 import ListingItem from '../../Components/Listing/ListingItem'
+import MenuListingItem from '../../Components/MenuListing/MenuListingItem'
 import MenuItem from '../../Components/Menu/MenuItem';
 import { GET_PRODUCTS } from '../../constants/functions';
 import { container } from "../../constants/styles";
