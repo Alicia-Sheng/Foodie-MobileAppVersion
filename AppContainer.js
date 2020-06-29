@@ -44,14 +44,16 @@ const HomeStack = createStackNavigator(
     },
     SeeAll: {
       screen: SeeAll,
-      navigationOptions: { title: 'SeeAll' },
+      navigationOptions: { 
+        title: null
+      },
     },
   },
   {
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: 'white',
-        borderBottomColor: '#f7f7f7'
+        shadowColor: 'transparent',
       },
       headerTintColor: 'black',
       headerShown: true,
@@ -96,7 +98,8 @@ const RestaurantStack = createStackNavigator(
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: 'white',
-        borderBottomColor: '#f7f7f7'
+        borderBottomColor: 'white',
+        shadowColor: 'transparent',
       },
       headerTintColor: 'black',
       headerShown: true,
@@ -120,7 +123,8 @@ const OrderStack = createStackNavigator(
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: 'white',
-        borderBottomColor: '#f7f7f7'
+        borderBottomColor: 'white',
+        shadowColor: 'transparent',
       },
       headerTintColor: 'black',
       headerShown: true,
@@ -141,7 +145,8 @@ const ProviderStack = createStackNavigator(
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: 'white',
-        borderBottomColor: '#f7f7f7'
+        borderBottomColor: 'white',
+        shadowColor: 'transparent',
       },
       headerTintColor: 'black',
       headerShown: true,

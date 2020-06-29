@@ -89,6 +89,23 @@ export const GET_ORDER = gql `
   }
 `;
 
+export const SEARCH = gql `
+  query search {
+    search {
+      id
+      name
+      location
+      thumbnail
+      desc
+      price
+      rating
+      category {
+        title
+      }
+    }
+  }
+`;
+
 export const LOGIN_USER = gql `
   mutation loginUser($username: String!, $password: String!) {
     loginUser(username: $username, password: $password) {
