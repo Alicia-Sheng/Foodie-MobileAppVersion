@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
+import { Query } from 'react-apollo';
 import { ScrollView, StyleSheet, View, Alert } from 'react-native';
 import { Icon, ListItem } from 'react-native-elements'
 import user from '../../assets/userInfo'
 import BackButton from '../../Components/Button/BackButton'
+import { GET_ORDER } from '../../constants/functions';
 
-const Orders = () => {
-  return user.orders.map((order) => {
+const Orders = ({ id, status }) => {
+  //return user.orders.map((order) => {
     return (
       <ListItem
-        key={order.id}
-        title={"Order# " + order.id}
-        rightSubtitle={order.status}
+        key={id}
+        title={"Order# " + id}
+        rightSubtitle={status}
         rightSubtitleStyle={{ width: 180, textAlign: "right" }}
         style={styles.listItemContainer}
         rightIcon={<Icon
@@ -22,7 +24,7 @@ const Orders = () => {
         onPress={() => Alert.alert('Not implemented yet')}
       />
     )
-  })
+  //})
 }
 
 // const MyOrders = ({ navigation }) => {
@@ -36,11 +38,16 @@ class MyOrders extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.scroll}>
-        <View style={styles.headerContainer}>
-          <Orders />
-        </View>
-      </ScrollView>
+      <Query query={GET_ORDER}>
+        {({ data }) => (
+          <ScrollView style={styles.scroll}>
+            <View style={styles.headerContainer}>
+              {console.log(data)}
+              {/*<Orders id={data.order.id} status={data.order.status} />*/}
+            </View>
+          </ScrollView>
+        )}
+      </Query>
     )
   }
 }
