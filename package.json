@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.5",
-    "@react-native-community/async-storage": "^1.11.0",
     "@react-native-community/masked-view": "^0.1.6",
     "@react-native-community/segmented-control": "^2.0.1",
     "@react-navigation/native": "^5.5.1",
