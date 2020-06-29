@@ -86,9 +86,6 @@ function Rating({addComment}){
     );
     addComment(comment)
   }
-  const onStarRatingPress = ({value}) =>{
-    setStar(value)
-  }
 
   return(
     <View style = {{alignItems: 'center', justifyContent: 'center'}}>
@@ -97,7 +94,6 @@ function Rating({addComment}){
         rating={star}
         disabled={false}
         starSize={16}
-    //    onStarChange={(value) => onStarRatingPress(value)}
         onStarChange={(value) => setStar(value)}
         style = {{marginTop: 15}}
       />
