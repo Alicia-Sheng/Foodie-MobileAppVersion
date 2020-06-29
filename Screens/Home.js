@@ -34,7 +34,7 @@ const Home = ({ navigation }) => {
                   <SearchBar
                     term={term}
                     onTermChange={newTerm => setTerm(newTerm)}
-                    onTermSubmit={() => searchApi(term)}
+                    onTermSubmit={() => navigation.navigate('Search', {term: term})}
                   />
                   <ScrollView>
                     <Section

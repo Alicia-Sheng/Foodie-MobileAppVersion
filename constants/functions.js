@@ -77,14 +77,14 @@ export const GET_CURRENT_USER = gql `
 
 export const GET_ORDER = gql `
   query getOrder {
-    order {
+    orders {
       id
       name
       location
       thumbnail
       qty
       total
-      status
+      complete
     }
   }
 `;
@@ -119,7 +119,7 @@ export const LOGIN_USER = gql `
           thumbnail
           qty
           total
-          status
+          complete
         }
       }
       token
@@ -139,7 +139,7 @@ export const SIGNUP_USER = gql `
         thumbnail
         qty
         total
-        status
+        complete
       }
     }
   }

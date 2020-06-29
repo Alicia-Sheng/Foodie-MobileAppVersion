@@ -14,7 +14,7 @@ const Orders = ({ orders }) => {
       <ListItem
         key={order.id}
         title={"Order"}
-        rightSubtitle={order.status.toString()}
+        rightSubtitle={order.complete.toString()}
         rightSubtitleStyle={{ width: 180, marginRight: 20, textAlign: "right" }}
         style={styles.listItemContainer}
         rightIcon={<Icon
@@ -45,7 +45,7 @@ class MyOrders extends Component {
         {({ data }) => (
           <ScrollView style={styles.scroll}>
             <View style={styles.headerContainer}>
-              <Orders orders={data.order} />
+              <Orders orders={data.orders} />
             </View>
           </ScrollView>
         )}
