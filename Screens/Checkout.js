@@ -21,16 +21,12 @@ const Alert = styled(Text)`
 
 const Checkout = () => {
     const [completeCart, { data, loading, error }] = useMutation(COMPLETE_CART,
-        {refetchQueries: [{ query: GET_CART }, { query: GET_CART_TOTAL }],
+        {refetchQueries: [{ query: GET_CART }, { query: GET_CART_TOTAL }, { query: GET_ORDER }],
         awaitRefetchQueries: false,
         }
         );
 
     return (
-      <Mutation
-        refetchQueries={() => { query: GET_ORDER }}
-      >
-        {getOrder => (
           <CheckoutWrapper>
               {(loading || error) ? (
                   <Alert>{loading ? 'Loading...' : error.message}</Alert>
@@ -49,8 +45,6 @@ const Checkout = () => {
                       </>
                   )}
           </CheckoutWrapper>
-        )}
-      </Mutation>
     );
 };
 
