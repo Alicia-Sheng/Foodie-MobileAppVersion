@@ -1,3 +1,53 @@
+// import React, { useState } from 'react';
+// import { FlatList, Text, StyleSheet } from 'react-native';
+// import styled from 'styled-components/native';
+// import { Query } from 'react-apollo';
+// import ListingItem from '../../Components/Listing/ListingItem'
+// import MenuItem from '../../Components/Menu/MenuItem';
+// import { GET_PRODUCTS } from '../../constants/functions';
+// import { container } from "../../constants/styles";
+//
+// const Einstein = ({ navigation }) => {
+//
+//     return (
+//         <Query
+//             query={GET_PRODUCTS}
+//         >
+//             {({ loading, error, data }) => {
+//                 if (loading || error) {
+//                     return <Alert>{loading ? 'Loading...' : error.message}</Alert>;
+//                 }
+//                 return (
+//                     <>
+//                         <FlatList
+//                             style={[container, styles.flatClear]}
+//                             data={data.products.filter(item => item.location == 'Einstein Bros. Bagels')}
+//                             numColumns={1}
+//                             renderItem={({ item }) => (<MenuItem data={item} />)}
+//                             keyExtractor={item => item.id.toString()}
+//                             ListFooterComponentStyle={{ paddingVertical: 100 }}
+//                         />
+//                     </>
+//                 );
+//             }}
+//         </Query>
+//     )
+// };
+//
+// const Alert = styled(Text)`
+//   width: 100%;
+//   text-align: center;
+// `;
+//
+// const styles = StyleSheet.create({
+//     flatClear: {
+//         marginHorizontal: -5,
+//         paddingTop: 5
+//     },
+// })
+//
+// export default Einstein;
+
 import React from 'react';
 import { FlatList, View, Text } from 'react-native';
 import styled from 'styled-components/native';

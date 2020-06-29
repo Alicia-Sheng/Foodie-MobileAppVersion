@@ -8,7 +8,9 @@ const ListingItemWrapper = styled(TouchableOpacity)`
 display: flex;
 flex-direction: row;
 padding: 2%;
-background-color: #eee;
+background-color: white;
+border-bottom-width: 1;
+border-bottom-color: grey;
 border-radius: 5px;
 margin-bottom: 5%;
 `;
