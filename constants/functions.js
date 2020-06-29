@@ -57,6 +57,24 @@ export const GET_PRODUCTS = gql `
   }
 `;
 
+export const GET_CURREN_USER = gql `
+  query getCurrentUser {
+    currentUser {
+      username
+      email
+      phone
+      orders {
+        name
+        location
+        thumbnail
+        qty
+        total
+        status
+      }
+    }
+  }
+`;
+
 export const LOGIN_USER = gql `
   mutation loginUser($username: String!, $password: String!) {
     loginUser(username: $username, password: $password) {
@@ -66,6 +84,11 @@ export const LOGIN_USER = gql `
         phone
         orders {
           name
+          location
+          thumbnail
+          qty
+          total
+          status
         }
       }
       token
