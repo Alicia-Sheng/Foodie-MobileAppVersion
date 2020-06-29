@@ -74,6 +74,7 @@ function Rating({addComment}){
 
   const handleForm = () => {
     const comment = {text:text, star:star}
+    Alert.alert('Do you want to submit your comment')
     addComment(comment)
   }
   const onStarRatingPress = ({value}) =>{

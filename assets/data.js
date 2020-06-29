@@ -279,7 +279,7 @@ const data = [{
           "src": require("../media/Latte.jpg"),
           "alt": "Latte"
       },
-      "desc": "Cage-Free Eggs, Crispy Chicken, Cheddar Cheese and Honey Almond Shmear on a French Toast Bagel.",
+      "desc": "Coffee made with espresso and hot steamed milk, milkier than a cappuccino",
       "price": 2.95,
       "rating": 5.0,
       "category": "drink"
