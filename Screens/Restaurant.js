@@ -34,8 +34,8 @@ class Restaurant extends React.Component {
           resizeMode="contain"
           source={item.img.src}
         />
-        <View style={{height: width/2 - 80, backgroundColor: 'transparent', width: width/2 - 40}} />
-        <Text style={{fontWeight: 'bold', fontSize: 18, textAlign: 'center'}}>
+        <View style={{height: width/2 - 100, backgroundColor: 'transparent', width: width/2 - 60}} />
+        <Text style={{fontWeight: 'bold', fontSize: 16, textAlign: 'center', marginBottom: 5}}>
           {item.name}
         </Text>
       </TouchableOpacity>
@@ -113,8 +113,9 @@ const styles = StyleSheet.create({
       width: width/2 - 30,
       padding: 10,
       borderRadius: 10,
-      marginTop: 50,
       margin: 15,
+      marginTop: 70,
+      marginBottom: 5,
       alignItems: 'center',
       elevation: 8,
       shadowOpacity: 0.3,
@@ -122,9 +123,9 @@ const styles = StyleSheet.create({
       backgroundColor: 'white',
     },
     logo: {
-      width: width/2 - 50,
-      height: width/2 - 50,
-      borderRadius: width/2 - 50,
+      width: width/2 - 60,
+      height: width/2 - 60,
+      borderRadius: width/2 - 60,
       backgroundColor:'transparent',
       position:'absolute',
       top:-45
