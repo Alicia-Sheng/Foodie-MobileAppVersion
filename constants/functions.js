@@ -169,3 +169,17 @@ export const ADD_PRODUCT = gql `
     }
   }
 `;
+
+export const ADD_REVIEW = gql `
+  mutation addReview($comment: String!, $rating: Float!, $productId: ID!, $userId: ID!) {
+    addReview(
+        comment: $comment,
+        rating: $rating,
+        productId: $productId,
+        userId: $userId
+      ) {
+      comment
+      rating
+    }
+  }
+`;
