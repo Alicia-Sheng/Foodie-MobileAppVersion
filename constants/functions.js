@@ -75,6 +75,19 @@ export const GET_CURREN_USER = gql `
   }
 `;
 
+export const GET_ORDER = gql `
+  query getOrder {
+    order {
+      name
+      location
+      thumbnail
+      qty
+      total
+      status
+    }
+  }
+`;
+
 export const LOGIN_USER = gql `
   mutation loginUser($username: String!, $password: String!) {
     loginUser(username: $username, password: $password) {
