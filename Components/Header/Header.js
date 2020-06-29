@@ -6,13 +6,12 @@ import HamburgerIcon from '../Button/HamburgerIcon';
 const Header = () => {
 
   return (
-    <NBHeader style={{ backgroundColor: 'white', height: 60, borderBottomColor: 'white' }}>
+    <NBHeader style={{ backgroundColor: 'white', height: 40, borderBottomColor: 'white', paddingTop: -30, marginHorizontal: -10 }}>
       <Left/>
       <Body>
-        {/* <Title style={{ color: 'black' }}>Foodie</Title> */}
         <CustomText>Foodie</CustomText>
       </Body>
-      <Right>
+      <Right style={{ marginBottom: -5 }}>
         <HamburgerIcon/>
       </Right>
     </NBHeader>
