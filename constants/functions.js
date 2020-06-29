@@ -57,7 +57,7 @@ export const GET_PRODUCTS = gql `
   }
 `;
 
-export const GET_CURREN_USER = gql `
+export const GET_CURRENT_USER = gql `
   query getCurrentUser {
     currentUser {
       username
@@ -85,6 +85,23 @@ export const GET_ORDER = gql `
       qty
       total
       status
+    }
+  }
+`;
+
+export const SEARCH = gql `
+  query search {
+    search {
+      id
+      name
+      location
+      thumbnail
+      desc
+      price
+      rating
+      category {
+        title
+      }
     }
   }
 `;
