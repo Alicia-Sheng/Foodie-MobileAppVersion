@@ -127,83 +127,83 @@ $ npm start
   <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/restaurant.png" width=300>
 </kbd>
 
-
   * Food and beverage options are displayed by restaurant
 
+<br />
 
 <kbd>
   <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/detail.png" width=300> <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/commentlist.png" width=300>
 </kbd>
 
-
   * Users can see food details and comment here.
   * Previous comment list of the food is included as well
 
+<br />
 
 <kbd>
   <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/order.png" width=300>
 </kbd>
 
-
   * Customers can view, add or remove items they put in the shopping cart.
   * They can place an order here
 
+<br />
 
 <kbd>
   <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/foodProvider.png" width=300>
 </kbd>
 
-
   * Provider can add the information of the food they serve
 
+<br />
 
 <kbd>
   <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/account.png" width=300>
 </kbd>
 
-
   * Users can browse setting and all the operation related to this account
 
+<br />
 
 <kbd>
   <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/Profile.png" width=300>
 </kbd>
 
-
   * Users can see their own profile
 
+<br />
 
 <kbd>
   <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/myOrders.png" width=300>
 </kbd>
 
-
   * Users can see their order information
  
+ <br />
  
 <kbd>
   <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/myReviews.png" width=300>
 </kbd>
 
-
   * Users can see their previous review
 
+<br />
 
 <kbd>
   <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/login.png" width=300>
 </kbd>
 
-
   * If users have a account, he or she can login into our app
 
+<br />
 
 <kbd>
   <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/registerPage.png" width=300>
 </kbd>
 
-
   * If users doesn't have a account, he or she can register for an account
-  
+
+<br />
 
 ## Contributors
 
