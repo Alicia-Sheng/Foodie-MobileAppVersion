@@ -140,23 +140,26 @@ $ npm start
 ![Account Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/account.png )
   
   * Users can browse setting and all the operation related to this account
-  1.   ![Profile Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/Profile.png )
-     * Users can see their own profile
-  2.   ![Order Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/myOrders.png )
-     * Users can see their order information
-  3.   ![Review Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/myReviews.png )
-     * Users can see their previous review
-  4.   log out
-     * Users can log out and it will lead them back to the login page
-
   
-Login Page
+![Profile Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/Profile.png )
 
-  * Users can login into our app. If one doesn't have a account, one can create the account
-  1.   ![login Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/login.png)
-     - If users have a account, he or she can login into our app
-  2.   ![register Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/register.png)
-     - If users doesn't have a account, he or she can register for an account
+  * Users can see their own profile
+  
+![Order Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/myOrders.png )
+
+  * Users can see their order information
+  
+![Review Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/myReviews.png )
+
+  * Users can see their previous review
+
+![login Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/login.png)
+
+  * If users have a account, he or she can login into our app
+   
+![register Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/register.png)
+
+  * If users doesn't have a account, he or she can register for an account
   
 
 ## Contributors
