@@ -8,11 +8,10 @@ import { GET_ORDER } from '../../constants/functions';
 
 const Orders = ({ orders }) => {
   //return user.orders.map((order) => {
-  return orders.map((order) => {
+  return orders.map((order, index) => {
     return (
-      <>
       <ListItem
-        key={order.id}
+        key={index}
         title={"Order"}
         rightSubtitle={order.complete.toString()}
         rightSubtitleStyle={{ width: 180, marginRight: 20, textAlign: "right" }}
@@ -25,7 +24,6 @@ const Orders = ({ orders }) => {
         />}
         onPress={() => Alert.alert('Not implemented yet')}
       />
-      </>
     )
   })
 }
@@ -36,13 +34,13 @@ function MyOrders() {
       <>
             {(loading || error) ? (
                 <>
-                {console.log('work!')}
+                {/* {console.log('work!')} */}
                 <Text>{loading ? 'Loading...' : error.message}</Text>
                 </>
             ):
             (
               <>
-              {console.log('work')}
+              {/* {console.log('work')} */}
                 <ScrollView style={styles.scroll}>
                   <View style={styles.headerContainer}>
                     <Orders orders={data.orders} />
