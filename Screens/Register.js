@@ -86,7 +86,7 @@ function Register({ navigation }) {
             </InputWrapper>
 
             <InputWrapper>
-              <LabelText>Passwod:</LabelText>
+              <LabelText>Password:</LabelText>
               <InputBox
                 placeholder="Password"
                 maxLength={20}
