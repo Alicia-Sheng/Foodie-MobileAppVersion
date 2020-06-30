@@ -99,8 +99,7 @@ $ npm start
 
 ## Demo
 
-![Main Page 1](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/homepage.png )
-![Main Page 2](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/login.png )
+![Main Page 1](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/homepage.png)
 1.  Nav Bar
     1.  Home
         * Users can use links to go to other pages
@@ -116,46 +115,47 @@ $ npm start
     * Users can browse all food/beverage options here
 4.  Food Search Bar
     * Users can search for the food they want
-4.  Account
+5.  Account
     * Users can browse setting and all the operation related to this account
 
-![Restaurant Page]( )
+![Restaurant Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/restaurant.png)
 
   * Food and beverage options are displayed by restaurant
 
-![Detail Page]( )
+![Detail Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/detail.png)
+![Detail Page2](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/commentlist.png)
 
   * Users can see food details and comment here.
   * Previous comment list of the food is included as well
 
-![Shopping Cart]( )
+![Shopping Cart](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/order.png )
 
   * Customers can view, add or remove items they put in the shopping cart.
   * They can place an order here
   
-![Provider Page]( )
+![Provider Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/foodProvider.png )
 
   * Provider can add the information of the food they serve
   
-![Account Page]( )
+![Account Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/account.png )
   
   * Users can browse setting and all the operation related to this account
-  1.   ![Profile Page]( )
+  1.   ![Profile Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/Profile.png )
      * Users can see their own profile
-  2.   ![Order Page]( )
+  2.   ![Order Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/myOrders.png )
      * Users can see their order information
-  3.   ![Review Page]( )
+  3.   ![Review Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/myReviews.png )
      * Users can see their previous review
-  4.   ![Log Out]( )
+  4.   log out
      * Users can log out and it will lead them back to the login page
 
   
-![Login Page]( )
+Login Page
 
   * Users can login into our app. If one doesn't have a account, one can create the account
-  1.   ![login Page]( )
+  1.   ![login Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/login.png)
      - If users have a account, he or she can login into our app
-  2.   ![register Page]( )
+  2.   ![register Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/register.png)
      - If users doesn't have a account, he or she can register for an account
   
 
