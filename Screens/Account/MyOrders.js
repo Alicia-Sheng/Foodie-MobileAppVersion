@@ -18,7 +18,7 @@ const Orders = ({ orders }) => {
         subtitle={order.location}
         subtitleStyle={{color: 'grey', marginLeft: 15}}
         rightTitle={'$'+order.total.toString()}
-        rightTitleStyle={{ width: 180, color: 'black', marginBottom: 3, textAlign: "right" }}
+        rightTitleStyle={{ width: 180, fontSize: 15, color: 'black', marginBottom: 3, textAlign: "right" }}
         rightSubtitle={order.complete ? 'finished' : 'not finished'}
         rightSubtitleStyle={{ width: 180, textAlign: "right" }}
         style={styles.listItemContainer}
