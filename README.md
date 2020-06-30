@@ -99,7 +99,7 @@ $ npm start
 
 ## Demo
 
-![Main Page 1](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/homepage.png)
+<img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/homepage.png" width="32%">
 1.  Nav Bar
     1.  Home
         * Users can use links to go to other pages
@@ -118,46 +118,45 @@ $ npm start
 5.  Account
     * Users can browse setting and all the operation related to this account
 
-![Restaurant Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/restaurant.png)
+<img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/restaurant.png" width="32%">
 
   * Food and beverage options are displayed by restaurant
 
-![Detail Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/detail.png)
-![Detail Page2](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/commentlist.png)
+<img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/detail.png" width="32%"> <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/commentlist.png" width="32%">
 
   * Users can see food details and comment here.
   * Previous comment list of the food is included as well
 
-![Shopping Cart](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/order.png )
+<img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/order.png" width="32%">
 
   * Customers can view, add or remove items they put in the shopping cart.
   * They can place an order here
-  
-![Provider Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/foodProvider.png )
+
+<img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/foodProvider.png" width="32%">
 
   * Provider can add the information of the food they serve
-  
-![Account Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/account.png )
+
+<img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/account.png" width="32%">
   
   * Users can browse setting and all the operation related to this account
-  
-![Profile Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/Profile.png )
 
+<img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/Profile.png" width="32%">
+  
   * Users can see their own profile
   
-![Order Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/myOrders.png )
+<img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/myOrders.png" width="32%">
 
   * Users can see their order information
   
-![Review Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/myReviews.png )
+<img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/myReviews.png" width="32%">
 
   * Users can see their previous review
 
-![login Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/login.png)
+<img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/login.png" width="32%">
 
   * If users have a account, he or she can login into our app
    
-![register Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/registerPage.png)
+<img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/registerPage.png" width="32%">
 
   * If users doesn't have a account, he or she can register for an account
   
