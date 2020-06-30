@@ -18,15 +18,15 @@ const Orders = ({ orders }) => {
         subtitle={order.location}
         subtitleStyle={{color: 'grey', marginLeft: 15}}
         rightTitle={'$'+order.total.toString()}
-        rightTitleStyle={{ width: 180, color: 'black', marginBottom: 3, marginRight: 15, textAlign: "right" }}
+        rightTitleStyle={{ width: 180, color: 'black', marginBottom: 3, textAlign: "right" }}
         rightSubtitle={order.complete ? 'finished' : 'not finished'}
-        rightSubtitleStyle={{ width: 180, marginRight: 15, textAlign: "right" }}
+        rightSubtitleStyle={{ width: 180, textAlign: "right" }}
         style={styles.listItemContainer}
         rightIcon={<Icon
           name="chevron-right"
           type="entypo"
           color="gray"
-          containerStyle={{ marginLeft: -15, width: 20 }}
+          containerStyle={{ width: 20 }}
         />}
         onPress={() => Alert.alert('Not implemented yet')}
       />
