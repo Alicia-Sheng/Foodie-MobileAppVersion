@@ -34,13 +34,11 @@ function MyOrders() {
       <>
             {(loading || error) ? (
                 <>
-                {/* {console.log('work!')} */}
                 <Text>{loading ? 'Loading...' : error.message}</Text>
                 </>
             ):
             (
               <>
-              {/* {console.log('work')} */}
                 <ScrollView style={styles.scroll}>
                   <View style={styles.headerContainer}>
                     <Orders orders={data.orders} />
