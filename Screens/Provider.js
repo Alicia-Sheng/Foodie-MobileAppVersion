@@ -1,4 +1,4 @@
-import React, { useState, setState } from 'react';
+import React, { useState } from 'react';
 import { Alert, Text, View, StyleSheet, ScrollView, Button, TextInput } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import styled from 'styled-components/native';
@@ -43,6 +43,15 @@ function Provider({ navigation }) {
   const [loc, setLoc] = useState("")
   const [category, setCategory] = useState("")
 
+  const resetForm = () => {
+    setName("");
+    setDesc("");
+    setPrice(0);
+    setImg("");
+    setLoc("");
+    setCategory("")
+  }
+
   return (
     <Mutation
       mutation={ADD_PRODUCT}
@@ -54,6 +63,7 @@ function Provider({ navigation }) {
               <LabelText>Food name:</LabelText>
               <InputBox
                 placeholder="Food name"
+                value={name}
                 maxLength={50}
                 onChangeText={text => setName(text)}
               />
@@ -63,6 +73,7 @@ function Provider({ navigation }) {
               <LabelText>Food description:</LabelText>
               <InputBox
                 placeholder="Food description"
+                value={desc}
                 maxLength={200}
                 onChangeText={text => setDesc(text)}
               />
@@ -71,6 +82,7 @@ function Provider({ navigation }) {
             <InputWrapper>
               <LabelText>Food image:</LabelText>
               <InputBox
+                value={img}
                 placeholder="Food image url"
                 onChangeText={text => setImg(text)}
               />
@@ -80,6 +92,7 @@ function Provider({ navigation }) {
               <LabelText>Food price:</LabelText>
               <InputBox
                 placeholder="Food price"
+                value={String(price)}
                 maxLength={10}
                 keyboardType={'numeric'}
                 onChangeText={text => setPrice(parseFloat(text))} />
@@ -98,7 +111,7 @@ function Provider({ navigation }) {
                     fontWeight: 'bold',
                   },
                 }}
-                placeholder={{ label: "Select a location...", value: null }}
+                placeholder={{ label: "Select a location...", value: "" }}
                 items={[
                   { label: "Sherman Dining Hall", value: "Sherman Dining Hall", key: "sherman" },
                   { label: "The Stein", value: "The Stein", key: "stein" },
@@ -122,7 +135,7 @@ function Provider({ navigation }) {
                     fontWeight: 'bold',
                   },
                 }}
-                placeholder={{ label: "Select a category...", value: null }}
+                placeholder={{ label: "Select a category...", value: "" }}
                 items={[
                   { label: "Food", value: "food", key: "food" },
                   { label: "Drink", value: "drink", key: "drink" },
@@ -136,6 +149,7 @@ function Provider({ navigation }) {
                 onPress={() => {
                   addProduct({ variables: { name: name, location: loc, thumbnail: img, desc: desc, price: price, category: category } })
                     .then(({ data }) => {
+                      resetForm();
                       Alert.alert(
                         'Item created!',
                         'Back to Main Page?',

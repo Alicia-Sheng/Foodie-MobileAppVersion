@@ -1,4 +1,4 @@
-import React, { useState, setState } from 'react';
+import React, { useState } from 'react';
 import { Alert, Text, View, StyleSheet, ScrollView, Button, TextInput, TouchableOpacity } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import styled from 'styled-components/native';
@@ -61,6 +61,14 @@ function Register({ navigation }) {
   // const [bkg, setBkg] = useState("")
   // const [userType, setType] = useState("")
 
+  const resetForm = () => {
+    setName("");
+    setPassword("");
+    setEmail("");
+    setPhone("");
+    // setType("");
+  }
+
   return (
     <Mutation
       mutation={SIGNUP_USER}>
@@ -72,6 +80,7 @@ function Register({ navigation }) {
               <InputBox
                 placeholder="Username"
                 maxLength={20}
+                value={name}
                 onChangeText={text => setName(text)}
               />
             </InputWrapper>
@@ -81,6 +90,7 @@ function Register({ navigation }) {
               <InputBox
                 placeholder="Password"
                 maxLength={20}
+                value={password}
                 onChangeText={text => setPassword(text)}
               />
             </InputWrapper>
@@ -89,6 +99,7 @@ function Register({ navigation }) {
               <LabelText>Email:</LabelText>
               <InputBox
                 placeholder="Email"
+                value={email}
                 onChangeText={text => setEmail(text)} />
             </InputWrapper>
 
@@ -98,6 +109,7 @@ function Register({ navigation }) {
                 placeholder="Phone number"
                 maxLength={10}
                 keyboardType='numeric'
+                value={phone}
                 onChangeText={text => setPhone(text)} />
             </InputWrapper>
 
@@ -130,7 +142,7 @@ function Register({ navigation }) {
                     fontWeight: 'bold',
                   },
                 }}
-                placeholder={{ label: "Select user type...", value: null }}
+                placeholder={{ label: "Select user type...", value: "" }}
                 items={[
                   { label: "Customer", value: "Customer", key: "Customer" },
                   { label: "Seller", value: "Seller", key: "Seller" },
@@ -145,6 +157,7 @@ function Register({ navigation }) {
                   // signupUser({ variables: { username: name, password: password, email: email, phone: phone, img: img, bkg: bkg, type: userType } })
                   signupUser({ variables: { username: name, password: password, email: email, phone: phone } })
                     .then(({ data }) => {
+                      resetForm();
                       Alert.alert(
                         'Signed up!',
                         '',
