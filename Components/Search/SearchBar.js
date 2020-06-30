@@ -2,7 +2,14 @@ import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
+const SearchBar = ({ term, onTermChange, onTermSubmit, navigation, nextRoute }) => {
+
+    const onEndEditing = term => {
+        if (term) {
+            navigation.navigate(nextRoute, {term});
+        }
+    }
+
     return (
         <View style={style.backgroundStyle}>
             <Feather name="search" style={style.iconStyle} />
@@ -15,7 +22,8 @@ const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
                 placeholder="Search food..."
                 value={term}
                 onChangeText={onTermChange}
-                onEndEditing={onTermSubmit}
+                // onEndEditing={onTermSubmit}
+                onEndEditing={() => onEndEditing(term)}
             />
         </View>
     );

@@ -17,6 +17,7 @@ const NumberResultsFound = styled(Text)`
   color: #Cf3838;
   font-size: 20px;
   font-weight: bold;
+  text-align: center;
 `;
 
 
