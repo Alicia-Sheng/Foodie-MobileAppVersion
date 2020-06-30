@@ -4,7 +4,7 @@ import { ImageBackground, StyleSheet, Text, View, Image, AsyncStorage, SafeAreaV
 import { Icon, ListItem } from 'react-native-elements'
 import { GET_CURRENT_USER } from '../../constants/functions';
 
-function Menu({ navigation, username }) {
+function Menu({ navigation, user }) {
   return (
     <ScrollView>
       <SafeAreaView
@@ -21,14 +21,14 @@ function Menu({ navigation, username }) {
                 style={styles.userImage}
                 source={require("../../media/user/default.png")}
               />
-              <Text style={styles.userNameText}>{username}</Text>
+              <Text style={styles.userNameText}>{user.username}</Text>
             </View>
 
             {/* Link to Profile */}
             <ListItem
               title="Profile"
               onPress={() => {
-                navigation.navigate('Profile');
+                navigation.navigate('Profile', { user: user });
                 navigation.closeDrawer();
               }}
               containerStyle={styles.listItemContainer}
@@ -89,7 +89,7 @@ function Account({ navigation }) {
         </>
       ) :
         (
-          <Menu navigation={navigation} username={data.currentUser.username} />
+          <Menu navigation={navigation} user={data.currentUser} />
         )
       }
     </>

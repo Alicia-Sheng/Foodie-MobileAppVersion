@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { ScrollView, StyleSheet, View, Image, Alert } from 'react-native';
 import { Icon, ListItem } from 'react-native-elements'
-import user from '../../assets/userInfo'
+// import user from '../../assets/userInfo'
 import BackButton from '../../Components/Button/BackButton'
 
-
-// const Profile = ({ navigation }) => {
 class Profile extends Component {
 
   static navigationOptions = () => {
@@ -15,6 +13,8 @@ class Profile extends Component {
   };
 
   render() {
+    const { user } = this.props.navigation.state.params;
+
     return (
       <ScrollView style={styles.scroll}>
         <View style={styles.headerContainer}>
@@ -24,7 +24,7 @@ class Profile extends Component {
             title="Picture"
             onPress={() => Alert.alert('Not implemented yet')}
             containerStyle={styles.listItemContainer}
-            rightAvatar={<Image source={user.img} style={{ width: 50, height: 50 }} />}
+            rightAvatar={<Image source={require("../../media/user/default.png")} style={{ width: 50, height: 50 }} />}
             rightIcon={<Icon
               name="chevron-right"
               type="entypo"
@@ -38,7 +38,7 @@ class Profile extends Component {
             title="Background"
             onPress={() => Alert.alert('Not implemented yet')}
             containerStyle={styles.listItemContainer}
-            rightAvatar={<Image source={user.bcg} style={{ width: 50, height: 50 }} />}
+            rightAvatar={<Image source={require("../../media/user/user_background.jpg")} style={{ width: 50, height: 50 }} />}
             rightIcon={<Icon
               name="chevron-right"
               type="entypo"
