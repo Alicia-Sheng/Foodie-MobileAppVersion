@@ -38,7 +38,7 @@ function Provider({ navigation }) {
 
   const [name, setName] = useState("")
   const [desc, setDesc] = useState("")
-  const [price, setPrice] = useState(0)
+  const [price, setPrice] = useState("")
   const [img, setImg] = useState("")
   const [loc, setLoc] = useState("")
   const [category, setCategory] = useState("")
@@ -46,7 +46,7 @@ function Provider({ navigation }) {
   const resetForm = () => {
     setName("");
     setDesc("");
-    setPrice(0);
+    setPrice("");
     setImg("");
     setLoc("");
     setCategory("")
@@ -92,10 +92,10 @@ function Provider({ navigation }) {
               <LabelText>Food price:</LabelText>
               <InputBox
                 placeholder="Food price"
-                value={String(price)}
+                value={price}
                 maxLength={10}
                 keyboardType={'numeric'}
-                onChangeText={text => setPrice(parseFloat(text))} />
+                onChangeText={text => setPrice(text)} />
             </InputWrapper>
 
             <InputWrapper>
@@ -147,7 +147,7 @@ function Provider({ navigation }) {
               <Button
                 title="Add Item"
                 onPress={() => {
-                  addProduct({ variables: { name: name, location: loc, thumbnail: img, desc: desc, price: price, category: category } })
+                  addProduct({ variables: { name: name, location: loc, thumbnail: img, desc: desc, price: parseFloat(price), category: category } })
                     .then(({ data }) => {
                       resetForm();
                       alert('Item created!');
