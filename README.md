@@ -104,28 +104,60 @@ $ npm start
 1.  Nav Bar
     1.  Home
         * Users can use links to go to other pages
-    2.  Restaurants
-        * Users can search for the restaurant menu details
+    2.  Restaurant
+        * Users can search for the restaurant details and the food that they have
     3.  Order
         * Users can click to check the status of their shopping cart
-    4.  Account
+    4.  Provider Page
         * Users can go to the account page and do the login/register operation
 2.  Restaurant Pages
     * By clicking the logos, users can jump to the restaurant infomation page
 3.  Food/Beverage Options
     * Users can browse all food/beverage options here
+4.  Food Search Bar
+    * Users can search for the food they want
 4.  Account
     * Users can browse setting and all the operation related to this account
 
 ![Restaurant Page]( )
 
   * Food and beverage options are displayed by restaurant
-  * Will add restaurant information to this page
+
+![Detail Page]( )
+
+  * Users can see food details and comment here.
+  * Previous comment list of the food is included as well
 
 ![Shopping Cart]( )
 
   * Customers can view, add or remove items they put in the shopping cart.
   * They can place an order here
+  
+![Provider Page]( )
+
+  * Provider can add the information of the food they serve
+  
+![Account Page]( )
+  
+  * Users can browse setting and all the operation related to this account
+  1.   ![Profile Page]( )
+     * Users can see their own profile
+  2.   ![Order Page]( )
+     * Users can see their order information
+  3.   ![Review Page]( )
+     * Users can see their previous review
+  4.   ![Log Out]( )
+     * Users can log out and it will lead them back to the login page
+
+  
+![Login Page]( )
+
+  * Users can login into our app. If one doesn't have a account, one can create the account
+  1.   ![login Page]( )
+     * If users have a account, he or she can login into our app
+  2.   ![register Page]( )
+     * If users doesn't have a account, he or she can register for an account
+  
 
 ## Contributors
 
