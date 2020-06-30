@@ -103,6 +103,7 @@ $ npm start
   <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/homepage.png" width=300>
 </kbd>
 
+<br />
 
 1.  Nav Bar
     1.  Home
