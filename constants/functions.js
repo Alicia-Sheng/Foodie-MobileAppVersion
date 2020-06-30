@@ -90,8 +90,8 @@ export const GET_ORDER = gql `
 `;
 
 export const SEARCH = gql `
-  query search {
-    search {
+  query search($term: String!) {
+    search(term: $term) {
       id
       name
       location

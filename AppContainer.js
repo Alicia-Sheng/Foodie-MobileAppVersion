@@ -25,6 +25,7 @@ import MyReviews from './Screens/Account/MyReviews';
 import Login from './Screens/Login';
 import AuthLoading from './Screens/Login';
 import Register from './Screens/Register';
+import Search from './Screens/Search';
 import HamburgerIcon from './Components/Button/HamburgerIcon';
 import BadgeCount from './Components/Badge/BadgeCount';
 
@@ -45,6 +46,12 @@ const HomeStack = createStackNavigator(
     SeeAll: {
       screen: SeeAll,
       navigationOptions: { 
+        title: null
+      },
+    },
+    Search: {
+      screen: Search,
+      navigationOptions: {
         title: null
       },
     },
