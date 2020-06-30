@@ -63,14 +63,6 @@ export const GET_CURRENT_USER = gql `
       username
       email
       phone
-      orders {
-        name
-        location
-        thumbnail
-        qty
-        total
-        status
-      }
     }
   }
 `;
@@ -85,6 +77,17 @@ export const GET_ORDER = gql `
       qty
       total
       complete
+    }
+  }
+`;
+
+export const GET_REVIEW = gql `
+  query getReview($productId: ID!) {
+    review(productId: $productId) {
+      id
+      comment
+      rating
+      userId
     }
   }
 `;
