@@ -157,7 +157,7 @@ $ npm start
 
   * If users have a account, he or she can login into our app
    
-![register Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/register.png)
+![register Page](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/registerPage.png)
 
   * If users doesn't have a account, he or she can register for an account
   
