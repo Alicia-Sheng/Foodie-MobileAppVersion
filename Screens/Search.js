@@ -10,9 +10,9 @@ const Alert = styled(Text)`
   text-align: center;
 `;
 
-const Search = ({ navigation}) => {
+const Search = ({ navigation }) => {
 
-	const term = navigation.getParam(term, '')
+	const term = navigation.getParam('term', '')
 
 	return (
 		<Query
@@ -26,11 +26,7 @@ const Search = ({ navigation}) => {
 				return (
 					<View style={styles.container}>
 						<ResultsList
-							// onSearchRestaurants={onSearchRestaurants}
-							// isRequestingNewData={isRequestingNewData}
 							results={data.search}
-							// dishesTypes={dishesTypes}
-							// maxDistance={maxDistance}
 						/>
 					</View>
 				)	
