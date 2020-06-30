@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, Text, View, StyleSheet, ScrollView, Button, TextInput, TouchableOpacity } from 'react-native';
+import { AsyncStorage, Alert, Text, View, StyleSheet, ScrollView, Button, TextInput, TouchableOpacity } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import styled from 'styled-components/native';
 import { Mutation } from 'react-apollo';
@@ -158,18 +158,12 @@ function Register({ navigation }) {
                   signupUser({ variables: { username: name, password: password, email: email, phone: phone } })
                     .then(({ data }) => {
                       resetForm();
-                      Alert.alert(
-                        'Signed up!',
-                        '',
-                        [
-                          {
-                            text: "OK",
-                            onPress: () => {
-                              navigation.navigate('Home');
-                            }
-                          }
-                        ]
-                      );
+                      alert('Signed up!');
+                      const { token } = data.signupUser;
+
+                      AsyncStorage.setItem('token', token).then(value => {
+                        navigation.navigate('Main');
+                      });
                     })
                     .catch(error => {
                       if (error) {

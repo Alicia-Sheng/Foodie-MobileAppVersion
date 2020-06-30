@@ -82,18 +82,18 @@ function Account({ navigation }) {
   const { loading, error, data } = useQuery(GET_CURRENT_USER);
 
   return (
-    // <>
-    //   {(loading || error) ? (
-    //     <>
-    //       <Text>{loading ? 'Loading...' : error.message}</Text>
-    //     </>
-    //   ) :
-    //     (
-    //       <Menu navigation={navigation} username={data.currentUser.username} />
-    //     )
-    //   }
-    // </>
-    <Menu navigation={navigation} username="Admin" />
+    <>
+      {(loading || error) ? (
+        <>
+          <Text>{loading ? 'Loading...' : error.message}</Text>
+        </>
+      ) :
+        (
+          <Menu navigation={navigation} username={data.currentUser.username} />
+        )
+      }
+    </>
+    // <Menu navigation={navigation} username="Admin" />
   )
 }
 

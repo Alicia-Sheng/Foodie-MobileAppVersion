@@ -150,25 +150,8 @@ function Provider({ navigation }) {
                   addProduct({ variables: { name: name, location: loc, thumbnail: img, desc: desc, price: price, category: category } })
                     .then(({ data }) => {
                       resetForm();
-                      Alert.alert(
-                        'Item created!',
-                        'Back to Main Page?',
-                        [
-                          {
-                            text: "Cancel",
-                            onPress: () => {
-                              navigation.navigate('Provider')
-                            },
-                            style: "cancel"
-                          },
-                          {
-                            text: "OK",
-                            onPress: () => {
-                              navigation.navigate('Home');
-                            }
-                          }
-                        ]
-                      );
+                      alert('Item created!');
+                      navigation.navigate('Home');
                     })
                     .catch(error => {
                       if (error) {
