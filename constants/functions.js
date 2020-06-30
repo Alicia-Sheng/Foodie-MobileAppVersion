@@ -151,17 +151,20 @@ export const LOGIN_USER = gql `
 export const SIGNUP_USER = gql `
   mutation signupUser($username: String!, $password: String!, $email: String!, $phone: String!) {
     signupUser(username: $username, password: $password, email: $email, phone: $phone) {
-      username
-      email
-      phone
-      orders {
-        name
-        location
-        thumbnail
-        qty
-        total
-        complete
+      user {
+        username
+        email
+        phone
+        orders {
+          name
+          location
+          thumbnail
+          qty
+          total
+          complete
+        }
       }
+      token
     }
   }
 `;
