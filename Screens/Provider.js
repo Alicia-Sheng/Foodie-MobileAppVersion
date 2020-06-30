@@ -101,7 +101,7 @@ function Provider({ navigation }) {
             <InputWrapper>
               <LabelText>Location:</LabelText>
               <RNPickerSelect
-                selectedValue={loc}
+                value={loc}
                 onValueChange={(itemValue) => setLoc(itemValue)}
                 style={{
                   ...pickerSelectStyles,
@@ -125,7 +125,7 @@ function Provider({ navigation }) {
             <InputWrapper>
               <LabelText>Category:</LabelText>
               <RNPickerSelect
-                selectedValue={category}
+                value={category}
                 onValueChange={(itemValue) => setCategory(itemValue)}
                 style={{
                   ...pickerSelectStyles,
