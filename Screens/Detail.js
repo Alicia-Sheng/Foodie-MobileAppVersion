@@ -164,8 +164,9 @@ function Rating({addComment, item}){
           />
 
       {/*    <View style = {styles.sub}>   */}
-      {/*      <Button title="Submit" onPress={handleForm} />   */}
+    {/*     <Button title="Submit" onPress={handleForm} />  */}
   {/*    <ButtonWrapper> */}
+
         <Button
           title="Submit"
           style = {{width: 1000}}
@@ -233,7 +234,7 @@ const Comment = ({item}) => {
             style = {{marginTop: 15, marginRight:0}}
           />
        </View>
-       
+
     </View>
   );
 }
