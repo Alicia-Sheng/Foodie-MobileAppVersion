@@ -83,7 +83,7 @@ export const GET_ORDER = gql `
 
 export const GET_REVIEW = gql `
   query getReview($productId: ID!) {
-    review(productId: $productId) {
+    reviews(productId: $productId) {
       id
       comment
       rating
@@ -96,6 +96,16 @@ export const GET_USER = gql `
   query getUser($id: ID!) {
     user(id: $id) {
       username
+    }
+  }
+`;
+
+export const GET_CURRENT_USER_REVIEW = gql `
+  query getCurrentUserReviews {
+    currentUserReviews {
+      id
+      comment
+      rating
     }
   }
 `;
