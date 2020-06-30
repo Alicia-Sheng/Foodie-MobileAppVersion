@@ -1,113 +1,100 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Query, useQuery } from 'react-apollo';
 import { ImageBackground, StyleSheet, Text, View, Image, AsyncStorage, SafeAreaView, ScrollView } from 'react-native';
 import { Icon, ListItem } from 'react-native-elements'
-import user from '../../assets/userInfo'
+import { GET_CURRENT_USER } from '../../constants/functions';
 
-class Account extends Component {
-  render() {
-    return (
-      <ScrollView>
-        <SafeAreaView
-          forceInset={{ top: 'always', horizontal: 'never' }}
-        >
-          <View style={styles.headerContainer}>
-            <ImageBackground
-              style={styles.headerBackgroundImage}
-              blurRadius={10}
-              source={user.bcg}
-            >
-              <View style={styles.headerColumn}>
-                <Image
-                  style={styles.userImage}
-                  source={user.img}
-                />
-                <Text style={styles.userNameText}>{user.username}</Text>
-              </View>
-
-              {/* Link to Profile */}
-              <ListItem
-                title="Profile"
-                onPress={() => {
-                  this.props.navigation.navigate('Profile');
-                  this.props.navigation.closeDrawer();
-                }}
-                containerStyle={styles.listItemContainer}
-                leftIcon={<Icon
-                  name="account-circle"
-                />}
-              // rightIcon={<Icon
-              //   name="chevron-right"
-              //   type="entypo"
-              //   color="gray"
-              //   containerStyle={{ marginLeft: -15, width: 20 }}
-              // />}
+function Menu({ username }) {
+  return (
+    <ScrollView>
+      <SafeAreaView
+        forceInset={{ top: 'always', horizontal: 'never' }}
+      >
+        <View style={styles.headerContainer}>
+          <ImageBackground
+            style={styles.headerBackgroundImage}
+            blurRadius={10}
+            source={require("../../media/user/user_background.jpg")}
+          >
+            <View style={styles.headerColumn}>
+              <Image
+                style={styles.userImage}
+                source={require("../../media/user/default.png")}
               />
+              <Text style={styles.userNameText}>{username}</Text>
+            </View>
 
-              {/* Link to Orders */}
-              <ListItem
-                title="Orders"
-                onPress={() => {
-                  this.props.navigation.navigate('MyOrders');
-                  this.props.navigation.closeDrawer();
-                }}
-                containerStyle={styles.listItemContainer}
-                leftIcon={<Icon
-                  name="shopping-cart"
-                />}
-              // rightIcon={<Icon
-              //   name="chevron-right"
-              //   type="entypo"
-              //   color="gray"
-              //   containerStyle={{ marginLeft: -15, width: 20 }}
-              // />}
-              />
+            {/* Link to Profile */}
+            <ListItem
+              title="Profile"
+              onPress={() => {
+                this.props.navigation.navigate('Profile');
+                this.props.navigation.closeDrawer();
+              }}
+              containerStyle={styles.listItemContainer}
+              leftIcon={<Icon name="account-circle" />}
+            />
 
-              {/* Link to Reviews */}
-              <ListItem
-                title="Reviews"
-                onPress={() => {
-                  this.props.navigation.navigate('MyReviews');
-                  this.props.navigation.closeDrawer();
-                }}
-                containerStyle={styles.listItemContainer}
-                leftIcon={<Icon
-                  name="rate-review"
-                />}
-              // rightIcon={<Icon
-              //   name="chevron-right"
-              //   type="entypo"
-              //   color="gray"
-              //   containerStyle={{ marginLeft: -15, width: 20 }}
-              // />}
-              />
+            {/* Link to Orders */}
+            <ListItem
+              title="Orders"
+              onPress={() => {
+                this.props.navigation.navigate('MyOrders');
+                this.props.navigation.closeDrawer();
+              }}
+              containerStyle={styles.listItemContainer}
+              leftIcon={<Icon name="shopping-cart" />}
+            />
 
-              {/* Log out */}
-              <ListItem
-                title="Log Out"
-                onPress={
-                  () => {
-                    AsyncStorage.removeItem('token').then(() =>
-                      this.props.navigation.navigate('AuthLoading'),
-                    );
-                  }
+            {/* Link to Reviews */}
+            <ListItem
+              title="Reviews"
+              onPress={() => {
+                this.props.navigation.navigate('MyReviews');
+                this.props.navigation.closeDrawer();
+              }}
+              containerStyle={styles.listItemContainer}
+              leftIcon={<Icon name="rate-review" />}
+            />
+
+            {/* Log out */}
+            <ListItem
+              title="Log Out"
+              onPress={
+                () => {
+                  AsyncStorage.removeItem('token').then(() =>
+                    this.props.navigation.navigate('AuthLoading'),
+                  );
                 }
-                containerStyle={styles.listItemContainer}
-                leftIcon={<Icon
-                  name="settings"
-                />}
-              // rightIcon={<Icon
-              //   name="chevron-right"
-              //   type="entypo"
-              //   color="gray"
-              //   containerStyle={{ marginLeft: -15, width: 20 }}
-              // />}
-              />
-            </ImageBackground>
-          </View>
-        </SafeAreaView>
-      </ScrollView>
-    )
-  }
+              }
+              containerStyle={styles.listItemContainer}
+              leftIcon={<Icon name="settings" />}
+            />
+          </ImageBackground>
+        </View>
+      </SafeAreaView>
+    </ScrollView>
+  )
+}
+
+function Account() {
+
+  const { loading, error, data } = useQuery(GET_CURRENT_USER);
+
+  return (
+    // <>
+    //   {(loading || error) ? (
+    //     <>
+    //       <Text>{loading ? 'Loading...' : error.message}</Text>
+    //     </>
+    //   ) :
+    //     (
+    // <Menu username={data.currentUser.username} />
+    //     )
+    //   }
+    // </>
+    <Menu username="Admin" />
+  )
 }
 
 const styles = StyleSheet.create({
