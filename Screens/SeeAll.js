@@ -29,7 +29,7 @@ const SeeAll = ({ navigation }) => {
                         <SearchBar
                             term={term}
                             onTermChange={newTerm => setTerm(newTerm)}
-                            onTermSubmit={() => searchApi(term)}
+                            onTermSubmit={() => navigation.navigate('Search', { screen: 'Search', params: { term: term }})}
                         />
                         <FlatList
                             style={[container, styles.flatClear]}
