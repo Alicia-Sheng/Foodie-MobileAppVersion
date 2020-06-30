@@ -11,8 +11,8 @@ const ButtonWrapper = styled(TouchableOpacity)`
   height: ${({ height }) => (height ? height : '40px')};
   background-color: ${({ color }) => (color ? color : '#cf3838')};
   position: ${({ position }) => (position ? position : 'relative')};
-  top: ${({ top }) => (top ? top : '')};
-  right: ${({ right }) => (right ? right : '')};
+  top: ${({ top }) => (top ? top : 0)};
+  right: ${({ right }) => (right ? right : 0)};
 `;
 
 const ButtonText = styled(Text)`
