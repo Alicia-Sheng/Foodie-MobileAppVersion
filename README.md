@@ -99,8 +99,8 @@ $ npm start
 
 ## Demo
 
-![Main Page 1](   )
-![Main Page 2](   )
+![Main Page 1](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/homepage.png )
+![Main Page 2](https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/login.png )
 1.  Nav Bar
     1.  Home
         * Users can use links to go to other pages
@@ -154,9 +154,9 @@ $ npm start
 
   * Users can login into our app. If one doesn't have a account, one can create the account
   1.   ![login Page]( )
-     * If users have a account, he or she can login into our app
+     - If users have a account, he or she can login into our app
   2.   ![register Page]( )
-     * If users doesn't have a account, he or she can register for an account
+     - If users doesn't have a account, he or she can register for an account
   
 
 ## Contributors
