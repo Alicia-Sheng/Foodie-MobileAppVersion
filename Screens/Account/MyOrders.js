@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Query, useQuery } from 'react-apollo';
-import { ScrollView, StyleSheet, View, Alert } from 'react-native';
+import { ScrollView, StyleSheet, View, Alert, Text } from 'react-native';
 import { Icon, ListItem } from 'react-native-elements'
 import user from '../../assets/userInfo'
 import BackButton from '../../Components/Button/BackButton'
@@ -37,7 +37,7 @@ function MyOrders() {
             {(loading || error) ? (
                 <>
                 {console.log('work!')}
-                <Alert>{loading ? 'Loading...' : error.message}</Alert>
+                <Text>{loading ? 'Loading...' : error.message}</Text>
                 </>
             ):
             (
