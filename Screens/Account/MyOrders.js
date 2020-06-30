@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Query } from 'react-apollo';
+import { Query, useQuery } from 'react-apollo';
 import { ScrollView, StyleSheet, View, Alert } from 'react-native';
 import { Icon, ListItem } from 'react-native-elements'
 import user from '../../assets/userInfo'
@@ -30,29 +30,62 @@ const Orders = ({ orders }) => {
   })
 }
 
-// const MyOrders = ({ navigation }) => {
-class MyOrders extends Component {
-
-  static navigationOptions = () => {
-    return {
-      headerLeft: () => <BackButton />
-    };
-  };
-
-  render() {
+function MyOrders() {
+    const { loading, error, data } = useQuery(GET_ORDER);
     return (
-      <Query query={GET_ORDER}>
-        {({ data }) => (
-          <ScrollView style={styles.scroll}>
-            <View style={styles.headerContainer}>
-              <Orders orders={data.orders} />
-            </View>
-          </ScrollView>
-        )}
-      </Query>
+      <>
+            {(loading || error) ? (
+                <>
+                {console.log('work!')}
+                <Alert>{loading ? 'Loading...' : error.message}</Alert>
+                </>
+            ):
+            (
+              <>
+              {console.log('work')}
+                <ScrollView style={styles.scroll}>
+                  <View style={styles.headerContainer}>
+                    <Orders orders={data.orders} />
+                  </View>
+                </ScrollView>
+              </>
+            )}
+      </>
     )
-  }
 }
+
+// const MyOrders = ({ navigation }) => {
+// class MyOrders extends Component {
+//
+//   constructor(){
+//      super();
+//   }
+//
+//   static navigationOptions = () => {
+//     return {
+//       headerLeft: () => <BackButton />
+//     };
+//   };
+//
+//   render() {
+//     const { loading, error } = useQuery(GET_ORDER);
+//     return (
+//       <Query query={GET_ORDER}>
+//         {(loading || error) ? (
+//             <Alert>{loading ? 'Loading...' : error.message}</Alert>
+//         ):
+//         ({ data }) => (
+//           <ScrollView style={styles.scroll}>
+//             <View style={styles.headerContainer}>
+//               <Orders orders={data.orders} />
+//             </View>
+//             {console.log(data.orders)}
+//           </ScrollView>
+//         )}
+//       </Query>
+//     )
+//   }
+// }
 
 const styles = StyleSheet.create({
   scroll: {
