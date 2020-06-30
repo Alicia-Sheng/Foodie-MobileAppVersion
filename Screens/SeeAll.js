@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-import { FlatList, View, Text, Dimensions, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import { FlatList, Text, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 import { Query } from 'react-apollo';
 import SearchBar from '../Components/Search/SearchBar';
-import ListingItem from '../Components/Listing/ListingItem'
 import MenuItem from '../Components/Menu/MenuItem';
 import { GET_PRODUCTS } from '../constants/functions';
-import Carousel from 'react-native-snap-carousel';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { theme, container, borderRadius, floatLeft, backgroundGray, backgroundSecondary, backgroundPrimary } from "../constants/styles";
+
 
 const SeeAll = ({ navigation }) => {
 
@@ -32,7 +29,7 @@ const SeeAll = ({ navigation }) => {
                             onTermSubmit={() => navigation.navigate('Search', { screen: 'Search', params: { term: term }})}
                         />
                         <FlatList
-                            style={[container, styles.flatClear]}
+                            style={[styles.container, styles.flatClear]}
                             data={data.products.filter(item => item.category.title == category)}
                             numColumns={1}
                             renderItem={({ item }) => (<MenuItem data={item} />)}
@@ -52,6 +49,10 @@ const Alert = styled(Text)`
 `;
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        paddingHorizontal: 0
+    },
     spaceBetween: {
         flex: 1, justifyContent: "space-between"
     },
