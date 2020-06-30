@@ -4,7 +4,7 @@ import { ImageBackground, StyleSheet, Text, View, Image, AsyncStorage, SafeAreaV
 import { Icon, ListItem } from 'react-native-elements'
 import { GET_CURRENT_USER } from '../../constants/functions';
 
-function Menu({ username }) {
+function Menu({ navigation, username }) {
   return (
     <ScrollView>
       <SafeAreaView
@@ -28,8 +28,8 @@ function Menu({ username }) {
             <ListItem
               title="Profile"
               onPress={() => {
-                this.props.navigation.navigate('Profile');
-                this.props.navigation.closeDrawer();
+                navigation.navigate('Profile');
+                navigation.closeDrawer();
               }}
               containerStyle={styles.listItemContainer}
               leftIcon={<Icon name="account-circle" />}
@@ -39,8 +39,8 @@ function Menu({ username }) {
             <ListItem
               title="Orders"
               onPress={() => {
-                this.props.navigation.navigate('MyOrders');
-                this.props.navigation.closeDrawer();
+                navigation.navigate('MyOrders');
+                navigation.closeDrawer();
               }}
               containerStyle={styles.listItemContainer}
               leftIcon={<Icon name="shopping-cart" />}
@@ -50,8 +50,8 @@ function Menu({ username }) {
             <ListItem
               title="Reviews"
               onPress={() => {
-                this.props.navigation.navigate('MyReviews');
-                this.props.navigation.closeDrawer();
+                navigation.navigate('MyReviews');
+                navigation.closeDrawer();
               }}
               containerStyle={styles.listItemContainer}
               leftIcon={<Icon name="rate-review" />}
@@ -63,7 +63,7 @@ function Menu({ username }) {
               onPress={
                 () => {
                   AsyncStorage.removeItem('token').then(() =>
-                    this.props.navigation.navigate('AuthLoading'),
+                    navigation.navigate('AuthLoading'),
                   );
                 }
               }
@@ -77,7 +77,7 @@ function Menu({ username }) {
   )
 }
 
-function Account() {
+function Account({ navigation }) {
 
   const { loading, error, data } = useQuery(GET_CURRENT_USER);
 
@@ -93,7 +93,7 @@ function Account() {
     //     )
     //   }
     // </>
-    <Menu username="Admin" />
+    <Menu navigation={navigation} username="Admin" />
   )
 }
 
