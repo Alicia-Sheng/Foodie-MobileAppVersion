@@ -99,7 +99,7 @@ $ npm start
 
 ## Demo
 
-<img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/homepage.png" width="32%">
+<img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/homepage.png" width=200>
 1.  Nav Bar
     1.  Home
         * Users can use links to go to other pages
