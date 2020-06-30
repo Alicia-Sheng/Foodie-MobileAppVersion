@@ -1,22 +1,38 @@
 import React, {Component, useState} from 'react';
-import { Button, Image, StyleSheet, Text, View, TextInput, Alert, ScrollView, FlatList} from 'react-native';
+import {AsyncStorage, Button, Image, StyleSheet, Text, View, TextInput, Alert, ScrollView, FlatList} from 'react-native';
 import ListingDetail from '../Components/Listing/ListingDetail';
 import StarRating from '../Components/Details/StarRating';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
-import AddToOrderButton from '../Components/Order/AddToOrderButton';
 import UserComments from '../assets/userComments';
 import user from '../assets/userInfo'
+import { Mutation } from 'react-apollo';
+import { ADD_REVIEW } from '../constants/functions';
+import { useAsyncStorage } from '@react-native-community/async-storage';
+
 
 const Detail = ({ navigation }) => {
   const item = navigation.getParam('item', {});
   //const [text, setText] = useState('');  // TextInput
   const [selectedIndex,setSelectedIndex] = useState('0')    //segmentTab
+  var comments = []   //comment = commentlist + starlist
 
-  const [comments, setComments] = useState([])   //comment = commentlist + starlist
+  AsyncStorage.getItem("COMMENT", (error, result)=>{
+	  if (result != null) {
+		  comments = JSON.parse(result);
+	  }
+  });
 
   const addComment = (comment) => {
-    setComments (comments.concat(comment))
-//    setSelectedIndex(1)
+  	  AsyncStorage.getItem("COMMENT", (error, result)=>{
+  		  var temporary = [comment];
+  		  console.log(result);
+  		  if (result != null) { console.log(temporary);
+  			  temporary = temporary.concat(JSON.parse(result));
+  		  }
+  		  comments = temporary;
+  		  AsyncStorage.setItem("COMMENT", JSON.stringify(temporary));
+  	  })
+
   }
 
   return (
@@ -25,7 +41,6 @@ const Detail = ({ navigation }) => {
       {/* <Image source={item.img.src} style={{ flex: 1, width: 300, height: 300, resizeMode: 'contain' }} /> */}
       <View style={styles.photo}>
         <Image source={{uri: item.thumbnail}} style={{flex:1, width: 300, height: 300, resizeMode: 'contain', borderRadius: 15}} />
-        <AddToOrderButton productId={item.id} />
       </View>
 
       <Text style = {styles.foodName}>
@@ -45,7 +60,7 @@ const Detail = ({ navigation }) => {
 
       {selectedIndex === 0
              && <View style = {{alignItems: 'center', justifyContent: 'center'}}>
-                  <Text style = {{marginLeft: 15, marginBottom:20}}> {item.desc}</Text>
+                  <Text style = {{marginLeft: 15, marginBottom:10}}> {item.desc}</Text>
                   <Rating addComment = {addComment} />
                 </View>
       }
@@ -106,7 +121,7 @@ function Rating({addComment}){
           borderWidth: 1,
           borderRadius: 15,
           color: "black",
-          margin: 20,
+          margin: 10,
           shadowColor: '#DCDCDC',
           shadowOffset:{width:0,height:0},
           shadowOpacity: 0.5,
@@ -200,7 +215,7 @@ const styles = StyleSheet.create({
   sub:{
     width:100,
     borderRadius: 15,
-    margin:15,
+    margin:10,
   },
   tab: {
     width:100,
