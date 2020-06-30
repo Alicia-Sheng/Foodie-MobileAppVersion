@@ -61,7 +61,7 @@ const Detail = ({ navigation }) => {
       {selectedIndex === 0
              && <View style = {{alignItems: 'center', justifyContent: 'center'}}>
                   <Text style = {{marginLeft: 15, marginBottom:10}}> {item.desc}</Text>
-                  <Rating addComment = {addComment} />
+                  <Rating addComment = {addComment} item = {item}/>
                 </View>
       }
 
@@ -80,7 +80,7 @@ const Detail = ({ navigation }) => {
 
 }
 
-function Rating({addComment}){
+function Rating({addComment, item}){
   const [text, setText] = useState (" ")    //comment
   const [star, setStar] = useState(5)  //starts
 
@@ -97,51 +97,108 @@ function Rating({addComment}){
             },
             {text: 'OK', onPress: () => console.log('Successfully submited!')},
         ]
-
-    );
+    )
     addComment(comment)
   }
 
+  const resetForm = () => {
+    setText(" ");
+    setStar(5);
+  }
+
   return(
-    <View style = {{alignItems: 'center', justifyContent: 'center'}}>
-      <StarRating
-        maxStars={5}
-        rating={star}
-        disabled={false}
-        starSize={16}
-        onStarChange={(value) => setStar(value)}
-        style = {{marginTop: 15}}
-      />
+    <>
+  {/*
+    <Mutation
+      mutation = {ADD_REVIEW}
+    >
+    {(addReview) => (
+  */}
 
-      <TextInput
-        style = {{
-          height:100,
-          width: 300,
-          borderColor:'gray',
-          borderWidth: 1,
-          borderRadius: 15,
-          color: "black",
-          margin: 10,
-          shadowColor: '#DCDCDC',
-          shadowOffset:{width:0,height:0},
-          shadowOpacity: 0.5,
-          shadowRadius: 15,
-        }}
-        placeholder = " Please add your comment"
-        multiline = {true}
-        numberOfLines = {3}
-        maxLength = {140}
-        spellCheck = {false}
-        selectionColor = "black"
-        defaultValue = {text}
-        onChangeText = {text => setText(text)}
-      />
+      <ScrollView>
+        <View style = {{alignItems: 'center', justifyContent: 'center'}}>
+          <StarRating
+            maxStars={5}
+            rating={star}
+            disabled={false}
+            starSize={16}
+            onStarChange={(value) => setStar(value)}
+            style = {{marginTop: 15}}
+          />
 
-      <View style = {styles.sub}>
-        <Button title="Submit" onPress={handleForm} />
+          <TextInput
+            style = {{
+              height:100,
+              width: 300,
+              borderColor:'gray',
+              borderWidth: 1,
+              borderRadius: 15,
+              color: "black",
+              margin: 10,
+              shadowColor: '#DCDCDC',
+              shadowOffset:{width:0,height:0},
+              shadowOpacity: 0.5,
+              shadowRadius: 15,
+            }}
+            placeholder = " Please add your comment"
+            multiline = {true}
+            numberOfLines = {3}
+            maxLength = {140}
+            spellCheck = {false}
+            selectionColor = "black"
+            defaultValue = {text}
+            onChangeText = {text => setText(text)}
+          />
+
+          <View style = {styles.sub}>
+            <Button title="Submit" onPress={handleForm} />
+    {/*
+        <Button
+          title="Submit"
+          onPress={() => {
+            addreview({ variables: { comment: text, rating:star, productId:item.id, userId:0 } })
+            .then(({ data }) => {
+              resetForm();
+              Alert.alert(
+                'Successfully Submit Comment!',
+                [
+                  {
+                    text: "Cancel",
+                    onPress: () => {
+              //        navigation.navigate('Provider')
+                    },
+                    style: "cancel"
+                  },
+                  {
+                    text: "OK",
+                    onPress: () => {
+                    //  navigation.navigate('Home');
+                    }
+                  }
+                ]
+              );
+            })
+            .catch(error => {
+              if (error) {
+                Alert.alert(
+                  'Error',
+                  error.graphQLErrors.map(({ message }) => message)[0],
+                );
+              }
+            });
+        }} />
+    */}
+        </View>
       </View>
+    </ScrollView>
 
-    </View>
+{/*
+    )}
+    </Mutation>
+*/}
+
+</>
+
   );
 }
 
