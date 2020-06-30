@@ -103,8 +103,6 @@ $ npm start
   <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/homepage.png" width=300>
 </kbd>
 
-<br />
-
 1.  Nav Bar
     1.  Home
         * Users can use links to go to other pages
@@ -123,6 +121,7 @@ $ npm start
 5.  Account
     * Users can browse setting and all the operation related to this account
 
+<br />
 
 <kbd>
   <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/restaurant.png" width=300>
