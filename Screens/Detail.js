@@ -1,5 +1,5 @@
 import React, {Component, useState} from 'react';
-import {AsyncStorage, Button, Image, StyleSheet, Text, View, TextInput, Alert, ScrollView, FlatList} from 'react-native';
+import { AsyncStorage, Button, Image, StyleSheet, Text, View, TextInput, Alert, ScrollView, FlatList} from 'react-native';
 import ListingDetail from '../Components/Listing/ListingDetail';
 import StarRating from '../Components/Details/StarRating';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
@@ -27,15 +27,11 @@ const ButtonWrapper = styled(Button)`
   margin-bottom: 1%;
 `;
 
-
-
-
-
 const Detail = ({ navigation }) => {
   const item = navigation.getParam('item', {});
-  //const [text, setText] = useState('');  // TextInput
-  const [selectedIndex,setSelectedIndex] = useState('0')    //segmentTab
+
   var comments = []   //comment = commentlist + starlist
+  const [selectedIndex,setSelectedIndex] = useState('0')    //segmentTab
 
   AsyncStorage.getItem("COMMENT", (error, result)=>{
 	  if (result != null) {
@@ -53,13 +49,11 @@ const Detail = ({ navigation }) => {
   		  comments = temporary;
   		  AsyncStorage.setItem("COMMENT", JSON.stringify(temporary));
   	  })
-
   }
 
   return (
   <ScrollView>
     <View style={styles.container}>
-      {/* <Image source={item.img.src} style={{ flex: 1, width: 300, height: 300, resizeMode: 'contain' }} /> */}
       <View style={styles.photo}>
         <Image source={{uri: item.thumbnail}} style={{flex:1, width: 300, height: 300, resizeMode: 'contain', borderRadius: 15}} />
       </View>
@@ -135,7 +129,6 @@ function Rating({addComment, item}){
     >
     {(addReview) => (
       <ScrollView>
-
         <View style = {{alignItems: 'center', justifyContent: 'center'}}>
           <StarRating
             maxStars={5}
@@ -210,14 +203,12 @@ function Rating({addComment, item}){
         }} />
   {/*      </ButtonWrapper> */}
 
-      </View>
-    </ScrollView>
-
+        </View>
+      </ScrollView>
     )}
     </Mutation>
 
 </>
-
 
   );
 }
@@ -242,7 +233,7 @@ const Comment = ({item}) => {
             style = {{marginTop: 15, marginRight:0}}
           />
        </View>
-
+       
     </View>
   );
 }
