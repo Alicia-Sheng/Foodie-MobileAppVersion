@@ -92,6 +92,14 @@ export const GET_REVIEW = gql `
   }
 `;
 
+export const GET_USER = gql `
+  query getUser($id: ID!) {
+    user(id: $id) {
+      username
+    }
+  }
+`;
+
 export const SEARCH = gql `
   query search($term: String!) {
     search(term: $term) {
