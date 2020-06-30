@@ -12,8 +12,13 @@ const Orders = ({ orders }) => {
     return (
       <ListItem
         key={index}
-        title={"Order"}
-        rightSubtitle={order.complete.toString()}
+        leftAvatar={{ source: { uri: order.thumbnail } }}
+        title={order.name}
+        titleStyle={{marginLeft: 20}}
+        subtitle={order.location}
+        subtitleStyle={{marginLeft: 20}}
+        //rightSubtitle={order.complete.toString()}
+        rightSubtitle={'$'+order.total.toString()}
         rightSubtitleStyle={{ width: 180, marginRight: 20, textAlign: "right" }}
         style={styles.listItemContainer}
         rightIcon={<Icon
