@@ -8,6 +8,27 @@ import user from '../assets/userInfo'
 import { Mutation } from 'react-apollo';
 import { ADD_REVIEW } from '../constants/functions';
 import { useAsyncStorage } from '@react-native-community/async-storage';
+import styled from 'styled-components/native';
+
+
+const InputWrapper = styled(View)`
+  margin-bottom: 2%;
+  background-color: #fff;
+  align-items: stretch;
+  justify-content: center;
+`;
+
+const ButtonWrapper = styled(Button)`
+  display: flex;
+  align-items:stretch;
+  width:1000rem;
+  border-radius: 15;
+  margin-top: 2%;
+  margin-bottom: 1%;
+`;
+
+
+
 
 
 const Detail = ({ navigation }) => {
@@ -107,15 +128,14 @@ function Rating({addComment, item}){
   }
 
   return(
-    <>
-  {/*
+  <>
+
     <Mutation
       mutation = {ADD_REVIEW}
     >
     {(addReview) => (
-  */}
-
       <ScrollView>
+
         <View style = {{alignItems: 'center', justifyContent: 'center'}}>
           <StarRating
             maxStars={5}
@@ -150,13 +170,14 @@ function Rating({addComment, item}){
             onChangeText = {text => setText(text)}
           />
 
-          <View style = {styles.sub}>
-            <Button title="Submit" onPress={handleForm} />
-    {/*
+      {/*    <View style = {styles.sub}>   */}
+      {/*      <Button title="Submit" onPress={handleForm} />   */}
+  {/*    <ButtonWrapper> */}
         <Button
           title="Submit"
+          style = {{width: 1000}}
           onPress={() => {
-            addreview({ variables: { comment: text, rating:star, productId:item.id, userId:0 } })
+            addReview({ variables: { comment: text, rating:star, productId:item.id, userId:0 } })
             .then(({ data }) => {
               resetForm();
               Alert.alert(
@@ -187,17 +208,16 @@ function Rating({addComment, item}){
               }
             });
         }} />
-    */}
-        </View>
+  {/*      </ButtonWrapper> */}
+
       </View>
     </ScrollView>
 
-{/*
     )}
     </Mutation>
-*/}
 
 </>
+
 
   );
 }
