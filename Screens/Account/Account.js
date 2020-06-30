@@ -89,7 +89,7 @@ function Account({ navigation }) {
     //     </>
     //   ) :
     //     (
-    // <Menu navigation={navigation} username={data.currentUser.username} />
+    //       <Menu navigation={navigation} username={data.currentUser.username} />
     //     )
     //   }
     // </>

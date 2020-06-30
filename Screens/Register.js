@@ -185,9 +185,6 @@ function Register({ navigation }) {
               <LinkText> Already have an account? </LinkText>
               <LinkText> Sign in now! </LinkText>
             </LinkWrapper>
-            <LinkWrapper onPress={() => navigation.navigate('Main')}>
-              <LinkText> To home page </LinkText>
-            </LinkWrapper>
           </FormWrapper>
         </ScrollWrapper>
       )}
