@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Alert, Text, View, StyleSheet, ScrollView, Button, TextInput } from 'react-native';
+import { Alert, Text, View, StyleSheet, ScrollView } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
+import TextInput from '../Components/TextInput/TextInput';
+import Button from '../Components/Button/Button';
 import styled from 'styled-components/native';
 import { Mutation } from 'react-apollo';
 import { ADD_PRODUCT, GET_PRODUCTS } from '../constants/functions';
@@ -15,23 +17,8 @@ const FormWrapper = styled(View)`
 const InputWrapper = styled(View)`
   margin-bottom: 2%;
   background-color: #fff;
-  align-items: stretch;
-  justify-content: center;
-`;
-
-const LabelText = styled(Text)`
-  margin-bottom: .8%;
-`;
-
-const InputBox = styled(TextInput)`
-  padding: 10px;
-  display: flex;
   align-items: center;
-  justify-content: space-around;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  font-size: 15px;
+  justify-content: center;
 `;
 
 function Provider({ navigation }) {
@@ -60,8 +47,7 @@ function Provider({ navigation }) {
         <ScrollView>
           <FormWrapper>
             <InputWrapper>
-              <LabelText>Food name:</LabelText>
-              <InputBox
+              <TextInput
                 placeholder="Food name"
                 value={name}
                 maxLength={50}
@@ -70,8 +56,7 @@ function Provider({ navigation }) {
             </InputWrapper>
 
             <InputWrapper>
-              <LabelText>Food description:</LabelText>
-              <InputBox
+              <TextInput
                 placeholder="Food description"
                 value={desc}
                 maxLength={200}
@@ -80,8 +65,7 @@ function Provider({ navigation }) {
             </InputWrapper>
 
             <InputWrapper>
-              <LabelText>Food image:</LabelText>
-              <InputBox
+              <TextInput
                 value={img}
                 placeholder="Food image url"
                 onChangeText={text => setImg(text)}
@@ -89,8 +73,7 @@ function Provider({ navigation }) {
             </InputWrapper>
 
             <InputWrapper>
-              <LabelText>Food price:</LabelText>
-              <InputBox
+              <TextInput
                 placeholder="Food price"
                 value={price}
                 maxLength={10}
@@ -99,7 +82,6 @@ function Provider({ navigation }) {
             </InputWrapper>
 
             <InputWrapper>
-              <LabelText>Location:</LabelText>
               <RNPickerSelect
                 value={loc}
                 onValueChange={(itemValue) => setLoc(itemValue)}
@@ -123,7 +105,6 @@ function Provider({ navigation }) {
             </InputWrapper>
 
             <InputWrapper>
-              <LabelText>Category:</LabelText>
               <RNPickerSelect
                 value={category}
                 onValueChange={(itemValue) => setCategory(itemValue)}
@@ -161,7 +142,11 @@ function Provider({ navigation }) {
                         );
                       }
                     });
-                }} />
+                }}
+                width="90%"
+                radius="15px"
+                height="50px"
+              />
             </InputWrapper>
           </FormWrapper>
         </ScrollView>
@@ -173,22 +158,24 @@ function Provider({ navigation }) {
 
 const pickerSelectStyles = StyleSheet.create({
   inputIOS: {
-    fontSize: 16,
-    paddingVertical: 12,
-    paddingHorizontal: 10,
+    fontSize: 20,
+    marginBottom: 10,
+    marginHorizontal: 12,
+    padding: 18,
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 4,
+    borderRadius: 15,
     color: 'black',
     paddingRight: 30,
   },
   inputAndroid: {
-    fontSize: 16,
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    borderWidth: 0.5,
+    fontSize: 20,
+    marginBottom: 10,
+    marginHorizontal: 12,
+    padding: 18,
+    borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 8,
+    borderRadius: 15,
     color: 'black',
     paddingRight: 30,
   },

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { AsyncStorage, Alert, Text, View, StyleSheet, ScrollView, Button, TextInput, TouchableOpacity } from 'react-native';
+import { AsyncStorage, Alert, Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
+import TextInput from '../Components/TextInput/TextInput';
+import Button from '../Components/Button/Button';
 import styled from 'styled-components/native';
 import { Mutation } from 'react-apollo';
 import { SIGNUP_USER } from '../constants/functions';
@@ -10,7 +12,6 @@ const ScrollWrapper = styled(ScrollView)`
 `;
 
 const FormWrapper = styled(View)`
-  margin-horizontal: 10%;
   background-color: #fff;
   align-items: stretch;
   justify-content: center;
@@ -19,7 +20,7 @@ const FormWrapper = styled(View)`
 const InputWrapper = styled(View)`
   margin-bottom: 2%;
   background-color: #fff;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
 `;
 
@@ -30,25 +31,10 @@ const LinkWrapper = styled(TouchableOpacity)`
   justify-content: center;
 `;
 
-const LabelText = styled(Text)`
-  margin-bottom: 1%;
-`;
-
 const LinkText = styled(Text)`
   fontSize: 18px;
   textDecorationLine: underline;
   alignSelf: center;
-`;
-
-const InputBox = styled(TextInput)`
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  font-size: 15px;
 `;
 
 function Register({ navigation }) {
@@ -57,8 +43,6 @@ function Register({ navigation }) {
   const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
-  // const [img, setImg] = useState("")
-  // const [bkg, setBkg] = useState("")
   // const [userType, setType] = useState("")
 
   const resetForm = () => {
@@ -76,8 +60,7 @@ function Register({ navigation }) {
         <ScrollWrapper>
           <FormWrapper>
             <InputWrapper>
-              <LabelText>Username:</LabelText>
-              <InputBox
+              <TextInput
                 placeholder="Username"
                 maxLength={20}
                 value={name}
@@ -86,8 +69,7 @@ function Register({ navigation }) {
             </InputWrapper>
 
             <InputWrapper>
-              <LabelText>Password:</LabelText>
-              <InputBox
+              <TextInput
                 placeholder="Password"
                 maxLength={20}
                 value={password}
@@ -96,16 +78,14 @@ function Register({ navigation }) {
             </InputWrapper>
 
             <InputWrapper>
-              <LabelText>Email:</LabelText>
-              <InputBox
+              <TextInput
                 placeholder="Email"
                 value={email}
                 onChangeText={text => setEmail(text)} />
             </InputWrapper>
 
             <InputWrapper>
-              <LabelText>Phone number:</LabelText>
-              <InputBox
+              <TextInput
                 placeholder="Phone number"
                 maxLength={10}
                 keyboardType='numeric'
@@ -113,26 +93,11 @@ function Register({ navigation }) {
                 onChangeText={text => setPhone(text)} />
             </InputWrapper>
 
-            {/* <InputWrapper>
-              <LabelText>Profile image:</LabelText>
-              <InputBox
-                placeholder="Profile image url"
-                onChangeText={text => setImg(text)}
-              />
-            </InputWrapper>
-
-            <InputWrapper>
-              <LabelText>Profile background image:</LabelText>
-              <InputBox
-                placeholder="Background image url"
-                onChangeText={text => setBkg(text)}
-              />
-            </InputWrapper>
-
+            {/*
             <InputWrapper>
               <LabelText>You are a:</LabelText>
               <RNPickerSelect
-                selectedValue={userType}
+                value={userType}
                 onValueChange={(itemValue) => setType(itemValue)}
                 style={{
                   ...pickerSelectStyles,
@@ -173,7 +138,11 @@ function Register({ navigation }) {
                         );
                       }
                     });
-                }} />
+                }}
+                width="90%"
+                radius="15px"
+                height="50px"
+              />
             </InputWrapper>
             <LinkWrapper onPress={() => navigation.navigate('Login')}>
               <LinkText> Already have an account? </LinkText>
