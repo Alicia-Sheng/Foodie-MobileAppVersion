@@ -10,7 +10,8 @@ const CheckoutWrapper = styled(View)`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  margin: 10%;
+  margin: 5%;
+  marginTop: 200px;
   align-items: center;
 `;
 
@@ -35,7 +36,7 @@ const Checkout = () => {
                   <Text>Thank you for your order!</Text>
               ) : (
                       <>
-                          <Text style={{fontSize: 20, marginBottom: 50}}>Press the button below to complete checkout</Text>
+                          <Text style={{fontSize: 20, marginBottom: 50, textAlign: 'center'}}>Press the button below to complete checkout</Text>
                           <Button
                               title="Complete checkout"
                               onPress={completeCart}
