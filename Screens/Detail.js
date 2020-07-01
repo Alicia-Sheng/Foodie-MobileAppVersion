@@ -129,7 +129,7 @@ const FindUser = ({id}) => {
           <>
               <View style={styles.listItemContainer}>
                  <Text style={{ fontWeight: "bold" }}>
-                  {data.username}
+                  {data.user.username}
                  </Text>
               </View>
           </>
@@ -145,7 +145,9 @@ const Comment = ({item}) => {
       <View style = {styles.listItemContainer}>
         <View style={styles.title}>
           <Text style={{ fontWeight: "bold" }}>
-            {item.id}
+            {/* <FindUser id = {item.userId}  />   */}
+            {item.userId} 
+           {/* {item.id} */}
           </Text>
         </View>
 

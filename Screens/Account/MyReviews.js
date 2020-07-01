@@ -20,7 +20,7 @@ const Review = () => {
             <>
               <ScrollView style={styles.scroll}>
                 <View style={styles.headerContainer}>
-                  <Comment item={data.currentUserReviews} />
+                  <Comment items={data.currentUserReviews} />
                 </View>
               </ScrollView>
             </>
@@ -44,7 +44,7 @@ const FindUser = ({id}) => {
           <>
               <View style={styles.listItemContainer}>
                  <Text style={{ fontWeight: "bold" }}>
-                  {data.username}
+                  {data.user.username}
                  </Text>
               </View>
           </>
@@ -56,21 +56,22 @@ const FindUser = ({id}) => {
 
 
 
-const Comment = ({item}) => {
-  return item.map((item, index) => {
+const Comment = ({items}) => {
+  return items.map((item, index) => {
     return (
     <>
       <View style = {styles.listItemContainer}>
         <View style={styles.title}>
 
           <Text style={{ fontWeight: "bold" }}>
-            {item.id}
+              {item.id}  
+            {/*  {item.userId}  */}
           </Text>
-
-
-      {/*  <Text style={{ fontWeight: "bold" }}>   */}
-      {/*      <FindUser id = {item.id}  />   */}
-      {/*    </Text>  */}
+     {/*
+          <Text style={{ fontWeight: "bold" }}>
+            <FindUser id = {item.userId}  />
+          </Text>
+     */}
         </View>
 
         <View style={styles.text}>
