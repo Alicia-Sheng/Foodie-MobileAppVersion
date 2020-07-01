@@ -91,7 +91,7 @@ function Profile({ navigation }) {
 
         {/* Phone number */}
         <LinkWrapper
-          onPress={() => navigation.navigate('EditProfile')}
+          onPress={() => navigation.navigate('EditProfile', { user: user })}
         >
           <LinkText> Edit Profile </LinkText>
         </LinkWrapper>

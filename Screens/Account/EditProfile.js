@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
-import { AsyncStorage, Alert, Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { AsyncStorage, Alert, View, ScrollView } from 'react-native';
 import TextInput from '../../Components/TextInput/TextInput';
 import Button from '../../Components/Button/Button';
+import BackButton from '../../Components/Button/BackButton'
 import styled from 'styled-components/native';
 import { Mutation } from 'react-apollo';
 import { SIGNUP_USER } from '../../constants/functions';
 
 const ScrollWrapper = styled(ScrollView)`
-  margin-vertical: 20%;
+  padding-vertical: 10%;
+  background-color: #fff;
 `;
 
 const FormWrapper = styled(View)`
@@ -23,32 +25,27 @@ const InputWrapper = styled(View)`
   justify-content: center;
 `;
 
-const LinkWrapper = styled(TouchableOpacity)`
-  margin-bottom: 2%;
-  background-color: #fff;
-  align-items: stretch;
-  justify-content: center;
-`;
 
-const LinkText = styled(Text)`
-  fontSize: 18px;
-  textDecorationLine: underline;
-  alignSelf: center;
-`;
-
-function EditProfile({ navigation, user }) {
-
-  const [name, setName] = useState("")
-  const [password, setPassword] = useState("")
-  const [email, setEmail] = useState("")
-  const [phone, setPhone] = useState("")
-
-  const resetForm = () => {
-    setName("");
-    setPassword("");
-    setEmail("");
-    setPhone("");
+EditProfile.navigationOptions = ({ navigation }) => {
+  return {
+    headerLeft: navigation.getParam('headerLeft'),
   }
+}
+
+function EditProfile({ navigation }) {
+
+  const { user } = navigation.state.params;
+
+  useEffect(() => {
+    navigation.setParams({
+      headerLeft: () => <BackButton />
+    })
+  }, [])
+
+  const [name, setName] = useState(user.username)
+  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState(user.email)
+  const [phone, setPhone] = useState(user.phone)
 
   return (
     <Mutation
@@ -92,12 +89,11 @@ function EditProfile({ navigation, user }) {
 
             <InputWrapper>
               <Button
-                title="Sign up"
+                title="Save"
                 onPress={() => {
                   signupUser({ variables: { username: name, password: password, email: email, phone: phone } })
                     .then(({ data }) => {
-                      resetForm();
-                      alert('Signed up!');
+                      alert('Changes Saved!');
                       const { token } = data.signupUser;
 
                       AsyncStorage.setItem('token', token).then(value => {
@@ -118,40 +114,12 @@ function EditProfile({ navigation, user }) {
                 height="50px"
               />
             </InputWrapper>
-            <LinkWrapper onPress={() => navigation.navigate('Login')}>
-              <LinkText> Already have an account? </LinkText>
-              <LinkText> Sign in now! </LinkText>
-            </LinkWrapper>
           </FormWrapper>
         </ScrollWrapper>
       )}
     </Mutation>
   );
 }
-
-
-const pickerSelectStyles = StyleSheet.create({
-  inputIOS: {
-    fontSize: 16,
-    paddingVertical: 12,
-    paddingHorizontal: 10,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 4,
-    color: 'black',
-    paddingRight: 30,
-  },
-  inputAndroid: {
-    fontSize: 16,
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    borderWidth: 0.5,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    color: 'black',
-    paddingRight: 30,
-  },
-});
 
 
 export default EditProfile;
