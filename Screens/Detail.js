@@ -1,5 +1,5 @@
 import React, {Component, useState} from 'react';
-import {TouchableOpacity, AsyncStorage, Button, Image, StyleSheet, Text, View, TextInput, Alert, ScrollView, FlatList} from 'react-native';
+import {TouchableOpacity, AsyncStorage, Button, Image, StyleSheet, Text, View, TextInput, Alert, ScrollView, FlatList, Dimensions} from 'react-native';
 import ListingDetail from '../Components/Listing/ListingDetail';
 import StarRating from '../Components/Details/StarRating';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
@@ -27,6 +27,8 @@ const ButtonWrapper = styled(Button)`
   margin-top: 2%;
   margin-bottom: 1%;
 `;
+
+const { width: screenWidth } = Dimensions.get('window')
 
 const Detail = ({ navigation }) => {
   const item = navigation.getParam('item', {});
@@ -56,35 +58,52 @@ const Detail = ({ navigation }) => {
   <ScrollView>
     <View style={styles.container}>
       <View style={styles.photo}>
-        <Image source={{uri: item.thumbnail}} style={{flex:1, width: 300, height: 300, resizeMode: 'contain', borderRadius: 15}} />
+        <Image source={{uri: item.thumbnail}} style={{flex: 1, width: Math.round(screenWidth * 0.9),
+        height: Math.round(screenWidth * 0.9 * 3 / 5), borderRadius: 15}} />
       </View>
 
-      <Text style = {styles.foodName}>
-        {item.name}
-        <Text style = {styles.price}>  $ {item.price}</Text>
-      </Text>
+      <View style={{marginHorizontal: Math.round(screenWidth * 0.05)}}>
+        <View style={{ marginVertical: 5 }} >
+          <Text style={{ fontSize: 20, marginVertical: 5, fontWeight: "bold" }}>{item.name}</Text>
+        </View>
+        <Text style={{ fontSize: 18 }}>{item.location}</Text>
+        <View style={{ marginTop: 15 }} >
+          <Text style={{ fontSize: 18, color: '#646464' }}>{item.desc}</Text>
+        </View>
 
-      <SegmentedControlTab
-        selectedIndex = {selectedIndex}
-        onTabPress = {index => setSelectedIndex(index)}
-        values = {["Details","Comment"]}
-        tabStyle = {styles.tab}
-        tabContainerStyle = {styles.tabContainer}
-        activeTabTextStyle = {{color: 'white'}}
-      />
+        <View style={{ marginVertical: 20, flexDirection: 'row', flex: 1, borderTopWidth: 1, borderTopColor: 'black', borderStyle: 'dashed', borderTopColor: '#ececec' }}>
+            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Price</Text>
+            <View style = {{ position: 'absolute', right: 0, alignItems:'center', justifyContent:'center' }}>
+              <Text style={{ fontSize: 18, fontWeight: 'bold', textAlign: 'right' }}>${item.price}</Text>
+            </View>
+        </View>
 
+        <View>
+          <Comments productId = {item.id} />
+        </View>
+      </View>
 
-      {selectedIndex === 0
-             && <View style = {{alignItems: 'center', justifyContent: 'center'}}>
-                  <Text style = {{marginLeft: 50, marginRight: 50, marginTop:10, fontWeight: 'bold', fontSize: 16, textAlign: 'left'}}>{item.location}</Text>
-                  <Text style = {{marginLeft: 50, marginRight: 50, marginTop:10, fontSize: 16, textAlign: 'left'}}>{item.desc}</Text>
-                </View>
-      }
-
-      {selectedIndex === 1
-             && <View style = {{flexDirection:"row", margin:10}}>
-                   <Comments productId = {item.id} />
-                </View>
+      {// <SegmentedControlTab
+      //   selectedIndex = {selectedIndex}
+      //   onTabPress = {index => setSelectedIndex(index)}
+      //   values = {["Details","Comment"]}
+      //   tabStyle = {styles.tab}
+      //   tabContainerStyle = {styles.tabContainer}
+      //   activeTabTextStyle = {{color: 'white'}}
+      // />
+      //
+      //
+      // {selectedIndex === 0
+      //        && <View style = {{alignItems: 'center', justifyContent: 'center'}}>
+      //             <Text style = {{marginLeft: 50, marginRight: 50, marginTop:10, fontWeight: 'bold', fontSize: 16, textAlign: 'left'}}>{item.location}</Text>
+      //             <Text style = {{marginLeft: 50, marginRight: 50, marginTop:10, fontSize: 16, textAlign: 'left'}}>{item.desc}</Text>
+      //           </View>
+      // }
+      //
+      // {selectedIndex === 1
+      //        && <View style = {{flexDirection:"row", margin:10}}>
+      //              <Comments productId = {item.id} />
+      //           </View>
       }
 
     </View>
@@ -105,6 +124,7 @@ const Comments = ({productId}) =>  {
 
         (
           <>
+            <Text style={{ fontWeight: 'bold', fontSize: 20, marginVertical: 5, borderBottomWidth: 1, borderBottomColor: 'grey' }} >Comments</Text>
             <ScrollView>
               <View>
                 <Comment item={data.reviews} />
@@ -183,24 +203,21 @@ const styles = StyleSheet.create({
   photo:{
     flexWrap: 'wrap',
     flex: 1,
+    marginVertical: Math.round(screenWidth * 0.05),
   },
   foodName: {
     width: 300,
     height: 50,
     marginVertical: 8,
-    textAlign:'center',
-    padding: 10,
     borderWidth: 1,
     color: "black",
     fontWeight: 'bold',
     borderColor: "#FFFFFF",
     fontSize: 16,
-    flexDirection: 'row',
   },
   price:{
     color:"#0000FF",
-    textAlign:'center',
-    flexDirection: 'row',
+    textAlign:'right',
   },
   sub:{
     width:100,
@@ -217,7 +234,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   listItemContainer: {
-    width:350,
+    flex: 1,
     borderWidth: 0.5,
     borderColor: '#ECECEC',
     padding: 20,
