@@ -7,12 +7,12 @@ import BackButton from '../../Components/Button/BackButton'
 import StarRating from '../../Components/Details/StarRating';
 import { ADD_REVIEW, GET_REVIEW } from '../../constants/functions';
 
-function AddReview({ route }) {
+function AddReview({ navigation }) {
+  const productId = navigation.getParam('productId', {});
 
-
-  
   const [text, setText] = useState (" ")    //comment
   const [star, setStar] = useState(5)  //starts
+
 
   const handleForm = () => {
     const comment = {text:text, star:star}
