@@ -1,5 +1,5 @@
 import React, {Component, useState} from 'react';
-import { AsyncStorage, Button, Image, StyleSheet, Text, View, TextInput, Alert, ScrollView, FlatList} from 'react-native';
+import {TouchableOpacity, AsyncStorage, Button, Image, StyleSheet, Text, View, TextInput, Alert, ScrollView, FlatList} from 'react-native';
 import ListingDetail from '../Components/Listing/ListingDetail';
 import StarRating from '../Components/Details/StarRating';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
@@ -83,7 +83,7 @@ const Detail = ({ navigation }) => {
 
       {selectedIndex === 1
              && <View style = {{flexDirection:"row", margin:10}}>
-                   <Comments comments = {comments} />
+                   <Comments id = {item.id} />
                 </View>
       }
 
@@ -153,7 +153,6 @@ function Rating({addComment, item}){
             onChangeText = {text => setText(text)}
           />
 
-      {/*    <View style = {styles.sub}>   */}
     {/*     <Button title="Submit" onPress={handleForm} />  */}
     {/*  <ButtonWrapper> */}
 
@@ -188,6 +187,12 @@ function Rating({addComment, item}){
 }
 
 
+
+
+
+
+
+
 const Comment = ({item}) => {
   return(
     <View style = {styles.listItemContainer}>
@@ -212,24 +217,76 @@ const Comment = ({item}) => {
   );
 }
 
-const Comments = ({comments}) =>  {
+
+ {/*
   return(
     <Query query={GET_REVIEW}>
-    {({ loading, error, data }) => {
-      if (loading || error) {
-        return <Alert>{loading ? 'Loading...' : error.message}</Alert>;
-      }
-      return (
-        <View>
-          <FlatList
-            data = {comments}
-            renderItem = {({item}) => <Comment item = {item}/>}
-            keyExtractor = {(item,index) => "comment" + index}
-          />
-        </View>
-      );
-     }}
+      {({ loading, error, data }) => {
+        if (loading || error) {
+          return <Alert>{loading ? 'Loading...' : error.message}</Alert>;
+        }
+      }}
+
     </Query>
+  )
+    */}
+
+const Comments = ({id}) =>  {
+
+  const { loading, error, data } = useQuery(GET_REVIEW, {variables: { productId: id} });
+  return (
+    <>
+          {(loading || error) ? (
+              <>
+              <Text>{loading ? 'Loading...' : error.message}</Text>
+              </>
+          ):
+
+        (
+          <>
+          <View>
+            {/*
+            <FlatList
+              data = {data}
+              renderItem = {({item}) => <Comment item = {item}/>}
+              keyExtractor = {(item,index) => "comment" + index}
+            />
+            */}
+            <TouchableOpacity
+                key={data.reviews.comment}
+                onPress={() => Alert.alert('Not implemented yet')}
+                style={styles.listItemContainer}
+              >
+                
+                <View style={styles.title}>
+                  <Text style={{ fontWeight: "bold" }}>
+                    {data.reviews.id}    
+                  </Text>
+                </View>
+                
+
+                <View style={styles.text}>
+                  <Text>
+                    {data.reviews.comment}
+                  </Text>
+                </View>
+              
+                <View style = {{alignItems:'center',justifyContent:'center'}}>
+                  <StarRating
+                    maxStars={5}
+                    rating={data.reviews.rating}
+                    disabled={true}
+                    starSize={15}
+                    style = {{marginTop: 15, marginRight:0}}
+                  />
+                </View>
+
+
+              </TouchableOpacity>
+          </View>
+         </>
+        )}
+  </>
   );
 }
 
