@@ -9,8 +9,8 @@ import { ADD_REVIEW, GET_REVIEW } from '../../constants/functions';
 function AddReview({ route }) {
     const { productId } = route.params;
     const { userId } = route.params;
-    const [comment, setComment] = useState('')
-    const [rating, setRating] = useState(0)
+    const [comment, setComment] = useState('');
+    const [rating, setRating] = useState(0);
     return (
       <>
         <Mutation
