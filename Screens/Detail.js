@@ -170,13 +170,22 @@ const Comment = ({item}) => {
       <View key={index} style={styles.listItemContainer}>
         <FindUser id={item.userId}  />
 
-        <View style={{width: Math.round(screenWidth * 0.45)}}>
+        <View style={{flexDirection: 'column', width: Math.round(screenWidth * 0.6)}}>
+          <View style={{alignItems: 'left', justifyContent: 'center', marginBottom: 5}} >
+            <StarRating
+              maxStars={5}
+              rating={item.rating}
+              disabled={true}
+              starSize={15}
+              style = {{marginTop: 15}}
+            />
+          </View>
           <Text>
             {item.comment}
           </Text>
         </View>
 
-        <View style = {{position: 'absolute', right: 5, alignItems:'center', justifyContent:'center'}}>
+        {/*<View style = {{position: 'absolute', right: 5, alignItems:'center', justifyContent:'center'}}>
           <StarRating
             maxStars={5}
             rating={item.rating}
@@ -184,7 +193,7 @@ const Comment = ({item}) => {
             starSize={15}
             style = {{marginTop: 15}}
           />
-        </View>
+        </View>*/}
       </View>
     );
   })

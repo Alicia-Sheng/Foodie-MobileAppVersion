@@ -94,15 +94,23 @@ const Comment = ({ items }) => {
 
           {/*<Avatar id={item.userId} />*/}
 
-          <View style={{ width: Math.round(screenWidth * 0.2) }} >
+          <View style={{ width: Math.round(screenWidth * 0.2), alignItems: 'left', justifyContent: 'center' }} >
             <FoodName productId={item.productId} />
           </View>
 
-          <View style={{width: Math.round(screenWidth * 0.5)}}>
+          <View style={{width: Math.round(screenWidth * 0.7)}}>
+            <View style={{alignItems: 'left', justifyContent: 'center', marginBottom: 5}} >
+              <StarRating
+                maxStars={5}
+                rating={item.rating}
+                disabled={true}
+                starSize={15}
+              />
+            </View>
             <Text>{item.comment}</Text>
           </View>
 
-          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+          {/*<View style={{ alignItems: 'center', justifyContent: 'center' }}>
             <StarRating
               maxStars={5}
               rating={item.rating}
@@ -110,7 +118,7 @@ const Comment = ({ items }) => {
               starSize={15}
               style={{ marginTop: 15, marginRight: 0 }}
             />
-          </View>
+          </View>*/}
         </View>
       </View>
     );
