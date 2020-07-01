@@ -135,14 +135,7 @@ export const LOGIN_USER = gql `
         username
         email
         phone
-        orders {
-          name
-          location
-          thumbnail
-          qty
-          total
-          complete
-        }
+        orders
       }
       token
     }
@@ -156,14 +149,7 @@ export const SIGNUP_USER = gql `
         username
         email
         phone
-        orders {
-          name
-          location
-          thumbnail
-          qty
-          total
-          complete
-        }
+        orders
       }
       token
     }
