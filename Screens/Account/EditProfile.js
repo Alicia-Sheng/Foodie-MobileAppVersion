@@ -5,7 +5,7 @@ import Button from '../../Components/Button/Button';
 import BackButton from '../../Components/Button/BackButton'
 import styled from 'styled-components/native';
 import { Mutation } from 'react-apollo';
-import { SIGNUP_USER } from '../../constants/functions';
+import { EDIT_USER } from '../../constants/functions';
 
 const ScrollWrapper = styled(ScrollView)`
   padding-vertical: 10%;
@@ -49,8 +49,8 @@ function EditProfile({ navigation }) {
 
   return (
     <Mutation
-      mutation={SIGNUP_USER}>
-      {(signupUser) => (
+      mutation={EDIT_USER}>
+      {(editUser) => (
         <ScrollWrapper>
           <FormWrapper>
             <InputWrapper>
@@ -91,10 +91,10 @@ function EditProfile({ navigation }) {
               <Button
                 title="Save"
                 onPress={() => {
-                  signupUser({ variables: { username: name, password: password, email: email, phone: phone } })
+                  editUser({ variables: { password: password, email: email, phone: phone } })
                     .then(({ data }) => {
                       alert('Changes Saved!');
-                      const { token } = data.signupUser;
+                      const { token } = data.editUser;
 
                       AsyncStorage.setItem('token', token).then(value => {
                         navigation.navigate('Main');
