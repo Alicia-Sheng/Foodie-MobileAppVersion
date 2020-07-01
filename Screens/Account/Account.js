@@ -57,6 +57,17 @@ function Menu({ navigation, user }) {
               leftIcon={<Icon name="rate-review" />}
             />
 
+            {/* Link to Add Product */}
+            {user.role === "admin" && <ListItem
+              title="Add Product"
+              onPress={() => {
+                navigation.navigate('Provider');
+                navigation.closeDrawer();
+              }}
+              containerStyle={styles.listItemContainer}
+              leftIcon={<Icon name="add-box" />}
+            />}
+
             {/* Log out */}
             <ListItem
               title="Log Out"

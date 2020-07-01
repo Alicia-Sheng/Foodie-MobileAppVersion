@@ -141,34 +141,11 @@ const OrderStack = createStackNavigator(
   }
 );
 
-const ProviderStack = createStackNavigator(
-  {
-    Provider: {
-      screen: Provider,
-      navigationOptions: { title: 'Add Food Item' },
-    },
-  },
-  {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: 'white',
-        borderBottomColor: 'white',
-        shadowColor: 'transparent',
-      },
-      headerTintColor: 'black',
-      headerShown: true,
-      cardStyle: { backgroundColor: 'white' },
-      headerRight: () => <HamburgerIcon />
-    },
-  }
-);
-
 const Tabs = createBottomTabNavigator(
   {
     Home: HomeStack,
     Restaurant: RestaurantStack,
     Order: OrderStack,
-    Provider: ProviderStack
   },
   {
     initialRouteName: 'Home',
