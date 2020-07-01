@@ -165,8 +165,8 @@ export const LOGIN_USER = gql `
 `;
 
 export const SIGNUP_USER = gql `
-  mutation signupUser($username: String!, $password: String!, $email: String!, $phone: String!, $profilePic: String!) {
-    signupUser(username: $username, password: $password, email: $email, phone: $phone, profilePic: $profilePic) {
+  mutation signupUser($username: String!, $password: String!, $email: String!, $phone: String!) {
+    signupUser(username: $username, password: $password, email: $email, phone: $phone) {
       user {
         username
         email
