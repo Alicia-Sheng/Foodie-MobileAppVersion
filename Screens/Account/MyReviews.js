@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Query, useQuery } from 'react-apollo';
-import { Alert, ScrollView, StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native';
+import { Alert, ScrollView, StyleSheet, Text, View, TouchableOpacity, FlatList,Image } from 'react-native';
 import { Icon, ListItem } from 'react-native-elements';
 import user from '../../assets/userInfo';
 import BackButton from '../../Components/Button/BackButton';
 import StarRating from '../../Components/Details/StarRating';
-import { GET_CURRENT_USER_REVIEW, GET_USER } from '../../constants/functions';
+import { GET_CURRENT_USER_REVIEW, GET_USER, GET_CURRENT_USER } from '../../constants/functions';
+import userImage from '../../assets/userInfo'
 
 const Review = () => {
   const { loading, error, data } = useQuery(GET_CURRENT_USER_REVIEW);
@@ -19,7 +20,7 @@ const Review = () => {
           (
             <>
               <ScrollView style={styles.scroll}>
-                <View style={styles.headerContainer}>
+                <View style={{alignItems:'center', justifyContent:'center'}}>
                   <Comment items={data.currentUserReviews} />
                 </View>
               </ScrollView>
@@ -29,10 +30,9 @@ const Review = () => {
   );
 }
 
-const FindUser = ({id}) => {
+const FindFood= ({id}) => {
   const { loading, error, data } = useQuery(GET_USER, {variables: {id:id} });
-
-    return (
+  return (
     <>
           {(loading || error) ? (
               <>
@@ -42,18 +42,16 @@ const FindUser = ({id}) => {
 
         (
           <>
-              <View style={styles.listItemContainer}>
+              <View>
                  <Text style={{ fontWeight: "bold" }}>
-                  {data.user.username}
+                  
                  </Text>
               </View>
           </>
         )}
   </>
   );
-
 }
-
 
 
 const Comment = ({items}) => {
@@ -61,18 +59,15 @@ const Comment = ({items}) => {
     return (
     <>
       <View style = {styles.listItemContainer}>
-        <View style={styles.title}>
 
-          <Text style={{ fontWeight: "bold" }}>
-              {item.id}  
-            {/*  {item.userId}  */}
-          </Text>
-     {/*
-          <Text style={{ fontWeight: "bold" }}>
-            <FindUser id = {item.userId}  />
-          </Text>
-     */}
-        </View>
+        <Image
+          style={{borderColor: '#FFF',borderRadius: 85,borderWidth: 3,height: 30,width: 30,marginLeft: 0}}
+          source={userImage.img}
+        />
+
+        <Text style={{ fontWeight: "bold" }}>
+          {item.id}
+        </Text>
 
         <View style={styles.text}>
           <Text>

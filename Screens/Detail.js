@@ -127,16 +127,17 @@ const FindUser = ({id}) => {
 
         (
           <>
-              <View style={styles.listItemContainer}>
+              <View>
                  <Text style={{ fontWeight: "bold" }}>
                   {data.user.username}
                  </Text>
               </View>
           </>
         )}
-  </>
+    </>
   );
 }
+
 
 const Comment = ({item}) => {
   return item.map((item, index) => {
@@ -145,9 +146,8 @@ const Comment = ({item}) => {
       <View style = {styles.listItemContainer}>
         <View style={styles.title}>
           <Text style={{ fontWeight: "bold" }}>
-            {/* <FindUser id = {item.userId}  />   */}
-            {item.userId} 
-           {/* {item.id} */}
+            <FindUser id = {item.userId}  />
+            {/*{item.userId} */}
           </Text>
         </View>
 
