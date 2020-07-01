@@ -177,6 +177,17 @@ export const SIGNUP_USER = gql `
   }
 `;
 
+export const EDIT_USER = gql `
+  mutation editUser($password: String!, $email: String!, $phone: String!) {
+    editUser(password: $password, email: $email, phone: $phone) {
+      username
+      email
+      phone
+      orders
+    }
+  }
+`;
+
 export const COMPLETE_CART = gql `
   mutation completeCart {
     completeCart {
