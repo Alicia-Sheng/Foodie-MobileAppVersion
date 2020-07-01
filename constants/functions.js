@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export const GET_CART_TOTAL = gql `
+export const GET_CART_TOTAL = gql`
   query getCartTotal {
     cart {
       total
@@ -8,7 +8,7 @@ export const GET_CART_TOTAL = gql `
   }
 `;
 
-export const ADD_TO_CART = gql `
+export const ADD_TO_CART = gql`
   mutation addToCart($productId: ID!, $name: String!, $location: String!, $thumbnail: String!, $price: Float) {
     addToCart(productId: $productId, name: $name, location: $location, thumbnail: $thumbnail, price: $price) {
       total
@@ -16,7 +16,7 @@ export const ADD_TO_CART = gql `
   }
 `;
 
-export const GET_CART = gql `
+export const GET_CART = gql`
   query getCart {
     cart {
       total
@@ -34,13 +34,13 @@ export const GET_CART = gql `
   }
 `;
 
-export const GET_LIMIT = gql `
+export const GET_LIMIT = gql`
   query getLimit {
     limit @client
   }
 `;
 
-export const GET_PRODUCTS = gql `
+export const GET_PRODUCTS = gql`
   query getProducts {
     products {
       id
@@ -57,7 +57,7 @@ export const GET_PRODUCTS = gql `
   }
 `;
 
-export const GET_PRODUCT = gql `
+export const GET_PRODUCT = gql`
   query getProduct($productId: ID!) {
     product(productId: $productId) {
       id
@@ -74,18 +74,19 @@ export const GET_PRODUCT = gql `
   }
 `;
 
-export const GET_CURRENT_USER = gql `
+export const GET_CURRENT_USER = gql`
   query getCurrentUser {
     currentUser {
       username
       email
       phone
       role
+      profilePic
     }
   }
 `;
 
-export const GET_ORDER = gql `
+export const GET_ORDER = gql`
   query getOrder {
     orders {
       id
@@ -101,7 +102,7 @@ export const GET_ORDER = gql `
   }
 `;
 
-export const GET_REVIEW = gql `
+export const GET_REVIEW = gql`
   query getReview($productId: ID!) {
     reviews(productId: $productId) {
       id
@@ -114,7 +115,7 @@ export const GET_REVIEW = gql `
   }
 `;
 
-export const GET_USER = gql `
+export const GET_USER = gql`
   query getUser($id: ID!) {
     user(id: $id) {
       username
@@ -122,7 +123,7 @@ export const GET_USER = gql `
   }
 `;
 
-export const GET_CURRENT_USER_REVIEW = gql `
+export const GET_CURRENT_USER_REVIEW = gql`
   query getCurrentUserReviews {
     currentUserReviews {
       id
@@ -132,7 +133,7 @@ export const GET_CURRENT_USER_REVIEW = gql `
   }
 `;
 
-export const SEARCH = gql `
+export const SEARCH = gql`
   query search($term: String!) {
     search(term: $term) {
       id
@@ -149,7 +150,7 @@ export const SEARCH = gql `
   }
 `;
 
-export const LOGIN_USER = gql `
+export const LOGIN_USER = gql`
   mutation loginUser($username: String!, $password: String!) {
     loginUser(username: $username, password: $password) {
       user {
@@ -164,7 +165,7 @@ export const LOGIN_USER = gql `
   }
 `;
 
-export const SIGNUP_USER = gql `
+export const SIGNUP_USER = gql`
   mutation signupUser($username: String!, $password: String!, $email: String!, $phone: String!) {
     signupUser(username: $username, password: $password, email: $email, phone: $phone) {
       user {
@@ -179,7 +180,7 @@ export const SIGNUP_USER = gql `
   }
 `;
 
-export const EDIT_USER = gql `
+export const EDIT_USER = gql`
   mutation editUser($password: String!, $email: String!, $phone: String!, $profilePic: String!) {
     editUser(password: $password, email: $email, phone: $phone, profilePic: $profilePic) {
       username
@@ -191,7 +192,7 @@ export const EDIT_USER = gql `
   }
 `;
 
-export const COMPLETE_CART = gql `
+export const COMPLETE_CART = gql`
   mutation completeCart {
     completeCart {
       complete
@@ -199,7 +200,7 @@ export const COMPLETE_CART = gql `
   }
 `;
 
-export const REMOVE_FROM_CART = gql `
+export const REMOVE_FROM_CART = gql`
   mutation removeFromCart($productId: ID!) {
     removeFromCart(productId: $productId) {
       total
@@ -207,7 +208,7 @@ export const REMOVE_FROM_CART = gql `
   }
 `;
 
-export const INCREMENT_QTY = gql `
+export const INCREMENT_QTY = gql`
   mutation incrementQty($productId: ID!) {
     incrementQty(productId: $productId) {
       total
@@ -215,7 +216,7 @@ export const INCREMENT_QTY = gql `
   }
 `;
 
-export const DECREMENT_QTY = gql `
+export const DECREMENT_QTY = gql`
   mutation decrementQty($productId: ID!) {
     decrementQty(productId: $productId) {
       total
@@ -223,7 +224,7 @@ export const DECREMENT_QTY = gql `
   }
 `;
 
-export const ADD_PRODUCT = gql `
+export const ADD_PRODUCT = gql`
   mutation addProduct($name: String!, $location: String!, $thumbnail: String!, $desc: String!, $price: Float, $category: String!) {
     addProduct(
         name: $name,
@@ -247,7 +248,7 @@ export const ADD_PRODUCT = gql `
   }
 `;
 
-export const ADD_REVIEW = gql `
+export const ADD_REVIEW = gql`
   mutation addReview($comment: String!, $rating: Float!, $productId: ID!, $userId: ID!) {
     addReview(
         comment: $comment,
