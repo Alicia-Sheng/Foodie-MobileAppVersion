@@ -5,7 +5,7 @@ import { Icon, ListItem } from 'react-native-elements'
 import BackButton from '../../Components/Button/BackButton'
 import { GET_ORDER } from '../../constants/functions';
 
-function Orders({ orders }) {
+function Orders({ orders, navigation }) {
   return orders.map((order, index) => {
     return (
       <ListItem
