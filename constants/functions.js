@@ -57,6 +57,23 @@ export const GET_PRODUCTS = gql `
   }
 `;
 
+export const GET_PRODUCT = gql `
+  query getProduct($productId: ID!) {
+    product(productId: $productId) {
+      id
+      name
+      location
+      thumbnail
+      desc
+      price
+      rating
+      category {
+        title
+      }
+    }
+  }
+`;
+
 export const GET_CURRENT_USER = gql `
   query getCurrentUser {
     currentUser {
