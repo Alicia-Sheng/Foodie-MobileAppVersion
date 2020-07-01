@@ -189,7 +189,7 @@ function Rating({addComment, item}){
 
 
 
-
+{/*
 
 const Comment = ({item}) => {
   return(
@@ -215,10 +215,12 @@ const Comment = ({item}) => {
   );
 }
 
+*/}
 
-const Comments = ({id}) =>  {
 
-  const { loading, error, data } = useQuery(GET_REVIEW, {variables: { productId: id} });
+const Comments = ({productId}) =>  {
+
+  const { loading, error, data } = useQuery(GET_REVIEW, {variables: {productId} });
   return (
     <>
           {(loading || error) ? (
@@ -230,13 +232,13 @@ const Comments = ({id}) =>  {
         (
           <>
           <View>
-            {/*
+
             <FlatList
-              data = {data}
+              data = {data.reviews}
               renderItem = {({item}) => <Comment item = {item}/>}
               keyExtractor = {(item,index) => "comment" + index}
             />
-            */}
+
             {/*
             <TouchableOpacity
                 key={data.reviews.comment}
@@ -244,7 +246,7 @@ const Comments = ({id}) =>  {
                 style={styles.listItemContainer}
               >
               */}
-
+{/*
                 <View style={styles.title}>
                   <Text style={{ fontWeight: "bold" }}>
                     {data.reviews.id}
@@ -268,14 +270,42 @@ const Comments = ({id}) =>  {
                   />
                 </View>
 
-
+ */}
       {/*        </TouchableOpacity> */}
-      
+
           </View>
          </>
         )}
   </>
   );
+}
+
+const Comment = ({item}) => {
+  <View style = {styles.listItemContainer}>
+
+    <View style={styles.title}>
+      <Text style={{ fontWeight: "bold" }}>
+        {item.id}
+      </Text>
+    </View>
+
+    <View style={styles.text}>
+      <Text>
+        {item.comment}
+      </Text>
+    </View>
+
+    <View style = {{alignItems:'center',justifyContent:'center'}}>
+      <StarRating
+        maxStars={5}
+        rating={item.rating}
+        disabled={true}
+        starSize={15}
+        style = {{marginTop: 15, marginRight:0}}
+      />
+    </View>
+
+  </View>
 }
 
 

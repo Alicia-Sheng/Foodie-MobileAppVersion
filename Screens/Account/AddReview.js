@@ -13,6 +13,7 @@ function AddReview({ navigation }) {
   const [text, setText] = useState (" ")    //comment
   const [star, setStar] = useState(5)  //starts
 
+
   const resetForm = () => {
     setText(" ");
     setStar(5);
@@ -23,6 +24,7 @@ function AddReview({ navigation }) {
 
     <Mutation
       mutation = {ADD_REVIEW}
+      refetchQueries={() =>[{ query: GET_REVIEW }]}
     >
     {(addReview) => (
 

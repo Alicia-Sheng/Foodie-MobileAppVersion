@@ -8,7 +8,6 @@ import { GET_ORDER, ADD_REVIEW } from '../../constants/functions';
 import AddReview from './AddReview';
 
 const Orders = ({ orders, navigation }) => {
-  //return user.orders.map((order) => {
   return orders.map((order, index) => {
     return (
       <ListItem
