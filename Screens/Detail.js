@@ -6,9 +6,10 @@ import SegmentedControlTab from 'react-native-segmented-control-tab';
 import UserComments from '../assets/userComments';
 import user from '../assets/userInfo'
 import { Mutation } from 'react-apollo';
-import { ADD_REVIEW } from '../constants/functions';
+import { ADD_REVIEW, GET_REVIEW, GET_USER } from '../constants/functions';
 import { useAsyncStorage } from '@react-native-community/async-storage';
 import styled from 'styled-components/native';
+import { Query, useQuery } from 'react-apollo';
 
 
 const InputWrapper = styled(View)`
@@ -81,14 +82,13 @@ const Detail = ({ navigation }) => {
       }
 
       {selectedIndex === 1
-             && <View style = {{flexDirection:"row", margin:"10"}}>
-                   <Comments comments = {comments}/>
+             && <View style = {{flexDirection:"row", margin:10}}>
+                   <Comments comments = {comments} />
                 </View>
       }
 
     </View>
   </ScrollView>
-
   );
 
   {/* return <ListingDetail item={item} />;*/}
@@ -101,18 +101,7 @@ function Rating({addComment, item}){
 
   const handleForm = () => {
     const comment = {text:text, star:star}
-  //  Alert.alert('Do you want to submit your comment?')
-    Alert.alert('Submit',
-        'Do you want to submit your comment?',
-        [
-            {
-                text: 'Cancel',
-                onPress: () => console.log('Cancel submition'),
-                style: 'cancel',
-            },
-            {text: 'OK', onPress: () => console.log('Successfully submited!')},
-        ]
-    )
+    Alert.alert('Do you want to submit your comment?')
     addComment(comment)
   }
 
@@ -126,9 +115,10 @@ function Rating({addComment, item}){
 
     <Mutation
       mutation = {ADD_REVIEW}
+      refetchQueries = {() => [{ query: GET_REVIEW }]}
     >
     {(addReview) => (
-      <ScrollView>
+
         <View style = {{alignItems: 'center', justifyContent: 'center'}}>
           <StarRating
             maxStars={5}
@@ -165,33 +155,16 @@ function Rating({addComment, item}){
 
       {/*    <View style = {styles.sub}>   */}
     {/*     <Button title="Submit" onPress={handleForm} />  */}
-  {/*    <ButtonWrapper> */}
+    {/*  <ButtonWrapper> */}
 
         <Button
           title="Submit"
           style = {{width: 1000}}
           onPress={() => {
-            addReview({ variables: { comment: text, rating:star, productId:item.id, userId:0 } })
+            addReview({ variables: { comment: text, rating:star, productId:item.id, userId:0} })
             .then(({ data }) => {
               resetForm();
-              Alert.alert(
-                'Successfully Submit Comment!',
-                [
-                  {
-                    text: "Cancel",
-                    onPress: () => {
-              //        navigation.navigate('Provider')
-                    },
-                    style: "cancel"
-                  },
-                  {
-                    text: "OK",
-                    onPress: () => {
-                    //  navigation.navigate('Home');
-                    }
-                  }
-                ]
-              );
+              alert  ('Successfully Submit Comment!');
             })
             .catch(error => {
               if (error) {
@@ -202,10 +175,10 @@ function Rating({addComment, item}){
               }
             });
         }} />
-  {/*      </ButtonWrapper> */}
+    {/*   </ButtonWrapper>  */}
 
         </View>
-      </ScrollView>
+
     )}
     </Mutation>
 
@@ -218,7 +191,7 @@ function Rating({addComment, item}){
 const Comment = ({item}) => {
   return(
     <View style = {styles.listItemContainer}>
-
+      
        <Image
          style={{borderColor: '#FFF',borderRadius: 85,borderWidth: 3,height: 30,width: 30,marginLeft: 0}}
          source={user.img}
@@ -241,13 +214,22 @@ const Comment = ({item}) => {
 
 const Comments = ({comments}) =>  {
   return(
-    <View>
-      <FlatList
-          data = {comments}
-          renderItem = {({item}) => <Comment item = {item}/>}
-          keyExtractor = {(item,index) => "comment" + index}
-      />
-    </View>
+    <Query query={GET_REVIEW}>
+    {({ loading, error, data }) => {
+      if (loading || error) {
+        return <Alert>{loading ? 'Loading...' : error.message}</Alert>;
+      }
+      return (
+        <View>
+          <FlatList
+            data = {comments}
+            renderItem = {({item}) => <Comment item = {item}/>}
+            keyExtractor = {(item,index) => "comment" + index}
+          />
+        </View>
+      );
+     }}
+    </Query>
   );
 }
 
