@@ -76,7 +76,8 @@ const Detail = ({ navigation }) => {
 
       {selectedIndex === 0
              && <View style = {{alignItems: 'center', justifyContent: 'center'}}>
-                  <Text style = {{marginLeft: 50, marginRight: 50, marginTop:10, fontSize: 16, textAlign: 'left'}}> {item.desc}</Text>
+                  <Text style = {{marginLeft: 50, marginRight: 50, marginTop:10, fontWeight: 'bold', fontSize: 16, textAlign: 'left'}}>{item.location}</Text>
+                  <Text style = {{marginLeft: 50, marginRight: 50, marginTop:10, fontSize: 16, textAlign: 'left'}}>{item.desc}</Text>
                 </View>
       }
 
