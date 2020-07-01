@@ -33,7 +33,7 @@ const Comment = ({item}) => {
   return item.map((item, index) => {
     return (
     <>
-      <View>
+      <View style = {styles.listItemContainer}>
         <View style={styles.title}>
           <Text style={{ fontWeight: "bold" }}>
             {item.id}
@@ -74,10 +74,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
   },
   listItemContainer: {
-    height: 100,
+    width:350,
     borderWidth: 0.5,
     borderColor: '#ECECEC',
     padding: 20,
+    flexDirection: 'row',
+    alignItems:'center',
   },
 });
 

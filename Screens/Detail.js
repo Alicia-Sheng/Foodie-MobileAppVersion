@@ -119,7 +119,7 @@ const Comment = ({item}) => {
   return item.map((item, index) => {
     return (
     <>
-      <View>
+      <View style = {styles.listItemContainer}>
         <View style={styles.title}>
           <Text style={{ fontWeight: "bold" }}>
             {item.id}
