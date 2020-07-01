@@ -28,7 +28,7 @@ const Orders = ({ orders, navigation }) => {
           color="gray"
           containerStyle={{ width: 20 }}
         />}
-        onPress={() => {navigation.navigate('AddReview', { productId: order.productId, userId: order.userId })}}
+        onPress={() => {navigation.navigate('AddReview', { productId: order.productId, userId: order.userId, thumbnail: order.thumbnail, name: order.name })}}
       />
     )
   })
