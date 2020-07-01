@@ -77,7 +77,6 @@ const Detail = ({ navigation }) => {
       {selectedIndex === 0
              && <View style = {{alignItems: 'center', justifyContent: 'center'}}>
                   <Text style = {{marginLeft: 15, marginBottom:10}}> {item.desc}</Text>
-            {/*     <Rating addComment = {addComment} item = {item}/>   */}
                 </View>
       }
 
@@ -90,133 +89,7 @@ const Detail = ({ navigation }) => {
     </View>
   </ScrollView>
   );
-
 }
-
-{/*
-function Rating({addComment, item}){
-  const [text, setText] = useState (" ")    //comment
-  const [star, setStar] = useState(5)  //starts
-
-  const handleForm = () => {
-    const comment = {text:text, star:star}
-    Alert.alert('Do you want to submit your comment?')
-    addComment(comment)
-  }
-
-  const resetForm = () => {
-    setText(" ");
-    setStar(5);
-  }
-
-  return(
-  <>
-
-    <Mutation
-      mutation = {ADD_REVIEW}
-    >
-    {(addReview) => (
-
-        <View style = {{alignItems: 'center', justifyContent: 'center'}}>
-          <StarRating
-            maxStars={5}
-            rating={star}
-            disabled={false}
-            starSize={16}
-            onStarChange={(value) => setStar(value)}
-            style = {{marginTop: 15}}
-          />
-
-          <TextInput
-            style = {{
-              height:100,
-              width: 300,
-              borderColor:'gray',
-              borderWidth: 1,
-              borderRadius: 15,
-              color: "black",
-              margin: 10,
-              shadowColor: '#DCDCDC',
-              shadowOffset:{width:0,height:0},
-              shadowOpacity: 0.5,
-              shadowRadius: 15,
-            }}
-            placeholder = " Please add your comment"
-            multiline = {true}
-            numberOfLines = {3}
-            maxLength = {140}
-            spellCheck = {false}
-            selectionColor = "black"
-            defaultValue = {text}
-            onChangeText = {text => setText(text)}
-          />
-
-    {/*     <Button title="Submit" onPress={handleForm} />  */}
-    {/*  <ButtonWrapper> */}
-{/*
-        <Button
-          title="Submit"
-          style = {{width: 1000}}
-          onPress={() => {
-            addReview({ variables: { comment: text, rating:star, productId:item.id, userId:0} })
-            .then(({ data }) => {
-              resetForm();
-              alert  ('Successfully Submit Comment!');
-            })
-            .catch(error => {
-              if (error) {
-                Alert.alert(
-                  'Error',
-                  error.graphQLErrors.map(({ message }) => message)[0],
-                );
-              }
-            });
-        }} />
-    {/*   </ButtonWrapper>  */}
-{/*
-        </View>
-
-    )}
-    </Mutation>
-
-</>
-
-  );
-}
-
-*/}
-
-
-
-
-{/*
-
-const Comment = ({item}) => {
-  return(
-    <View style = {styles.listItemContainer}>
-
-       <Image
-         style={{borderColor: '#FFF',borderRadius: 85,borderWidth: 3,height: 30,width: 30,marginLeft: 0}}
-         source={user.img}
-       />
-
-       <Text style = {{fontSize:15}}> {item.text}  </Text>
-       <View style = {{alignItems:'center',justifyContent:'center'}}>
-          <StarRating
-            maxStars={5}
-            rating={item.star}
-            disabled={true}
-            starSize={15}
-            style = {{marginTop: 15, marginRight:0}}
-          />
-       </View>
-
-    </View>
-  );
-}
-
-*/}
-
 
 const Comments = ({productId}) =>  {
 
