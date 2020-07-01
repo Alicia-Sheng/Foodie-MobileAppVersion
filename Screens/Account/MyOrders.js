@@ -60,7 +60,7 @@ function MyOrders({ navigation }) {
           <>
             <ScrollView style={styles.scroll}>
               <View style={styles.headerContainer}>
-                <Orders orders={data.orders} />
+                <Orders orders={data.orders} navigation={navigation} />
               </View>
             </ScrollView>
           </>
