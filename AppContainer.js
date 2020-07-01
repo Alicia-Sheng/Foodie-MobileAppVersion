@@ -45,7 +45,7 @@ const HomeStack = createStackNavigator(
     },
     SeeAll: {
       screen: SeeAll,
-      navigationOptions: { 
+      navigationOptions: {
         title: null
       },
     },
@@ -253,7 +253,11 @@ const AccountStack = createStackNavigator(
     MyReviews: {
       screen: MyReviews,
       navigationOptions: { title: 'My Reviews' },
-    }
+    },
+    Provider: {
+      screen: Provider,
+      navigationOptions: { title: 'Add Product' },
+    },
   }
 );
 
@@ -267,6 +271,6 @@ const SwitchNavigator = createSwitchNavigator({
   {
     initialRouteName: 'AuthLoading',
   }
-  );
+);
 
 export default createAppContainer(SwitchNavigator);
