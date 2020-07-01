@@ -83,7 +83,7 @@ const Detail = ({ navigation }) => {
 
       {selectedIndex === 1
              && <View style = {{flexDirection:"row", margin:10}}>
-                   <Comments id = {item.id} />
+                   <Comments productId = {item.id} />
                 </View>
       }
 
@@ -220,7 +220,7 @@ const Comment = ({item}) => {
 
 const Comments = ({productId}) =>  {
 
-  const { loading, error, data } = useQuery(GET_REVIEW, {variables: {productId} });
+  const { loading, error, data } = useQuery(GET_REVIEW, {variables: {productId:productId} });
   return (
     <>
           {(loading || error) ? (
@@ -231,81 +231,47 @@ const Comments = ({productId}) =>  {
 
         (
           <>
-          <View>
-
-            <FlatList
-              data = {data.reviews}
-              renderItem = {({item}) => <Comment item = {item}/>}
-              keyExtractor = {(item,index) => "comment" + index}
-            />
-
-            {/*
-            <TouchableOpacity
-                key={data.reviews.comment}
-                onPress={() => Alert.alert('Not implemented yet')}
-                style={styles.listItemContainer}
-              >
-              */}
-{/*
-                <View style={styles.title}>
-                  <Text style={{ fontWeight: "bold" }}>
-                    {data.reviews.id}
-                  </Text>
-                </View>
-
-
-                <View style={styles.text}>
-                  <Text>
-                    {data.reviews.comment}
-                  </Text>
-                </View>
-
-                <View style = {{alignItems:'center',justifyContent:'center'}}>
-                  <StarRating
-                    maxStars={5}
-                    rating={data.reviews.rating}
-                    disabled={true}
-                    starSize={15}
-                    style = {{marginTop: 15, marginRight:0}}
-                  />
-                </View>
-
- */}
-      {/*        </TouchableOpacity> */}
-
-          </View>
-         </>
+            <ScrollView style={styles.scroll}>
+              <View style={styles.headerContainer}>
+                <Comment item={data.reviews} />
+              </View>
+            </ScrollView>
+          </>
         )}
   </>
   );
 }
 
 const Comment = ({item}) => {
-  <View style = {styles.listItemContainer}>
+  return item.map((item, index) => {
+    return (
+    <>
+      <View>
+        <View style={styles.title}>
+          <Text style={{ fontWeight: "bold" }}>
+            {item.id}
+          </Text>
+        </View>
 
-    <View style={styles.title}>
-      <Text style={{ fontWeight: "bold" }}>
-        {item.id}
-      </Text>
-    </View>
+        <View style={styles.text}>
+          <Text>
+            {item.comment}
+          </Text>
+        </View>
 
-    <View style={styles.text}>
-      <Text>
-        {item.comment}
-      </Text>
-    </View>
-
-    <View style = {{alignItems:'center',justifyContent:'center'}}>
-      <StarRating
-        maxStars={5}
-        rating={item.rating}
-        disabled={true}
-        starSize={15}
-        style = {{marginTop: 15, marginRight:0}}
-      />
-    </View>
-
-  </View>
+        <View style = {{alignItems:'center',justifyContent:'center'}}>
+          <StarRating
+            maxStars={5}
+            rating={item.rating}
+            disabled={true}
+            starSize={15}
+            style = {{marginTop: 15, marginRight:0}}
+          />
+        </View>
+      </View>
+    </>
+    );
+  })
 }
 
 
