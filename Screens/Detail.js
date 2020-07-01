@@ -216,19 +216,6 @@ const Comment = ({item}) => {
 }
 
 
- {/*
-  return(
-    <Query query={GET_REVIEW}>
-      {({ loading, error, data }) => {
-        if (loading || error) {
-          return <Alert>{loading ? 'Loading...' : error.message}</Alert>;
-        }
-      }}
-
-    </Query>
-  )
-    */}
-
 const Comments = ({id}) =>  {
 
   const { loading, error, data } = useQuery(GET_REVIEW, {variables: { productId: id} });
@@ -250,11 +237,13 @@ const Comments = ({id}) =>  {
               keyExtractor = {(item,index) => "comment" + index}
             />
             */}
+            {/*
             <TouchableOpacity
                 key={data.reviews.comment}
                 onPress={() => Alert.alert('Not implemented yet')}
                 style={styles.listItemContainer}
               >
+              */}
 
                 <View style={styles.title}>
                   <Text style={{ fontWeight: "bold" }}>
@@ -280,7 +269,8 @@ const Comments = ({id}) =>  {
                 </View>
 
 
-              </TouchableOpacity>
+      {/*        </TouchableOpacity> */}
+      
           </View>
          </>
         )}

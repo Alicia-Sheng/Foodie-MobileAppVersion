@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Query, useQuery } from 'react-apollo';
 import { Alert, ScrollView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { Icon, ListItem } from 'react-native-elements'
-import user from '../../assets/userInfo'
-import BackButton from '../../Components/Button/BackButton'
+import { Icon, ListItem } from 'react-native-elements';
+import user from '../../assets/userInfo';
+import BackButton from '../../Components/Button/BackButton';
+import StarRating from '../../Components/Details/StarRating';
 import { GET_ORDER, GET_REVIEW } from '../../constants/functions';
 
 const Reviews = ({ orders }) => {
@@ -30,16 +31,29 @@ const Review = ({ id }) => {
                 onPress={() => Alert.alert('Not implemented yet')}
                 style={styles.listItemContainer}
               >
+
                 <View style={styles.title}>
                   <Text style={{ fontWeight: "bold" }}>
                     {data.reviews.id}
                   </Text>
                 </View>
+
                 <View style={styles.text}>
                   <Text>
                     {data.reviews.comment}
                   </Text>
                 </View>
+
+                <View style = {{alignItems:'center',justifyContent:'center'}}>
+                  <StarRating
+                    maxStars={5}
+                    rating={data.reviews.rating}
+                    disabled={true}
+                    starSize={15}
+                    style = {{marginTop: 15, marginRight:0}}
+                  />
+                </View>
+
               </TouchableOpacity>
             </>
           )}
