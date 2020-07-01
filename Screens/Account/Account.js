@@ -4,7 +4,7 @@ import { ImageBackground, StyleSheet, Text, View, Image, AsyncStorage, SafeAreaV
 import { Icon, ListItem } from 'react-native-elements'
 import { GET_CURRENT_USER } from '../../constants/functions';
 
-function Menu({ navigation, user, client}) {
+function Menu({ navigation, user, client }) {
   return (
     <ScrollView>
       <SafeAreaView
@@ -19,7 +19,7 @@ function Menu({ navigation, user, client}) {
             <View style={styles.headerColumn}>
               <Image
                 style={styles.userImage}
-                source={require("../../media/user/default.png")}
+                source={{ uri: user.profilePic }}
               />
               <Text style={styles.userNameText}>{user.username}</Text>
             </View>
@@ -74,10 +74,11 @@ function Menu({ navigation, user, client}) {
             <ListItem
               title="Log Out"
               onPress={
-                () => {client.resetStore(),
-                  AsyncStorage.removeItem('token').then(() =>
-                    navigation.navigate('AuthLoading'),
-                  );
+                () => {
+                  client.resetStore(),
+                    AsyncStorage.removeItem('token').then(() =>
+                      navigation.navigate('AuthLoading'),
+                    );
                 }
               }
               containerStyle={styles.listItemContainer}
