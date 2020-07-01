@@ -5,7 +5,7 @@ import { Icon, ListItem } from 'react-native-elements';
 import user from '../../assets/userInfo';
 import BackButton from '../../Components/Button/BackButton';
 import StarRating from '../../Components/Details/StarRating';
-import { GET_CURRENT_USER_REVIEW, GET_USER, GET_CURRENT_USER } from '../../constants/functions';
+import { GET_CURRENT_USER_REVIEW, GET_USER, GET_CURRENT_USER, GET_PRODUCT } from '../../constants/functions';
 import userImage from '../../assets/userInfo'
 
 const Review = () => {
@@ -30,8 +30,31 @@ const Review = () => {
   );
 }
 
+const FoodName = ({ productId }) => {
+  const { loading, error, data } = useQuery(GET_PRODUCT, {variables: {productId: productId} });
+  return (
+    <>
+            {(loading || error) ? (
+                <>
+                <Text>{loading ? 'Loading...' : error.message}</Text>
+                </>
+            ):
+
+          (
+            <>
+                <View>
+                   <Text style={{ fontWeight: "bold" }}>
+                      {data.product.name}
+                   </Text>
+                </View>
+            </>
+          )}
+    </>
+  )
+}
+
 const FindFood= ({id}) => {
-  const { loading, error, data } = useQuery(GET_USER, {variables: {id:id} });
+  const { loading, error, data } = useQuery(GET_USER, {variables: {id: id} });
   return (
     <>
           {(loading || error) ? (
@@ -42,11 +65,7 @@ const FindFood= ({id}) => {
 
         (
           <>
-              <View>
-                 <Text style={{ fontWeight: "bold" }}>
-
-                 </Text>
-              </View>
+              <FoodeName />
           </>
         )}
   </>
