@@ -77,7 +77,7 @@ const Detail = ({ navigation }) => {
       {selectedIndex === 0
              && <View style = {{alignItems: 'center', justifyContent: 'center'}}>
                   <Text style = {{marginLeft: 15, marginBottom:10}}> {item.desc}</Text>
-                  <Rating addComment = {addComment} item = {item}/>
+            {/*     <Rating addComment = {addComment} item = {item}/>   */}
                 </View>
       }
 
@@ -91,10 +91,9 @@ const Detail = ({ navigation }) => {
   </ScrollView>
   );
 
-  {/* return <ListingDetail item={item} />;*/}
-
 }
 
+{/*
 function Rating({addComment, item}){
   const [text, setText] = useState (" ")    //comment
   const [star, setStar] = useState(5)  //starts
@@ -154,12 +153,12 @@ function Rating({addComment, item}){
 
     {/*     <Button title="Submit" onPress={handleForm} />  */}
     {/*  <ButtonWrapper> */}
-
+{/*
         <Button
           title="Submit"
           style = {{width: 1000}}
           onPress={() => {
-            addReview({ variables: { comment: text, rating:star, productId:item.id, userId:userId} })
+            addReview({ variables: { comment: text, rating:star, productId:item.id, userId:0} })
             .then(({ data }) => {
               resetForm();
               alert  ('Successfully Submit Comment!');
@@ -174,7 +173,7 @@ function Rating({addComment, item}){
             });
         }} />
     {/*   </ButtonWrapper>  */}
-
+{/*
         </View>
 
     )}
@@ -185,7 +184,7 @@ function Rating({addComment, item}){
   );
 }
 
-
+*/}
 
 
 
