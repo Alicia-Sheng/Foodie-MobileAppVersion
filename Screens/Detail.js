@@ -127,10 +127,14 @@ const FindUser = ({id}) => {
 
         (
           <>
-              <View>
-                 <Text style={{ fontWeight: "bold" }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                <Image
+                  style={{ borderColor: '#FFF', borderRadius: 85, borderWidth: 3, height: 30, width: 30, marginLeft: 0 }}
+                  source={{ uri: data.user.profilePic }}
+                />
+                <Text style={{ fontWeight: "bold", marginHorizontal: 8 }}>
                   {data.user.username}
-                 </Text>
+                </Text>
               </View>
           </>
         )}
@@ -144,14 +148,9 @@ const Comment = ({item}) => {
     return (
     <>
       <View style = {styles.listItemContainer}>
-        <View style={{marginRight: 10}}>
-          <Text style={{ fontWeight: "bold" }}>
-            <FindUser id = {item.userId}  />
-            {/*{item.userId} */}
-          </Text>
-        </View>
+        <FindUser id = {item.userId}  />
 
-        <View>
+        <View style={{marginRight: 8}}>
           <Text>
             {item.comment}
           </Text>

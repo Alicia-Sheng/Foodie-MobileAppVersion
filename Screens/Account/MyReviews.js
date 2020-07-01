@@ -80,7 +80,9 @@ const Comment = ({items}) => {
 
         <Avatar id={item.userId} />
 
-        <FoodName productId={item.productId} />
+        <View style={{marginHorizontal: 8}} >
+          <FoodName productId={item.productId} />
+        </View>
 
         <View style={styles.text}>
           <Text>
