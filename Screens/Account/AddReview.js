@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Mutation, Query, useQuery } from 'react-apollo';
-import { ScrollView, StyleSheet, View, Alert, Text, Button, TextInput, Image } from 'react-native';
+import { ScrollView, StyleSheet, View, Alert, Text, Button, TextInput, Image, Dimensions } from 'react-native';
 import BackButton from '../../Components/Button/BackButton'
 import StarRating from '../../Components/Details/StarRating';
 import { ADD_REVIEW, GET_REVIEW } from '../../constants/functions';
@@ -11,12 +11,14 @@ AddReview.navigationOptions = ({ navigation }) => {
   }
 }
 
+const { width: screenWidth } = Dimensions.get('window')
+
 function AddReview({ navigation }) {
   const productId = navigation.getParam('productId', 0);
   const userId = navigation.getParam('userId', 0);
   const thumbnail = navigation.getParam('thumbnail', '');
   const name = navigation.getParam('name', '');
-  const [text, setText] = useState(" ")    //comment
+  const [text, setText] = useState('')    //comment
   const [star, setStar] = useState(5)  //starts
 
   useEffect(() => {
@@ -32,30 +34,26 @@ function AddReview({ navigation }) {
 
   return (
     <>
-
       <Mutation
         mutation={ADD_REVIEW}
         refetchQueries={() => { query: GET_REVIEW }}
       >
         {(addReview) => (
-          <View style={{ flex: 1, backgroundColor: 'white' }} >
+          <ScrollView style={{ flex: 1, backgroundColor: 'white' }} >
             <View>
-              <View style={{ flex: 1, flexDirection: 'row', marginTop: 50 }} >
-                <Image source={{ uri: thumbnail }} style={{ width: 100, height: 100, resizeMode: 'contain', marginLeft: 40 }} />
+              <View style={{ marginHorizontal: Math.round(screenWidth * 0.05), marginTop: Math.round(screenWidth * 0.05) }} >
+                <Image source={{ uri: thumbnail }} style={{ width: Math.round(screenWidth * 0.9), height: Math.round(screenWidth * 0.9 * 3 / 5), borderRadius: 15 }} />
                 <Text style={{
-                  width: 300,
                   textAlign: 'center',
-                  paddingTop: 42,
-                  color: "black",
+                  marginVertical: 10,
                   fontWeight: 'bold',
                   borderColor: "#FFFFFF",
-                  fontSize: 16,
-                  marginRight: 40,
+                  fontSize: 20,
                 }}>
                   {name}
                 </Text>
               </View>
-              <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }} >
+              <View style={{ alignItems: 'center', justifyContent: 'center' }} >
                 <StarRating
                   maxStars={5}
                   rating={star}
@@ -110,7 +108,7 @@ function AddReview({ navigation }) {
                 />
               </View>
             </View>
-          </View>
+          </ScrollView>
         )}
       </Mutation>
     </>
@@ -118,13 +116,6 @@ function AddReview({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  scroll: {
-    backgroundColor: "white",
-    color: "white",
-  },
-  listItemContainer: {
-
-  },
 });
 
 export default AddReview;

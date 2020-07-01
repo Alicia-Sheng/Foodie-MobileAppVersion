@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Query, useQuery } from 'react-apollo';
-import { Alert, ScrollView, StyleSheet, Text, View, Image } from 'react-native';
+import { Alert, ScrollView, StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import BackButton from '../../Components/Button/BackButton';
 import StarRating from '../../Components/Details/StarRating';
 import { GET_CURRENT_USER_REVIEW, GET_USER, GET_CURRENT_USER, GET_PRODUCT } from '../../constants/functions';
@@ -11,6 +11,8 @@ Review.navigationOptions = ({ navigation }) => {
     headerLeft: navigation.getParam('headerLeft'),
   }
 }
+
+const { width: screenWidth } = Dimensions.get('window')
 
 function Review({ navigation }) {
 
@@ -87,19 +89,17 @@ const Avatar = ({ id }) => {
 const Comment = ({ items }) => {
   return items.map((item, index) => {
     return (
-      <>
+      <View key={index}>
         <View style={styles.listItemContainer}>
 
-          <Avatar id={item.userId} />
+          {/*<Avatar id={item.userId} />*/}
 
-          <View style={{ marginHorizontal: 8 }} >
+          <View style={{ width: Math.round(screenWidth * 0.2) }} >
             <FoodName productId={item.productId} />
           </View>
 
-          <View style={styles.text}>
-            <Text>
-              {item.comment}
-            </Text>
+          <View style={{width: Math.round(screenWidth * 0.5)}}>
+            <Text>{item.comment}</Text>
           </View>
 
           <View style={{ alignItems: 'center', justifyContent: 'center' }}>
@@ -112,7 +112,7 @@ const Comment = ({ items }) => {
             />
           </View>
         </View>
-      </>
+      </View>
     );
   })
 }
@@ -127,7 +127,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
   },
   listItemContainer: {
-    width: 350,
     borderWidth: 0.5,
     borderColor: '#ECECEC',
     padding: 20,

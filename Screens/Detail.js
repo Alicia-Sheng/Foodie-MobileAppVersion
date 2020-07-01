@@ -150,10 +150,10 @@ const FindUser = ({id}) => {
           <>
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                 <Image
-                  style={{ borderColor: '#FFF', borderRadius: 85, borderWidth: 3, height: 30, width: 30, marginLeft: 0 }}
+                  style={{ borderColor: '#FFF', borderRadius: 85, borderWidth: 3, height: 30, width: 30 }}
                   source={{ uri: data.user.profilePic }}
                 />
-                <Text style={{ fontWeight: "bold", marginHorizontal: 8 }}>
+                <Text style={{ fontWeight: "bold", width: Math.round(screenWidth * 0.15), marginHorizontal: 5 }}>
                   {data.user.username}
                 </Text>
               </View>
@@ -168,15 +168,15 @@ const Comment = ({item}) => {
   return item.map((item, index) => {
     return (
       <View key={index} style={styles.listItemContainer}>
-        <FindUser id = {item.userId}  />
+        <FindUser id={item.userId}  />
 
-        <View style={{marginRight: 8}}>
+        <View style={{width: Math.round(screenWidth * 0.45)}}>
           <Text>
             {item.comment}
           </Text>
         </View>
 
-        <View style = {{position: 'absolute', right: 15, alignItems:'center', justifyContent:'center'}}>
+        <View style = {{position: 'absolute', right: 5, alignItems:'center', justifyContent:'center'}}>
           <StarRating
             maxStars={5}
             rating={item.rating}
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
     flex: 1,
     borderWidth: 0.5,
     borderColor: '#ECECEC',
-    padding: 20,
+    padding: 5,
     flexDirection: 'row',
     alignItems:'center',
   },
