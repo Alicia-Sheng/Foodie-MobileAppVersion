@@ -160,7 +160,7 @@ function Rating({addComment, item}){
           title="Submit"
           style = {{width: 1000}}
           onPress={() => {
-            addReview({ variables: { comment: text, rating:star, productId:item.id, userId:0} })
+            addReview({ variables: { comment: text, rating:star, productId:item.id, userId:userId} })
             .then(({ data }) => {
               resetForm();
               alert  ('Successfully Submit Comment!');
