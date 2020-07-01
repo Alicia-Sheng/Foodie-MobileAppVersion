@@ -156,6 +156,7 @@ export const LOGIN_USER = gql `
         username
         email
         phone
+        profilePic
         orders
       }
       token
@@ -164,12 +165,13 @@ export const LOGIN_USER = gql `
 `;
 
 export const SIGNUP_USER = gql `
-  mutation signupUser($username: String!, $password: String!, $email: String!, $phone: String!) {
-    signupUser(username: $username, password: $password, email: $email, phone: $phone) {
+  mutation signupUser($username: String!, $password: String!, $email: String!, $phone: String!, $profilePic: String!) {
+    signupUser(username: $username, password: $password, email: $email, phone: $phone, profilePic: $profilePic) {
       user {
         username
         email
         phone
+        profilePic
         orders
       }
       token
@@ -178,11 +180,12 @@ export const SIGNUP_USER = gql `
 `;
 
 export const EDIT_USER = gql `
-  mutation editUser($password: String!, $email: String!, $phone: String!) {
-    editUser(password: $password, email: $email, phone: $phone) {
+  mutation editUser($password: String!, $email: String!, $phone: String!, $profilePic: String!) {
+    editUser(password: $password, email: $email, phone: $phone, profilePic: $profilePic) {
       username
       email
       phone
+      profilePic
       orders
     }
   }
