@@ -26,7 +26,7 @@ function AddReview({ navigation }) {
     >
     {(addReview) => (
 
-        <View style = {{alignItems: 'center', justifyContent: 'center'}}>
+        <View style = {{alignItems: 'center', justifyContent: 'center', backgroundColor:'white', flex:1}}>
           <StarRating
             maxStars={5}
             rating={star}
@@ -84,19 +84,17 @@ function AddReview({ navigation }) {
 
     )}
     </Mutation>
-
   </>
   )
 }
 
 const styles = StyleSheet.create({
   scroll: {
-    backgroundColor: "#FFF",
+    backgroundColor: "white",
+    color: "white",
   },
-  listItemContainer: {
-    height: 55,
-    borderWidth: 0.5,
-    borderColor: '#ECECEC',
+  listItemContainer:{
+
   },
 });
 
