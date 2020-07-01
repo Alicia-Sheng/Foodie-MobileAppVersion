@@ -30,7 +30,7 @@ function AddReview({ navigation }) {
 
     <Mutation
       mutation = {ADD_REVIEW}
-      refetchQueries = {() => [{ query: GET_REVIEW }]}
+  //   refetchQueries = {() => [{ query: GET_REVIEW }]} 
     >
     {(addReview) => (
 

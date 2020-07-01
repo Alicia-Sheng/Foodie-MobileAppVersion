@@ -115,7 +115,6 @@ function Rating({addComment, item}){
 
     <Mutation
       mutation = {ADD_REVIEW}
-      refetchQueries = {() => [{ query: GET_REVIEW }]}
     >
     {(addReview) => (
 
@@ -196,7 +195,7 @@ function Rating({addComment, item}){
 const Comment = ({item}) => {
   return(
     <View style = {styles.listItemContainer}>
-      
+
        <Image
          style={{borderColor: '#FFF',borderRadius: 85,borderWidth: 3,height: 30,width: 30,marginLeft: 0}}
          source={user.img}
@@ -257,20 +256,20 @@ const Comments = ({id}) =>  {
                 onPress={() => Alert.alert('Not implemented yet')}
                 style={styles.listItemContainer}
               >
-                
+
                 <View style={styles.title}>
                   <Text style={{ fontWeight: "bold" }}>
-                    {data.reviews.id}    
+                    {data.reviews.id}
                   </Text>
                 </View>
-                
+
 
                 <View style={styles.text}>
                   <Text>
                     {data.reviews.comment}
                   </Text>
                 </View>
-              
+
                 <View style = {{alignItems:'center',justifyContent:'center'}}>
                   <StarRating
                     maxStars={5}
