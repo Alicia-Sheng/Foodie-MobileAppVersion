@@ -56,7 +56,7 @@ const Detail = ({ navigation }) => {
 
   return (
   <ScrollView>
-    <View style={styles.container}>
+    <View>
       <View style={styles.photo}>
         <Image source={{uri: item.thumbnail}} style={{flex: 1, width: Math.round(screenWidth * 0.9),
         height: Math.round(screenWidth * 0.9 * 3 / 5), borderRadius: 15}} />
@@ -124,7 +124,7 @@ const Comments = ({productId}) =>  {
 
         (
           <>
-            <Text style={{ fontWeight: 'bold', fontSize: 20, marginVertical: 5, borderBottomWidth: 1, borderBottomColor: 'grey' }} >Comments</Text>
+            <Text style={{ fontWeight: 'bold', fontSize: 20, marginTop: 15, marginBottom: 5, borderBottomWidth: 1, borderBottomColor: 'grey' }} >Comments</Text>
             <ScrollView>
               <View>
                 <Comment item={data.reviews} />
@@ -194,13 +194,8 @@ const Comment = ({item}) => {
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   photo:{
+    marginHorizontal: Math.round(screenWidth * 0.05),
     flexWrap: 'wrap',
     flex: 1,
     marginVertical: Math.round(screenWidth * 0.05),
