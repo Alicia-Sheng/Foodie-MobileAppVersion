@@ -6,7 +6,9 @@ import user from '../../assets/userInfo'
 import BackButton from '../../Components/Button/BackButton'
 import { ADD_REVIEW, GET_REVIEW } from '../../constants/functions';
 
-function AddReview({ route }) {
+function AddReview({ navigation }) {
+    const productId = navigation.getParam('productId', 0);
+    const userId = navigation.getParam('userId', 0);
     const [comment, setComment] = useState('');
     const [rating, setRating] = useState(0);
     return (
