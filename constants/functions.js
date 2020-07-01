@@ -63,6 +63,7 @@ export const GET_CURRENT_USER = gql `
       username
       email
       phone
+      role
     }
   }
 `;
@@ -76,6 +77,7 @@ export const GET_ORDER = gql `
       thumbnail
       qty
       total
+      productId
       userId
       complete
     }

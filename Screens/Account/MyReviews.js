@@ -91,8 +91,7 @@ function MyReviews() {
               <>
                 <ScrollView style={styles.scroll}>
                   <View style={styles.headerContainer}>
-                    <Reviews orders={data.orders} />
-                    {console.log(data.orders)}
+                    <Reviews orders={data.orders}/>
                   </View>
                 </ScrollView>
               </>
