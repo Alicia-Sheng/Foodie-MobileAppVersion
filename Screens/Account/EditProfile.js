@@ -5,14 +5,16 @@ import Button from '../../Components/Button/Button';
 import BackButton from '../../Components/Button/BackButton'
 import styled from 'styled-components/native';
 import { Mutation } from 'react-apollo';
-import { SIGNUP_USER } from '../../constants/functions';
+import { EDIT_USER } from '../../constants/functions';
 
 const ScrollWrapper = styled(ScrollView)`
-  padding-vertical: 10%;
+  padding-top: 10%;
+  padding-bottom: 50%;
   background-color: #fff;
 `;
 
 const FormWrapper = styled(View)`
+  margin-bottom:50%;
   background-color: #fff;
   align-items: stretch;
   justify-content: center;
@@ -42,23 +44,24 @@ function EditProfile({ navigation }) {
     })
   }, [])
 
-  const [name, setName] = useState(user.username)
+  const [name, setName] = useState(user.username + " (uneditable)")
   const [password, setPassword] = useState("")
   const [email, setEmail] = useState(user.email)
   const [phone, setPhone] = useState(user.phone)
+  const [img, setImg] = useState(user.profilePic)
 
   return (
     <Mutation
-      mutation={SIGNUP_USER}>
-      {(signupUser) => (
+      mutation={EDIT_USER}>
+      {(editUser) => (
         <ScrollWrapper>
           <FormWrapper>
             <InputWrapper>
               <TextInput
-                placeholder="Username"
                 maxLength={20}
+                color="grey"
                 value={name}
-                onChangeText={text => setName(text)}
+                editable={false}
               />
             </InputWrapper>
 
@@ -88,26 +91,33 @@ function EditProfile({ navigation }) {
             </InputWrapper>
 
             <InputWrapper>
+              <TextInput
+                placeholder="Profile picture url"
+                value={img}
+                onChangeText={text => setImg(text)} />
+            </InputWrapper>
+
+            <InputWrapper>
               <Button
                 title="Save"
                 onPress={() => {
-                  signupUser({ variables: { username: name, password: password, email: email, phone: phone } })
-                    .then(({ data }) => {
-                      alert('Changes Saved!');
-                      const { token } = data.signupUser;
-
-                      AsyncStorage.setItem('token', token).then(value => {
+                  if (password != "") {
+                    editUser({ variables: { password: password, email: email, phone: phone, profilePic: img } })
+                      .then(({ data }) => {
+                        alert('Changes Saved!');
                         navigation.navigate('Main');
+                      })
+                      .catch(error => {
+                        if (error) {
+                          Alert.alert(
+                            'Error',
+                            error.graphQLErrors.map(({ message }) => message)[0],
+                          );
+                        }
                       });
-                    })
-                    .catch(error => {
-                      if (error) {
-                        Alert.alert(
-                          'Error',
-                          error.graphQLErrors.map(({ message }) => message)[0],
-                        );
-                      }
-                    });
+                  } else {
+                    alert('Password cannnot be blank')
+                  }
                 }}
                 width="90%"
                 radius="15px"
