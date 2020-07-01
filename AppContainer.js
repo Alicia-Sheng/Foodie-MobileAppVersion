@@ -20,6 +20,7 @@ import Starbucks from './Screens/Menu/Starbucks';
 import AllRestaurant from './Screens/Menu/AllRestaurants';
 import Account from './Screens/Account/Account';
 import Profile from './Screens/Account/Profile';
+import IdentityCheck from './Screens/Account/IdentityCheck';
 import EditProfile from './Screens/Account/EditProfile';
 import MyOrders from './Screens/Account/MyOrders';
 import MyReviews from './Screens/Account/MyReviews';
@@ -223,6 +224,10 @@ const AccountStack = createStackNavigator(
     Profile: {
       screen: Profile,
       navigationOptions: { title: 'Profile' },
+    },
+    IdentityCheck: {
+      screen: IdentityCheck,
+      navigationOptions: { title: 'Identity Check' },
     },
     EditProfile: {
       screen: EditProfile,
