@@ -8,8 +8,8 @@ import { Mutation } from 'react-apollo';
 import { EDIT_USER, GET_CURRENT_USER } from '../../constants/functions';
 
 const ScrollWrapper = styled(ScrollView)`
-  padding-top: 10%;
-  padding-bottom: 50%;
+  padding-top: 40%;
+  padding-bottom: 60%;
   background-color: #fff;
 `;
 
