@@ -34,43 +34,39 @@ const FoodName = ({ productId }) => {
   const { loading, error, data } = useQuery(GET_PRODUCT, {variables: {productId: productId} });
   return (
     <>
-            {(loading || error) ? (
-                <>
-                <Text>{loading ? 'Loading...' : error.message}</Text>
-                </>
-            ):
-
-          (
-            <>
-                <View>
-                   <Text style={{ fontWeight: "bold" }}>
-                      {data.product.name}
-                   </Text>
-                </View>
-            </>
-          )}
+      {(loading || error) ? (
+        <>
+          <Text>{loading ? 'Loading...' : error.message}</Text>
+        </>
+      ): (
+        <>
+          <Text style={{ fontWeight: "bold" }}>
+            {data.product.name}
+          </Text>
+        </>
+      )}
     </>
   )
 }
 
-const FindFood= ({id}) => {
-  const { loading, error, data } = useQuery(GET_USER, {variables: {id: id} });
-  return (
-    <>
-          {(loading || error) ? (
-              <>
-              <Text>{loading ? 'Loading...' : error.message}</Text>
-              </>
-          ):
-
-        (
-          <>
-              <FoodeName />
-          </>
-        )}
-  </>
-  );
-}
+// const FindFood= ({id}) => {
+//   const { loading, error, data } = useQuery(GET_USER, {variables: {id: id} });
+//   return (
+//     <>
+//           {(loading || error) ? (
+//               <>
+//               <Text>{loading ? 'Loading...' : error.message}</Text>
+//               </>
+//           ):
+//
+//         (
+//           <>
+//               <FoodeName />
+//           </>
+//         )}
+//   </>
+//   );
+// }
 
 
 const Comment = ({items}) => {
@@ -84,9 +80,7 @@ const Comment = ({items}) => {
           source={userImage.img}
         />
 
-        <Text style={{ fontWeight: "bold" }}>
-          {item.id}
-        </Text>
+        <FoodName productId={item.productId} />
 
         <View style={styles.text}>
           <Text>
