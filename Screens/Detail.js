@@ -167,8 +167,7 @@ const FindUser = ({id}) => {
 const Comment = ({item}) => {
   return item.map((item, index) => {
     return (
-    <>
-      <View style = {styles.listItemContainer}>
+      <View key={index} style={styles.listItemContainer}>
         <FindUser id = {item.userId}  />
 
         <View style={{marginRight: 8}}>
@@ -187,7 +186,6 @@ const Comment = ({item}) => {
           />
         </View>
       </View>
-    </>
     );
   })
 }
