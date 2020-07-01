@@ -76,7 +76,7 @@ const Detail = ({ navigation }) => {
 
       {selectedIndex === 0
              && <View style = {{alignItems: 'center', justifyContent: 'center'}}>
-                  <Text style = {{marginLeft: 15, marginBottom:10}}> {item.desc}</Text>
+                  <Text style = {{marginLeft: 50, marginRight: 50, marginTop:10, fontSize: 15}}> {item.desc}</Text>
                 </View>
       }
 
@@ -144,7 +144,7 @@ const Comment = ({item}) => {
     return (
     <>
       <View style = {styles.listItemContainer}>
-        <View>
+        <View style={{marginRight: 10}}>
           <Text style={{ fontWeight: "bold" }}>
             <FindUser id = {item.userId}  />
             {/*{item.userId} */}
@@ -157,13 +157,13 @@ const Comment = ({item}) => {
           </Text>
         </View>
 
-        <View style = {{alignItems:'center',justifyContent:'center'}}>
+        <View style = {{position: 'absolute', right: 10,alignItems:'center',justifyContent:'center'}}>
           <StarRating
             maxStars={5}
             rating={item.rating}
             disabled={true}
             starSize={15}
-            style = {{marginTop: 15, marginRight:0}}
+            style = {{marginTop: 15}}
           />
         </View>
       </View>

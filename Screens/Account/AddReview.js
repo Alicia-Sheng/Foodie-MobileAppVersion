@@ -32,7 +32,7 @@ function AddReview({ navigation }) {
       <View style={{flex: 1, backgroundColor:'white'}} >
         <View>
           <View style={{flex: 1, flexDirection: 'row', marginTop: 50}} >
-            <Image source={{ uri: thumbnail }} style={{width: 100, height: 100, resizeMode: 'contain', borderRadius: 15, marginLeft: 40}} />
+            <Image source={{ uri: thumbnail }} style={{width: 100, height: 100, resizeMode: 'contain', marginLeft: 40}} />
             <Text style={{
                 width: 300,
                 textAlign:'center',
