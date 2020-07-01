@@ -44,7 +44,7 @@ const FindFood= ({id}) => {
           <>
               <View>
                  <Text style={{ fontWeight: "bold" }}>
-                  
+
                  </Text>
               </View>
           </>
@@ -91,9 +91,6 @@ const Comment = ({items}) => {
 }
 
 const styles = StyleSheet.create({
-  title: {
-    flexDirection: "row",
-  },
   text: {
     flex: 1,
     flexWrap: 'wrap',
