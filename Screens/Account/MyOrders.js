@@ -12,9 +12,9 @@ function Orders({ orders, navigation }) {
         key={index}
         leftAvatar={{ source: { uri: order.thumbnail } }}
         title={order.name}
-        titleStyle={{ marginLeft: 15, marginBottom: 3 }}
+        titleStyle={{ marginBottom: 3 }}
         subtitle={order.location}
-        subtitleStyle={{ color: 'grey', marginLeft: 15 }}
+        subtitleStyle={{ color: 'grey' }}
         rightTitle={'$' + order.total.toString()}
         rightTitleStyle={{ width: 180, fontSize: 15, color: 'black', marginBottom: 3, textAlign: "right" }}
         rightSubtitle={order.complete ? 'finished' : 'not finished'}
