@@ -17,7 +17,7 @@ const user = [{
 {
     "id": 3,
     "username": "Dan",
-    "password": "Dan",
+    "password": "dan",
     "email": "dan@brandeis.edu",
     "phone": "1234567890",
     "role": "basic"
@@ -25,7 +25,7 @@ const user = [{
 {
     "id": 4,
     "username": "Jess",
-    "password": "Jess",
+    "password": "jess",
     "email": "jessica@brandeis.edu",
     "phone": "1234567890",
     "role": "basic"
