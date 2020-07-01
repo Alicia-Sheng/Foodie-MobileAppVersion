@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { AsyncStorage, Alert, View, ScrollView } from 'react-native';
+import { AsyncStorage, Alert, View } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import TextInput from '../../Components/TextInput/TextInput';
 import Button from '../../Components/Button/Button';
 import BackButton from '../../Components/Button/BackButton'
@@ -7,14 +8,8 @@ import styled from 'styled-components/native';
 import { Mutation } from 'react-apollo';
 import { EDIT_USER, GET_CURRENT_USER } from '../../constants/functions';
 
-const ScrollWrapper = styled(ScrollView)`
-  padding-top: 40%;
-  padding-bottom: 60%;
-  background-color: #fff;
-`;
 
 const FormWrapper = styled(View)`
-  margin-bottom:50%;
   background-color: #fff;
   align-items: stretch;
   justify-content: center;
@@ -56,7 +51,11 @@ function EditProfile({ navigation }) {
       refetchQueries={() => [{ query: GET_CURRENT_USER }]}
     >
       {(editUser) => (
-        <ScrollWrapper>
+        <KeyboardAwareScrollView
+          style={{ backgroundColor: '#fff' }}
+          resetScrollToCoords={{ x: 0, y: 0 }}
+          scrollEnabled={false}
+        >
           <FormWrapper>
             <InputWrapper>
               <TextInput
@@ -131,7 +130,7 @@ function EditProfile({ navigation }) {
               />
             </InputWrapper>
           </FormWrapper>
-        </ScrollWrapper>
+        </KeyboardAwareScrollView>
       )}
     </Mutation>
   );
