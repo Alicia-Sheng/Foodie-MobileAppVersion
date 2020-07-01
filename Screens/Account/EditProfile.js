@@ -5,7 +5,7 @@ import Button from '../../Components/Button/Button';
 import BackButton from '../../Components/Button/BackButton'
 import styled from 'styled-components/native';
 import { Mutation } from 'react-apollo';
-import { EDIT_USER } from '../../constants/functions';
+import { EDIT_USER, GET_CURRENT_USER } from '../../constants/functions';
 
 const ScrollWrapper = styled(ScrollView)`
   padding-top: 10%;
@@ -52,7 +52,9 @@ function EditProfile({ navigation }) {
 
   return (
     <Mutation
-      mutation={EDIT_USER}>
+      mutation={EDIT_USER}
+      refetchQueries={() => [{ query: GET_CURRENT_USER }]}
+    >
       {(editUser) => (
         <ScrollWrapper>
           <FormWrapper>
