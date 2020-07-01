@@ -49,24 +49,27 @@ const FoodName = ({ productId }) => {
   )
 }
 
-// const FindFood= ({id}) => {
-//   const { loading, error, data } = useQuery(GET_USER, {variables: {id: id} });
-//   return (
-//     <>
-//           {(loading || error) ? (
-//               <>
-//               <Text>{loading ? 'Loading...' : error.message}</Text>
-//               </>
-//           ):
-//
-//         (
-//           <>
-//               <FoodeName />
-//           </>
-//         )}
-//   </>
-//   );
-// }
+const Avatar= ({ id }) => {
+  const { loading, error, data } = useQuery(GET_USER, {variables: {id: id} });
+  return (
+    <>
+          {(loading || error) ? (
+              <>
+              <Text>{loading ? 'Loading...' : error.message}</Text>
+              </>
+          ):
+
+        (
+          <>
+            <Image
+              style={{borderColor: '#FFF',borderRadius: 85,borderWidth: 3,height: 30,width: 30,marginLeft: 0}}
+              source={{uri: data.user.profilePic}}
+            />
+          </>
+        )}
+  </>
+  );
+}
 
 
 const Comment = ({items}) => {
@@ -75,12 +78,11 @@ const Comment = ({items}) => {
     <>
       <View style = {styles.listItemContainer}>
 
-        <Image
-          style={{borderColor: '#FFF',borderRadius: 85,borderWidth: 3,height: 30,width: 30,marginLeft: 0}}
-          source={userImage.img}
-        />
+        <Avatar id={item.userId} />
 
-        <FoodName productId={item.productId} />
+        <View style={{marginHorizontal: 8}} >
+          <FoodName productId={item.productId} />
+        </View>
 
         <View style={styles.text}>
           <Text>
