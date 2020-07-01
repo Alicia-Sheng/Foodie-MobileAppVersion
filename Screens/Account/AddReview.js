@@ -13,13 +13,6 @@ function AddReview({ navigation }) {
   const [text, setText] = useState (" ")    //comment
   const [star, setStar] = useState(5)  //starts
 
-
-  const handleForm = () => {
-    const comment = {text:text, star:star}
-    Alert.alert('Do you want to submit your comment?')
-    addComment(comment)
-  }
-
   const resetForm = () => {
     setText(" ");
     setStar(5);
@@ -30,7 +23,6 @@ function AddReview({ navigation }) {
 
     <Mutation
       mutation = {ADD_REVIEW}
-  //   refetchQueries = {() => [{ query: GET_REVIEW }]} 
     >
     {(addReview) => (
 
@@ -68,36 +60,33 @@ function AddReview({ navigation }) {
             onChangeText = {text => setText(text)}
           />
 
-    {/*     <Button title="Submit" onPress={handleForm} />  */}
-    {/*  <ButtonWrapper> */}
-
-        <Button
-          title="Submit"
-          style = {{width: 1000}}
-          onPress={() => {
-            addReview({ variables: { comment: text, rating:star, productId:productId, userId:userId} })
-            .then(({ data }) => {
-              resetForm();
-              alert  ('Successfully Submit Comment!');
-            })
-            .catch(error => {
-              if (error) {
-                Alert.alert(
-                  'Error',
-                  error.graphQLErrors.map(({ message }) => message)[0],
-                );
-              }
-            });
-        }} />
-    {/*   </ButtonWrapper>  */}
+          <Button
+            title="Submit"
+            style = {{width: 1000}}
+            onPress={() => {
+              addReview({ variables: { comment: text, rating:star, productId:productId, userId:userId} })
+              .then(({ data }) => {
+                resetForm();
+                alert  ('Successfully Submit Comment!');
+              })
+              .catch(error => {
+                if (error) {
+                  Alert.alert(
+                    'Error',
+                    error.graphQLErrors.map(({ message }) => message)[0],
+                  );
+                }
+              });
+            }}
+          />
 
         </View>
 
     )}
     </Mutation>
 
-</>
-    )
+  </>
+  )
 }
 
 const styles = StyleSheet.create({
