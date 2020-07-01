@@ -4,7 +4,7 @@ import { ImageBackground, StyleSheet, Text, View, Image, AsyncStorage, SafeAreaV
 import { Icon, ListItem } from 'react-native-elements'
 import { GET_CURRENT_USER } from '../../constants/functions';
 
-function Menu({ navigation, user }) {
+function Menu({ navigation, user, client }) {
   return (
     <ScrollView>
       <SafeAreaView
@@ -19,7 +19,7 @@ function Menu({ navigation, user }) {
             <View style={styles.headerColumn}>
               <Image
                 style={styles.userImage}
-                source={require("../../media/user/default.png")}
+                source={{ uri: user.profilePic }}
               />
               <Text style={styles.userNameText}>{user.username}</Text>
             </View>
@@ -75,9 +75,10 @@ function Menu({ navigation, user }) {
               title="Log Out"
               onPress={
                 () => {
-                  AsyncStorage.removeItem('token').then(() =>
-                    navigation.navigate('AuthLoading'),
-                  );
+                  client.resetStore(),
+                    AsyncStorage.removeItem('token').then(() =>
+                      navigation.navigate('AuthLoading'),
+                    );
                 }
               }
               containerStyle={styles.listItemContainer}
@@ -92,7 +93,7 @@ function Menu({ navigation, user }) {
 
 function Account({ navigation }) {
 
-  const { loading, error, data } = useQuery(GET_CURRENT_USER);
+  const { client, loading, error, data } = useQuery(GET_CURRENT_USER);
 
   return (
     <>
@@ -102,7 +103,7 @@ function Account({ navigation }) {
         </>
       ) :
         (
-          <Menu navigation={navigation} user={data.currentUser} />
+          <Menu navigation={navigation} user={data.currentUser} client={client} />
         )
       }
     </>

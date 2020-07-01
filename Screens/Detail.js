@@ -104,8 +104,8 @@ const Comments = ({productId}) =>  {
 
         (
           <>
-            <ScrollView style={styles.scroll}>
-              <View style={styles.headerContainer}>
+            <ScrollView>
+              <View>
                 <Comment item={data.reviews} />
               </View>
             </ScrollView>
@@ -144,14 +144,14 @@ const Comment = ({item}) => {
     return (
     <>
       <View style = {styles.listItemContainer}>
-        <View style={styles.title}>
+        <View>
           <Text style={{ fontWeight: "bold" }}>
             <FindUser id = {item.userId}  />
             {/*{item.userId} */}
           </Text>
         </View>
 
-        <View style={styles.text}>
+        <View>
           <Text>
             {item.comment}
           </Text>
