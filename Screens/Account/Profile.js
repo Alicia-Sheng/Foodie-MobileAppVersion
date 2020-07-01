@@ -42,7 +42,6 @@ function Profile({ navigation }) {
         {/* Profile pic */}
         <ListItem
           title="Picture"
-          onPress={() => Alert.alert('Not implemented yet')}
           containerStyle={styles.listItemContainer}
           rightAvatar={<Image source={{ uri: user.profilePic }} style={{ width: 50, height: 50 }} />}
         />
@@ -50,7 +49,6 @@ function Profile({ navigation }) {
         {/* Background pic */}
         <ListItem
           title="Background"
-          onPress={() => Alert.alert('Not implemented yet')}
           containerStyle={styles.listItemContainer}
           rightAvatar={<Image source={require("../../media/user/user_background.jpg")} style={{ width: 50, height: 50 }} />}
         />
@@ -60,14 +58,6 @@ function Profile({ navigation }) {
           title="Username"
           rightSubtitle={user.username}
           rightSubtitleStyle={{ width: 180, textAlign: "right" }}
-          onPress={() => Alert.alert('Not implemented yet')}
-          containerStyle={styles.listItemContainer}
-        />
-
-        {/* Password */}
-        <ListItem
-          title="Password"
-          onPress={() => Alert.alert('Not implemented yet')}
           containerStyle={styles.listItemContainer}
         />
 
@@ -76,7 +66,6 @@ function Profile({ navigation }) {
           title="Email"
           rightSubtitle={user.email}
           rightSubtitleStyle={{ width: 180, textAlign: "right" }}
-          onPress={() => Alert.alert('Not implemented yet')}
           containerStyle={styles.listItemContainer}
         />
 
@@ -85,7 +74,6 @@ function Profile({ navigation }) {
           title="Phone#"
           rightSubtitle={user.phone}
           rightSubtitleStyle={{ width: 180, textAlign: "right" }}
-          onPress={() => Alert.alert('Not implemented yet')}
           containerStyle={styles.listItemContainer}
         />
 
