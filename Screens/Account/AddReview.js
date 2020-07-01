@@ -41,6 +41,7 @@ function AddReview({ navigation }) {
                 fontWeight: 'bold',
                 borderColor: "#FFFFFF",
                 fontSize: 16,
+                marginRight: 40,
             }}>
               {name}
             </Text>
