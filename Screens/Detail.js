@@ -115,6 +115,29 @@ const Comments = ({productId}) =>  {
   );
 }
 
+const FindUser = ({id}) => {
+  const { loading, error, data } = useQuery(GET_USER, {variables: {id:id} });
+  return (
+    <>
+          {(loading || error) ? (
+              <>
+              <Text>{loading ? 'Loading...' : error.message}</Text>
+              </>
+          ):
+
+        (
+          <>
+              <View style={styles.listItemContainer}>
+                 <Text style={{ fontWeight: "bold" }}>
+                  {data.username}
+                 </Text>
+              </View>
+          </>
+        )}
+  </>
+  );
+}
+
 const Comment = ({item}) => {
   return item.map((item, index) => {
     return (

@@ -5,7 +5,7 @@ import { Icon, ListItem } from 'react-native-elements';
 import user from '../../assets/userInfo';
 import BackButton from '../../Components/Button/BackButton';
 import StarRating from '../../Components/Details/StarRating';
-import { GET_ORDER, GET_REVIEW, GET_CURRENT_USER_REVIEW } from '../../constants/functions';
+import { GET_CURRENT_USER_REVIEW, GET_USER } from '../../constants/functions';
 
 const Review = () => {
   const { loading, error, data } = useQuery(GET_CURRENT_USER_REVIEW);
@@ -29,15 +29,48 @@ const Review = () => {
   );
 }
 
+const FindUser = ({id}) => {
+  const { loading, error, data } = useQuery(GET_USER, {variables: {id:id} });
+
+    return (
+    <>
+          {(loading || error) ? (
+              <>
+              <Text>{loading ? 'Loading...' : error.message}</Text>
+              </>
+          ):
+
+        (
+          <>
+              <View style={styles.listItemContainer}>
+                 <Text style={{ fontWeight: "bold" }}>
+                  {data.username}
+                 </Text>
+              </View>
+          </>
+        )}
+  </>
+  );
+
+}
+
+
+
 const Comment = ({item}) => {
   return item.map((item, index) => {
     return (
     <>
       <View style = {styles.listItemContainer}>
         <View style={styles.title}>
+
           <Text style={{ fontWeight: "bold" }}>
             {item.id}
           </Text>
+
+
+      {/*  <Text style={{ fontWeight: "bold" }}>   */}
+      {/*      <FindUser id = {item.id}  />   */}
+      {/*    </Text>  */}
         </View>
 
         <View style={styles.text}>
