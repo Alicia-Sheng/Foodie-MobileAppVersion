@@ -182,11 +182,14 @@ export const SIGNUP_USER = gql `
 export const EDIT_USER = gql `
   mutation editUser($password: String!, $email: String!, $phone: String!, $profilePic: String!) {
     editUser(password: $password, email: $email, phone: $phone, profilePic: $profilePic) {
-      username
-      email
-      phone
-      profilePic
-      orders
+      user {
+        username
+        email
+        phone
+        profilePic
+        orders
+      }
+      token
     }
   }
 `;
