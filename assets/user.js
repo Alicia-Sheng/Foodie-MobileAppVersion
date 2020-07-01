@@ -29,6 +29,14 @@ const user = [{
     "email": "jessica@brandeis.edu",
     "phone": "1234567890",
     "role": "basic"
+},
+{
+    "id": 5,
+    "username": "Alicia",
+    "password": "alicia",
+    "email": "duowensheng@brandeis.edu",
+    "phone": "6179097458",
+    "role": "basic"
 }
 ]
 

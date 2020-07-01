@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingTop: 15,
-    marginBottom: '2%',
   },
   orderStyle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginBottom: '2%',
   }
 });
 export default Totals;
