@@ -77,6 +77,7 @@ export const GET_ORDER = gql `
       thumbnail
       qty
       total
+      productId
       userId
       complete
     }
