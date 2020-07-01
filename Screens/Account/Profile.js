@@ -44,7 +44,7 @@ function Profile({ navigation }) {
           title="Picture"
           onPress={() => Alert.alert('Not implemented yet')}
           containerStyle={styles.listItemContainer}
-          rightAvatar={<Image source={require("../../media/user/default.png")} style={{ width: 50, height: 50 }} />}
+          rightAvatar={<Image source={{ uri: user.profilePic }} style={{ width: 50, height: 50 }} />}
         />
 
         {/* Background pic */}
