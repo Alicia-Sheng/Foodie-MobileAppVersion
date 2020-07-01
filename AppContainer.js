@@ -22,13 +22,13 @@ import Account from './Screens/Account/Account';
 import Profile from './Screens/Account/Profile';
 import MyOrders from './Screens/Account/MyOrders';
 import MyReviews from './Screens/Account/MyReviews';
+import AddReview from './Screens/Account/AddReview';
 import Login from './Screens/Login';
 import AuthLoading from './Screens/Login';
 import Register from './Screens/Register';
 import Search from './Screens/Search';
 import HamburgerIcon from './Components/Button/HamburgerIcon';
 import BadgeCount from './Components/Badge/BadgeCount';
-
 
 const HomeStack = createStackNavigator(
   {
@@ -45,7 +45,7 @@ const HomeStack = createStackNavigator(
     },
     SeeAll: {
       screen: SeeAll,
-      navigationOptions: { 
+      navigationOptions: {
         title: null
       },
     },
@@ -249,6 +249,10 @@ const AccountStack = createStackNavigator(
     MyOrders: {
       screen: MyOrders,
       navigationOptions: { title: 'My Orders' },
+    },
+    AddReview: {
+      screen: AddReview,
+      navigationOptions: { title: 'Add Reviews' },
     },
     MyReviews: {
       screen: MyReviews,

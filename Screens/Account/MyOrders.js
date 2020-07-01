@@ -4,9 +4,10 @@ import { ScrollView, StyleSheet, View, Alert, Text } from 'react-native';
 import { Icon, ListItem } from 'react-native-elements'
 import user from '../../assets/userInfo'
 import BackButton from '../../Components/Button/BackButton'
-import { GET_ORDER } from '../../constants/functions';
+import { GET_ORDER, ADD_REVIEW } from '../../constants/functions';
+import AddReview from './AddReview';
 
-const Orders = ({ orders }) => {
+const Orders = ({ orders, navigation }) => {
   //return user.orders.map((order) => {
   return orders.map((order, index) => {
     return (
@@ -28,13 +29,13 @@ const Orders = ({ orders }) => {
           color="gray"
           containerStyle={{ width: 20 }}
         />}
-        onPress={() => Alert.alert('Not implemented yet')}
+        onPress={() => navigation.navigate('AddReview', {productId: order.id, userId: order.userId})}
       />
     )
   })
 }
 
-function MyOrders() {
+function MyOrders({ navigation }) {
     const { loading, error, data } = useQuery(GET_ORDER);
     return (
       <>
@@ -47,7 +48,7 @@ function MyOrders() {
               <>
                 <ScrollView style={styles.scroll}>
                   <View style={styles.headerContainer}>
-                    <Orders orders={data.orders} />
+                    <Orders orders={data.orders} navigation={navigation}/>
                   </View>
                 </ScrollView>
               </>
