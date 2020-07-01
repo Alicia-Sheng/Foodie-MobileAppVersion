@@ -6,14 +6,14 @@ import { useMutation } from 'react-apollo';
 import Button from '../Components/Button/Button';
 import { COMPLETE_CART, GET_CART, GET_CART_TOTAL, GET_ORDER } from '../constants/functions';
 
-const CheckoutWrapper = styled(View)`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  margin: 5%;
-  marginTop: 200px;
-  align-items: center;
-`;
+// const CheckoutWrapper = styled(View)`
+//   display: flex;
+//   justify-content: space-between;
+//   flex-direction: column;
+//   margin: 5%;
+//   marginTop: 200px;
+//   align-items: center;
+// `;
 
 const Alert = styled(Text)`
   width: 100%;
@@ -28,15 +28,21 @@ const Checkout = () => {
         );
 
     return (
-          <CheckoutWrapper>
+          <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
               {(loading || error) ? (
                   <Alert>{loading ? 'Loading...' : error.message}</Alert>
               ):null}
               {data && data.completeCart.complete ? (
-                  <Text>Thank you for your order!</Text>
+                <>
+                    <View style={{marginBottom: 50}} >
+                      <Text style={{fontSize: 20, textAlign: 'center'}}>Thank you for your order!</Text>
+                    </View>
+                </>
               ) : (
                       <>
-                          <Text style={{fontSize: 20, marginBottom: 50, textAlign: 'center'}}>Press the button below to complete checkout</Text>
+                          <View style={{marginBottom: 50, marginHorizontal: 20}} >
+                            <Text style={{fontSize: 20, textAlign: 'center'}}>Press the button below to complete checkout</Text>
+                          </View>
                           <Button
                               title="Complete checkout"
                               onPress={completeCart}
@@ -45,7 +51,7 @@ const Checkout = () => {
                           />
                       </>
                   )}
-          </CheckoutWrapper>
+          </View>
     );
 };
 
