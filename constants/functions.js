@@ -107,7 +107,9 @@ export const GET_REVIEW = gql `
       id
       comment
       rating
+      productId
       userId
+      userName
     }
   }
 `;
