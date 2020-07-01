@@ -129,6 +129,7 @@ export const GET_CURRENT_USER_REVIEW = gql`
       id
       comment
       rating
+      productId
     }
   }
 `;

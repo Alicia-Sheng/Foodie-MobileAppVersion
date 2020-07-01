@@ -105,7 +105,11 @@ function EditProfile({ navigation }) {
                     editUser({ variables: { password: password, email: email, phone: phone, profilePic: img } })
                       .then(({ data }) => {
                         alert('Changes Saved!');
-                        navigation.navigate('Main');
+                        const { token } = data.editUser;
+
+                        AsyncStorage.setItem('token', token).then(value => {
+                          navigation.navigate('Main');
+                        })
                       })
                       .catch(error => {
                         if (error) {
