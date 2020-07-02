@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { useQuery } from 'react-apollo';
-import { ScrollView, StyleSheet, View, Alert, Text } from 'react-native';
+import { ScrollView, StyleSheet, View, Alert, Text, Dimensions } from 'react-native';
 import { Icon, ListItem } from 'react-native-elements'
 import BackButton from '../../Components/Button/BackButton'
 import { GET_ORDER } from '../../constants/functions';
+
+const { width: screenWidth } = Dimensions.get('window')
 
 function Orders({ orders, navigation }) {
   return orders.map((order, index) => {
@@ -12,7 +14,7 @@ function Orders({ orders, navigation }) {
         key={index}
         leftAvatar={{ source: { uri: order.thumbnail } }}
         title={order.name}
-        titleStyle={{ marginBottom: 3 }}
+        titleStyle={{ marginBottom: 3, width: Math.round(screenWidth * 0.5) }}
         subtitle={order.location}
         subtitleStyle={{ color: 'grey' }}
         rightTitle={'$' + order.total.toString()}
