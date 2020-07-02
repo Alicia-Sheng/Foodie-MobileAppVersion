@@ -65,7 +65,7 @@ function Profile({ navigation }) {
         <ListItem
           title="Email"
           rightSubtitle={user.email}
-          rightSubtitleStyle={{ width: 180, textAlign: "right" }}
+          rightSubtitleStyle={{ width: 250, textAlign: "right" }}
           containerStyle={styles.listItemContainer}
         />
 
