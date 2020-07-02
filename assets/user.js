@@ -62,6 +62,14 @@ const user = [{
     "phone": "1234567890",
     "role": "basic"
 },
+{
+    "id": 9,
+    "username": "HappyCoding",
+    "password": "happycoding",
+    "email": "happycoding@brandeis.edu",
+    "phone": "1234567890",
+    "role": "basic"
+},
 ]
 
 export default user;
