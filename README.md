@@ -134,18 +134,19 @@ $ npm start
 <br />
 
 <kbd>
-  <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/detail.png" width=300> <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/commentlist.png" width=300>
+  <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/AddReview.png" width=300> <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/Detail.png" width=300> <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/MyReview.png" width=300>
 </kbd>
 
 <br />
 
-  * Users can see food details and comment here.
-  * Previous comment list of the food is included as well
+  * Users can add food comment here.
+  * Foor detail and previous comment list of the food is included as well.
+  * Users can view their review history in the My Reviews page in account side bar.
 
 <br />
 
 <kbd>
-  <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/order.png" width=300>
+  <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/MyOrder.png" width=300>
 </kbd>
 
 <br />
