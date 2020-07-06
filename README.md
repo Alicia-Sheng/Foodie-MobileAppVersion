@@ -129,13 +129,11 @@ $ npm start
 
 <br />
 
-<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/AddReview.png" width=300></kbd> <kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/Detail.png" width=300></kbd> <kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/MyReview.png" width=300></kbd>
+<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/Detail.png" width=300></kbd>
 
 <br />
 
-  * Users can add food comment here.
-  * Foor detail and previous comment list of the food is included as well.
-  * Users can view their review history in the My Reviews page in account side bar.
+  * Users can view food details and comments here
 
 <br />
 
@@ -172,15 +170,16 @@ $ npm start
 
 <br />
 
-<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/MyOrder.png" width=300></kbd>
+<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/MyOrder.png" width=300></kbd> <kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/AddReview.png" width=300></kbd>
 
 <br />
 
   * Users can see their order information
+  * Users can add reviews of their orders by clicking on each order in the My Order page.
  
  <br />
  
-<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/myReviews.png" width=300></kbd>
+<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/MyReview.png" width=300></kbd>
 
 <br />
 
