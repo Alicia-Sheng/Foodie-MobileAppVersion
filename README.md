@@ -172,7 +172,7 @@ $ npm start
 
 <br />
 
-<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/myOrders.png" width=300></kbd>
+<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/MyOrder.png" width=300></kbd>
 
 <br />
 
