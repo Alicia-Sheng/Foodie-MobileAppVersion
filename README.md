@@ -99,9 +99,7 @@ $ npm start
 
 ## Demo
 
-<kbd>
-  <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/homepage.png" width=300>
-</kbd>
+<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/homepage.png" width=300></kbd>
 
 <br />
 
@@ -125,9 +123,7 @@ $ npm start
 
 <br />
 
-<kbd>
-  <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/restaurant.png" width=300>
-</kbd>
+<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/restaurant.png" width=300></kbd>
 
   * Food and beverage options are displayed by restaurant
 
@@ -143,9 +139,7 @@ $ npm start
 
 <br />
 
-<kbd>
-  <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/MyOrder.png" width=300>
-</kbd>
+<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/MyOrder.png" width=300></kbd>
 
 <br />
 
@@ -154,9 +148,7 @@ $ npm start
 
 <br />
 
-<kbd>
-  <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/foodProvider.png" width=300>
-</kbd>
+<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/foodProvider.png" width=300></kbd>
 
 <br />
 
@@ -164,9 +156,7 @@ $ npm start
 
 <br />
 
-<kbd>
-  <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/account.png" width=300>
-</kbd>
+<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/account.png" width=300></kbd>
 
 <br />
 
@@ -174,9 +164,7 @@ $ npm start
 
 <br />
 
-<kbd>
-  <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/Profile.png" width=300>
-</kbd>
+<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/Profile.png" width=300></kbd>
 
 <br />
 
@@ -184,9 +172,7 @@ $ npm start
 
 <br />
 
-<kbd>
-  <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/myOrders.png" width=300>
-</kbd>
+<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/myOrders.png" width=300></kbd>
 
 <br />
 
@@ -194,9 +180,7 @@ $ npm start
  
  <br />
  
-<kbd>
-  <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/myReviews.png" width=300>
-</kbd>
+<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/myReviews.png" width=300></kbd>
 
 <br />
 
@@ -204,9 +188,7 @@ $ npm start
 
 <br />
 
-<kbd>
-  <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/login.png" width=300>
-</kbd>
+<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/login.png" width=300></kbd>
 
 <br />
 
@@ -214,9 +196,7 @@ $ npm start
 
 <br />
 
-<kbd>
-  <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/registerPage.png" width=300>
-</kbd>
+<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/registerPage.png" width=300></kbd>
 
 <br />
 
