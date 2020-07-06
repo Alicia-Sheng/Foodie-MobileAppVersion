@@ -133,9 +133,7 @@ $ npm start
 
 <br />
 
-<kbd>
-  <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/AddReview.png" width=300> <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/Detail.png" width=300> <img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/MyReview.png" width=300>
-</kbd>
+<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/AddReview.png" width=300></kbd> <kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/Detail.png" width=300></kbd> <kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/MyReview.png" width=300></kbd>
 
 <br />
 
