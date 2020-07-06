@@ -137,11 +137,11 @@ $ npm start
 
 <br />
 
-<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/MyOrder.png" width=300></kbd>
+<kbd><img src="https://github.com/Alicia-Sheng/Foodie-MobileAppVersion/blob/master/media/screeshot/Cart.png" width=300></kbd>
 
 <br />
 
-  * Customers can view, add or remove items they put in the shopping cart.
+  * Customers can view, add or remove items they put in the shopping cart
   * They can place an order here
 
 <br />
